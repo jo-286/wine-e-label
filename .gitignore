@@ -1,0 +1,7 @@
+*.zip
+Thumbs.db
+.DS_Store
+dist/
+.build-temp/
+!Plugin Installation Files/
+!Plugin Installation Files/*.zip
