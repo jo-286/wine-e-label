@@ -3,46 +3,46 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-if (!isset($_GET['page']) || !in_array((string) $_GET['page'], [WINE_E_LABEL_ADMIN_PAGE_MAIN, 'nutrition_labels_main'], true)) {
+if (!isset($_GET['page']) || !in_array((string) $_GET['page'], [WINE_E_LABEL_ADMIN_PAGE_MAIN, 'wine_e_label_main'], true)) {
   return;
 }
 
-if (file_exists(NUTRITION_LABELS_PLUGIN_DIR . 'admin/settings-functions.php')) {
-  require_once NUTRITION_LABELS_PLUGIN_DIR . 'admin/settings-functions.php';
+if (file_exists(WINE_E_LABEL_PLUGIN_DIR . 'admin/settings-functions.php')) {
+  require_once WINE_E_LABEL_PLUGIN_DIR . 'admin/settings-functions.php';
 }
 
 if (!function_exists('settings_fields') || !function_exists('get_option')) {
-  wp_die(__('WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren.', 'nutrition-labels'));
+  wp_die(__('WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren.', 'wine-e-label'));
 }
 
-if (isset($_POST['submit-nutrition-settings']) && class_exists('NutritionLabels_Admin_Extended')) {
-  NutritionLabels_Admin_Extended::handle_settings_submission();
+if (isset($_POST['submit-wine-e-label-settings']) && class_exists('Wine_E_Label_Admin_Extended')) {
+  Wine_E_Label_Admin_Extended::handle_settings_submission();
 }
 
 $current_qr_size       = get_option('qr_size', '500x500');
 $current_qr_format     = get_option('qr_format', 'png');
 $current_qr_correction = get_option('qr_error_correction', 'low');
-$current_base_url      = get_option('nutrition_labels_base_url', '');
-$current_rest_enabled  = get_option('nutrition_labels_rest_enabled', 'no');
-$current_rest_base_url = get_option('nutrition_labels_rest_base_url', '');
-$current_rest_username = get_option('nutrition_labels_rest_username', '');
-$current_rest_password = get_option('nutrition_labels_rest_app_password', '');
-$current_lang          = NutritionLabels_Admin_I18n::get_current_language();
+$current_base_url      = get_option('wine_e_label_base_url', '');
+$current_rest_enabled  = get_option('wine_e_label_rest_enabled', 'no');
+$current_rest_base_url = get_option('wine_e_label_rest_base_url', '');
+$current_rest_username = get_option('wine_e_label_rest_username', '');
+$current_rest_password = get_option('wine_e_label_rest_app_password', '');
+$current_lang          = Wine_E_Label_Admin_I18n::get_current_language();
 $current_tab           = isset($_GET['tab']) ? sanitize_key((string) $_GET['tab']) : 'general';
 if (!in_array($current_tab, ['general', 'setup', 'language'], true)) {
   $current_tab = 'general';
 }
-$current_subdomain_enabled = get_option('nutrition_labels_use_subdomain', 'no') === 'yes';
-$current_scheme = get_option('nutrition_labels_subdomain_scheme', 'https');
-$public_base_summary = NutritionLabels_URL::get_public_base_url(false);
-$local_route_summary = NutritionLabels_URL::get_local_base_url();
+$current_subdomain_enabled = get_option('wine_e_label_use_subdomain', 'no') === 'yes';
+$current_scheme = get_option('wine_e_label_subdomain_scheme', 'https');
+$public_base_summary = Wine_E_Label_URL::get_public_base_url(false);
+$local_route_summary = Wine_E_Label_URL::get_local_base_url();
 $publish_mode_summary = $current_rest_enabled === 'yes'
-  ? __('Receiver / REST API', 'nutrition-labels')
-  : ($current_subdomain_enabled ? __('Subdomain', 'nutrition-labels') : __('Lokale WordPress-Seite', 'nutrition-labels'));
-$db = new NutritionLabels_DB_Extended();
+  ? __('Receiver / REST API', 'wine-e-label')
+  : ($current_subdomain_enabled ? __('Subdomain', 'wine-e-label') : __('Lokale WordPress-Seite', 'wine-e-label'));
+$db = new Wine_E_Label_DB_Extended();
 $active_count = $db->count_all_entries();
 $settings_base_url = admin_url('admin.php?page=' . WINE_E_LABEL_ADMIN_PAGE_MAIN);
-$rest_test_nonce  = wp_create_nonce('nutrition_test_rest_connection');
+$rest_test_nonce  = wp_create_nonce('wine_e_label_test_rest_connection');
 
 $setup_translations = [
   'de' => [
@@ -232,186 +232,186 @@ $setup_disclaimer = [
 ];
 ?>
 <style>
-  .nutrition-labels-shell{display:grid;gap:20px;margin-top:20px;}
-  .nutrition-labels-hero{background:linear-gradient(135deg,#fbf3ed 0%,#fffaf6 52%,#ffffff 100%);border:1px solid #ead7ca;border-radius:18px;padding:24px 26px;box-shadow:0 12px 30px rgba(76,38,22,.06);}
-  .nutrition-labels-hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.9fr);gap:24px;align-items:start;}
-  .nutrition-labels-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#fff3ea;color:#8a3c17;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
-  .nutrition-labels-hero h2{margin:14px 0 10px;font-size:28px;line-height:1.15;}
-  .nutrition-labels-hero p{margin:0;color:#5f534c;max-width:72ch;line-height:1.6;}
-  .nutrition-labels-hero-note{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.78);border:1px solid #edd8cc;color:#5e4637;}
-  .nutrition-labels-hero-side{display:grid;gap:14px;}
-  .nutrition-labels-hero-mini{background:rgba(255,255,255,.88);border:1px solid #ecd7ca;border-radius:14px;padding:16px 18px;}
-  .nutrition-labels-hero-mini strong{display:block;margin-bottom:6px;font-size:13px;}
-  .nutrition-labels-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;}
-  .nutrition-labels-metric{background:#fff;border:1px solid #ebdcd2;border-radius:14px;padding:16px 18px;box-shadow:0 8px 22px rgba(76,38,22,.04);}
-  .nutrition-labels-metric-label{display:block;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#7a6a5f;margin-bottom:8px;}
-  .nutrition-labels-metric-value{display:block;font-size:18px;font-weight:700;color:#1d2327;line-height:1.3;word-break:break-word;}
-  .nutrition-labels-metric code{font-size:12px;}
-  .nutrition-labels-form-shell{display:grid;gap:20px;}
-  .nutrition-labels-general-form{display:flex;flex-direction:column;gap:20px;}
-  .nutrition-labels-general-form > .nutrition-labels-rest-grid{order:1;margin-top:0;}
-  .nutrition-labels-general-form > .form-table{order:2;margin-top:0;border-collapse:separate;border-spacing:0;}
-  .nutrition-labels-general-form > p.submit{order:3;margin:0;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #ded4cd;box-shadow:0 10px 26px rgba(35,23,15,.04);}
-  .nutrition-labels-general-form > p.submit .button-primary{margin:0;}
-  .nutrition-labels-general-form .form-table,
-  .nutrition-labels-general-form .form-table tbody,
-  .nutrition-labels-general-form .form-table tr,
-  .nutrition-labels-general-form .form-table th,
-  .nutrition-labels-general-form .form-table td{display:block;width:auto;padding:0;}
-  .nutrition-labels-general-form .form-table tr{position:relative;overflow:hidden;background:#fff;border:1px solid #ded4cd;border-radius:16px;padding:20px 22px;margin:0 0 16px;box-shadow:0 10px 26px rgba(35,23,15,.04);}
-  .nutrition-labels-general-form .form-table tr:nth-child(-n+3){border-left:5px solid #7a2d1f;}
-  .nutrition-labels-general-form .form-table tr:nth-child(n+4):nth-child(-n+7){border-left:5px solid #215f78;}
-  .nutrition-labels-general-form .form-table tr:nth-child(8){border-left:5px solid #946200;}
-  .nutrition-labels-general-form .form-table tr:nth-child(1),
-  .nutrition-labels-general-form .form-table tr:nth-child(2),
-  .nutrition-labels-general-form .form-table tr:nth-child(3),
-  .nutrition-labels-general-form .form-table tr:nth-child(4),
-  .nutrition-labels-general-form .form-table tr:nth-child(5),
-  .nutrition-labels-general-form .form-table tr:nth-child(6),
-  .nutrition-labels-general-form .form-table tr:nth-child(7){margin-bottom:0;box-shadow:none;}
-  .nutrition-labels-general-form .form-table tr:nth-child(1){padding-top:58px;border-radius:16px 16px 0 0;border-bottom:none;background:linear-gradient(180deg,#fff9f5 0,#fff 145px);}
-  .nutrition-labels-general-form .form-table tr:nth-child(1)::before{content:"QR-Code-Einstellungen";position:absolute;top:20px;left:22px;font-size:18px;font-weight:700;color:#1d2327;}
-  .nutrition-labels-general-form .form-table tr:nth-child(2){border-radius:0;border-top:none;border-bottom:none;}
-  .nutrition-labels-general-form .form-table tr:nth-child(3){border-radius:0 0 16px 16px;border-top:none;margin:0 0 18px;box-shadow:0 10px 26px rgba(35,23,15,.04);}
-  .nutrition-labels-general-form .form-table tr:nth-child(4){padding-top:58px;border-radius:16px 16px 0 0;border-bottom:none;background:linear-gradient(180deg,#f4fbff 0,#fff 145px);}
-  .nutrition-labels-general-form .form-table tr:nth-child(4)::before{content:"Ziel-URLs und Subdomain";position:absolute;top:20px;left:22px;font-size:18px;font-weight:700;color:#1d2327;}
-  .nutrition-labels-general-form .form-table tr:nth-child(5),
-  .nutrition-labels-general-form .form-table tr:nth-child(6){border-radius:0;border-top:none;border-bottom:none;}
-  .nutrition-labels-general-form .form-table tr:nth-child(7){border-radius:0 0 16px 16px;border-top:none;margin:0 0 18px;box-shadow:0 10px 26px rgba(35,23,15,.04);}
-  .nutrition-labels-general-form .form-table th{margin-bottom:10px;}
-  .nutrition-labels-general-form .form-table th label,
-  .nutrition-labels-general-form .form-table th{font-size:15px;font-weight:700;color:#1d2327;}
-  .nutrition-labels-general-form .form-table td > label{display:block;}
-  .nutrition-labels-general-form .form-table .description{margin:8px 0 0;color:#675d56;line-height:1.55;max-width:78ch;}
-  .nutrition-labels-general-form .form-table input[type="text"],
-  .nutrition-labels-general-form .form-table select{width:100%;max-width:520px;}
-  .nutrition-labels-general-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
-  .nutrition-labels-settings-card,
-  .nutrition-labels-rest-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:24px;align-items:start;margin-top:24px;}
-  .nutrition-labels-rest-card,.nutrition-labels-rest-guide,.nutrition-labels-setup-card,.nutrition-labels-settings-card,.nutrition-labels-ops-card{background:#fff;border:1px solid #ded4cd;border-radius:16px;padding:22px;box-shadow:0 10px 26px rgba(35,23,15,.05);}
-  .nutrition-labels-rest-card{border-top:4px solid #7a2d1f;background:linear-gradient(180deg,#fff9f5 0,#fff 130px);}
-  .nutrition-labels-rest-guide{margin-top:0;border-top:4px solid #215f78;background:linear-gradient(180deg,#f4fbff 0,#fff 130px);}
-  .nutrition-labels-rest-card h2,.nutrition-labels-rest-guide h3,.nutrition-labels-setup-card h2,.nutrition-labels-setup-card h3{margin:0 0 14px;}
-  .nutrition-labels-settings-card h3,.nutrition-labels-ops-card h3{margin:0 0 6px;font-size:18px;}
-  .nutrition-labels-rest-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#fff3ea;color:#8a3c17;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;}
-  .nutrition-labels-rest-guide .nutrition-labels-rest-kicker{background:#eaf6fd;color:#0b5671;}
-  .nutrition-labels-rest-lead{margin:0 0 18px;color:#5f534c;line-height:1.6;max-width:70ch;}
-  .nutrition-labels-card-lead{margin:0 0 16px;color:#5f534c;line-height:1.55;}
-  .nutrition-labels-settings-stack{display:grid;gap:16px;}
-  .nutrition-labels-setting{padding-top:16px;border-top:1px solid #f0e8e2;}
-  .nutrition-labels-setting:first-child{padding-top:0;border-top:none;}
-  .nutrition-labels-setting label strong,.nutrition-labels-setting > strong{display:block;margin-bottom:6px;font-size:14px;}
-  .nutrition-labels-setting .description{margin:6px 0 0;color:#6b625c;line-height:1.5;}
-  .nutrition-labels-setting input[type="text"],
-  .nutrition-labels-setting input[type="password"],
-  .nutrition-labels-setting select{width:100%;max-width:520px;}
-  .nutrition-labels-choice-list{display:grid;gap:10px;margin-top:4px;}
-  .nutrition-labels-choice-list label{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid #eadfd8;border-radius:12px;background:#fcfaf8;}
-  .nutrition-labels-choice-list label:hover{background:#fffdfb;border-color:#dbc3b5;}
-  .nutrition-labels-choice-list input{margin-top:2px;}
-  .nutrition-labels-subtle-code{display:block;margin-top:10px;padding:10px 12px;border:1px solid #ece2da;border-radius:12px;background:#f7f4f1;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:12px;word-break:break-all;}
-  .nutrition-labels-rest-fields{display:grid;grid-template-columns:180px minmax(0,1fr);gap:14px 18px;align-items:start;}
-  .nutrition-labels-rest-fields .description{margin:6px 0 0;}
-  .nutrition-labels-rest-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;}
-  .nutrition-labels-rest-status{font-weight:500;}
-  .nutrition-labels-rest-status-line{display:block;margin-top:2px;}
-  .nutrition-labels-rest-status-line.is-success{color:#1d7f31;}
-  .nutrition-labels-rest-status-line.is-error{color:#b32d2e;}
-  .nutrition-labels-rest-status.is-error{color:#b32d2e;}
-  .nutrition-labels-password-wrap{display:flex;gap:8px;align-items:center;}
-  .nutrition-labels-password-wrap input{flex:1 1 auto;}
-  .nutrition-labels-rest-guide ol{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:receiver-steps;}
-  .nutrition-labels-rest-guide li{position:relative;padding:12px 12px 12px 48px;border:1px solid #d8e7f0;border-radius:12px;background:#fff;line-height:1.5;counter-increment:receiver-steps;}
-  .nutrition-labels-rest-guide li::before{content:counter(receiver-steps);position:absolute;left:12px;top:12px;display:grid;place-items:center;width:24px;height:24px;border-radius:999px;background:#0b5671;color:#fff;font-size:12px;font-weight:700;}
-  .nutrition-labels-rest-guide p{margin:0 0 8px;}
-  .nutrition-labels-setup-intro{margin-top:24px;display:grid;gap:16px;}
-  .nutrition-labels-setup-grid{margin-top:18px;display:grid;gap:18px;}
-  .nutrition-labels-setup-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
-  .nutrition-labels-setup-card p{margin:0 0 10px;line-height:1.5;}
-  .nutrition-labels-setup-card ul,.nutrition-labels-setup-card ol{margin:8px 0 0 18px;line-height:1.6;}
-  .nutrition-labels-setup-note{border-left:4px solid #2271b1;background:#f0f6fc;padding:12px 14px;border-radius:6px;}
-  .nutrition-labels-setup-warning{border-left-color:#dba617;background:#fff8e5;}
-  .nutrition-labels-setup-example{display:block;margin-top:8px;padding:10px 12px;border:1px solid #dcdcde;border-radius:6px;background:#f6f7f7;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:12px;word-break:break-all;}
-  .nutrition-labels-setup-list-title{font-weight:600;margin-bottom:8px;display:block;}
-  .nutrition-labels-setup-faq-item{padding-top:14px;margin-top:14px;border-top:1px solid #f0f0f1;}
-  .nutrition-labels-setup-faq-item:first-child{padding-top:0;margin-top:0;border-top:none;}
-  .nutrition-labels-form-actions{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #ded4cd;box-shadow:0 10px 26px rgba(35,23,15,.04);}
-  .nutrition-labels-form-actions p{margin:0;color:#675d56;}
-  .nutrition-labels-ops-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px;}
-  .nutrition-labels-ops-card p{margin:0 0 10px;line-height:1.55;color:#5f534c;}
-  .nutrition-labels-info-list{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:12px;}
-  .nutrition-labels-info-list li{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-top:12px;border-top:1px solid #f1ebe6;}
-  .nutrition-labels-info-list li:first-child{padding-top:0;border-top:none;}
-  .nutrition-labels-info-list strong{display:block;font-size:13px;color:#5f534c;}
-  .nutrition-labels-info-list code{font-size:12px;word-break:break-all;}
-  .nutrition-labels-actions{margin-top:0;}
-  .nutrition-labels-actions form{margin:0;}
-  .nutrition-labels-tabs.nav-tab-wrapper{margin-top:0;padding:6px;background:#f3efeb;border:1px solid #e2d5cc;border-radius:14px;}
-  .nutrition-labels-tabs .nav-tab{margin-left:0;border:none;background:transparent;border-radius:10px;padding:10px 14px;font-weight:600;color:#5c514a;}
-  .nutrition-labels-tabs .nav-tab:hover{background:#fff;}
-  .nutrition-labels-tabs .nav-tab-active{background:#fff;color:#1d2327;box-shadow:0 4px 12px rgba(31,17,9,.06);}
-  @media (max-width: 960px){.nutrition-labels-hero-grid,.nutrition-labels-rest-grid,.nutrition-labels-setup-columns,.nutrition-labels-general-columns,.nutrition-labels-ops-grid,.nutrition-labels-metrics{grid-template-columns:1fr;}.nutrition-labels-rest-fields{grid-template-columns:1fr;}.nutrition-labels-form-actions{align-items:flex-start;flex-direction:column;}}
+  .wine-e-label-shell{display:grid;gap:20px;margin-top:20px;}
+  .wine-e-label-hero{background:linear-gradient(135deg,#fbf3ed 0%,#fffaf6 52%,#ffffff 100%);border:1px solid #ead7ca;border-radius:18px;padding:24px 26px;box-shadow:0 12px 30px rgba(76,38,22,.06);}
+  .wine-e-label-hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.9fr);gap:24px;align-items:start;}
+  .wine-e-label-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#fff3ea;color:#8a3c17;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  .wine-e-label-hero h2{margin:14px 0 10px;font-size:28px;line-height:1.15;}
+  .wine-e-label-hero p{margin:0;color:#5f534c;max-width:72ch;line-height:1.6;}
+  .wine-e-label-hero-note{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.78);border:1px solid #edd8cc;color:#5e4637;}
+  .wine-e-label-hero-side{display:grid;gap:14px;}
+  .wine-e-label-hero-mini{background:rgba(255,255,255,.88);border:1px solid #ecd7ca;border-radius:14px;padding:16px 18px;}
+  .wine-e-label-hero-mini strong{display:block;margin-bottom:6px;font-size:13px;}
+  .wine-e-label-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;}
+  .wine-e-label-metric{background:#fff;border:1px solid #ebdcd2;border-radius:14px;padding:16px 18px;box-shadow:0 8px 22px rgba(76,38,22,.04);}
+  .wine-e-label-metric-label{display:block;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#7a6a5f;margin-bottom:8px;}
+  .wine-e-label-metric-value{display:block;font-size:18px;font-weight:700;color:#1d2327;line-height:1.3;word-break:break-word;}
+  .wine-e-label-metric code{font-size:12px;}
+  .wine-e-label-form-shell{display:grid;gap:20px;}
+  .wine-e-label-general-form{display:flex;flex-direction:column;gap:20px;}
+  .wine-e-label-general-form > .wine-e-label-rest-grid{order:1;margin-top:0;}
+  .wine-e-label-general-form > .form-table{order:2;margin-top:0;border-collapse:separate;border-spacing:0;}
+  .wine-e-label-general-form > p.submit{order:3;margin:0;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #ded4cd;box-shadow:0 10px 26px rgba(35,23,15,.04);}
+  .wine-e-label-general-form > p.submit .button-primary{margin:0;}
+  .wine-e-label-general-form .form-table,
+  .wine-e-label-general-form .form-table tbody,
+  .wine-e-label-general-form .form-table tr,
+  .wine-e-label-general-form .form-table th,
+  .wine-e-label-general-form .form-table td{display:block;width:auto;padding:0;}
+  .wine-e-label-general-form .form-table tr{position:relative;overflow:hidden;background:#fff;border:1px solid #ded4cd;border-radius:16px;padding:20px 22px;margin:0 0 16px;box-shadow:0 10px 26px rgba(35,23,15,.04);}
+  .wine-e-label-general-form .form-table tr:nth-child(-n+3){border-left:5px solid #7a2d1f;}
+  .wine-e-label-general-form .form-table tr:nth-child(n+4):nth-child(-n+7){border-left:5px solid #215f78;}
+  .wine-e-label-general-form .form-table tr:nth-child(8){border-left:5px solid #946200;}
+  .wine-e-label-general-form .form-table tr:nth-child(1),
+  .wine-e-label-general-form .form-table tr:nth-child(2),
+  .wine-e-label-general-form .form-table tr:nth-child(3),
+  .wine-e-label-general-form .form-table tr:nth-child(4),
+  .wine-e-label-general-form .form-table tr:nth-child(5),
+  .wine-e-label-general-form .form-table tr:nth-child(6),
+  .wine-e-label-general-form .form-table tr:nth-child(7){margin-bottom:0;box-shadow:none;}
+  .wine-e-label-general-form .form-table tr:nth-child(1){padding-top:58px;border-radius:16px 16px 0 0;border-bottom:none;background:linear-gradient(180deg,#fff9f5 0,#fff 145px);}
+  .wine-e-label-general-form .form-table tr:nth-child(1)::before{content:"QR-Code-Einstellungen";position:absolute;top:20px;left:22px;font-size:18px;font-weight:700;color:#1d2327;}
+  .wine-e-label-general-form .form-table tr:nth-child(2){border-radius:0;border-top:none;border-bottom:none;}
+  .wine-e-label-general-form .form-table tr:nth-child(3){border-radius:0 0 16px 16px;border-top:none;margin:0 0 18px;box-shadow:0 10px 26px rgba(35,23,15,.04);}
+  .wine-e-label-general-form .form-table tr:nth-child(4){padding-top:58px;border-radius:16px 16px 0 0;border-bottom:none;background:linear-gradient(180deg,#f4fbff 0,#fff 145px);}
+  .wine-e-label-general-form .form-table tr:nth-child(4)::before{content:"Ziel-URLs und Subdomain";position:absolute;top:20px;left:22px;font-size:18px;font-weight:700;color:#1d2327;}
+  .wine-e-label-general-form .form-table tr:nth-child(5),
+  .wine-e-label-general-form .form-table tr:nth-child(6){border-radius:0;border-top:none;border-bottom:none;}
+  .wine-e-label-general-form .form-table tr:nth-child(7){border-radius:0 0 16px 16px;border-top:none;margin:0 0 18px;box-shadow:0 10px 26px rgba(35,23,15,.04);}
+  .wine-e-label-general-form .form-table th{margin-bottom:10px;}
+  .wine-e-label-general-form .form-table th label,
+  .wine-e-label-general-form .form-table th{font-size:15px;font-weight:700;color:#1d2327;}
+  .wine-e-label-general-form .form-table td > label{display:block;}
+  .wine-e-label-general-form .form-table .description{margin:8px 0 0;color:#675d56;line-height:1.55;max-width:78ch;}
+  .wine-e-label-general-form .form-table input[type="text"],
+  .wine-e-label-general-form .form-table select{width:100%;max-width:520px;}
+  .wine-e-label-general-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+  .wine-e-label-settings-card,
+  .wine-e-label-rest-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:24px;align-items:start;margin-top:24px;}
+  .wine-e-label-rest-card,.wine-e-label-rest-guide,.wine-e-label-setup-card,.wine-e-label-settings-card,.wine-e-label-ops-card{background:#fff;border:1px solid #ded4cd;border-radius:16px;padding:22px;box-shadow:0 10px 26px rgba(35,23,15,.05);}
+  .wine-e-label-rest-card{border-top:4px solid #7a2d1f;background:linear-gradient(180deg,#fff9f5 0,#fff 130px);}
+  .wine-e-label-rest-guide{margin-top:0;border-top:4px solid #215f78;background:linear-gradient(180deg,#f4fbff 0,#fff 130px);}
+  .wine-e-label-rest-card h2,.wine-e-label-rest-guide h3,.wine-e-label-setup-card h2,.wine-e-label-setup-card h3{margin:0 0 14px;}
+  .wine-e-label-settings-card h3,.wine-e-label-ops-card h3{margin:0 0 6px;font-size:18px;}
+  .wine-e-label-rest-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#fff3ea;color:#8a3c17;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;}
+  .wine-e-label-rest-guide .wine-e-label-rest-kicker{background:#eaf6fd;color:#0b5671;}
+  .wine-e-label-rest-lead{margin:0 0 18px;color:#5f534c;line-height:1.6;max-width:70ch;}
+  .wine-e-label-card-lead{margin:0 0 16px;color:#5f534c;line-height:1.55;}
+  .wine-e-label-settings-stack{display:grid;gap:16px;}
+  .wine-e-label-setting{padding-top:16px;border-top:1px solid #f0e8e2;}
+  .wine-e-label-setting:first-child{padding-top:0;border-top:none;}
+  .wine-e-label-setting label strong,.wine-e-label-setting > strong{display:block;margin-bottom:6px;font-size:14px;}
+  .wine-e-label-setting .description{margin:6px 0 0;color:#6b625c;line-height:1.5;}
+  .wine-e-label-setting input[type="text"],
+  .wine-e-label-setting input[type="password"],
+  .wine-e-label-setting select{width:100%;max-width:520px;}
+  .wine-e-label-choice-list{display:grid;gap:10px;margin-top:4px;}
+  .wine-e-label-choice-list label{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid #eadfd8;border-radius:12px;background:#fcfaf8;}
+  .wine-e-label-choice-list label:hover{background:#fffdfb;border-color:#dbc3b5;}
+  .wine-e-label-choice-list input{margin-top:2px;}
+  .wine-e-label-subtle-code{display:block;margin-top:10px;padding:10px 12px;border:1px solid #ece2da;border-radius:12px;background:#f7f4f1;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:12px;word-break:break-all;}
+  .wine-e-label-rest-fields{display:grid;grid-template-columns:180px minmax(0,1fr);gap:14px 18px;align-items:start;}
+  .wine-e-label-rest-fields .description{margin:6px 0 0;}
+  .wine-e-label-rest-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;}
+  .wine-e-label-rest-status{font-weight:500;}
+  .wine-e-label-rest-status-line{display:block;margin-top:2px;}
+  .wine-e-label-rest-status-line.is-success{color:#1d7f31;}
+  .wine-e-label-rest-status-line.is-error{color:#b32d2e;}
+  .wine-e-label-rest-status.is-error{color:#b32d2e;}
+  .wine-e-label-password-wrap{display:flex;gap:8px;align-items:center;}
+  .wine-e-label-password-wrap input{flex:1 1 auto;}
+  .wine-e-label-rest-guide ol{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:receiver-steps;}
+  .wine-e-label-rest-guide li{position:relative;padding:12px 12px 12px 48px;border:1px solid #d8e7f0;border-radius:12px;background:#fff;line-height:1.5;counter-increment:receiver-steps;}
+  .wine-e-label-rest-guide li::before{content:counter(receiver-steps);position:absolute;left:12px;top:12px;display:grid;place-items:center;width:24px;height:24px;border-radius:999px;background:#0b5671;color:#fff;font-size:12px;font-weight:700;}
+  .wine-e-label-rest-guide p{margin:0 0 8px;}
+  .wine-e-label-setup-intro{margin-top:24px;display:grid;gap:16px;}
+  .wine-e-label-setup-grid{margin-top:18px;display:grid;gap:18px;}
+  .wine-e-label-setup-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .wine-e-label-setup-card p{margin:0 0 10px;line-height:1.5;}
+  .wine-e-label-setup-card ul,.wine-e-label-setup-card ol{margin:8px 0 0 18px;line-height:1.6;}
+  .wine-e-label-setup-note{border-left:4px solid #2271b1;background:#f0f6fc;padding:12px 14px;border-radius:6px;}
+  .wine-e-label-setup-warning{border-left-color:#dba617;background:#fff8e5;}
+  .wine-e-label-setup-example{display:block;margin-top:8px;padding:10px 12px;border:1px solid #dcdcde;border-radius:6px;background:#f6f7f7;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:12px;word-break:break-all;}
+  .wine-e-label-setup-list-title{font-weight:600;margin-bottom:8px;display:block;}
+  .wine-e-label-setup-faq-item{padding-top:14px;margin-top:14px;border-top:1px solid #f0f0f1;}
+  .wine-e-label-setup-faq-item:first-child{padding-top:0;margin-top:0;border-top:none;}
+  .wine-e-label-form-actions{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #ded4cd;box-shadow:0 10px 26px rgba(35,23,15,.04);}
+  .wine-e-label-form-actions p{margin:0;color:#675d56;}
+  .wine-e-label-ops-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px;}
+  .wine-e-label-ops-card p{margin:0 0 10px;line-height:1.55;color:#5f534c;}
+  .wine-e-label-info-list{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:12px;}
+  .wine-e-label-info-list li{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-top:12px;border-top:1px solid #f1ebe6;}
+  .wine-e-label-info-list li:first-child{padding-top:0;border-top:none;}
+  .wine-e-label-info-list strong{display:block;font-size:13px;color:#5f534c;}
+  .wine-e-label-info-list code{font-size:12px;word-break:break-all;}
+  .wine-e-label-actions{margin-top:0;}
+  .wine-e-label-actions form{margin:0;}
+  .wine-e-label-tabs.nav-tab-wrapper{margin-top:0;padding:6px;background:#f3efeb;border:1px solid #e2d5cc;border-radius:14px;}
+  .wine-e-label-tabs .nav-tab{margin-left:0;border:none;background:transparent;border-radius:10px;padding:10px 14px;font-weight:600;color:#5c514a;}
+  .wine-e-label-tabs .nav-tab:hover{background:#fff;}
+  .wine-e-label-tabs .nav-tab-active{background:#fff;color:#1d2327;box-shadow:0 4px 12px rgba(31,17,9,.06);}
+  @media (max-width: 960px){.wine-e-label-hero-grid,.wine-e-label-rest-grid,.wine-e-label-setup-columns,.wine-e-label-general-columns,.wine-e-label-ops-grid,.wine-e-label-metrics{grid-template-columns:1fr;}.wine-e-label-rest-fields{grid-template-columns:1fr;}.wine-e-label-form-actions{align-items:flex-start;flex-direction:column;}}
 </style>
 <div class="wrap">
-  <div class="nutrition-labels-shell">
-  <div class="nutrition-labels-hero">
-    <div class="nutrition-labels-hero-grid">
+  <div class="wine-e-label-shell">
+  <div class="wine-e-label-hero">
+    <div class="wine-e-label-hero-grid">
       <div>
-        <span class="nutrition-labels-eyebrow"><?php esc_html_e('Receiver First', 'nutrition-labels'); ?></span>
-        <h2><?php esc_html_e('Wein E-Label Einstellungen', 'nutrition-labels'); ?></h2>
-          <p><?php esc_html_e('Für produktive Setups sollte zuerst die externe Receiver-Verbindung sauber eingerichtet werden. Danach lassen sich QR-Code, Routing und öffentliche Ziel-URLs für den Live-Betrieb feinjustieren.', 'nutrition-labels'); ?></p>
-          <div class="nutrition-labels-hero-note"><?php esc_html_e('Die allgemeinen Einstellungen steuern nicht nur QR-Dateien, sondern den gesamten Auslieferungsweg deiner E-Label-Seiten: lokal, per Subdomain oder über eine getrennte Receiver-Seite.', 'nutrition-labels'); ?></div>
+        <span class="wine-e-label-eyebrow"><?php esc_html_e('Receiver First', 'wine-e-label'); ?></span>
+        <h2><?php esc_html_e('Wein E-Label Einstellungen', 'wine-e-label'); ?></h2>
+          <p><?php esc_html_e('Für produktive Setups sollte zuerst die externe Receiver-Verbindung sauber eingerichtet werden. Danach lassen sich QR-Code, Routing und öffentliche Ziel-URLs für den Live-Betrieb feinjustieren.', 'wine-e-label'); ?></p>
+          <div class="wine-e-label-hero-note"><?php esc_html_e('Die allgemeinen Einstellungen steuern nicht nur QR-Dateien, sondern den gesamten Auslieferungsweg deiner E-Label-Seiten: lokal, per Subdomain oder über eine getrennte Receiver-Seite.', 'wine-e-label'); ?></div>
       </div>
-      <div class="nutrition-labels-hero-side">
-        <div class="nutrition-labels-hero-mini">
-          <strong><?php esc_html_e('Empfohlener Live-Weg', 'nutrition-labels'); ?></strong>
-          <span><?php esc_html_e('Externe Receiver-Seite per REST API mit reduziertem Pflichtseiten-Output.', 'nutrition-labels'); ?></span>
+      <div class="wine-e-label-hero-side">
+        <div class="wine-e-label-hero-mini">
+          <strong><?php esc_html_e('Empfohlener Live-Weg', 'wine-e-label'); ?></strong>
+          <span><?php esc_html_e('Externe Receiver-Seite per REST API mit reduziertem Pflichtseiten-Output.', 'wine-e-label'); ?></span>
         </div>
-        <div class="nutrition-labels-hero-mini">
-          <strong><?php esc_html_e('Aktueller Modus', 'nutrition-labels'); ?></strong>
+        <div class="wine-e-label-hero-mini">
+          <strong><?php esc_html_e('Aktueller Modus', 'wine-e-label'); ?></strong>
           <span><?php echo esc_html($publish_mode_summary); ?></span>
         </div>
       </div>
     </div>
-    <div class="nutrition-labels-metrics">
-      <div class="nutrition-labels-metric">
-        <span class="nutrition-labels-metric-label"><?php esc_html_e('Aktive Labels', 'nutrition-labels'); ?></span>
-        <span class="nutrition-labels-metric-value"><?php echo esc_html((string) $active_count); ?></span>
+    <div class="wine-e-label-metrics">
+      <div class="wine-e-label-metric">
+        <span class="wine-e-label-metric-label"><?php esc_html_e('Aktive Labels', 'wine-e-label'); ?></span>
+        <span class="wine-e-label-metric-value"><?php echo esc_html((string) $active_count); ?></span>
       </div>
-      <div class="nutrition-labels-metric">
-                    <span class="nutrition-labels-metric-label"><?php esc_html_e('Öffentliche Ziel-URL', 'nutrition-labels'); ?></span>
-        <span class="nutrition-labels-metric-value"><code><?php echo esc_html($public_base_summary); ?>/[slug]</code></span>
+      <div class="wine-e-label-metric">
+                    <span class="wine-e-label-metric-label"><?php esc_html_e('Öffentliche Ziel-URL', 'wine-e-label'); ?></span>
+        <span class="wine-e-label-metric-value"><code><?php echo esc_html($public_base_summary); ?>/[slug]</code></span>
       </div>
-      <div class="nutrition-labels-metric">
-        <span class="nutrition-labels-metric-label"><?php esc_html_e('Lokale Route', 'nutrition-labels'); ?></span>
-        <span class="nutrition-labels-metric-value"><code><?php echo esc_html($local_route_summary); ?>/[slug]</code></span>
+      <div class="wine-e-label-metric">
+        <span class="wine-e-label-metric-label"><?php esc_html_e('Lokale Route', 'wine-e-label'); ?></span>
+        <span class="wine-e-label-metric-value"><code><?php echo esc_html($local_route_summary); ?>/[slug]</code></span>
       </div>
     </div>
   </div>
 
-  <nav class="nav-tab-wrapper nutrition-labels-tabs">
+  <nav class="nav-tab-wrapper wine-e-label-tabs">
     <a href="<?php echo esc_url(add_query_arg('tab', 'setup', $settings_base_url)); ?>" class="nav-tab <?php echo $current_tab === 'setup' ? 'nav-tab-active' : ''; ?>"><?php echo esc_html($setup_lang['tab']); ?></a>
-    <a href="<?php echo esc_url(add_query_arg('tab', 'general', $settings_base_url)); ?>" class="nav-tab <?php echo $current_tab === 'general' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Allgemein', 'nutrition-labels'); ?></a>
-    <a href="<?php echo esc_url(add_query_arg('tab', 'language', $settings_base_url)); ?>" class="nav-tab <?php echo $current_tab === 'language' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Sprache', 'nutrition-labels'); ?></a>
+    <a href="<?php echo esc_url(add_query_arg('tab', 'general', $settings_base_url)); ?>" class="nav-tab <?php echo $current_tab === 'general' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Allgemein', 'wine-e-label'); ?></a>
+    <a href="<?php echo esc_url(add_query_arg('tab', 'language', $settings_base_url)); ?>" class="nav-tab <?php echo $current_tab === 'language' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Sprache', 'wine-e-label'); ?></a>
   </nav>
 
   <?php if ($current_tab === 'setup') : ?>
-    <div class="nutrition-labels-setup-intro">
-      <div class="nutrition-labels-setup-card">
+    <div class="wine-e-label-setup-intro">
+      <div class="wine-e-label-setup-card">
         <h2><?php echo esc_html($setup_lang['intro_title']); ?></h2>
         <p><?php echo esc_html($setup_lang['intro_text']); ?></p>
-        <div class="nutrition-labels-setup-note"><?php echo esc_html($setup_lang['neutral_note']); ?></div>
+        <div class="wine-e-label-setup-note"><?php echo esc_html($setup_lang['neutral_note']); ?></div>
       </div>
-      <div class="nutrition-labels-setup-card">
+      <div class="wine-e-label-setup-card">
         <h3><?php echo esc_html($setup_disclaimer['title']); ?></h3>
         <p><?php echo esc_html($setup_disclaimer['text']); ?></p>
-        <div class="nutrition-labels-setup-note nutrition-labels-setup-warning"><?php echo esc_html($setup_disclaimer['legal']); ?></div>
+        <div class="wine-e-label-setup-note wine-e-label-setup-warning"><?php echo esc_html($setup_disclaimer['legal']); ?></div>
       </div>
     </div>
 
-    <div class="nutrition-labels-setup-grid">
-      <div class="nutrition-labels-setup-columns">
-        <div class="nutrition-labels-setup-card">
+    <div class="wine-e-label-setup-grid">
+      <div class="wine-e-label-setup-columns">
+        <div class="wine-e-label-setup-card">
           <h3><?php echo esc_html($setup_lang['card1_title']); ?></h3>
           <p><strong><?php echo esc_html($setup_lang['import_title']); ?></strong></p>
           <p><?php echo esc_html($setup_lang['import_text']); ?></p>
@@ -424,34 +424,34 @@ $setup_disclaimer = [
           <p><?php echo esc_html($setup_lang['manual_text']); ?></p>
         </div>
 
-        <div class="nutrition-labels-setup-card">
+        <div class="wine-e-label-setup-card">
           <h3><?php echo esc_html($setup_lang['card2_title']); ?></h3>
           <?php foreach ($setup_lang['publish_options'] as $option) : ?>
-            <div class="nutrition-labels-setup-faq-item">
+            <div class="wine-e-label-setup-faq-item">
               <p><strong><?php echo esc_html($option['title']); ?></strong></p>
               <p><?php echo esc_html($option['text']); ?></p>
-              <span class="nutrition-labels-setup-example"><?php echo esc_html($option['example']); ?></span>
+              <span class="wine-e-label-setup-example"><?php echo esc_html($option['example']); ?></span>
               <p style="margin-top:10px;"><?php echo esc_html($option['note']); ?></p>
             </div>
           <?php endforeach; ?>
         </div>
       </div>
 
-      <div class="nutrition-labels-setup-columns">
-        <div class="nutrition-labels-setup-card">
+      <div class="wine-e-label-setup-columns">
+        <div class="wine-e-label-setup-card">
           <h3><?php echo esc_html($setup_lang['card3_title']); ?></h3>
           <ol>
             <?php foreach ($setup_lang['receiver_steps'] as $step) : ?>
               <li><?php echo esc_html($step); ?></li>
             <?php endforeach; ?>
           </ol>
-          <div class="nutrition-labels-setup-note nutrition-labels-setup-warning" style="margin-top:16px;">
+          <div class="wine-e-label-setup-note wine-e-label-setup-warning" style="margin-top:16px;">
             <strong><?php echo esc_html($setup_lang['receiver_hint_title']); ?></strong><br>
             <?php echo esc_html($setup_lang['receiver_hint']); ?>
           </div>
         </div>
 
-        <div class="nutrition-labels-setup-card">
+        <div class="wine-e-label-setup-card">
           <h3><?php echo esc_html($setup_lang['card4_title']); ?></h3>
           <p><?php echo esc_html($setup_lang['test_text']); ?></p>
           <ul>
@@ -462,18 +462,18 @@ $setup_disclaimer = [
         </div>
       </div>
 
-      <div class="nutrition-labels-setup-columns">
-        <div class="nutrition-labels-setup-card">
+      <div class="wine-e-label-setup-columns">
+        <div class="wine-e-label-setup-card">
           <h3><?php echo esc_html($setup_lang['card5_title']); ?></h3>
           <ul>
             <li><?php echo esc_html($setup_lang['fit_local']); ?></li>
             <li><?php echo esc_html($setup_lang['fit_sub']); ?></li>
             <li><?php echo esc_html($setup_lang['fit_rest']); ?></li>
           </ul>
-          <div class="nutrition-labels-setup-note" style="margin-top:16px;"><?php echo esc_html($setup_lang['fit_recommendation']); ?></div>
+          <div class="wine-e-label-setup-note" style="margin-top:16px;"><?php echo esc_html($setup_lang['fit_recommendation']); ?></div>
         </div>
 
-        <div class="nutrition-labels-setup-card">
+        <div class="wine-e-label-setup-card">
           <h3><?php echo esc_html($setup_lang['order_title']); ?></h3>
           <ol>
             <?php foreach ($setup_lang['order_steps'] as $step) : ?>
@@ -483,10 +483,10 @@ $setup_disclaimer = [
         </div>
       </div>
 
-      <div class="nutrition-labels-setup-card">
+      <div class="wine-e-label-setup-card">
         <h3><?php echo esc_html($setup_lang['faq_title']); ?></h3>
         <?php foreach ($setup_lang['faq_items'] as $item) : ?>
-          <div class="nutrition-labels-setup-faq-item">
+          <div class="wine-e-label-setup-faq-item">
             <p><strong><?php echo esc_html($item['q']); ?></strong></p>
             <p><?php echo esc_html($item['a']); ?></p>
           </div>
@@ -494,10 +494,10 @@ $setup_disclaimer = [
       </div>
     </div>
   <?php else : ?>
-    <form method="post" action="" class="<?php echo esc_attr($current_tab === 'general' ? 'nutrition-labels-general-form' : ''); ?>" style="margin-top:18px;">
+    <form method="post" action="" class="<?php echo esc_attr($current_tab === 'general' ? 'wine-e-label-general-form' : ''); ?>" style="margin-top:18px;">
       <?php
-      if (class_exists('NutritionLabels_Admin_Extended')) {
-        echo '<input type="hidden" name="_wpnonce" value="' . esc_attr(NutritionLabels_Admin_Extended::get_settings_nonce()) . '">';
+      if (class_exists('Wine_E_Label_Admin_Extended')) {
+        echo '<input type="hidden" name="_wpnonce" value="' . esc_attr(Wine_E_Label_Admin_Extended::get_settings_nonce()) . '">';
       }
       ?>
 
@@ -505,125 +505,125 @@ $setup_disclaimer = [
         <table class="form-table" role="presentation">
           <tbody>
             <tr>
-              <th scope="row"><label for="qr_size"><?php esc_html_e('QR-Code-Größe', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="qr_size"><?php esc_html_e('QR-Code-Größe', 'wine-e-label'); ?></label></th>
               <td>
-                <select name="nutrition_labels[qr_size]" id="qr_size"><?php echo qr_size_options($current_qr_size); ?></select>
-                <p class="description"><?php esc_html_e('Pixel dimensions of the downloaded QR image. For print use SVG format is recommended — it is resolution-independent and will be crisp at any size regardless of this setting.', 'nutrition-labels'); ?></p>
+                <select name="wine_e_label_settings[qr_size]" id="qr_size"><?php echo qr_size_options($current_qr_size); ?></select>
+                <p class="description"><?php esc_html_e('Pixel dimensions of the downloaded QR image. For print use SVG format is recommended — it is resolution-independent and will be crisp at any size regardless of this setting.', 'wine-e-label'); ?></p>
               </td>
             </tr>
             <tr>
-              <th scope="row"><label for="qr_format"><?php esc_html_e('QR-Code-Format', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="qr_format"><?php esc_html_e('QR-Code-Format', 'wine-e-label'); ?></label></th>
               <td>
-                <select name="nutrition_labels[qr_format]" id="qr_format"><?php echo qr_format_options($current_qr_format); ?></select>
-                <p class="description"><?php esc_html_e('SVG is a vector format — edges stay perfectly sharp at any print size and is recommended for wine labels. PNG is a pixel-based image; choose a large size if using PNG for print.', 'nutrition-labels'); ?></p>
+                <select name="wine_e_label_settings[qr_format]" id="qr_format"><?php echo qr_format_options($current_qr_format); ?></select>
+                <p class="description"><?php esc_html_e('SVG is a vector format — edges stay perfectly sharp at any print size and is recommended for wine labels. PNG is a pixel-based image; choose a large size if using PNG for print.', 'wine-e-label'); ?></p>
               </td>
             </tr>
             <tr>
-              <th scope="row"><label for="qr_error_correction"><?php esc_html_e('Fehlerkorrektur', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="qr_error_correction"><?php esc_html_e('Fehlerkorrektur', 'wine-e-label'); ?></label></th>
               <td>
-                <select name="nutrition_labels[qr_error_correction]" id="qr_error_correction"><?php echo qr_error_correction_options($current_qr_correction); ?></select>
-                <p class="description"><?php esc_html_e('Higher correction levels add redundant data so the code can still scan if partially damaged, but produce a denser, more complex pattern. For small clean wine labels (18 mm) Low is recommended — it produces the fewest modules and is easiest to scan.', 'nutrition-labels'); ?></p>
+                <select name="wine_e_label_settings[qr_error_correction]" id="qr_error_correction"><?php echo qr_error_correction_options($current_qr_correction); ?></select>
+                <p class="description"><?php esc_html_e('Higher correction levels add redundant data so the code can still scan if partially damaged, but produce a denser, more complex pattern. For small clean wine labels (18 mm) Low is recommended — it produces the fewest modules and is easiest to scan.', 'wine-e-label'); ?></p>
               </td>
             </tr>
             <tr>
-              <th scope="row"><label for="base_url"><?php esc_html_e('E-Label-Basis-URL', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="base_url"><?php esc_html_e('E-Label-Basis-URL', 'wine-e-label'); ?></label></th>
               <td>
-                <input type="text" name="nutrition_labels[base_url]" id="base_url" value="<?php echo esc_attr($current_base_url); ?>" placeholder="<?php echo esc_attr(NutritionLabels_URL::get_local_base_url()); ?>" class="regular-text code">
-                <p class="description"><?php esc_html_e('Optional override for the public e-label target URL. Leave empty to use this WordPress domain automatically. The product slug is appended automatically.', 'nutrition-labels'); ?></p>
-                <p class="description"><?php esc_html_e('The local WordPress route always stays on /l/[slug] for this installation. This field only changes the public target URL and does not rewrite normal WordPress pages.', 'nutrition-labels'); ?></p>
+                <input type="text" name="wine_e_label_settings[base_url]" id="base_url" value="<?php echo esc_attr($current_base_url); ?>" placeholder="<?php echo esc_attr(Wine_E_Label_URL::get_local_base_url()); ?>" class="regular-text code">
+                <p class="description"><?php esc_html_e('Optional override for the public e-label target URL. Leave empty to use this WordPress domain automatically. The product slug is appended automatically.', 'wine-e-label'); ?></p>
+                <p class="description"><?php esc_html_e('The local WordPress route always stays on /l/[slug] for this installation. This field only changes the public target URL and does not rewrite normal WordPress pages.', 'wine-e-label'); ?></p>
               </td>
             </tr>
             <tr>
-              <th scope="row"><label for="use_subdomain"><?php esc_html_e('Subdomain E-Label URLs', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="use_subdomain"><?php esc_html_e('Subdomain E-Label URLs', 'wine-e-label'); ?></label></th>
               <td>
-                <label><input type="checkbox" name="nutrition_labels[use_subdomain]" id="use_subdomain" value="1" <?php checked('yes', get_option('nutrition_labels_use_subdomain', 'no')); ?>> <?php esc_html_e('Enable subdomain e-label URLs', 'nutrition-labels'); ?></label>
-                <p class="description"><?php esc_html_e('Serve e-labels from a dedicated subdomain as recommended by EU e-labelling regulations.', 'nutrition-labels'); ?></p>
-                <p class="description"><?php esc_html_e('Dedicated subdomains are handled separately. The main domain keeps its normal WordPress pages untouched, while local labels still remain available on /l/[slug].', 'nutrition-labels'); ?></p>
+                <label><input type="checkbox" name="wine_e_label_settings[use_subdomain]" id="use_subdomain" value="1" <?php checked('yes', get_option('wine_e_label_use_subdomain', 'no')); ?>> <?php esc_html_e('Enable subdomain e-label URLs', 'wine-e-label'); ?></label>
+                <p class="description"><?php esc_html_e('Serve e-labels from a dedicated subdomain as recommended by EU e-labelling regulations.', 'wine-e-label'); ?></p>
+                <p class="description"><?php esc_html_e('Dedicated subdomains are handled separately. The main domain keeps its normal WordPress pages untouched, while local labels still remain available on /l/[slug].', 'wine-e-label'); ?></p>
               </td>
             </tr>
             <tr>
-              <th scope="row"><label for="subdomain"><?php esc_html_e('Subdomain', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="subdomain"><?php esc_html_e('Subdomain', 'wine-e-label'); ?></label></th>
               <td>
-                <input type="text" name="nutrition_labels[subdomain]" id="subdomain" value="<?php echo esc_attr(get_option('nutrition_labels_subdomain', '')); ?>" placeholder="elabel" class="regular-text">
-                <p class="description"><?php esc_html_e('Enter a subdomain (e.g. elabel) or a full hostname (e.g. elabel.example.com). The subdomain must resolve to this WordPress installation.', 'nutrition-labels'); ?></p>
-                <p class="description"><?php esc_html_e('Do not use a root URL here to replace normal WordPress page slugs. The plugin keeps local label routing on /l/[slug] and only uses the dedicated host for explicit e-label requests.', 'nutrition-labels'); ?></p>
+                <input type="text" name="wine_e_label_settings[subdomain]" id="subdomain" value="<?php echo esc_attr(get_option('wine_e_label_subdomain', '')); ?>" placeholder="elabel" class="regular-text">
+                <p class="description"><?php esc_html_e('Enter a subdomain (e.g. elabel) or a full hostname (e.g. elabel.example.com). The subdomain must resolve to this WordPress installation.', 'wine-e-label'); ?></p>
+                <p class="description"><?php esc_html_e('Do not use a root URL here to replace normal WordPress page slugs. The plugin keeps local label routing on /l/[slug] and only uses the dedicated host for explicit e-label requests.', 'wine-e-label'); ?></p>
               </td>
             </tr>
             <tr>
-              <th scope="row"><?php esc_html_e('URL Scheme', 'nutrition-labels'); ?></th>
+              <th scope="row"><?php esc_html_e('URL Scheme', 'wine-e-label'); ?></th>
               <td>
-                <?php $current_scheme = get_option('nutrition_labels_subdomain_scheme', 'https'); ?>
-                <label><input type="radio" name="nutrition_labels[subdomain_scheme]" value="https" <?php checked('https', $current_scheme); ?>> <?php esc_html_e('https (recommended)', 'nutrition-labels'); ?></label><br>
-                <label><input type="radio" name="nutrition_labels[subdomain_scheme]" value="http" <?php checked('http', $current_scheme); ?>> <?php esc_html_e('http', 'nutrition-labels'); ?></label>
+                <?php $current_scheme = get_option('wine_e_label_subdomain_scheme', 'https'); ?>
+                <label><input type="radio" name="wine_e_label_settings[subdomain_scheme]" value="https" <?php checked('https', $current_scheme); ?>> <?php esc_html_e('https (recommended)', 'wine-e-label'); ?></label><br>
+                <label><input type="radio" name="wine_e_label_settings[subdomain_scheme]" value="http" <?php checked('http', $current_scheme); ?>> <?php esc_html_e('http', 'wine-e-label'); ?></label>
               </td>
             </tr>
             <tr>
-              <th scope="row"><?php esc_html_e('Delete Data on Uninstall', 'nutrition-labels'); ?></th>
+              <th scope="row"><?php esc_html_e('Delete Data on Uninstall', 'wine-e-label'); ?></th>
               <td>
-                <label><input type="checkbox" name="nutrition_labels[delete_data_on_uninstall]" id="delete_data_on_uninstall" value="1" <?php checked('yes', get_option('nutrition_labels_delete_data_on_uninstall', 'no')); ?>> <?php esc_html_e('Permanently delete all nutrition label data when the plugin is uninstalled', 'nutrition-labels'); ?></label>
-                <p class="description" style="color:#d63638;"><?php esc_html_e('Use with caution — this removes database records, generated URLs and QR references when uninstalling the plugin.', 'nutrition-labels'); ?></p>
+                <label><input type="checkbox" name="wine_e_label_settings[delete_data_on_uninstall]" id="delete_data_on_uninstall" value="1" <?php checked('yes', get_option('wine_e_label_delete_data_on_uninstall', 'no')); ?>> <?php esc_html_e('Permanently delete all nutrition label data when the plugin is uninstalled', 'wine-e-label'); ?></label>
+                <p class="description" style="color:#d63638;"><?php esc_html_e('Use with caution — this removes database records, generated URLs and QR references when uninstalling the plugin.', 'wine-e-label'); ?></p>
               </td>
             </tr>
           </tbody>
         </table>
 
-        <div class="nutrition-labels-rest-grid">
-          <div class="nutrition-labels-rest-card">
-            <span class="nutrition-labels-rest-kicker"><?php esc_html_e('Receiver zuerst', 'nutrition-labels'); ?></span>
-            <h2><?php esc_html_e('Externe Receiver-Seite per REST API', 'nutrition-labels'); ?></h2>
-            <p class="nutrition-labels-rest-lead"><?php esc_html_e('Wenn du das Plugin produktiv nutzt, richte hier zuerst die externe Zielseite ein. Diese Variante trennt Pflichtinformationen sauber von Shop, Marketing und Tracking und ist deshalb die wichtigste Einstellung auf dieser Seite.', 'nutrition-labels'); ?></p>
-            <div class="nutrition-labels-rest-fields">
+        <div class="wine-e-label-rest-grid">
+          <div class="wine-e-label-rest-card">
+            <span class="wine-e-label-rest-kicker"><?php esc_html_e('Receiver zuerst', 'wine-e-label'); ?></span>
+            <h2><?php esc_html_e('Externe Receiver-Seite per REST API', 'wine-e-label'); ?></h2>
+            <p class="wine-e-label-rest-lead"><?php esc_html_e('Wenn du das Plugin produktiv nutzt, richte hier zuerst die externe Zielseite ein. Diese Variante trennt Pflichtinformationen sauber von Shop, Marketing und Tracking und ist deshalb die wichtigste Einstellung auf dieser Seite.', 'wine-e-label'); ?></p>
+            <div class="wine-e-label-rest-fields">
               <div>
-                <label for="nutrition_labels_rest_enabled"><strong><?php esc_html_e('REST API Verbindung aktivieren', 'nutrition-labels'); ?></strong></label>
+                <label for="wine_e_label_rest_enabled"><strong><?php esc_html_e('REST API Verbindung aktivieren', 'wine-e-label'); ?></strong></label>
               </div>
               <div>
-                <label><input type="checkbox" name="nutrition_labels[rest_enabled]" id="nutrition_labels_rest_enabled" value="1" <?php checked('yes', $current_rest_enabled); ?>> <?php esc_html_e('Externe E-Label-Seite per Receiver-Plugin verwenden', 'nutrition-labels'); ?></label>
-                <p class="description"><?php esc_html_e('Empfohlener Weg für produktive Setups: Die Pflichtinformationen werden auf einer getrennten WordPress-Seite veröffentlicht.', 'nutrition-labels'); ?></p>
-              </div>
-
-              <div>
-                <label for="nutrition_labels_rest_base_url"><strong><?php esc_html_e('Receiver Basis-URL', 'nutrition-labels'); ?></strong></label>
-              </div>
-              <div>
-                <input type="text" name="nutrition_labels[rest_base_url]" id="nutrition_labels_rest_base_url" value="<?php echo esc_attr($current_rest_base_url); ?>" placeholder="https://deine-label-domain.de" class="regular-text code">
-                <p class="description"><?php esc_html_e('Basis-Domain der externen WordPress-Seite mit installiertem Reith E-Label Receiver. Keine /wp-json-Adresse eintragen.', 'nutrition-labels'); ?></p>
+                <label><input type="checkbox" name="wine_e_label_settings[rest_enabled]" id="wine_e_label_rest_enabled" value="1" <?php checked('yes', $current_rest_enabled); ?>> <?php esc_html_e('Externe E-Label-Seite per Receiver-Plugin verwenden', 'wine-e-label'); ?></label>
+                <p class="description"><?php esc_html_e('Empfohlener Weg für produktive Setups: Die Pflichtinformationen werden auf einer getrennten WordPress-Seite veröffentlicht.', 'wine-e-label'); ?></p>
               </div>
 
               <div>
-                <label for="nutrition_labels_rest_username"><strong><?php esc_html_e('REST API Benutzername', 'nutrition-labels'); ?></strong></label>
+                <label for="wine_e_label_rest_base_url"><strong><?php esc_html_e('Receiver Basis-URL', 'wine-e-label'); ?></strong></label>
               </div>
               <div>
-                <input type="text" name="nutrition_labels[rest_username]" id="nutrition_labels_rest_username" value="<?php echo esc_attr($current_rest_username); ?>" class="regular-text">
-                <p class="description"><?php esc_html_e('WordPress-Benutzername der externen Receiver-Seite.', 'nutrition-labels'); ?></p>
+                <input type="text" name="wine_e_label_settings[rest_base_url]" id="wine_e_label_rest_base_url" value="<?php echo esc_attr($current_rest_base_url); ?>" placeholder="https://deine-label-domain.de" class="regular-text code">
+                <p class="description"><?php esc_html_e('Basis-Domain der externen WordPress-Seite mit installiertem Reith E-Label Receiver. Keine /wp-json-Adresse eintragen.', 'wine-e-label'); ?></p>
               </div>
 
               <div>
-                <label for="nutrition_labels_rest_app_password"><strong><?php esc_html_e('REST API Application Password', 'nutrition-labels'); ?></strong></label>
+                <label for="wine_e_label_rest_username"><strong><?php esc_html_e('REST API Benutzername', 'wine-e-label'); ?></strong></label>
               </div>
               <div>
-                <div class="nutrition-labels-password-wrap">
-                  <input type="password" name="nutrition_labels[rest_app_password]" id="nutrition_labels_rest_app_password" value="" class="regular-text" autocomplete="new-password" placeholder="<?php echo $current_rest_password !== '' ? esc_attr('••••••••••••') : ''; ?>">
-                  <button type="button" class="button button-secondary" id="nutrition_labels_toggle_rest_password"><?php esc_html_e('Anzeigen', 'nutrition-labels'); ?></button>
+                <input type="text" name="wine_e_label_settings[rest_username]" id="wine_e_label_rest_username" value="<?php echo esc_attr($current_rest_username); ?>" class="regular-text">
+                <p class="description"><?php esc_html_e('WordPress-Benutzername der externen Receiver-Seite.', 'wine-e-label'); ?></p>
+              </div>
+
+              <div>
+                <label for="wine_e_label_rest_app_password"><strong><?php esc_html_e('REST API Application Password', 'wine-e-label'); ?></strong></label>
+              </div>
+              <div>
+                <div class="wine-e-label-password-wrap">
+                  <input type="password" name="wine_e_label_settings[rest_app_password]" id="wine_e_label_rest_app_password" value="" class="regular-text" autocomplete="new-password" placeholder="<?php echo $current_rest_password !== '' ? esc_attr('••••••••••••') : ''; ?>">
+                  <button type="button" class="button button-secondary" id="wine_e_label_toggle_rest_password"><?php esc_html_e('Anzeigen', 'wine-e-label'); ?></button>
                 </div>
-                <p class="description"><?php esc_html_e('Application Password des WordPress-Benutzers auf der externen Receiver-Seite.', 'nutrition-labels'); ?></p>
-                <p class="description"><?php esc_html_e('Leer lassen, um das bereits gespeicherte Passwort beizubehalten.', 'nutrition-labels'); ?></p>
+                <p class="description"><?php esc_html_e('Application Password des WordPress-Benutzers auf der externen Receiver-Seite.', 'wine-e-label'); ?></p>
+                <p class="description"><?php esc_html_e('Leer lassen, um das bereits gespeicherte Passwort beizubehalten.', 'wine-e-label'); ?></p>
               </div>
             </div>
 
-            <div class="nutrition-labels-rest-actions">
-              <button type="button" class="button button-secondary" id="nutrition_labels_test_rest_connection"><?php esc_html_e('Verbindung testen', 'nutrition-labels'); ?></button>
-              <span class="nutrition-labels-rest-status" id="nutrition_labels_rest_test_status" aria-live="polite"></span>
+            <div class="wine-e-label-rest-actions">
+              <button type="button" class="button button-secondary" id="wine_e_label_test_rest_connection"><?php esc_html_e('Verbindung testen', 'wine-e-label'); ?></button>
+              <span class="wine-e-label-rest-status" id="wine_e_label_rest_test_status" aria-live="polite"></span>
             </div>
           </div>
 
-          <aside class="nutrition-labels-rest-guide">
-            <span class="nutrition-labels-rest-kicker"><?php esc_html_e('Start here', 'nutrition-labels'); ?></span>
-            <h3><?php esc_html_e('So richtest du die Verbindung ein', 'nutrition-labels'); ?></h3>
-            <p class="nutrition-labels-rest-lead"><?php esc_html_e('Arbeite diese drei Schritte einmal sauber durch. Danach kannst du die Verbindung direkt testen und erst anschliessend QR, Basis-URL und lokale Alternativen feinjustieren.', 'nutrition-labels'); ?></p>
+          <aside class="wine-e-label-rest-guide">
+            <span class="wine-e-label-rest-kicker"><?php esc_html_e('Start here', 'wine-e-label'); ?></span>
+            <h3><?php esc_html_e('So richtest du die Verbindung ein', 'wine-e-label'); ?></h3>
+            <p class="wine-e-label-rest-lead"><?php esc_html_e('Arbeite diese drei Schritte einmal sauber durch. Danach kannst du die Verbindung direkt testen und erst anschliessend QR, Basis-URL und lokale Alternativen feinjustieren.', 'wine-e-label'); ?></p>
             <ol>
-              <li><?php esc_html_e('Auf der Zielseite das Plugin Reith E-Label Receiver installieren und aktivieren', 'nutrition-labels'); ?></li>
-              <li><?php esc_html_e('Dort einen Benutzer anlegen, z. B. api_elabel', 'nutrition-labels'); ?></li>
-              <li><?php esc_html_e('Unter Benutzer > Profil ein Application Password erzeugen und hier Basis-URL, Benutzername und Passwort eintragen', 'nutrition-labels'); ?></li>
+              <li><?php esc_html_e('Auf der Zielseite das Plugin Reith E-Label Receiver installieren und aktivieren', 'wine-e-label'); ?></li>
+              <li><?php esc_html_e('Dort einen Benutzer anlegen, z. B. api_elabel', 'wine-e-label'); ?></li>
+              <li><?php esc_html_e('Unter Benutzer > Profil ein Application Password erzeugen und hier Basis-URL, Benutzername und Passwort eintragen', 'wine-e-label'); ?></li>
             </ol>
           </aside>
         </div>
@@ -631,32 +631,32 @@ $setup_disclaimer = [
         <table class="form-table" role="presentation">
           <tbody>
             <tr>
-              <th scope="row"><label for="nutrition_labels_admin_language"><?php esc_html_e('Werkzeugsprache', 'nutrition-labels'); ?></label></th>
+              <th scope="row"><label for="wine_e_label_admin_language"><?php esc_html_e('Werkzeugsprache', 'wine-e-label'); ?></label></th>
               <td>
-                <select name="nutrition_labels[admin_language]" id="nutrition_labels_admin_language">
-                  <?php foreach (NutritionLabels_Admin_I18n::get_language_options() as $code => $label) : ?>
+                <select name="wine_e_label_settings[admin_language]" id="wine_e_label_admin_language">
+                  <?php foreach (Wine_E_Label_Admin_I18n::get_language_options() as $code => $label) : ?>
                     <option value="<?php echo esc_attr($code); ?>" <?php selected($current_lang, $code); ?>><?php echo esc_html($label); ?></option>
                   <?php endforeach; ?>
                 </select>
-                <p class="description"><?php esc_html_e('Wähle die Sprache für die Plugin-Oberfläche im WordPress-Adminbereich.', 'nutrition-labels'); ?></p>
+                <p class="description"><?php esc_html_e('Wähle die Sprache für die Plugin-Oberfläche im WordPress-Adminbereich.', 'wine-e-label'); ?></p>
               </td>
             </tr>
           </tbody>
         </table>
       <?php endif; ?>
 
-      <?php submit_button(__('Einstellungen speichern', 'nutrition-labels'), 'primary', 'submit-nutrition-settings'); ?>
+      <?php submit_button(__('Einstellungen speichern', 'wine-e-label'), 'primary', 'submit-wine-e-label-settings'); ?>
     </form>
 
     <?php if ($current_tab === 'general') : ?>
-      <div class="nutrition-labels-ops-grid">
-        <div class="nutrition-labels-ops-card nutrition-labels-actions">
-          <h3><?php esc_html_e('Routing und Rewrite', 'nutrition-labels'); ?></h3>
-          <p><?php esc_html_e('Wenn Short-URLs oder Label-Routen nicht sauber reagieren, kannst du hier die WordPress-Rewrite-Regeln neu aufbauen.', 'nutrition-labels'); ?></p>
+      <div class="wine-e-label-ops-grid">
+        <div class="wine-e-label-ops-card wine-e-label-actions">
+          <h3><?php esc_html_e('Routing und Rewrite', 'wine-e-label'); ?></h3>
+          <p><?php esc_html_e('Wenn Short-URLs oder Label-Routen nicht sauber reagieren, kannst du hier die WordPress-Rewrite-Regeln neu aufbauen.', 'wine-e-label'); ?></p>
         <form method="post" action="">
           <?php wp_nonce_field('flush_rewrite_rules', '_wpnonce_flush'); ?>
           <input type="hidden" name="action" value="flush_rewrite_rules">
-          <button type="submit" class="button button-secondary">🔄 <?php esc_html_e('Rewrite-Regeln aktualisieren', 'nutrition-labels'); ?></button>
+          <button type="submit" class="button button-secondary">🔄 <?php esc_html_e('Rewrite-Regeln aktualisieren', 'wine-e-label'); ?></button>
         </form>
         </div>
 
@@ -665,55 +665,55 @@ $setup_disclaimer = [
           function toggleSubdomainFields() {
             var enabled = $('#use_subdomain').is(':checked');
             $('#subdomain').prop('disabled', !enabled);
-            $('input[name="nutrition_labels[subdomain_scheme]"]').prop('disabled', !enabled);
+            $('input[name="wine_e_label_settings[subdomain_scheme]"]').prop('disabled', !enabled);
           }
           function toggleRestFields() {
-            var enabled = $('#nutrition_labels_rest_enabled').is(':checked');
-            $('#nutrition_labels_rest_base_url, #nutrition_labels_rest_username, #nutrition_labels_rest_app_password, #nutrition_labels_toggle_rest_password, #nutrition_labels_test_rest_connection').prop('disabled', !enabled);
+            var enabled = $('#wine_e_label_rest_enabled').is(':checked');
+            $('#wine_e_label_rest_base_url, #wine_e_label_rest_username, #wine_e_label_rest_app_password, #wine_e_label_toggle_rest_password, #wine_e_label_test_rest_connection').prop('disabled', !enabled);
             if (!enabled) {
-              $('#nutrition_labels_rest_test_status').text('').removeClass('is-success is-error');
+              $('#wine_e_label_rest_test_status').text('').removeClass('is-success is-error');
             }
           }
           toggleSubdomainFields();
           toggleRestFields();
           $('#use_subdomain').on('change', toggleSubdomainFields);
-          $('#nutrition_labels_rest_enabled').on('change', toggleRestFields);
-          $('#nutrition_labels_toggle_rest_password').on('click', function(){
-            var $input = $('#nutrition_labels_rest_app_password');
+          $('#wine_e_label_rest_enabled').on('change', toggleRestFields);
+          $('#wine_e_label_toggle_rest_password').on('click', function(){
+            var $input = $('#wine_e_label_rest_app_password');
             var isPassword = $input.attr('type') === 'password';
             $input.attr('type', isPassword ? 'text' : 'password');
-            $(this).text(isPassword ? <?php echo wp_json_encode(__('Verbergen', 'nutrition-labels')); ?> : <?php echo wp_json_encode(__('Anzeigen', 'nutrition-labels')); ?>);
+            $(this).text(isPassword ? <?php echo wp_json_encode(__('Verbergen', 'wine-e-label')); ?> : <?php echo wp_json_encode(__('Anzeigen', 'wine-e-label')); ?>);
           });
-          $('#nutrition_labels_test_rest_connection').on('click', function(){
-            var $status = $('#nutrition_labels_rest_test_status');
-            $status.removeClass('is-success is-error').text(<?php echo wp_json_encode(__('Verbindung wird geprüft …', 'nutrition-labels')); ?>);
+          $('#wine_e_label_test_rest_connection').on('click', function(){
+            var $status = $('#wine_e_label_rest_test_status');
+            $status.removeClass('is-success is-error').text(<?php echo wp_json_encode(__('Verbindung wird geprüft …', 'wine-e-label')); ?>);
             $.ajax({
               url: ajaxurl,
               type: 'POST',
               dataType: 'json',
               data: {
-                action: 'nutrition_test_rest_connection',
+                action: 'wine_e_label_test_rest_connection',
                 _wpnonce: <?php echo wp_json_encode($rest_test_nonce); ?>,
-                base_url: $('#nutrition_labels_rest_base_url').val(),
-                username: $('#nutrition_labels_rest_username').val(),
-                app_password: $('#nutrition_labels_rest_app_password').val()
+                base_url: $('#wine_e_label_rest_base_url').val(),
+                username: $('#wine_e_label_rest_username').val(),
+                app_password: $('#wine_e_label_rest_app_password').val()
               }
             }).done(function(response){
               if (response && response.success) {
                 if (response.data && response.data.lines && response.data.lines.length) {
                   var html = response.data.lines.map(function(line){
                     var typeClass = line.type === 'error' ? 'is-error' : 'is-success';
-                    return '<span class="nutrition-labels-rest-status-line ' + typeClass + '">' + $('<div>').text(line.text || '').html() + '</span>';
+                    return '<span class="wine-e-label-rest-status-line ' + typeClass + '">' + $('<div>').text(line.text || '').html() + '</span>';
                   }).join('');
                   $status.html(html);
                 } else {
-                  $status.addClass('is-success').text(response.data && response.data.message ? response.data.message : <?php echo wp_json_encode(__('Verbindung erfolgreich geprüft.', 'nutrition-labels')); ?>);
+                  $status.addClass('is-success').text(response.data && response.data.message ? response.data.message : <?php echo wp_json_encode(__('Verbindung erfolgreich geprüft.', 'wine-e-label')); ?>);
                 }
               } else {
-                $status.addClass('is-error').text(response && response.data && response.data.message ? response.data.message : <?php echo wp_json_encode(__('Verbindung konnte nicht geprüft werden.', 'nutrition-labels')); ?>);
+                $status.addClass('is-error').text(response && response.data && response.data.message ? response.data.message : <?php echo wp_json_encode(__('Verbindung konnte nicht geprüft werden.', 'wine-e-label')); ?>);
               }
             }).fail(function(xhr){
-              var message = <?php echo wp_json_encode(__('Verbindung konnte nicht geprüft werden.', 'nutrition-labels')); ?>;
+              var message = <?php echo wp_json_encode(__('Verbindung konnte nicht geprüft werden.', 'wine-e-label')); ?>;
               if (xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message) {
                 message = xhr.responseJSON.data.message;
               }
@@ -734,26 +734,26 @@ $setup_disclaimer = [
                 if (response.success) {
                   alert(response.message);
                 } else {
-                  alert('<?php echo esc_js(__('Fehler: Rewrite-Regeln konnten nicht aktualisiert werden.', 'nutrition-labels')); ?>');
+                  alert('<?php echo esc_js(__('Fehler: Rewrite-Regeln konnten nicht aktualisiert werden.', 'wine-e-label')); ?>');
                 }
               },
               error: function() {
-                alert('<?php echo esc_js(__('Fehler: Rewrite-Regeln konnten nicht aktualisiert werden.', 'nutrition-labels')); ?>');
+                alert('<?php echo esc_js(__('Fehler: Rewrite-Regeln konnten nicht aktualisiert werden.', 'wine-e-label')); ?>');
               }
             });
           });
         });
       </script>
 
-      <div class="nutrition-labels-ops-card nutrition-labels-info">
-        <h3><?php esc_html_e('Aktuelle Konfiguration', 'nutrition-labels'); ?></h3>
-        <p><?php esc_html_e('Hier siehst du den aktuellen Live-Stand der wichtigsten Routing- und QR-Einstellungen.', 'nutrition-labels'); ?></p>
-        <ul class="nutrition-labels-info-list">
-          <li><strong><?php esc_html_e('Current Entries:', 'nutrition-labels'); ?></strong> <?php printf(esc_html__('%d nutrition labels active', 'nutrition-labels'), $active_count); ?></li>
-          <li><strong><?php esc_html_e('E-Label-Basis-URL', 'nutrition-labels'); ?>:</strong> <code><?php echo esc_html(NutritionLabels_URL::get_public_base_url(false)); ?>/[slug]</code></li>
-          <li><strong><?php esc_html_e('QR-Code-Größe', 'nutrition-labels'); ?>:</strong> <code><?php echo esc_html(get_option('qr_size', '500x500')); ?></code></li>
-          <li><strong><?php esc_html_e('QR-Code-Format', 'nutrition-labels'); ?>:</strong> <code><?php echo esc_html(strtoupper(get_option('qr_format', 'png'))); ?></code></li>
-          <li><strong><?php esc_html_e('Fehlerkorrektur', 'nutrition-labels'); ?>:</strong> <code><?php echo esc_html(ucfirst(get_option('qr_error_correction', 'low'))); ?></code></li>
+      <div class="wine-e-label-ops-card wine-e-label-info">
+        <h3><?php esc_html_e('Aktuelle Konfiguration', 'wine-e-label'); ?></h3>
+        <p><?php esc_html_e('Hier siehst du den aktuellen Live-Stand der wichtigsten Routing- und QR-Einstellungen.', 'wine-e-label'); ?></p>
+        <ul class="wine-e-label-info-list">
+          <li><strong><?php esc_html_e('Current Entries:', 'wine-e-label'); ?></strong> <?php printf(esc_html__('%d nutrition labels active', 'wine-e-label'), $active_count); ?></li>
+          <li><strong><?php esc_html_e('E-Label-Basis-URL', 'wine-e-label'); ?>:</strong> <code><?php echo esc_html(Wine_E_Label_URL::get_public_base_url(false)); ?>/[slug]</code></li>
+          <li><strong><?php esc_html_e('QR-Code-Größe', 'wine-e-label'); ?>:</strong> <code><?php echo esc_html(get_option('qr_size', '500x500')); ?></code></li>
+          <li><strong><?php esc_html_e('QR-Code-Format', 'wine-e-label'); ?>:</strong> <code><?php echo esc_html(strtoupper(get_option('qr_format', 'png'))); ?></code></li>
+          <li><strong><?php esc_html_e('Fehlerkorrektur', 'wine-e-label'); ?>:</strong> <code><?php echo esc_html(ucfirst(get_option('qr_error_correction', 'low'))); ?></code></li>
         </ul>
       </div>
       </div>

@@ -27,13 +27,13 @@ if (!defined('ABSPATH')) {
  * Settings registration helper
  */
 
-function nutrition_submit_button($text = 'Save Changes', $type = 'primary', $name = 'submit')
+function wine_e_label_submit_button($text = 'Save Changes', $type = 'primary', $name = 'submit')
 {
   submit_button($text, $type, $name);
 }
 
-if (!function_exists('nutrition_selected')) {
-  function nutrition_selected($value, $current)
+if (!function_exists('wine_e_label_selected')) {
+  function wine_e_label_selected($value, $current)
   {
     return (string) $value === (string) $current ? 'selected="selected"' : '';
   }
@@ -51,7 +51,7 @@ function qr_error_correction_options($current)
 
   $html = '';
   foreach ($options as $value => $label) {
-    $selected = nutrition_selected($value, $current);
+    $selected = wine_e_label_selected($value, $current);
     $html .= '<option value="' . esc_attr($value) . '"' . $selected . '>' . esc_html($label) . '</option>';
   }
 
@@ -68,7 +68,7 @@ function qr_format_options($current_format)
 
   $html = '';
   foreach ($options as $value => $label) {
-    $selected = nutrition_selected($value, $current_format);
+    $selected = wine_e_label_selected($value, $current_format);
     $html .= '<option value="' . esc_attr($value) . '"' . $selected . '>' . esc_html($label) . '</option>';
   }
 
@@ -86,7 +86,7 @@ function qr_size_options($current_size)
 
   $html = '';
   foreach ($options as $value => $label) {
-    $selected = nutrition_selected($value, $current_size);
+    $selected = wine_e_label_selected($value, $current_size);
     $html .= '<option value="' . esc_attr($value) . '"' . $selected . '>' . esc_html($label) . '</option>';
   }
 

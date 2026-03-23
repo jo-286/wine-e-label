@@ -1,8 +1,14 @@
-# Wein E-Label Receiver 2.3.1
+# Wein E-Label Receiver 2.3.2
 
 Receiver plugin for a second WordPress instance that accepts wine e-label pages via REST, manages them centrally, and serves them without theme layout.
 
-## New in 2.3.1
+## New in 2.3.2
+
+- ships with generated `.po` and `.mo` language files for `de_DE`, `de_DE_formal`, `en_US`, `fr_FR`, and `it_IT`
+- participates in the stricter release-prep smoke-check and PHP-lint pass
+- keeps the current receiver package aligned with the latest local release-preparation build
+
+## Also included in 2.3.1
 
 - renders central labels with the same document frame and body classes as the main plugin output
 - keeps mirrored source targets visible in the receiver admin so duplicate routes are easier to detect
@@ -34,6 +40,18 @@ Receiver plugin for a second WordPress instance that accepts wine e-label pages 
 3. Save permalinks once if needed.
 4. Read the REST connection notes under **Setup**.
 5. Enter receiver URL, username and application password in the main plugin.
+
+## Translations And QA
+
+The receiver now participates in the shared product-quality baseline:
+
+- translation template export via `scripts/export-i18n-templates.ps1`
+- smoke checks via `scripts/run-smoke-checks.ps1`
+- repository docs for setup and QA in the root `docs/` folder
+
+Current receiver translation template:
+
+- `languages/wine-e-label-receiver.pot`
 
 ## REST endpoints
 

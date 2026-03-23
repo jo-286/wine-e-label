@@ -32,7 +32,7 @@ use Endroid\QrCode\RoundBlockSizeMode;
 /**
  * QR Code generation for nutrition labels (local, via endroid/qr-code)
  */
-class NutritionLabels_QR
+class Wine_E_Label_QR
 {
   /**
    * Generates a QR code and returns the raw output string.
@@ -98,7 +98,7 @@ class NutritionLabels_QR
       wp_die('Product not found or invalid');
     }
 
-    $short_url = NutritionLabels_URL::get_short_url($product_id);
+    $short_url = Wine_E_Label_URL::get_short_url($product_id);
     if (!$short_url) {
       wp_die('Unable to generate short URL for QR code');
     }

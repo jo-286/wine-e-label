@@ -7,69 +7,69 @@ if (!isset($_GET['page']) || (string) $_GET['page'] !== WINE_E_LABEL_ADMIN_PAGE_
     return;
 }
 
-if (isset($_POST['submit-nutrition-design']) && class_exists('NutritionLabels_Admin_Extended')) {
-    NutritionLabels_Admin_Extended::handle_design_submission();
+if (isset($_POST['submit-nutrition-design']) && class_exists('Wine_E_Label_Admin_Extended')) {
+    Wine_E_Label_Admin_Extended::handle_design_submission();
 }
 
 if (function_exists('wp_enqueue_media')) {
     wp_enqueue_media();
 }
 
-$settings = NutritionLabels_Design::get_settings();
-$defaults = NutritionLabels_Design::defaults();
-$color_fields = NutritionLabels_Design::color_fields();
-$size_fields = NutritionLabels_Design::size_fields();
-$logo_fields = NutritionLabels_Design::logo_fields();
-$product_block_fields = NutritionLabels_Design::product_block_fields();
-$producer_fields = NutritionLabels_Design::producer_fields();
-$numeric_fields = NutritionLabels_Design::numeric_fields();
-$font_options = NutritionLabels_Design::font_options();
-$range_limits = NutritionLabels_Design::range_limits();
-$preview_translations = NutritionLabels_Design::preview_translations();
-$current_public_base = NutritionLabels_URL::get_public_base_url(false);
-$local_base = NutritionLabels_URL::get_local_base_url();
-$rest_enabled = get_option('nutrition_labels_rest_enabled', 'no') === 'yes';
-$rest_base_url = trim((string) get_option('nutrition_labels_rest_base_url', ''));
-$synced_count = isset($_GET['nutrition_labels_design_synced']) ? max(0, (int) $_GET['nutrition_labels_design_synced']) : null;
-$failed_count = isset($_GET['nutrition_labels_design_failed']) ? max(0, (int) $_GET['nutrition_labels_design_failed']) : null;
+$settings = Wine_E_Label_Design::get_settings();
+$defaults = Wine_E_Label_Design::defaults();
+$color_fields = Wine_E_Label_Design::color_fields();
+$size_fields = Wine_E_Label_Design::size_fields();
+$logo_fields = Wine_E_Label_Design::logo_fields();
+$product_block_fields = Wine_E_Label_Design::product_block_fields();
+$producer_fields = Wine_E_Label_Design::producer_fields();
+$numeric_fields = Wine_E_Label_Design::numeric_fields();
+$font_options = Wine_E_Label_Design::font_options();
+$range_limits = Wine_E_Label_Design::range_limits();
+$preview_translations = Wine_E_Label_Design::preview_translations();
+$current_public_base = Wine_E_Label_URL::get_public_base_url(false);
+$local_base = Wine_E_Label_URL::get_local_base_url();
+$rest_enabled = get_option('wine_e_label_rest_enabled', 'no') === 'yes';
+$rest_base_url = trim((string) get_option('wine_e_label_rest_base_url', ''));
+$synced_count = isset($_GET['wine_e_label_design_synced']) ? max(0, (int) $_GET['wine_e_label_design_synced']) : null;
+$failed_count = isset($_GET['wine_e_label_design_failed']) ? max(0, (int) $_GET['wine_e_label_design_failed']) : null;
 $field_labels = [
-    'page_bg' => __('Seitenhintergrund', 'nutrition-labels'),
-    'card_bg' => __('Kartenhintergrund', 'nutrition-labels'),
-    'table_head_bg' => __('Tabellenkopf', 'nutrition-labels'),
-    'text_color' => __('Fliesstext', 'nutrition-labels'),
-    'muted_color' => __('Sekundaertext', 'nutrition-labels'),
-    'border_color' => __('Rahmen', 'nutrition-labels'),
-    'base_font_size' => __('Basisschriftgröße (px)', 'nutrition-labels'),
-    'small_font_size' => __('Kleine Schrift (px)', 'nutrition-labels'),
-    'button_font_size' => __('Button-Schrift (px)', 'nutrition-labels'),
-    'font_family' => __('Schriftart', 'nutrition-labels'),
-    'panel_radius' => __('Panel-Radius (px)', 'nutrition-labels'),
-    'outer_width' => __('Aussenbreite (px)', 'nutrition-labels'),
-    'label_width' => __('Label-Breite (px)', 'nutrition-labels'),
-    'outer_padding_y' => __('Aussenabstand oben/unten (px)', 'nutrition-labels'),
-    'card_padding' => __('Innenabstand Karte (px)', 'nutrition-labels'),
-    'logo_alt' => __('Alternativtext Logo', 'nutrition-labels'),
-    'logo_max_height' => __('Logo-Hoehe (px)', 'nutrition-labels'),
-    'product_image_enabled' => __('Produktbild im E-Label anzeigen', 'nutrition-labels'),
-    'product_image_max_height' => __('Produktbild-Hoehe (px)', 'nutrition-labels'),
-    'wine_name_enabled' => __('Weinnamen im E-Label anzeigen', 'nutrition-labels'),
-    'wine_name_size' => __('Weinnamen-Schrift (px)', 'nutrition-labels'),
-    'vintage_enabled' => __('Jahrgang im E-Label anzeigen', 'nutrition-labels'),
-    'vintage_size' => __('Jahrgang-Schrift (px)', 'nutrition-labels'),
-    'subtitle_enabled' => __('Weinstil / Untertitel im E-Label anzeigen', 'nutrition-labels'),
-    'subtitle_size' => __('Weinstil-Schrift (px)', 'nutrition-labels'),
-    'producer_region' => __('Anbaugebiet', 'nutrition-labels'),
-    'producer_country' => __('Land', 'nutrition-labels'),
-    'producer_address' => __('Adresse des Weinguts', 'nutrition-labels'),
-    'custom_css' => __('Zusaetzliches CSS', 'nutrition-labels'),
+    'page_bg' => __('Seitenhintergrund', 'wine-e-label'),
+    'card_bg' => __('Kartenhintergrund', 'wine-e-label'),
+    'table_head_bg' => __('Tabellenkopf', 'wine-e-label'),
+    'text_color' => __('Fliesstext', 'wine-e-label'),
+    'muted_color' => __('Sekundaertext', 'wine-e-label'),
+    'border_color' => __('Rahmen', 'wine-e-label'),
+    'base_font_size' => __('Basisschriftgröße (px)', 'wine-e-label'),
+    'small_font_size' => __('Kleine Schrift (px)', 'wine-e-label'),
+    'button_font_size' => __('Button-Schrift (px)', 'wine-e-label'),
+    'font_family' => __('Schriftart', 'wine-e-label'),
+    'panel_radius' => __('Panel-Radius (px)', 'wine-e-label'),
+    'outer_width' => __('Aussenbreite (px)', 'wine-e-label'),
+    'label_width' => __('Label-Breite (px)', 'wine-e-label'),
+    'outer_padding_y' => __('Aussenabstand oben/unten (px)', 'wine-e-label'),
+    'card_padding' => __('Innenabstand Karte (px)', 'wine-e-label'),
+    'logo_alt' => __('Alternativtext Logo', 'wine-e-label'),
+    'logo_max_height' => __('Logo-Hoehe (px)', 'wine-e-label'),
+    'product_image_enabled' => __('Produktbild im E-Label anzeigen', 'wine-e-label'),
+    'product_image_max_height' => __('Produktbild-Hoehe (px)', 'wine-e-label'),
+    'wine_name_enabled' => __('Weinnamen im E-Label anzeigen', 'wine-e-label'),
+    'wine_name_size' => __('Weinnamen-Schrift (px)', 'wine-e-label'),
+    'vintage_enabled' => __('Jahrgang im E-Label anzeigen', 'wine-e-label'),
+    'vintage_size' => __('Jahrgang-Schrift (px)', 'wine-e-label'),
+    'subtitle_enabled' => __('Weinstil / Untertitel im E-Label anzeigen', 'wine-e-label'),
+    'subtitle_size' => __('Weinstil-Schrift (px)', 'wine-e-label'),
+    'producer_region' => __('Anbaugebiet', 'wine-e-label'),
+    'producer_country' => __('Land', 'wine-e-label'),
+    'producer_address' => __('Adresse des Weinguts', 'wine-e-label'),
+    'custom_css' => __('Zusaetzliches CSS', 'wine-e-label'),
 ];
 ?>
 <div class="wrap wel-design-admin-wrap">
-  <h1><?php esc_html_e('Design anpassen', 'nutrition-labels'); ?></h1>
-  <p class="wel-design-lead"><?php esc_html_e('Diese Einstellungen steuern das E-Label-Design zentral im Hauptplugin. Lokale, Subdomain- und bei aktiver REST-Verbindung auch Receiver-E-Labels werden von hier aus versorgt.', 'nutrition-labels'); ?></p>
+  <h1><?php esc_html_e('Design anpassen', 'wine-e-label'); ?></h1>
+  <p class="wel-design-lead"><?php esc_html_e('Diese Einstellungen steuern das E-Label-Design zentral im Hauptplugin. Lokale, Subdomain- und bei aktiver REST-Verbindung auch Receiver-E-Labels werden von hier aus versorgt.', 'wine-e-label'); ?></p>
 
-  <?php if (isset($_GET['nutrition_labels_design_notice']) && (string) $_GET['nutrition_labels_design_notice'] === 'saved') : ?>
-    <div class="notice notice-success is-dismissible"><p><?php esc_html_e('Design-Einstellungen gespeichert.', 'nutrition-labels'); ?></p></div>
+  <?php if (isset($_GET['wine_e_label_design_notice']) && (string) $_GET['wine_e_label_design_notice'] === 'saved') : ?>
+    <div class="notice notice-success is-dismissible"><p><?php esc_html_e('Design-Einstellungen gespeichert.', 'wine-e-label'); ?></p></div>
   <?php endif; ?>
 
   <?php if ($synced_count !== null || $failed_count !== null) : ?>
@@ -78,7 +78,7 @@ $field_labels = [
         <?php
         echo esc_html(sprintf(
           /* translators: 1: synced count, 2: failed count */
-          __('Receiver-Synchronisierung: %1$d aktualisiert, %2$d fehlgeschlagen.', 'nutrition-labels'),
+          __('Receiver-Synchronisierung: %1$d aktualisiert, %2$d fehlgeschlagen.', 'wine-e-label'),
           (int) ($synced_count ?? 0),
           (int) ($failed_count ?? 0)
         ));
@@ -89,42 +89,42 @@ $field_labels = [
 
   <div class="wel-design-info-grid">
     <div class="wel-design-info-card">
-      <strong><?php esc_html_e('Wirkt auf', 'nutrition-labels'); ?></strong>
+      <strong><?php esc_html_e('Wirkt auf', 'wine-e-label'); ?></strong>
       <p>
         <?php if ($rest_enabled && $rest_base_url !== '') : ?>
           <?php
           echo esc_html(sprintf(
             /* translators: %s: receiver URL */
-        __('Lokale, Subdomain- und bereits veröffentlichte Receiver-E-Labels. Beim Speichern wird das Design auch an %s übertragen.', 'nutrition-labels'),
+        __('Lokale, Subdomain- und bereits veröffentlichte Receiver-E-Labels. Beim Speichern wird das Design auch an %s übertragen.', 'wine-e-label'),
             $rest_base_url
           ));
           ?>
         <?php else : ?>
-          <?php esc_html_e('Lokale und Subdomain-E-Labels aus diesem Hauptplugin. Die Vorschau unten zeigt genau diesen Ausgabebereich.', 'nutrition-labels'); ?>
+          <?php esc_html_e('Lokale und Subdomain-E-Labels aus diesem Hauptplugin. Die Vorschau unten zeigt genau diesen Ausgabebereich.', 'wine-e-label'); ?>
         <?php endif; ?>
       </p>
       <code><?php echo esc_html($current_public_base !== '' ? $current_public_base : $local_base); ?>/[slug]</code>
     </div>
     <div class="wel-design-info-card wel-design-info-card-warning">
-      <strong><?php esc_html_e('Hinweis', 'nutrition-labels'); ?></strong>
+      <strong><?php esc_html_e('Hinweis', 'wine-e-label'); ?></strong>
       <p>
         <?php if ($rest_enabled && $rest_base_url !== '') : ?>
           <?php
           echo esc_html(sprintf(
             /* translators: %s: receiver URL */
-        __('Entwürfe oder noch nicht veröffentlichte Receiver-Labels auf %s werden erst bei ihrer nächsten Erstellung bzw. Aktualisierung mit dem zentralen Design versorgt.', 'nutrition-labels'),
+        __('Entwürfe oder noch nicht veröffentlichte Receiver-Labels auf %s werden erst bei ihrer nächsten Erstellung bzw. Aktualisierung mit dem zentralen Design versorgt.', 'wine-e-label'),
             $rest_base_url
           ));
           ?>
         <?php else : ?>
-          <?php esc_html_e('Sobald eine externe Receiver-/Zweitdomain konfiguriert ist, werden auch diese E-Labels zentral aus dem Hauptplugin heraus mit dem Design versorgt.', 'nutrition-labels'); ?>
+          <?php esc_html_e('Sobald eine externe Receiver-/Zweitdomain konfiguriert ist, werden auch diese E-Labels zentral aus dem Hauptplugin heraus mit dem Design versorgt.', 'wine-e-label'); ?>
         <?php endif; ?>
       </p>
     </div>
   </div>
 
   <form method="post" id="wel-design-form">
-    <?php wp_nonce_field('nutrition_labels_save_design'); ?>
+    <?php wp_nonce_field('wine_e_label_save_design'); ?>
     <input type="hidden" name="submit-nutrition-design" value="1">
 
     <div class="wel-design-viewport">
@@ -132,8 +132,8 @@ $field_labels = [
         <div class="wel-design-left">
           <div class="wel-card">
             <div class="wel-card-head">
-              <h2><?php esc_html_e('Farben', 'nutrition-labels'); ?></h2>
-              <button type="button" class="wel-icon-reset wel-reset-section" data-section="colors" title="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+              <h2><?php esc_html_e('Farben', 'wine-e-label'); ?></h2>
+              <button type="button" class="wel-icon-reset wel-reset-section" data-section="colors" title="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
             </div>
             <div class="wel-color-list">
               <?php foreach ($color_fields as $field) : ?>
@@ -142,7 +142,7 @@ $field_labels = [
                   <div class="wel-color-controls">
                     <input type="color" id="<?php echo esc_attr($field); ?>_picker" value="<?php echo esc_attr($settings[$field]); ?>" data-sync="<?php echo esc_attr($field); ?>">
                     <input type="text" id="<?php echo esc_attr($field); ?>" name="<?php echo esc_attr($field); ?>" value="<?php echo esc_attr($settings[$field]); ?>" data-default="<?php echo esc_attr($defaults[$field]); ?>" class="regular-text wel-color-text">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="<?php echo esc_attr($field); ?>" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="<?php echo esc_attr($field); ?>" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                   </div>
                 </div>
               <?php endforeach; ?>
@@ -151,8 +151,8 @@ $field_labels = [
 
           <div class="wel-card">
             <div class="wel-card-head">
-        <h2><?php esc_html_e('Abstände und Größen', 'nutrition-labels'); ?></h2>
-              <button type="button" class="wel-icon-reset wel-reset-section" data-section="sizes" title="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+        <h2><?php esc_html_e('Abstände und Größen', 'wine-e-label'); ?></h2>
+              <button type="button" class="wel-icon-reset wel-reset-section" data-section="sizes" title="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
             </div>
             <div class="wel-field-stack">
               <?php foreach (['base_font_size', 'small_font_size', 'button_font_size', 'font_family', 'panel_radius', 'outer_width', 'label_width', 'outer_padding_y', 'card_padding'] as $field) : ?>
@@ -165,12 +165,12 @@ $field_labels = [
                           <option value="<?php echo esc_attr($value); ?>" <?php selected($settings['font_family'], $value); ?>><?php echo esc_html($label); ?></option>
                         <?php endforeach; ?>
                       </select>
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="font_family" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="font_family" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                     </div>
                   <?php else : ?>
                     <div class="wel-input-inline">
                       <input type="number" id="<?php echo esc_attr($field); ?>" name="<?php echo esc_attr($field); ?>" value="<?php echo esc_attr((string) $settings[$field]); ?>" data-default="<?php echo esc_attr((string) $defaults[$field]); ?>" min="0">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="<?php echo esc_attr($field); ?>" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="<?php echo esc_attr($field); ?>" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                     </div>
                   <?php endif; ?>
                 </div>
@@ -179,7 +179,7 @@ $field_labels = [
                 <label for="custom_css"><?php echo esc_html($field_labels['custom_css']); ?></label>
                 <div class="wel-input-inline wel-input-inline-textarea">
                   <textarea id="custom_css" name="custom_css" rows="5" data-default=""><?php echo esc_textarea($settings['custom_css']); ?></textarea>
-                    <button type="button" class="wel-inline-reset wel-reset-field wel-align-start" data-field="custom_css" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field wel-align-start" data-field="custom_css" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
             </div>
@@ -187,35 +187,35 @@ $field_labels = [
 
           <div class="wel-card">
             <div class="wel-card-head">
-              <h2><?php esc_html_e('Weingutslogo', 'nutrition-labels'); ?></h2>
-              <button type="button" class="wel-icon-reset wel-reset-section" data-section="logo" title="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+              <h2><?php esc_html_e('Weingutslogo', 'wine-e-label'); ?></h2>
+              <button type="button" class="wel-icon-reset wel-reset-section" data-section="logo" title="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
             </div>
             <div class="wel-field-stack">
               <label class="wel-check-toggle" for="logo_enabled">
                 <input type="checkbox" id="logo_enabled" name="logo_enabled" value="1" <?php checked($settings['logo_enabled'], '1'); ?> data-default="<?php echo esc_attr((string) $defaults['logo_enabled']); ?>">
-                <span><?php esc_html_e('Logo oberhalb des E-Labels anzeigen', 'nutrition-labels'); ?></span>
+                <span><?php esc_html_e('Logo oberhalb des E-Labels anzeigen', 'wine-e-label'); ?></span>
               </label>
 
-                <p class="description wel-logo-legal-hint"><?php esc_html_e('Hinweis: Ein Weingutslogo oberhalb des E-Labels kann rechtlich möglicherweise als Werbung bewertet werden. Bitte vor der Aktivierung selbst prüfen.', 'nutrition-labels'); ?></p>
+                <p class="description wel-logo-legal-hint"><?php esc_html_e('Hinweis: Ein Weingutslogo oberhalb des E-Labels kann rechtlich möglicherweise als Werbung bewertet werden. Bitte vor der Aktivierung selbst prüfen.', 'wine-e-label'); ?></p>
 
               <div class="wel-logo-picker-shell">
                 <div class="wel-logo-thumb<?php echo $settings['logo_url'] === '' ? ' is-empty' : ''; ?>" id="wel-logo-thumb">
-                  <img id="wel-logo-thumb-image" src="<?php echo esc_url($settings['logo_url']); ?>" alt="<?php echo esc_attr($settings['logo_alt'] !== '' ? $settings['logo_alt'] : __('Weingutslogo', 'nutrition-labels')); ?>">
-                    <span class="wel-logo-thumb-empty"><?php esc_html_e('Noch kein Logo ausgewählt', 'nutrition-labels'); ?></span>
+                  <img id="wel-logo-thumb-image" src="<?php echo esc_url($settings['logo_url']); ?>" alt="<?php echo esc_attr($settings['logo_alt'] !== '' ? $settings['logo_alt'] : __('Weingutslogo', 'wine-e-label')); ?>">
+                    <span class="wel-logo-thumb-empty"><?php esc_html_e('Noch kein Logo ausgewählt', 'wine-e-label'); ?></span>
                 </div>
 
                 <div class="wel-logo-controls">
                   <div class="wel-field-row">
-                    <label for="logo_url"><?php esc_html_e('Logo-Datei', 'nutrition-labels'); ?></label>
+                    <label for="logo_url"><?php esc_html_e('Logo-Datei', 'wine-e-label'); ?></label>
                     <div class="wel-input-inline wel-input-inline-logo">
                       <input type="text" id="logo_url" name="logo_url" value="<?php echo esc_attr($settings['logo_url']); ?>" data-default="<?php echo esc_attr((string) $defaults['logo_url']); ?>" readonly>
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="logo_url" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="logo_url" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                     </div>
                   </div>
 
                   <div class="wel-logo-button-row">
-                    <button type="button" class="button" id="wel-logo-select"><?php esc_html_e('Logo wählen oder hochladen', 'nutrition-labels'); ?></button>
-                    <button type="button" class="button" id="wel-logo-remove"><?php esc_html_e('Logo entfernen', 'nutrition-labels'); ?></button>
+                    <button type="button" class="button" id="wel-logo-select"><?php esc_html_e('Logo wählen oder hochladen', 'wine-e-label'); ?></button>
+                    <button type="button" class="button" id="wel-logo-remove"><?php esc_html_e('Logo entfernen', 'wine-e-label'); ?></button>
                   </div>
                 </div>
               </div>
@@ -224,7 +224,7 @@ $field_labels = [
                 <label for="logo_alt"><?php echo esc_html($field_labels['logo_alt']); ?></label>
                 <div class="wel-input-inline">
                   <input type="text" id="logo_alt" name="logo_alt" value="<?php echo esc_attr($settings['logo_alt']); ?>" data-default="<?php echo esc_attr((string) $defaults['logo_alt']); ?>">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="logo_alt" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="logo_alt" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
 
@@ -232,7 +232,7 @@ $field_labels = [
                 <label for="logo_max_height"><?php echo esc_html($field_labels['logo_max_height']); ?></label>
                 <div class="wel-input-inline">
                   <input type="number" id="logo_max_height" name="logo_max_height" value="<?php echo esc_attr((string) $settings['logo_max_height']); ?>" data-default="<?php echo esc_attr((string) $defaults['logo_max_height']); ?>" min="40">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="logo_max_height" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="logo_max_height" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
             </div>
@@ -240,11 +240,11 @@ $field_labels = [
 
           <div class="wel-card">
             <div class="wel-card-head">
-              <h2><?php esc_html_e('Produktkopf', 'nutrition-labels'); ?></h2>
-              <button type="button" class="wel-icon-reset wel-reset-section" data-section="product_blocks" title="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+              <h2><?php esc_html_e('Produktkopf', 'wine-e-label'); ?></h2>
+              <button type="button" class="wel-icon-reset wel-reset-section" data-section="product_blocks" title="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
             </div>
             <div class="wel-field-stack">
-                <p class="description"><?php esc_html_e('Diese Schalter gelten global für alle E-Labels. Die konkreten Inhalte kommen pro Produkt aus dem WooCommerce-Produkt bzw. aus den produktspezifischen E-Label-Feldern.', 'nutrition-labels'); ?></p>
+                <p class="description"><?php esc_html_e('Diese Schalter gelten global für alle E-Labels. Die konkreten Inhalte kommen pro Produkt aus dem WooCommerce-Produkt bzw. aus den produktspezifischen E-Label-Feldern.', 'wine-e-label'); ?></p>
 
               <label class="wel-check-toggle" for="product_image_enabled">
                 <input type="checkbox" id="product_image_enabled" name="product_image_enabled" value="1" <?php checked($settings['product_image_enabled'], '1'); ?> data-default="<?php echo esc_attr((string) $defaults['product_image_enabled']); ?>">
@@ -254,7 +254,7 @@ $field_labels = [
                 <label for="product_image_max_height"><?php echo esc_html($field_labels['product_image_max_height']); ?></label>
                 <div class="wel-input-inline">
                   <input type="number" id="product_image_max_height" name="product_image_max_height" value="<?php echo esc_attr((string) $settings['product_image_max_height']); ?>" data-default="<?php echo esc_attr((string) $defaults['product_image_max_height']); ?>" min="60">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="product_image_max_height" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="product_image_max_height" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
 
@@ -266,7 +266,7 @@ $field_labels = [
                 <label for="wine_name_size"><?php echo esc_html($field_labels['wine_name_size']); ?></label>
                 <div class="wel-input-inline">
                   <input type="number" id="wine_name_size" name="wine_name_size" value="<?php echo esc_attr((string) $settings['wine_name_size']); ?>" data-default="<?php echo esc_attr((string) $defaults['wine_name_size']); ?>" min="14">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="wine_name_size" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="wine_name_size" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
 
@@ -278,7 +278,7 @@ $field_labels = [
                 <label for="vintage_size"><?php echo esc_html($field_labels['vintage_size']); ?></label>
                 <div class="wel-input-inline">
                   <input type="number" id="vintage_size" name="vintage_size" value="<?php echo esc_attr((string) $settings['vintage_size']); ?>" data-default="<?php echo esc_attr((string) $defaults['vintage_size']); ?>" min="12">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="vintage_size" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="vintage_size" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
 
@@ -290,7 +290,7 @@ $field_labels = [
                 <label for="subtitle_size"><?php echo esc_html($field_labels['subtitle_size']); ?></label>
                 <div class="wel-input-inline">
                   <input type="number" id="subtitle_size" name="subtitle_size" value="<?php echo esc_attr((string) $settings['subtitle_size']); ?>" data-default="<?php echo esc_attr((string) $defaults['subtitle_size']); ?>" min="12">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="subtitle_size" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="subtitle_size" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
             </div>
@@ -298,17 +298,17 @@ $field_labels = [
 
           <div class="wel-card">
             <div class="wel-card-head">
-              <h2><?php esc_html_e('Erzeugerdaten', 'nutrition-labels'); ?></h2>
-              <button type="button" class="wel-icon-reset wel-reset-section" data-section="producer" title="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+              <h2><?php esc_html_e('Erzeugerdaten', 'wine-e-label'); ?></h2>
+              <button type="button" class="wel-icon-reset wel-reset-section" data-section="producer" title="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
             </div>
             <div class="wel-field-stack">
-                <p class="description"><?php esc_html_e('Diese Angaben werden global unterhalb der Nährwerttabelle angezeigt. Die Feldlabels werden im E-Label automatisch in DE/EN/IT/FR übersetzt.', 'nutrition-labels'); ?></p>
+                <p class="description"><?php esc_html_e('Diese Angaben werden global unterhalb der Nährwerttabelle angezeigt. Die Feldlabels werden im E-Label automatisch in DE/EN/IT/FR übersetzt.', 'wine-e-label'); ?></p>
 
               <div class="wel-field-row">
                 <label for="producer_region"><?php echo esc_html($field_labels['producer_region']); ?></label>
                 <div class="wel-input-inline">
                   <input type="text" id="producer_region" name="producer_region" value="<?php echo esc_attr($settings['producer_region']); ?>" data-default="<?php echo esc_attr((string) $defaults['producer_region']); ?>">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="producer_region" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="producer_region" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
 
@@ -316,7 +316,7 @@ $field_labels = [
                 <label for="producer_country"><?php echo esc_html($field_labels['producer_country']); ?></label>
                 <div class="wel-input-inline">
                   <input type="text" id="producer_country" name="producer_country" value="<?php echo esc_attr($settings['producer_country']); ?>" data-default="<?php echo esc_attr((string) $defaults['producer_country']); ?>">
-                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="producer_country" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field" data-field="producer_country" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
 
@@ -324,28 +324,28 @@ $field_labels = [
                 <label for="producer_address"><?php echo esc_html($field_labels['producer_address']); ?></label>
                 <div class="wel-input-inline wel-input-inline-textarea">
                   <textarea id="producer_address" name="producer_address" rows="4" data-default=""><?php echo esc_textarea($settings['producer_address']); ?></textarea>
-                    <button type="button" class="wel-inline-reset wel-reset-field wel-align-start" data-field="producer_address" title="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+                    <button type="button" class="wel-inline-reset wel-reset-field wel-align-start" data-field="producer_address" title="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Feld zurücksetzen', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
                 </div>
               </div>
             </div>
           </div>
 
           <p class="wel-save-row">
-            <button class="button button-primary button-large wel-save-button"><?php esc_html_e('Design speichern und auf alle Domains aktualisieren', 'nutrition-labels'); ?></button>
+            <button class="button button-primary button-large wel-save-button"><?php esc_html_e('Design speichern und auf alle Domains aktualisieren', 'wine-e-label'); ?></button>
           </p>
         </div>
 
         <div class="wel-design-right">
           <div class="wel-card wel-preview-card-admin">
             <div class="wel-card-head">
-              <h2><?php esc_html_e('Live-Vorschau', 'nutrition-labels'); ?></h2>
-              <button type="button" class="wel-icon-reset wel-reset-preview" title="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'nutrition-labels'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
+              <h2><?php esc_html_e('Live-Vorschau', 'wine-e-label'); ?></h2>
+              <button type="button" class="wel-icon-reset wel-reset-preview" title="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>" aria-label="<?php esc_attr_e('Standard laden', 'wine-e-label'); ?>"><span class="dashicons dashicons-image-rotate"></span></button>
             </div>
-            <p class="description wel-preview-hint"><?php esc_html_e('Die Vorschau aktualisiert sich direkt beim Ändern und bezieht sich nur auf lokale/Subdomain-E-Labels.', 'nutrition-labels'); ?></p>
+            <p class="description wel-preview-hint"><?php esc_html_e('Die Vorschau aktualisiert sich direkt beim Ändern und bezieht sich nur auf lokale/Subdomain-E-Labels.', 'wine-e-label'); ?></p>
             <div id="wel-preview-shell">
               <style id="wel-admin-live-style"></style>
               <div id="wel-preview-stage">
-                <div id="wel-preview-canvas"><?php echo NutritionLabels_Design::sample_preview_fragment(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+                <div id="wel-preview-canvas"><?php echo Wine_E_Label_Design::sample_preview_fragment(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
               </div>
             </div>
           </div>
@@ -424,8 +424,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const fieldLimits = <?php echo wp_json_encode($range_limits); ?>;
     const previewTranslations = <?php echo wp_json_encode($preview_translations); ?>;
     const mediaTexts = {
-      title: <?php echo wp_json_encode(__('Weingutslogo wählen', 'nutrition-labels')); ?>,
-      button: <?php echo wp_json_encode(__('Dieses Logo verwenden', 'nutrition-labels')); ?>
+      title: <?php echo wp_json_encode(__('Weingutslogo wählen', 'wine-e-label')); ?>,
+      button: <?php echo wp_json_encode(__('Dieses Logo verwenden', 'wine-e-label')); ?>
     };
     const inputs = form.querySelectorAll('input, select, textarea');
     const previewRoot = document.getElementById('wel-preview-canvas');

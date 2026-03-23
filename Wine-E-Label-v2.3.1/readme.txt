@@ -4,7 +4,7 @@ Tags: wine, e-label, qr-code, woocommerce, nutrition
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.4
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,12 @@ Yes. Imported values can be corrected, completed or overridden manually.
 A separate receiver site via REST API is usually the safest technical setup because the label page can stay isolated from shop, marketing and tracking content.
 
 == Changelog ==
+
+= 2.3.2 =
+* Added real generated language files (`.po` / `.mo`) for `de_DE`, `de_DE_formal`, `en_US`, `fr_FR`, and `it_IT`.
+* Hardened UTF-8 handling in the translation export workflow and validated the plugin source for mojibake markers.
+* Added release-prep helper scripts for language builds, encoding repair checks, and focused main/receiver packaging.
+* Completed a full PHP lint and smoke-check pass for the current release-preparation state.
 
 = 2.3.1 =
 * Unified the main-domain and receiver label layout so both render from the same nler structure and document frame.

@@ -1,0 +1,38 @@
+name: Quality Checks
+
+on:
+  push:
+    paths:
+      - '.github/workflows/quality-checks.yml'
+      - 'scripts/export-i18n-templates.ps1'
+      - 'scripts/run-smoke-checks.ps1'
+      - 'Wine-E-Label-v2.3.1/**'
+      - 'Wine-E-Label-Receiver-v2.3.1/**'
+  pull_request:
+    paths:
+      - '.github/workflows/quality-checks.yml'
+      - 'scripts/export-i18n-templates.ps1'
+      - 'scripts/run-smoke-checks.ps1'
+      - 'Wine-E-Label-v2.3.1/**'
+      - 'Wine-E-Label-Receiver-v2.3.1/**'
+
+jobs:
+  smoke-checks:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Export translation templates
+        shell: pwsh
+        run: .\scripts\export-i18n-templates.ps1
+
+      - name: Run smoke checks
+        shell: pwsh
+        run: .\scripts\run-smoke-checks.ps1

@@ -3,7 +3,7 @@
  * Plugin Name: Wein E-Label Receiver
  * Plugin URI: https://github.com/jo-286/wine-e-label
  * Description: Wine E-Label Receiver for REST-delivered wine e-label pages without theme layout.
- * Version: 2.3.1
+ * Version: 2.3.2
  * Author: Johannes Reith
  * Author URI: https://reithwein.com
  * Requires at least: 6.0
@@ -25,7 +25,7 @@ new Wine_E_Label_GitHub_Updater(
 		'plugin_basename' => plugin_basename( __FILE__ ),
 		'plugin_slug'     => 'wine-e-label-receiver',
 		'plugin_name'     => 'Wein E-Label Receiver',
-		'plugin_version'  => '2.3.1',
+		'plugin_version'  => '2.3.2',
 		'manifest_key'    => 'wine-e-label-receiver',
 		'manifest_url'    => 'https://raw.githubusercontent.com/jo-286/wine-e-label/main/updates/plugin-updates.json',
 		'homepage'        => 'https://github.com/jo-286/wine-e-label',
@@ -42,7 +42,7 @@ final class Wine_E_Label_Receiver {
 	private const NONCE           = 'relr_save_elabel';
 	private const OPT_DESIGN      = 'relr_design_settings';
 	private const OPT_UI          = 'relr_ui_settings';
-	private const VERSION         = '2.3.1';
+	private const VERSION         = '2.3.2';
 	private const ROUTE_NAMESPACE_V1 = 'reith-elabel/v1';
 	private const ROUTE_NAMESPACE_V2 = 'reith-elabel/v2';
 

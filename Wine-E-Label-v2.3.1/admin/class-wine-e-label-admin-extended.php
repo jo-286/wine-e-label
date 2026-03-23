@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
  * Extended admin class with settings backend functionality
  */
 
-class NutritionLabels_Admin_Extended
+class Wine_E_Label_Admin_Extended
 {
 
   private $db;
@@ -38,24 +38,24 @@ class NutritionLabels_Admin_Extended
       return;
     }
 
-    $this->db = new NutritionLabels_DB_Extended();
+    $this->db = new Wine_E_Label_DB_Extended();
 
     if (!$register_hooks) {
       return;
     }
 
     // Register AJAX handlers
-    add_action('wp_ajax_nutrition_search', array($this, 'ajax_search'));
-    add_action('wp_ajax_nutrition_delete', array($this, 'ajax_delete'));
+    add_action('wp_ajax_wine_e_label_search', array($this, 'ajax_search'));
+    add_action('wp_ajax_wine_e_label_delete', array($this, 'ajax_delete'));
     add_action('wp_ajax_flush_rewrite_rules', array($this, 'ajax_flush_rewrite_rules'));
-    add_action('wp_ajax_nutrition_qr_download', array($this, 'ajax_download_qr'));
-    add_action('wp_ajax_nutrition_import_confirm', array($this, 'ajax_confirm_import'));
-    add_action('wp_ajax_nutrition_create_label', array($this, 'ajax_create_label'));
-    add_action('wp_ajax_nutrition_import_delete', array($this, 'ajax_delete_import'));
-    add_action('wp_ajax_nutrition_load_source_product', array($this, 'ajax_load_source_product'));
-    add_action('wp_ajax_nutrition_delete_generated', array($this, 'ajax_delete_generated'));
-    add_action('wp_ajax_nutrition_reset_all', array($this, 'ajax_reset_all'));
-    add_action('wp_ajax_nutrition_test_rest_connection', array($this, 'ajax_test_rest_connection'));
+    add_action('wp_ajax_wine_e_label_qr_download', array($this, 'ajax_download_qr'));
+    add_action('wp_ajax_wine_e_label_import_confirm', array($this, 'ajax_confirm_import'));
+    add_action('wp_ajax_wine_e_label_create_label', array($this, 'ajax_create_label'));
+    add_action('wp_ajax_wine_e_label_import_delete', array($this, 'ajax_delete_import'));
+    add_action('wp_ajax_wine_e_label_load_source_product', array($this, 'ajax_load_source_product'));
+    add_action('wp_ajax_wine_e_label_delete_generated', array($this, 'ajax_delete_generated'));
+    add_action('wp_ajax_wine_e_label_reset_all', array($this, 'ajax_reset_all'));
+    add_action('wp_ajax_wine_e_label_test_rest_connection', array($this, 'ajax_test_rest_connection'));
 
     // Register admin menu pages
     add_action('admin_menu', array($this, 'register_admin_menu_pages'));
@@ -71,8 +71,8 @@ class NutritionLabels_Admin_Extended
   {
     // Add top-level menu with position just below Settings
     add_menu_page(
-      __('Wein E-Label Einstellungen', 'nutrition-labels'),
-      __('Wein E-Label', 'nutrition-labels'),
+      __('Wein E-Label Einstellungen', 'wine-e-label'),
+      __('Wein E-Label', 'wine-e-label'),
       'manage_options',
       WINE_E_LABEL_ADMIN_PAGE_MAIN,
       array($this, 'render_settings_page'),
@@ -82,8 +82,8 @@ class NutritionLabels_Admin_Extended
 
     add_submenu_page(
       WINE_E_LABEL_ADMIN_PAGE_MAIN,
-      __('Wein E-Label Einstellungen', 'nutrition-labels'),
-      __('Einstellungen', 'nutrition-labels'),
+      __('Wein E-Label Einstellungen', 'wine-e-label'),
+      __('Einstellungen', 'wine-e-label'),
       'manage_options',
       WINE_E_LABEL_ADMIN_PAGE_MAIN,
       array($this, 'render_settings_page')
@@ -91,8 +91,8 @@ class NutritionLabels_Admin_Extended
 
     add_submenu_page(
       WINE_E_LABEL_ADMIN_PAGE_MAIN,
-      __('Design anpassen', 'nutrition-labels'),
-      __('Design anpassen', 'nutrition-labels'),
+      __('Design anpassen', 'wine-e-label'),
+      __('Design anpassen', 'wine-e-label'),
       'manage_options',
       WINE_E_LABEL_ADMIN_PAGE_DESIGN,
       array($this, 'render_design_page')
@@ -100,8 +100,8 @@ class NutritionLabels_Admin_Extended
 
     add_submenu_page(
       WINE_E_LABEL_ADMIN_PAGE_MAIN,
-      __('E-Labels', 'nutrition-labels'),
-      __('E-Labels', 'nutrition-labels'),
+      __('E-Labels', 'wine-e-label'),
+      __('E-Labels', 'wine-e-label'),
       'manage_options',
       WINE_E_LABEL_ADMIN_PAGE_DB,
       array($this, 'render_db_management_page')
@@ -110,49 +110,49 @@ class NutritionLabels_Admin_Extended
 
   public function register_settings()
   {
-    register_setting('nutrition_labels_group', 'qr_size', array(
+    register_setting('wine_e_label_group', 'qr_size', array(
       'type' => 'string',
       'default' => '500x500',
       'sanitize_callback' => array($this, 'sanitize_qr_size')
     ));
 
-    register_setting('nutrition_labels_group', 'qr_format', array(
+    register_setting('wine_e_label_group', 'qr_format', array(
       'type'              => 'string',
       'default'           => 'png',
       'sanitize_callback' => fn($v) => in_array($v, ['png', 'svg'], true) ? $v : 'png',
     ));
 
-    register_setting('nutrition_labels_group', 'qr_error_correction', array(
+    register_setting('wine_e_label_group', 'qr_error_correction', array(
       'type'              => 'string',
       'default'           => 'low',
       'sanitize_callback' => fn($v) => in_array($v, ['low', 'medium', 'quartile', 'high'], true) ? $v : 'low',
     ));
 
-    register_setting('nutrition_labels_group', 'nutrition_labels_admin_language', array(
+    register_setting('wine_e_label_group', 'wine_e_label_admin_language', array(
       'type'              => 'string',
       'default'           => 'auto',
       'sanitize_callback' => fn($v) => in_array($v, ['auto', 'de', 'en', 'fr', 'it'], true) ? $v : 'auto',
     ));
 
-    register_setting('nutrition_labels_group', 'nutrition_labels_rest_enabled', array(
+    register_setting('wine_e_label_group', 'wine_e_label_rest_enabled', array(
       'type'              => 'string',
       'default'           => 'no',
       'sanitize_callback' => fn($v) => $v === 'yes' ? 'yes' : 'no',
     ));
 
-    register_setting('nutrition_labels_group', 'nutrition_labels_rest_base_url', array(
+    register_setting('wine_e_label_group', 'wine_e_label_rest_base_url', array(
       'type'              => 'string',
       'default'           => '',
       'sanitize_callback' => array(__CLASS__, 'normalize_rest_base_url'),
     ));
 
-    register_setting('nutrition_labels_group', 'nutrition_labels_rest_username', array(
+    register_setting('wine_e_label_group', 'wine_e_label_rest_username', array(
       'type'              => 'string',
       'default'           => '',
       'sanitize_callback' => 'sanitize_user',
     ));
 
-    register_setting('nutrition_labels_group', 'nutrition_labels_rest_app_password', array(
+    register_setting('wine_e_label_group', 'wine_e_label_rest_app_password', array(
       'type'              => 'string',
       'default'           => '',
       'sanitize_callback' => array(__CLASS__, 'sanitize_rest_app_password'),
@@ -190,9 +190,9 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_search()
   {
-    check_ajax_referer('nutrition_search');
+    check_ajax_referer('wine_e_label_search');
     if (!current_user_can('manage_options')) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     $search = sanitize_text_field($_POST['search']);
@@ -210,15 +210,15 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_delete()
   {
-    check_ajax_referer('nutrition_delete', '_wpnonce');
+    check_ajax_referer('wine_e_label_delete', '_wpnonce');
     if (!current_user_can('manage_options')) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     $product_ids = array_map('absint', $_POST['product_ids']);
 
     if (empty($product_ids)) {
-      wp_send_json_error(__('Bitte mindestens einen Eintrag auswählen.', 'nutrition-labels'));
+      wp_send_json_error(__('Bitte mindestens einen Eintrag auswählen.', 'wine-e-label'));
       return;
     }
 
@@ -231,7 +231,7 @@ class NutritionLabels_Admin_Extended
         if (is_wp_error($reset_result)) {
           $remote_errors[] = sprintf(
             /* translators: 1: product id, 2: error message */
-            __('Produkt %1$d: %2$s', 'nutrition-labels'),
+            __('Produkt %1$d: %2$s', 'wine-e-label'),
             $product_id,
             $reset_result->get_error_message()
           );
@@ -244,11 +244,11 @@ class NutritionLabels_Admin_Extended
       'Erfolgreich %d E-Label-Eintrag gelöscht',
       'Erfolgreich %d E-Label-Einträge gelöscht',
       $deleted_count,
-      'nutrition-labels'
+      'wine-e-label'
     ), $deleted_count);
 
     if (!empty($remote_errors)) {
-      $message .= ' ' . __('Hinweis: Auf der externen Receiver-Seite konnten nicht alle Einträge gelöscht werden.', 'nutrition-labels');
+      $message .= ' ' . __('Hinweis: Auf der externen Receiver-Seite konnten nicht alle Einträge gelöscht werden.', 'wine-e-label');
     }
 
     wp_send_json(array(
@@ -262,48 +262,48 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_confirm_import()
   {
-    check_ajax_referer('nutrition_import_confirm', 'nonce');
+    check_ajax_referer('wine_e_label_import_confirm', 'nonce');
 
     $product_id = absint($_POST['product_id'] ?? 0);
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID.', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID.', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     if (empty($_FILES['import_file'])) {
-      wp_send_json_error(__('Bitte zuerst eine ZIP-, JSON- oder HTML-Datei auswählen.', 'nutrition-labels'));
+      wp_send_json_error(__('Bitte zuerst eine ZIP-, JSON- oder HTML-Datei auswählen.', 'wine-e-label'));
     }
 
-    $existing = NutritionLabels_Importer::get_label_data($product_id);
-    $imported = NutritionLabels_Importer::import_uploaded_file($_FILES['import_file'], $product_id);
+    $existing = Wine_E_Label_Importer::get_label_data($product_id);
+    $imported = Wine_E_Label_Importer::import_uploaded_file($_FILES['import_file'], $product_id);
     if (is_wp_error($imported)) {
       $existing['import_status'] = 'error';
       $existing['import_message'] = $imported->get_error_message();
       $existing['built_at'] = '';
-      NutritionLabels_Importer::save_label_data($product_id, $existing);
-      $this->db->delete_nutrition_data($product_id);
+      Wine_E_Label_Importer::save_label_data($product_id, $existing);
+      $this->db->delete_label_data($product_id);
       wp_send_json_error($imported->get_error_message());
     }
 
     $data = array_merge($existing, $imported);
-    $data['slug'] = NutritionLabels_Importer::suggest_slug((string) ($data['wine_nr'] ?? ''), '');
+    $data['slug'] = Wine_E_Label_Importer::suggest_slug((string) ($data['wine_nr'] ?? ''), '');
     if (!empty($data['title'])) {
-      $data['title'] = NutritionLabels_Importer::format_label_title((string) $data['title']);
+      $data['title'] = Wine_E_Label_Importer::format_label_title((string) $data['title']);
     }
 
     $data['built_at'] = '';
-    NutritionLabels_Importer::save_label_data($product_id, $data);
-    $this->db->delete_nutrition_data($product_id);
+    Wine_E_Label_Importer::save_label_data($product_id, $data);
+    $this->db->delete_label_data($product_id);
 
     wp_send_json_success(array(
       'wine_nr' => (string) ($data['wine_nr'] ?? ''),
       'slug' => (string) ($data['slug'] ?? ''),
       'title' => (string) ($data['title'] ?? ''),
       'manual_config' => $data['manual_config'] ?? array(),
-      'import_snapshot' => $data['import_snapshot'] ?? NutritionLabels_Manual_Builder::default_config(),
+      'import_snapshot' => $data['import_snapshot'] ?? Wine_E_Label_Manual_Builder::default_config(),
       'energy' => (string) ($data['energy'] ?? ''),
       'carbs' => (string) ($data['carbs'] ?? ''),
       'sugar' => (string) ($data['sugar'] ?? ''),
@@ -318,38 +318,38 @@ class NutritionLabels_Admin_Extended
       'salt' => (string) ($data['salt'] ?? ''),
       'salt_natural' => (string) ($data['salt_natural'] ?? '0'),
       'source_file_name' => (string) ($data['source_file_name'] ?? ''),
-      'import_message' => (string) ($data['import_message'] ?? __('Import erfolgreich', 'nutrition-labels')),
+      'import_message' => (string) ($data['import_message'] ?? __('Import erfolgreich', 'wine-e-label')),
       'last_import' => (string) ($data['last_import'] ?? ''),
-      'base_url' => NutritionLabels_URL::get_base_url(),
-      'manual_config' => $data['manual_config'] ?? NutritionLabels_Manual_Builder::default_config(),
+      'base_url' => Wine_E_Label_URL::get_base_url(),
+      'manual_config' => $data['manual_config'] ?? Wine_E_Label_Manual_Builder::default_config(),
     ));
   }
 
 
   public function ajax_create_label()
   {
-    check_ajax_referer('nutrition_create_label', 'nonce');
+    check_ajax_referer('wine_e_label_create_label', 'nonce');
 
     $product_id = absint($_POST['product_id'] ?? 0);
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID.', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID.', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
-    $existing = NutritionLabels_Importer::get_label_data($product_id);
-    $display_config = class_exists('NutritionLabels_Presentation')
-      ? NutritionLabels_Presentation::sanitize_config($_POST['nutrition_labels_display'] ?? ($existing['display_config'] ?? []))
+    $existing = Wine_E_Label_Importer::get_label_data($product_id);
+    $display_config = class_exists('Wine_E_Label_Presentation')
+      ? Wine_E_Label_Presentation::sanitize_config($_POST['wine_e_label_display'] ?? ($existing['display_config'] ?? []))
       : [];
     $previous_slug = (string) ($existing['slug'] ?? '');
-    $manual_config = NutritionLabels_Manual_Builder::sanitize_config($_POST['manual_config'] ?? ($_POST['nutrition_manual'] ?? ($existing['manual_config'] ?? [])));
-    $manual_requested = array_key_exists('manual_mode', $_POST) || array_key_exists('manual_config', $_POST) || array_key_exists('nutrition_manual', $_POST);
+    $manual_config = Wine_E_Label_Manual_Builder::sanitize_config($_POST['manual_config'] ?? ($_POST['wine_e_label_manual'] ?? ($existing['manual_config'] ?? [])));
+    $manual_requested = array_key_exists('manual_mode', $_POST) || array_key_exists('manual_config', $_POST) || array_key_exists('wine_e_label_manual', $_POST);
     $lang_code = isset($_POST['lang_code']) ? sanitize_key((string) $_POST['lang_code']) : '';
-    $manual_has_input = NutritionLabels_Manual_Builder::has_meaningful_input($manual_config);
-    $explicit_slug = NutritionLabels_Importer::normalize_slug((string) ($_POST['slug'] ?? ''));
-    $slug = $explicit_slug !== '' ? $explicit_slug : NutritionLabels_Importer::normalize_slug((string) ($existing['slug'] ?? ''));
+    $manual_has_input = Wine_E_Label_Manual_Builder::has_meaningful_input($manual_config);
+    $explicit_slug = Wine_E_Label_Importer::normalize_slug((string) ($_POST['slug'] ?? ''));
+    $slug = $explicit_slug !== '' ? $explicit_slug : Wine_E_Label_Importer::normalize_slug((string) ($existing['slug'] ?? ''));
     $explicit_wine_nr = sanitize_text_field((string) ($_POST['wine_nr'] ?? ''));
     $wine_nr = $explicit_wine_nr !== '' ? $explicit_wine_nr : sanitize_text_field((string) ($existing['wine_nr'] ?? ''));
     $explicit_title = sanitize_text_field((string) ($_POST['title'] ?? ''));
@@ -378,12 +378,12 @@ class NutritionLabels_Admin_Extended
     ]);
 
     if ($manual_requested && $manual_has_input) {
-      $manual_label = NutritionLabels_Manual_Builder::build_label_data($manual_config, $product_id);
+      $manual_label = Wine_E_Label_Manual_Builder::build_label_data($manual_config, $product_id);
       $data = array_merge($data, $manual_label);
       if ($explicit_slug !== '') {
         $data['slug'] = $explicit_slug;
       } elseif (($data['slug'] ?? '') === '' && !empty($data['wine_nr'])) {
-        $data['slug'] = NutritionLabels_Importer::suggest_slug((string) $data['wine_nr'], '');
+        $data['slug'] = Wine_E_Label_Importer::suggest_slug((string) $data['wine_nr'], '');
       }
       if ($explicit_wine_nr !== '') {
         $data['wine_nr'] = $explicit_wine_nr;
@@ -392,41 +392,41 @@ class NutritionLabels_Admin_Extended
         $data['title'] = $explicit_title;
       }
       if (trim((string) ($data['ingredients_html'] ?? '')) === '') {
-        wp_send_json_error(__('Bitte mindestens eine Zutat auswählen.', 'nutrition-labels'));
+        wp_send_json_error(__('Bitte mindestens eine Zutat auswählen.', 'wine-e-label'));
       }
     }
 
     if (($data['source_file_name'] ?? '') === '' && !$manual_has_input && trim((string) ($data['ingredients_html'] ?? '')) === '') {
-      wp_send_json_error(__('Bitte zuerst eine Datei importieren oder E-Label-Daten eingeben.', 'nutrition-labels'));
+      wp_send_json_error(__('Bitte zuerst eine Datei importieren oder E-Label-Daten eingeben.', 'wine-e-label'));
     }
 
     if ($data['slug'] === '') {
-      wp_send_json_error(__('Bitte zuerst einen Slug angeben oder aus der Wein-Nr. übernehmen.', 'nutrition-labels'));
+      wp_send_json_error(__('Bitte zuerst einen Slug angeben oder aus der Wein-Nr. übernehmen.', 'wine-e-label'));
     }
 
     if ($this->db->shortcode_belongs_to_other_product($data['slug'], $product_id)) {
-      wp_send_json_error(__('Dieser Slug ist bereits vergeben.', 'nutrition-labels'));
+      wp_send_json_error(__('Dieser Slug ist bereits vergeben.', 'wine-e-label'));
     }
 
     if (!empty($data['title'])) {
-      $data['title'] = NutritionLabels_Importer::format_label_title($data['title']);
+      $data['title'] = Wine_E_Label_Importer::format_label_title($data['title']);
     }
 
     $dbPayload = [
       'ingredients' => new NutritionLabelIngredientList(),
-      'calories' => NutritionLabels_Importer::extract_numeric_energy($data)['calories'],
-      'kilojoules' => NutritionLabels_Importer::extract_numeric_energy($data)['kilojoules'],
-      'carbohydrates' => NutritionLabels_Importer::extract_numeric_grams((string) $data['carbs']),
-      'sugar' => NutritionLabels_Importer::extract_numeric_grams((string) $data['sugar']),
+      'calories' => Wine_E_Label_Importer::extract_numeric_energy($data)['calories'],
+      'kilojoules' => Wine_E_Label_Importer::extract_numeric_energy($data)['kilojoules'],
+      'carbohydrates' => Wine_E_Label_Importer::extract_numeric_grams((string) $data['carbs']),
+      'sugar' => Wine_E_Label_Importer::extract_numeric_grams((string) $data['sugar']),
     ];
 
-    $this->db->save_nutrition_data($product_id, $dbPayload);
+    $this->db->save_label_data($product_id, $dbPayload);
     $this->db->upsert_shortcode($product_id, $data['slug']);
 
     $data['built_at'] = current_time('mysql');
     $data['import_status'] = $data['import_status'] ?: 'success';
 
-    if (NutritionLabels_URL::use_external_rest_domain()) {
+    if (Wine_E_Label_URL::use_external_rest_domain()) {
       $remote_result = $this->publish_remote_e_label($product_id, $data);
       if (is_wp_error($remote_result)) {
         wp_send_json_error($remote_result->get_error_message());
@@ -441,16 +441,16 @@ class NutritionLabels_Admin_Extended
       $data['remote_page_url'] = '';
     }
 
-    NutritionLabels_Importer::save_label_data($product_id, $data);
+    Wine_E_Label_Importer::save_label_data($product_id, $data);
 
-    $url = NutritionLabels_URL::get_short_url($product_id, $lang_code);
+    $url = Wine_E_Label_URL::get_short_url($product_id, $lang_code);
     if (!$url) {
-      wp_send_json_error(__('Link konnte nicht erzeugt werden.', 'nutrition-labels'));
+      wp_send_json_error(__('Link konnte nicht erzeugt werden.', 'wine-e-label'));
     }
 
-    $preview = NutritionLabels_QR::generate_qr_code_base64($url, 'png');
+    $preview = Wine_E_Label_QR::generate_qr_code_base64($url, 'png');
     if ($preview === false) {
-      wp_send_json_error(__('QR-Code konnte nicht erzeugt werden.', 'nutrition-labels'));
+      wp_send_json_error(__('QR-Code konnte nicht erzeugt werden.', 'wine-e-label'));
     }
 
     wp_send_json_success([
@@ -473,34 +473,34 @@ class NutritionLabels_Admin_Extended
       'footnote' => (string) ($data['footnote'] ?? ''),
       'pretable_notice' => (string) ($data['pretable_notice'] ?? ''),
       'wine_nr' => (string) ($data['wine_nr'] ?? ''),
-      'manual_config' => $data['manual_config'] ?? NutritionLabels_Manual_Builder::default_config(),
+      'manual_config' => $data['manual_config'] ?? Wine_E_Label_Manual_Builder::default_config(),
       'display_config' => $data['display_config'] ?? [],
     ]);
   }
 
   public function ajax_delete_import()
   {
-    check_ajax_referer('nutrition_import_delete', 'nonce');
+    check_ajax_referer('wine_e_label_import_delete', 'nonce');
 
     $product_id = absint($_POST['product_id'] ?? 0);
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID.', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID.', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
-    $existing = NutritionLabels_Importer::get_label_data($product_id);
+    $existing = Wine_E_Label_Importer::get_label_data($product_id);
     $source_path = (string) ($existing['source_file_path'] ?? '');
     if ($source_path !== '' && file_exists($source_path)) {
       @unlink($source_path);
     }
 
-    NutritionLabels_Importer::clear_import_state($product_id);
+    Wine_E_Label_Importer::clear_import_state($product_id);
 
     wp_send_json_success([
-      'message' => __('Import gelöscht.', 'nutrition-labels'),
+      'message' => __('Import gelöscht.', 'wine-e-label'),
     ]);
   }
 
@@ -508,28 +508,28 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_load_source_product()
   {
-    check_ajax_referer('nutrition_load_source_product', 'nonce');
+    check_ajax_referer('wine_e_label_load_source_product', 'nonce');
 
     $product_id = absint($_POST['product_id'] ?? 0);
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID.', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID.', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
-    $data = NutritionLabels_Importer::get_label_data($product_id);
-    $manual = NutritionLabels_Manual_Builder::normalize_config($data['manual_config'] ?? []);
-    $has_manual = NutritionLabels_Manual_Builder::has_meaningful_input($manual);
+    $data = Wine_E_Label_Importer::get_label_data($product_id);
+    $manual = Wine_E_Label_Manual_Builder::normalize_config($data['manual_config'] ?? []);
+    $has_manual = Wine_E_Label_Manual_Builder::has_meaningful_input($manual);
 
     if (!$has_manual && !empty($data['import_snapshot'])) {
-      $manual = NutritionLabels_Manual_Builder::normalize_config($data['import_snapshot']);
-      $has_manual = NutritionLabels_Manual_Builder::has_meaningful_input($manual);
+      $manual = Wine_E_Label_Manual_Builder::normalize_config($data['import_snapshot']);
+      $has_manual = Wine_E_Label_Manual_Builder::has_meaningful_input($manual);
     }
 
     if (!$has_manual) {
-      wp_send_json_error(__('Für dieses Produkt sind keine verwertbaren E-Label-Daten vorhanden.', 'nutrition-labels'));
+      wp_send_json_error(__('Für dieses Produkt sind keine verwertbaren E-Label-Daten vorhanden.', 'wine-e-label'));
     }
 
     wp_send_json_success([
@@ -561,22 +561,22 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_delete_generated()
   {
-    check_ajax_referer('nutrition_delete_generated', 'nonce');
+    check_ajax_referer('wine_e_label_delete_generated', 'nonce');
 
     $product_id = absint($_POST['product_id'] ?? 0);
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID.', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID.', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     $result = $this->purge_generated_output($product_id, true);
 
-    $message = __('E-Label-Seite und QR-Code wurden gelöscht.', 'nutrition-labels');
+    $message = __('E-Label-Seite und QR-Code wurden gelöscht.', 'wine-e-label');
     if (is_wp_error($result)) {
-      $message .= ' ' . sprintf(__('Hinweis zur externen Receiver-Seite: %s', 'nutrition-labels'), $result->get_error_message());
+      $message .= ' ' . sprintf(__('Hinweis zur externen Receiver-Seite: %s', 'wine-e-label'), $result->get_error_message());
     }
 
     wp_send_json_success([
@@ -586,58 +586,58 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_reset_all()
   {
-    check_ajax_referer('nutrition_reset_all', 'nonce');
+    check_ajax_referer('wine_e_label_reset_all', 'nonce');
 
     $product_id = absint($_POST['product_id'] ?? 0);
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID.', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID.', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     $reset_result = $this->purge_label_state($product_id, true);
 
-    $message = __('Import, manuelle Daten und erzeugtes E-Label wurden zurückgesetzt.', 'nutrition-labels');
+    $message = __('Import, manuelle Daten und erzeugtes E-Label wurden zurückgesetzt.', 'wine-e-label');
     if (is_wp_error($reset_result)) {
-      $message .= ' ' . sprintf(__('Hinweis zur externen Receiver-Seite: %s', 'nutrition-labels'), $reset_result->get_error_message());
+      $message .= ' ' . sprintf(__('Hinweis zur externen Receiver-Seite: %s', 'wine-e-label'), $reset_result->get_error_message());
     }
 
     wp_send_json_success([
       'message' => $message,
-      'manual_config' => NutritionLabels_Manual_Builder::default_config(),
-      'display_config' => class_exists('NutritionLabels_Presentation') ? NutritionLabels_Presentation::defaults() : [],
+      'manual_config' => Wine_E_Label_Manual_Builder::default_config(),
+      'display_config' => class_exists('Wine_E_Label_Presentation') ? Wine_E_Label_Presentation::defaults() : [],
     ]);
   }
 
   public function ajax_download_qr()
   {
-    check_ajax_referer('nutrition_qr_download', 'nonce');
+    check_ajax_referer('wine_e_label_qr_download', 'nonce');
 
     $product_id = absint($_POST['product_id']);
     $lang_code = isset($_POST['lang_code']) ? sanitize_key((string) $_POST['lang_code']) : '';
     $target_kind = isset($_POST['target_kind']) ? sanitize_key((string) $_POST['target_kind']) : '';
     $filename_stub = isset($_POST['filename_stub']) ? sanitize_file_name((string) $_POST['filename_stub']) : '';
     if (!$product_id) {
-      wp_send_json_error(__('Ungültige Produkt-ID', 'nutrition-labels'));
+      wp_send_json_error(__('Ungültige Produkt-ID', 'wine-e-label'));
     }
 
     if (!current_user_can('edit_post', $product_id)) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     $short_url = $target_kind !== ''
-      ? NutritionLabels_URL::get_label_target_url($product_id, $target_kind, $lang_code)
-      : NutritionLabels_URL::get_short_url($product_id, $lang_code);
+      ? Wine_E_Label_URL::get_label_target_url($product_id, $target_kind, $lang_code)
+      : Wine_E_Label_URL::get_short_url($product_id, $lang_code);
     if (!$short_url) {
-      wp_send_json_error(__('Für dieses Produkt konnte keine E-Label-URL erzeugt werden.', 'nutrition-labels'));
+      wp_send_json_error(__('Für dieses Produkt konnte keine E-Label-URL erzeugt werden.', 'wine-e-label'));
     }
 
     $format   = get_option('qr_format', 'png');
-    $data_uri = NutritionLabels_QR::generate_qr_code_base64($short_url, $format);
+    $data_uri = Wine_E_Label_QR::generate_qr_code_base64($short_url, $format);
     if ($data_uri === false) {
-      wp_send_json_error(__('QR-Code konnte nicht erzeugt werden.', 'nutrition-labels'));
+      wp_send_json_error(__('QR-Code konnte nicht erzeugt werden.', 'wine-e-label'));
     }
 
     $product      = get_post($product_id);
@@ -653,20 +653,20 @@ class NutritionLabels_Admin_Extended
   public function elabel_export_csv()
   {
     if (!current_user_can('manage_options')) {
-      wp_die(__('Du hast keine Berechtigung für den CSV-Export.', 'nutrition-labels'));
+      wp_die(__('Du hast keine Berechtigung für den CSV-Export.', 'wine-e-label'));
     }
 
     if (isset($_GET['export']) && $_GET['export'] === 'csv') {
 
-      if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'nutrition_labels_export')) {
-        wp_die(__('Invalid nonce', 'nutrition-labels'));
+      if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'wine_e_label_export')) {
+        wp_die(__('Invalid nonce', 'wine-e-label'));
       }
 
-      $db = new NutritionLabels_DB_Extended();
+      $db = new Wine_E_Label_DB_Extended();
       $entries = $db->get_entries_for_export();
 
       header('Content-Type: text/csv');
-      header('Content-Disposition: attachment; filename="nutrition-labels.csv"');
+      header('Content-Disposition: attachment; filename="wine-e-label.csv"');
       $output = fopen('php://output', 'w');
 
       // Headers
@@ -693,20 +693,20 @@ class NutritionLabels_Admin_Extended
 
   public function ajax_test_rest_connection()
   {
-    check_ajax_referer('nutrition_test_rest_connection', '_wpnonce');
+    check_ajax_referer('wine_e_label_test_rest_connection', '_wpnonce');
     if (!current_user_can('manage_options')) {
-      wp_send_json_error(array('message' => __('Nicht autorisiert', 'nutrition-labels')), 403);
+      wp_send_json_error(array('message' => __('Nicht autorisiert', 'wine-e-label')), 403);
     }
 
     $base_url = self::normalize_rest_base_url($_POST['base_url'] ?? '');
     $username = sanitize_user($_POST['username'] ?? '', true);
     $app_password = self::sanitize_rest_app_password($_POST['app_password'] ?? '');
     if ($app_password === '') {
-      $app_password = (string) get_option('nutrition_labels_rest_app_password', '');
+      $app_password = (string) get_option('wine_e_label_rest_app_password', '');
     }
 
     if ($base_url === '') {
-      wp_send_json_error(array('message' => __('Bitte zuerst eine gültige REST API Ziel-URL eingeben.', 'nutrition-labels')));
+      wp_send_json_error(array('message' => __('Bitte zuerst eine gültige REST API Ziel-URL eingeben.', 'wine-e-label')));
     }
 
     $creds = [
@@ -723,16 +723,16 @@ class NutritionLabels_Admin_Extended
     ));
 
     if (is_wp_error($response)) {
-      wp_send_json_error(array('message' => sprintf(__('Verbindung fehlgeschlagen: %s', 'nutrition-labels'), $response->get_error_message())));
+      wp_send_json_error(array('message' => sprintf(__('Verbindung fehlgeschlagen: %s', 'wine-e-label'), $response->get_error_message())));
     }
 
     $code = (int) wp_remote_retrieve_response_code($response);
     if ($code < 200 || $code >= 300) {
-      wp_send_json_error(array('message' => sprintf(__('REST API antwortet nicht wie erwartet (HTTP %d).', 'nutrition-labels'), $code)));
+      wp_send_json_error(array('message' => sprintf(__('REST API antwortet nicht wie erwartet (HTTP %d).', 'wine-e-label'), $code)));
     }
 
     $lines = [
-      ['text' => __('REST API erreichbar.', 'nutrition-labels'), 'type' => 'success'],
+      ['text' => __('REST API erreichbar.', 'wine-e-label'), 'type' => 'success'],
     ];
 
     $auth_ok = false;
@@ -747,14 +747,14 @@ class NutritionLabels_Admin_Extended
       ));
 
       if (is_wp_error($auth_response)) {
-        $lines[] = ['text' => sprintf(__('Authentifizierung konnte nicht geprüft werden: %s', 'nutrition-labels'), $auth_response->get_error_message()), 'type' => 'error'];
+        $lines[] = ['text' => sprintf(__('Authentifizierung konnte nicht geprüft werden: %s', 'wine-e-label'), $auth_response->get_error_message()), 'type' => 'error'];
       } else {
         $auth_code = (int) wp_remote_retrieve_response_code($auth_response);
         if ($auth_code >= 200 && $auth_code < 300) {
           $auth_ok = true;
-          $lines[] = ['text' => __('Authentifizierung erfolgreich geprüft.', 'nutrition-labels'), 'type' => 'success'];
+          $lines[] = ['text' => __('Authentifizierung erfolgreich geprüft.', 'wine-e-label'), 'type' => 'success'];
         } else {
-          $lines[] = ['text' => sprintf(__('Authentifizierung fehlgeschlagen (HTTP %d).', 'nutrition-labels'), $auth_code), 'type' => 'error'];
+          $lines[] = ['text' => sprintf(__('Authentifizierung fehlgeschlagen (HTTP %d).', 'wine-e-label'), $auth_code), 'type' => 'error'];
         }
       }
     }
@@ -764,25 +764,25 @@ class NutritionLabels_Admin_Extended
       $error_code = $discovery->get_error_code();
       if ($error_code === 'receiver_forbidden') {
         $lines[] = ['text' => $auth_ok
-          ? __('Receiver-Endpunkt antwortet, aber der API-Benutzer hat keine ausreichenden Rechte. Gib dem Benutzer auf der Zielseite mindestens Editor-Rechte.', 'nutrition-labels')
-          : __('Receiver-Endpunkt vorhanden, aber ohne gültige Authentifizierung nicht nutzbar.', 'nutrition-labels'), 'type' => 'error'];
+          ? __('Receiver-Endpunkt antwortet, aber der API-Benutzer hat keine ausreichenden Rechte. Gib dem Benutzer auf der Zielseite mindestens Editor-Rechte.', 'wine-e-label')
+          : __('Receiver-Endpunkt vorhanden, aber ohne gültige Authentifizierung nicht nutzbar.', 'wine-e-label'), 'type' => 'error'];
       } elseif ($error_code === 'receiver_request_failed') {
-        $lines[] = ['text' => sprintf(__('Receiver-Endpunkt konnte nicht geprüft werden: %s', 'nutrition-labels'), $discovery->get_error_message()), 'type' => 'error'];
+        $lines[] = ['text' => sprintf(__('Receiver-Endpunkt konnte nicht geprüft werden: %s', 'wine-e-label'), $discovery->get_error_message()), 'type' => 'error'];
       } else {
-        $lines[] = ['text' => __('Receiver-Endpunkt nicht gefunden. Ist das Plugin Reith E-Label Receiver auf der Zielseite aktiv?', 'nutrition-labels'), 'type' => 'error'];
+        $lines[] = ['text' => __('Receiver-Endpunkt nicht gefunden. Ist das Plugin Reith E-Label Receiver auf der Zielseite aktiv?', 'wine-e-label'), 'type' => 'error'];
       }
     } else {
       $source = (string) ($discovery['source'] ?? '');
       if ($source === 'info') {
-        $lines[] = ['text' => __('Receiver-Endpunkt gefunden (API-Discovery).', 'nutrition-labels'), 'type' => 'success'];
+        $lines[] = ['text' => __('Receiver-Endpunkt gefunden (API-Discovery).', 'wine-e-label'), 'type' => 'success'];
       } elseif ($source === 'index') {
-        $lines[] = ['text' => __('Receiver-Endpunkt gefunden (REST-Index erkannt).', 'nutrition-labels'), 'type' => 'success'];
+        $lines[] = ['text' => __('Receiver-Endpunkt gefunden (REST-Index erkannt).', 'wine-e-label'), 'type' => 'success'];
       } else {
-        $lines[] = ['text' => __('Receiver-Endpunkt gefunden.', 'nutrition-labels'), 'type' => 'success'];
+        $lines[] = ['text' => __('Receiver-Endpunkt gefunden.', 'wine-e-label'), 'type' => 'success'];
       }
     }
 
-    wp_send_json_success(array('message' => __('Verbindung erfolgreich geprüft.', 'nutrition-labels'), 'lines' => $lines));
+    wp_send_json_success(array('message' => __('Verbindung erfolgreich geprüft.', 'wine-e-label'), 'lines' => $lines));
   }
 
 
@@ -790,9 +790,9 @@ class NutritionLabels_Admin_Extended
   private function get_rest_credentials(): array
   {
     return [
-      'base_url' => self::normalize_rest_base_url((string) get_option('nutrition_labels_rest_base_url', '')),
-      'username' => sanitize_user((string) get_option('nutrition_labels_rest_username', ''), true),
-      'app_password' => self::sanitize_rest_app_password((string) get_option('nutrition_labels_rest_app_password', '')),
+      'base_url' => self::normalize_rest_base_url((string) get_option('wine_e_label_rest_base_url', '')),
+      'username' => sanitize_user((string) get_option('wine_e_label_rest_username', ''), true),
+      'app_password' => self::sanitize_rest_app_password((string) get_option('wine_e_label_rest_app_password', '')),
     ];
   }
 
@@ -831,16 +831,16 @@ class NutritionLabels_Admin_Extended
       'built_at' => '',
       'remote_page_id' => '',
       'remote_page_url' => '',
-      'manual_config' => NutritionLabels_Manual_Builder::default_config(),
-      'import_snapshot' => NutritionLabels_Manual_Builder::default_config(),
-      'display_config' => class_exists('NutritionLabels_Presentation') ? NutritionLabels_Presentation::defaults() : [],
+      'manual_config' => Wine_E_Label_Manual_Builder::default_config(),
+      'import_snapshot' => Wine_E_Label_Manual_Builder::default_config(),
+      'display_config' => class_exists('Wine_E_Label_Presentation') ? Wine_E_Label_Presentation::defaults() : [],
     ];
   }
 
 
   private function purge_generated_output(int $product_id, bool $delete_remote = true)
   {
-    $data = NutritionLabels_Importer::get_label_data($product_id);
+    $data = Wine_E_Label_Importer::get_label_data($product_id);
     $remote_result = true;
 
     if ($delete_remote && !empty($data['slug'])) {
@@ -853,14 +853,14 @@ class NutritionLabels_Admin_Extended
     $data['remote_page_id'] = '';
     $data['remote_page_url'] = '';
 
-    NutritionLabels_Importer::save_label_data($product_id, $data);
+    Wine_E_Label_Importer::save_label_data($product_id, $data);
 
     return $remote_result;
   }
 
   private function purge_label_state(int $product_id, bool $delete_remote = true)
   {
-    $data = NutritionLabels_Importer::get_label_data($product_id);
+    $data = Wine_E_Label_Importer::get_label_data($product_id);
     $remote_result = true;
 
     if ($delete_remote && !empty($data['slug'])) {
@@ -872,8 +872,8 @@ class NutritionLabels_Admin_Extended
       @unlink($source_path);
     }
 
-    NutritionLabels_Importer::save_label_data($product_id, $this->empty_label_data());
-    $this->db->delete_nutrition_data($product_id);
+    Wine_E_Label_Importer::save_label_data($product_id, $this->empty_label_data());
+    $this->db->delete_label_data($product_id);
 
     return $remote_result;
   }
@@ -881,7 +881,7 @@ class NutritionLabels_Admin_Extended
   private function discover_receiver_api(array $creds, bool $allow_legacy_probe = true)
   {
     if ((string) ($creds['base_url'] ?? '') === '') {
-      return new WP_Error('receiver_config_missing', __('REST API Ziel-URL fehlt.', 'nutrition-labels'));
+      return new WP_Error('receiver_config_missing', __('REST API Ziel-URL fehlt.', 'wine-e-label'));
     }
 
     $headers = ['Accept' => 'application/json'];
@@ -907,7 +907,7 @@ class NutritionLabels_Admin_Extended
           return $api;
         }
       } elseif ($code === 401 || $code === 403) {
-        return new WP_Error('receiver_forbidden', __('Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus.', 'nutrition-labels'));
+        return new WP_Error('receiver_forbidden', __('Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus.', 'wine-e-label'));
       }
     }
 
@@ -929,7 +929,7 @@ class NutritionLabels_Admin_Extended
     }
 
     if (!$allow_legacy_probe) {
-      return new WP_Error('receiver_not_found', __('Receiver-Endpunkt nicht gefunden.', 'nutrition-labels'));
+      return new WP_Error('receiver_not_found', __('Receiver-Endpunkt nicht gefunden.', 'wine-e-label'));
     }
 
     $probe_url = untrailingslashit($creds['base_url']) . '/wp-json/reith-elabel/v1/labels/connection-test-probe';
@@ -958,10 +958,10 @@ class NutritionLabels_Admin_Extended
     }
 
     if ($probe_code === 401 || $probe_code === 403) {
-      return new WP_Error('receiver_forbidden', __('Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus.', 'nutrition-labels'));
+      return new WP_Error('receiver_forbidden', __('Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus.', 'wine-e-label'));
     }
 
-    return new WP_Error('receiver_not_found', __('Receiver-Endpunkt nicht gefunden.', 'nutrition-labels'));
+    return new WP_Error('receiver_not_found', __('Receiver-Endpunkt nicht gefunden.', 'wine-e-label'));
   }
 
   private function normalize_receiver_info($body, string $base_url, string $namespace_guess, string $info_url): ?array
@@ -1076,22 +1076,22 @@ class NutritionLabels_Admin_Extended
   {
     $creds = $this->get_rest_credentials();
     if (!$this->has_rest_credentials($creds)) {
-      return new WP_Error('rest_config_missing', __('REST-API-Verbindung ist aktiviert, aber Ziel-URL, Benutzername oder Application Password fehlen.', 'nutrition-labels'));
+      return new WP_Error('rest_config_missing', __('REST-API-Verbindung ist aktiviert, aber Ziel-URL, Benutzername oder Application Password fehlen.', 'wine-e-label'));
     }
 
     $page_content = $this->build_remote_page_content($product_id, $data);
     if ($page_content === '') {
-      return new WP_Error('rest_content_empty', __('Externe E-Label-Seite konnte nicht aufgebaut werden.', 'nutrition-labels'));
+      return new WP_Error('rest_content_empty', __('Externe E-Label-Seite konnte nicht aufgebaut werden.', 'wine-e-label'));
     }
 
     $api = $this->discover_receiver_api($creds, true);
     if (is_wp_error($api)) {
-      return new WP_Error('rest_receiver_missing', sprintf(__('Receiver-API konnte nicht erkannt werden: %s', 'nutrition-labels'), $api->get_error_message()));
+      return new WP_Error('rest_receiver_missing', sprintf(__('Receiver-API konnte nicht erkannt werden: %s', 'wine-e-label'), $api->get_error_message()));
     }
 
     $endpoint = (string) ($api['create_endpoint'] ?? '');
     if ($endpoint === '') {
-      return new WP_Error('rest_publish_missing_endpoint', __('Receiver-API liefert keinen gültigen Erstell-Endpunkt.', 'nutrition-labels'));
+      return new WP_Error('rest_publish_missing_endpoint', __('Receiver-API liefert keinen gültigen Erstell-Endpunkt.', 'wine-e-label'));
     }
 
     $response = wp_remote_post($endpoint, [
@@ -1104,26 +1104,26 @@ class NutritionLabels_Admin_Extended
         'status' => 'publish',
         'html' => $page_content,
         'lang' => 'de',
-        'design' => class_exists('NutritionLabels_Design') ? NutritionLabels_Design::export_remote_settings() : [],
+        'design' => class_exists('Wine_E_Label_Design') ? Wine_E_Label_Design::export_remote_settings() : [],
         'source' => [
           'type' => 'main_plugin',
           'product_id' => $product_id,
           'site' => home_url('/'),
           'updated_at' => current_time('mysql'),
-          'targets' => NutritionLabels_URL::get_source_targets_for_sync($product_id),
+          'targets' => Wine_E_Label_URL::get_source_targets_for_sync($product_id),
         ],
       ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
     ]);
 
     if (is_wp_error($response)) {
-      return new WP_Error('rest_publish_failed', sprintf(__('Externe E-Label-Seite konnte nicht erstellt werden: %s', 'nutrition-labels'), $response->get_error_message()));
+      return new WP_Error('rest_publish_failed', sprintf(__('Externe E-Label-Seite konnte nicht erstellt werden: %s', 'wine-e-label'), $response->get_error_message()));
     }
 
     $code = (int) wp_remote_retrieve_response_code($response);
     $body = json_decode((string) wp_remote_retrieve_body($response), true);
     if ($code < 200 || $code >= 300 || empty($body['url'])) {
       $remote_message = is_array($body) ? (string) ($body['message'] ?? '') : '';
-      return new WP_Error('rest_publish_invalid', sprintf(__('Externe E-Label-Seite konnte nicht erstellt werden (HTTP %1$d). %2$s', 'nutrition-labels'), $code, $remote_message));
+      return new WP_Error('rest_publish_invalid', sprintf(__('Externe E-Label-Seite konnte nicht erstellt werden (HTTP %1$d). %2$s', 'wine-e-label'), $code, $remote_message));
     }
 
     return [
@@ -1160,7 +1160,7 @@ class NutritionLabels_Admin_Extended
 
     $endpoint = $this->receiver_item_endpoint($api, $slug);
     if ($endpoint === '') {
-      return new WP_Error('rest_delete_missing_endpoint', __('Receiver-API liefert keinen gültigen Lösch-Endpunkt.', 'nutrition-labels'));
+      return new WP_Error('rest_delete_missing_endpoint', __('Receiver-API liefert keinen gültigen Lösch-Endpunkt.', 'wine-e-label'));
     }
 
     $response = wp_remote_request($endpoint, [
@@ -1182,13 +1182,13 @@ class NutritionLabels_Admin_Extended
     $body = json_decode((string) wp_remote_retrieve_body($response), true);
     $remote_message = is_array($body) ? (string) ($body['message'] ?? '') : '';
 
-    return new WP_Error('rest_delete_invalid', sprintf(__('Externe E-Label-Seite konnte nicht gelöscht werden (HTTP %1$d). %2$s', 'nutrition-labels'), $code, $remote_message));
+    return new WP_Error('rest_delete_invalid', sprintf(__('Externe E-Label-Seite konnte nicht gelöscht werden (HTTP %1$d). %2$s', 'wine-e-label'), $code, $remote_message));
   }
 
   private function build_remote_page_content(int $product_id, array $data): string
   {
     $title = esc_html((string) ($data['title'] ?? ''));
-    $langs = NutritionLabels_URL::get_lang_names();
+    $langs = Wine_E_Label_URL::get_lang_names();
     $maps = $this->get_remote_language_maps();
     $ingredient_html = (string) ($data['ingredients_html'] ?? '');
     $footnote = esc_html((string) ($data['footnote'] ?? ''));
@@ -1196,18 +1196,18 @@ class NutritionLabels_Admin_Extended
     $salt_natural = (string) ($data['salt_natural'] ?? '0') === '1';
     $lang_buttons = '';
     $lang_panels = '';
-    $design_settings = class_exists('NutritionLabels_Design') ? NutritionLabels_Design::get_settings() : [];
-    $presentation = class_exists('NutritionLabels_Presentation')
-      ? NutritionLabels_Presentation::resolve($product_id, (array) ($data['display_config'] ?? []))
+    $design_settings = class_exists('Wine_E_Label_Design') ? Wine_E_Label_Design::get_settings() : [];
+    $presentation = class_exists('Wine_E_Label_Presentation')
+      ? Wine_E_Label_Presentation::resolve($product_id, (array) ($data['display_config'] ?? []))
       : [];
-    $header_markup = class_exists('NutritionLabels_Design')
-      ? NutritionLabels_Design::render_product_header_markup($presentation, $design_settings, 'nler')
+    $header_markup = class_exists('Wine_E_Label_Design')
+      ? Wine_E_Label_Design::render_product_header_markup($presentation, $design_settings, 'nler')
       : '';
     $default_lang = 'de';
     foreach ($langs as $code => $name) {
       $labels = $maps['labels'][$code] ?? $maps['labels']['de'];
-      if (!empty($data['manual_config']) && class_exists('NutritionLabels_Manual_Builder')) {
-        [$translated_ingredients, $translated_footnote] = NutritionLabels_Manual_Builder::build_ingredients_html((array) $data['manual_config'], $code);
+      if (!empty($data['manual_config']) && class_exists('Wine_E_Label_Manual_Builder')) {
+        [$translated_ingredients, $translated_footnote] = Wine_E_Label_Manual_Builder::build_ingredients_html((array) $data['manual_config'], $code);
       } else {
         $translated_ingredients = $this->translate_remote_ingredients($ingredient_html, $code, $maps['phrases']);
         $translated_footnote = $this->translate_remote_text($footnote, $code, $maps['phrases']);
@@ -1245,15 +1245,15 @@ class NutritionLabels_Admin_Extended
         $panel .= '<div class="nler-footnote">' . esc_html($translated_footnote) . '</div>';
       }
       $panel .= '</div>';
-      if (class_exists('NutritionLabels_Design')) {
-        $panel .= NutritionLabels_Design::render_producer_markup($code, $design_settings, 'nler');
+      if (class_exists('Wine_E_Label_Design')) {
+        $panel .= Wine_E_Label_Design::render_producer_markup($code, $design_settings, 'nler');
       }
       $panel .= '</div>';
       $lang_panels .= $panel;
     }
 
-    $standalone_css = class_exists('NutritionLabels_Design')
-      ? NutritionLabels_Design::build_remote_css($design_settings)
+    $standalone_css = class_exists('Wine_E_Label_Design')
+      ? Wine_E_Label_Design::build_remote_css($design_settings)
       : 'html,body{margin:0!important;padding:0!important;background:#f3f4f6!important;color:#111827!important;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-size:15px!important;line-height:1.45}.nler-page-shell{box-sizing:border-box!important;width:min(980px,calc(100vw - 32px))!important;max-width:none!important;margin:0 auto!important;padding:40px 16px 40px!important}.nler-lang-switch{display:flex!important;justify-content:center!important;align-items:center!important;gap:8px!important;flex-wrap:wrap!important;width:min(640px,100%)!important;margin:0 auto 12px auto!important}.nler-lang-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;border:1px solid #d7e0ea!important;border-radius:999px!important;background:#ffffff!important;color:#334155!important;padding:4px 10px!important;font-size:13px!important;font-weight:600!important;line-height:1.1!important;box-shadow:0 1px 2px rgba(15,23,42,.03)!important;cursor:pointer!important;-webkit-appearance:none!important;appearance:none!important}.nler-lang-button.is-active,.nler-lang-button[aria-current=\"true\"],.nler-lang-button[aria-pressed=\"true\"]{background:#eef5ff!important;border-color:#bfd3ea!important;color:#244267!important;box-shadow:0 0 0 3px rgba(36,66,103,.06)!important}.nler-panel{display:none!important}.nler-panel.is-active{display:block!important}.nler-header-block{width:min(640px,100%)!important;margin:0 auto 18px auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:12px!important;text-align:center!important}.nler-label-card{box-sizing:border-box!important;width:min(640px,100%)!important;max-width:none!important;margin:0 auto!important;padding:26px!important;background:#ffffff!important;border:1px solid #d1d5db!important;border-radius:16px!important;color:#111827!important}.nler-label-table{width:100%!important;border-collapse:collapse!important;background:#ffffff!important;border:1px solid #d1d5db!important;font-size:15px!important}.nler-label-table th,.nler-label-table td{border:1px solid #d1d5db!important;padding:10px 12px!important;vertical-align:top!important;color:#111827!important;font-size:15px!important;line-height:1.45!important}.nler-label-table thead th{text-align:left!important;background:#f3f4f6!important;font-weight:600!important}.nler-label-row{display:flex!important;justify-content:space-between!important;gap:16px!important}.nler-label-row span:last-child{text-align:right!important;white-space:nowrap!important;font-weight:500!important}.nler-label-trace td,.nler-label-pretable td,.nler-footnote{font-size:14px!important;color:#6b7280!important}.nler-ingredients,.nler-footnote{margin-top:12px!important;line-height:1.55!important}.nler-producer-card{box-sizing:border-box!important;width:min(640px,100%)!important;max-width:none!important;margin:14px auto 0 auto!important;padding:18px 26px!important;background:#ffffff!important;border:1px solid #d1d5db!important;border-radius:16px!important}@media (max-width:600px){.nler-page-shell{width:calc(100vw - 20px)!important;padding:24px 10px 28px!important}.nler-label-card{padding:16px!important}.nler-producer-card{padding:16px!important}.nler-label-row span:last-child{white-space:normal!important}}';
     $script = '(function(){var script=document.currentScript;var root=script&&script.closest?script.closest(".nler-remote"):null;if(!root){return;}var params=new URLSearchParams(window.location.search);var current=params.get("lang")||root.getAttribute("data-default-lang")||"de";var panels=root.querySelectorAll(".nler-panel");var buttons=root.querySelectorAll(".nler-lang-button");function apply(lang){var hasMatch=false;panels.forEach(function(p){var active=p.getAttribute("data-lang")===lang;p.classList.toggle("is-active",active);p.hidden=!active;p.setAttribute("aria-hidden",active?"false":"true");if(active){p.style.display="block";hasMatch=true;}else{p.style.display="none";}});buttons.forEach(function(b){var active=b.getAttribute("data-lang")===lang;b.classList.toggle("is-active",active);b.setAttribute("aria-pressed",active?"true":"false");b.setAttribute("aria-current",active?"true":"false");});if(!hasMatch&&lang!=="de"){apply("de");}}buttons.forEach(function(btn){btn.addEventListener("click",function(){var lang=btn.getAttribute("data-lang")||"de";var url=new URL(window.location.href);url.searchParams.set("lang",lang);window.history.replaceState({},"",url.toString());apply(lang);});});apply(current);})();';
 
@@ -1307,21 +1307,21 @@ class NutritionLabels_Admin_Extended
 
   public function render_settings_page()
   {
-    require_once NUTRITION_LABELS_PLUGIN_DIR . 'admin/wine-e-label-settings-page-simple.php';
+    require_once WINE_E_LABEL_PLUGIN_DIR . 'admin/wine-e-label-settings-page-simple.php';
   }
 
   public function render_design_page()
   {
-    require_once NUTRITION_LABELS_PLUGIN_DIR . 'admin/wine-e-label-design-page.php';
+    require_once WINE_E_LABEL_PLUGIN_DIR . 'admin/wine-e-label-design-page.php';
   }
 
   public function render_db_management_page()
   {
     // Ensure WordPress functions are available
     if (!function_exists('wp_create_nonce')) {
-      wp_die(__('WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren.', 'nutrition-labels'));
+      wp_die(__('WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren.', 'wine-e-label'));
     }
-    require_once NUTRITION_LABELS_PLUGIN_DIR . 'admin/wine-e-label-db-management.php';
+    require_once WINE_E_LABEL_PLUGIN_DIR . 'admin/wine-e-label-db-management.php';
   }
 
   public static function get_settings_nonce()
@@ -1333,34 +1333,34 @@ class NutritionLabels_Admin_Extended
   {
     check_ajax_referer('flush_rewrite_rules', '_wpnonce_flush');
     if (!current_user_can('manage_options')) {
-      wp_die(__('Nicht autorisiert', 'nutrition-labels'));
+      wp_die(__('Nicht autorisiert', 'wine-e-label'));
     }
 
     flush_rewrite_rules(false);
 
     wp_send_json(array(
       'success' => true,
-      'message' => __('Rewrite-Regeln wurden erfolgreich aktualisiert!', 'nutrition-labels')
+      'message' => __('Rewrite-Regeln wurden erfolgreich aktualisiert!', 'wine-e-label')
     ));
   }
 
   public static function handle_settings_submission()
   {
     if (!current_user_can('manage_options')) {
-      wp_die(__('Du hast keine Berechtigung, Einstellungen zu ändern.', 'nutrition-labels'));
+      wp_die(__('Du hast keine Berechtigung, Einstellungen zu ändern.', 'wine-e-label'));
     }
 
     check_admin_referer('update-options');
 
-    $posted_settings = isset($_POST['nutrition_labels']) && is_array($_POST['nutrition_labels'])
-      ? wp_unslash($_POST['nutrition_labels'])
+    $posted_settings = isset($_POST['wine_e_label_settings']) && is_array($_POST['wine_e_label_settings'])
+      ? wp_unslash($_POST['wine_e_label_settings'])
       : [];
 
     $rewrite_before = [
-      'nutrition_labels_base_url' => (string) get_option('nutrition_labels_base_url', ''),
-      'nutrition_labels_use_subdomain' => (string) get_option('nutrition_labels_use_subdomain', 'no'),
-      'nutrition_labels_subdomain' => (string) get_option('nutrition_labels_subdomain', ''),
-      'nutrition_labels_subdomain_scheme' => (string) get_option('nutrition_labels_subdomain_scheme', 'https'),
+      'wine_e_label_base_url' => (string) get_option('wine_e_label_base_url', ''),
+      'wine_e_label_use_subdomain' => (string) get_option('wine_e_label_use_subdomain', 'no'),
+      'wine_e_label_subdomain' => (string) get_option('wine_e_label_subdomain', ''),
+      'wine_e_label_subdomain_scheme' => (string) get_option('wine_e_label_subdomain_scheme', 'https'),
     ];
 
     if (isset($posted_settings['qr_size'])) {
@@ -1378,7 +1378,7 @@ class NutritionLabels_Admin_Extended
     }
 
     update_option(
-      'nutrition_labels_delete_data_on_uninstall',
+      'wine_e_label_delete_data_on_uninstall',
       isset($posted_settings['delete_data_on_uninstall']) ? 'yes' : 'no'
     );
 
@@ -1388,54 +1388,54 @@ class NutritionLabels_Admin_Extended
       if ($base !== '' && !preg_match('#^https?://#i', $base)) {
         $base = 'https://' . $base;
       }
-      update_option('nutrition_labels_base_url', untrailingslashit($base));
+      update_option('wine_e_label_base_url', untrailingslashit($base));
     }
 
     update_option(
-      'nutrition_labels_rest_enabled',
+      'wine_e_label_rest_enabled',
       isset($posted_settings['rest_enabled']) ? 'yes' : 'no'
     );
     if (array_key_exists('rest_base_url', $posted_settings)) {
-      update_option('nutrition_labels_rest_base_url', self::normalize_rest_base_url((string) $posted_settings['rest_base_url']));
+      update_option('wine_e_label_rest_base_url', self::normalize_rest_base_url((string) $posted_settings['rest_base_url']));
     }
     if (array_key_exists('rest_username', $posted_settings)) {
-      update_option('nutrition_labels_rest_username', sanitize_user((string) $posted_settings['rest_username'], true));
+      update_option('wine_e_label_rest_username', sanitize_user((string) $posted_settings['rest_username'], true));
     }
     if (array_key_exists('rest_app_password', $posted_settings)) {
       $new_password = self::sanitize_rest_app_password((string) $posted_settings['rest_app_password']);
       if ($new_password !== '') {
-        update_option('nutrition_labels_rest_app_password', $new_password);
+        update_option('wine_e_label_rest_app_password', $new_password);
       }
     }
 
     update_option(
-      'nutrition_labels_use_subdomain',
+      'wine_e_label_use_subdomain',
       isset($posted_settings['use_subdomain']) ? 'yes' : 'no'
     );
     if (array_key_exists('subdomain', $posted_settings)) {
       $raw = sanitize_text_field((string) $posted_settings['subdomain']);
       $raw = preg_replace('#^https?://|/.*$#', '', $raw);
-      update_option('nutrition_labels_subdomain', strtolower($raw));
+      update_option('wine_e_label_subdomain', strtolower($raw));
     }
     $scheme = sanitize_text_field((string) ($posted_settings['subdomain_scheme'] ?? 'https'));
-    update_option('nutrition_labels_subdomain_scheme', in_array($scheme, ['https', 'http'], true) ? $scheme : 'https');
+    update_option('wine_e_label_subdomain_scheme', in_array($scheme, ['https', 'http'], true) ? $scheme : 'https');
 
     if (array_key_exists('admin_language', $posted_settings)) {
       $admin_lang = sanitize_text_field((string) $posted_settings['admin_language']);
-      update_option('nutrition_labels_admin_language', in_array($admin_lang, ['auto', 'de', 'en', 'fr', 'it'], true) ? $admin_lang : 'auto');
+      update_option('wine_e_label_admin_language', in_array($admin_lang, ['auto', 'de', 'en', 'fr', 'it'], true) ? $admin_lang : 'auto');
     }
 
-    echo '<div class="notice notice-success"><p>' . esc_html__('Einstellungen gespeichert.', 'nutrition-labels') . '</p></div>';
+    echo '<div class="notice notice-success"><p>' . esc_html__('Einstellungen gespeichert.', 'wine-e-label') . '</p></div>';
 
     $rewrite_after = [
-      'nutrition_labels_base_url' => (string) get_option('nutrition_labels_base_url', ''),
-      'nutrition_labels_use_subdomain' => (string) get_option('nutrition_labels_use_subdomain', 'no'),
-      'nutrition_labels_subdomain' => (string) get_option('nutrition_labels_subdomain', ''),
-      'nutrition_labels_subdomain_scheme' => (string) get_option('nutrition_labels_subdomain_scheme', 'https'),
+      'wine_e_label_base_url' => (string) get_option('wine_e_label_base_url', ''),
+      'wine_e_label_use_subdomain' => (string) get_option('wine_e_label_use_subdomain', 'no'),
+      'wine_e_label_subdomain' => (string) get_option('wine_e_label_subdomain', ''),
+      'wine_e_label_subdomain_scheme' => (string) get_option('wine_e_label_subdomain_scheme', 'https'),
     ];
 
     if ($rewrite_before !== $rewrite_after) {
-      NutritionLabels_URL::add_rewrite_rules();
+      Wine_E_Label_URL::add_rewrite_rules();
       flush_rewrite_rules(false);
     }
   }
@@ -1443,13 +1443,13 @@ class NutritionLabels_Admin_Extended
   public static function handle_design_submission()
   {
     if (!current_user_can('manage_options')) {
-      wp_die(__('Du hast keine Berechtigung, Einstellungen zu ändern.', 'nutrition-labels'));
+      wp_die(__('Du hast keine Berechtigung, Einstellungen zu ändern.', 'wine-e-label'));
     }
 
-    check_admin_referer('nutrition_labels_save_design');
+    check_admin_referer('wine_e_label_save_design');
 
-    $settings = NutritionLabels_Design::sanitize_settings($_POST);
-    update_option(NutritionLabels_Design::OPTION_NAME, $settings);
+    $settings = Wine_E_Label_Design::sanitize_settings($_POST);
+    update_option(Wine_E_Label_Design::OPTION_NAME, $settings);
 
     $sync_summary = [
       'attempted' => 0,
@@ -1457,19 +1457,19 @@ class NutritionLabels_Admin_Extended
       'failed' => 0,
     ];
 
-    if (NutritionLabels_URL::use_external_rest_domain()) {
+    if (Wine_E_Label_URL::use_external_rest_domain()) {
       $admin = new self(false);
       $sync_summary = $admin->sync_remote_design_to_receiver();
     }
 
     $redirect_args = array(
       'page' => WINE_E_LABEL_ADMIN_PAGE_DESIGN,
-      'nutrition_labels_design_notice' => 'saved',
+      'wine_e_label_design_notice' => 'saved',
     );
 
-    if (NutritionLabels_URL::use_external_rest_domain()) {
-      $redirect_args['nutrition_labels_design_synced'] = (string) $sync_summary['synced'];
-      $redirect_args['nutrition_labels_design_failed'] = (string) $sync_summary['failed'];
+    if (Wine_E_Label_URL::use_external_rest_domain()) {
+      $redirect_args['wine_e_label_design_synced'] = (string) $sync_summary['synced'];
+      $redirect_args['wine_e_label_design_failed'] = (string) $sync_summary['failed'];
     }
 
     wp_safe_redirect(add_query_arg($redirect_args, admin_url('admin.php')));
@@ -1484,7 +1484,7 @@ class NutritionLabels_Admin_Extended
       'failed' => 0,
     ];
 
-    if (!NutritionLabels_URL::use_external_rest_domain()) {
+    if (!Wine_E_Label_URL::use_external_rest_domain()) {
       return $summary;
     }
 
@@ -1502,7 +1502,7 @@ class NutritionLabels_Admin_Extended
       }
 
       $seen_products[$product_id] = true;
-      $data = NutritionLabels_Importer::get_label_data($product_id);
+      $data = Wine_E_Label_Importer::get_label_data($product_id);
 
       if (trim((string) ($data['built_at'] ?? '')) === '' || trim((string) ($data['slug'] ?? '')) === '') {
         continue;
@@ -1518,7 +1518,7 @@ class NutritionLabels_Admin_Extended
 
       $data['remote_page_id'] = (string) ($remote_result['id'] ?? '');
       $data['remote_page_url'] = (string) ($remote_result['url'] ?? '');
-      NutritionLabels_Importer::save_label_data($product_id, $data);
+      Wine_E_Label_Importer::save_label_data($product_id, $data);
       $summary['synced']++;
     }
 

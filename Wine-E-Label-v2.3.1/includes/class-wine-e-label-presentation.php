@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class NutritionLabels_Presentation
+final class Wine_E_Label_Presentation
 {
     private static array $defaults = [
         'custom_image_url' => '',
@@ -104,24 +104,24 @@ final class NutritionLabels_Presentation
     {
         return [
             'de' => [
-                'region' => __('Anbaugebiet', 'nutrition-labels'),
-                'country' => __('Land', 'nutrition-labels'),
-                'address' => __('Adresse des Weinguts', 'nutrition-labels'),
+                'region' => __('Anbaugebiet', 'wine-e-label'),
+                'country' => __('Land', 'wine-e-label'),
+                'address' => __('Adresse des Weinguts', 'wine-e-label'),
             ],
             'en' => [
-                'region' => __('Growing region', 'nutrition-labels'),
-                'country' => __('Country', 'nutrition-labels'),
-                'address' => __('Winery address', 'nutrition-labels'),
+                'region' => __('Growing region', 'wine-e-label'),
+                'country' => __('Country', 'wine-e-label'),
+                'address' => __('Winery address', 'wine-e-label'),
             ],
             'it' => [
-                'region' => __('Zona di produzione', 'nutrition-labels'),
-                'country' => __('Paese', 'nutrition-labels'),
-                'address' => __('Indirizzo della cantina', 'nutrition-labels'),
+                'region' => __('Zona di produzione', 'wine-e-label'),
+                'country' => __('Paese', 'wine-e-label'),
+                'address' => __('Indirizzo della cantina', 'wine-e-label'),
             ],
             'fr' => [
-                'region' => __('Region viticole', 'nutrition-labels'),
-                'country' => __('Pays', 'nutrition-labels'),
-                'address' => __('Adresse du domaine', 'nutrition-labels'),
+                'region' => __('Region viticole', 'wine-e-label'),
+                'country' => __('Pays', 'wine-e-label'),
+                'address' => __('Adresse du domaine', 'wine-e-label'),
             ],
         ];
     }

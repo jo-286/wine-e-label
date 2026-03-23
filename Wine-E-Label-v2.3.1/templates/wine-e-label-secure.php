@@ -243,19 +243,19 @@ $nl_translate_html = static function (string $html, string $lang_code) use ($nl_
     return strtr($html, $map);
 };
 
-$nl_design_css = class_exists('NutritionLabels_Design') ? NutritionLabels_Design::build_remote_css() : '';
+$nl_design_css = class_exists('Wine_E_Label_Design') ? Wine_E_Label_Design::build_remote_css() : '';
 $nl_product_id = (int) ($nutrition_data['product_id'] ?? get_the_ID());
-$nl_design_settings = class_exists('NutritionLabels_Design') ? NutritionLabels_Design::get_settings() : [];
-$nl_presentation = class_exists('NutritionLabels_Presentation') ? NutritionLabels_Presentation::resolve($nl_product_id, (array) ($nutrition_data['display_config'] ?? [])) : [];
-$nl_header_markup = class_exists('NutritionLabels_Design') ? NutritionLabels_Design::render_product_header_markup($nl_presentation, $nl_design_settings, 'nler') : '';
+$nl_design_settings = class_exists('Wine_E_Label_Design') ? Wine_E_Label_Design::get_settings() : [];
+$nl_presentation = class_exists('Wine_E_Label_Presentation') ? Wine_E_Label_Presentation::resolve($nl_product_id, (array) ($nutrition_data['display_config'] ?? [])) : [];
+$nl_header_markup = class_exists('Wine_E_Label_Design') ? Wine_E_Label_Design::render_product_header_markup($nl_presentation, $nl_design_settings, 'nler') : '';
 $nl_default_lang = 'de';
 $nl_lang_buttons = '';
 $nl_lang_panels = '';
 
 foreach ($nl_supported_languages as $code => $label) {
     $panel_text = $nl_texts[$code] ?? $nl_texts['de'];
-    if (!empty($nutrition_data['manual_config']) && class_exists('NutritionLabels_Manual_Builder')) {
-        [$panel_ingredient_list, $panel_ingredient_footnote] = NutritionLabels_Manual_Builder::build_ingredients_html((array) $nutrition_data['manual_config'], $code);
+    if (!empty($nutrition_data['manual_config']) && class_exists('Wine_E_Label_Manual_Builder')) {
+        [$panel_ingredient_list, $panel_ingredient_footnote] = Wine_E_Label_Manual_Builder::build_ingredients_html((array) $nutrition_data['manual_config'], $code);
     } else {
         $panel_ingredient_list = $nl_translate_html((string) ($nutrition_data['ingredient_list'] ?? ''), $code);
         $panel_ingredient_footnote = $nl_translate_value((string) ($nutrition_data['ingredient_footnote'] ?? ''), $code);
@@ -306,8 +306,8 @@ foreach ($nl_supported_languages as $code => $label) {
 
     $nl_lang_panels .= '</div>';
 
-    if (class_exists('NutritionLabels_Design')) {
-        $nl_lang_panels .= NutritionLabels_Design::render_producer_markup($code, $nl_design_settings, 'nler');
+    if (class_exists('Wine_E_Label_Design')) {
+        $nl_lang_panels .= Wine_E_Label_Design::render_producer_markup($code, $nl_design_settings, 'nler');
     }
 
     $nl_lang_panels .= '</div>';

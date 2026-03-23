@@ -1,31 +1,31 @@
 jQuery(function ($) {
-    const cfg = window.nutritionLabels || {};
-    const fileInput = $('#nutrition_import_file');
-    const fileName = $('#nutrition_import_file_name');
-    const dropzone = $('#nutrition_labels_dropzone');
-    const wineNr = $('#nutrition_labels_wine_nr');
-    const slug = $('#nutrition_labels_slug');
-    const title = $('#nutrition_labels_title');
-    const energy = $('#nutrition_labels_energy');
-    const carbs = $('#nutrition_labels_carbs');
-    const sugar = $('#nutrition_labels_sugar');
-    const minor = $('#nutrition_labels_minor');
-    const minorMode = $('#nutrition_labels_minor_mode');
-    const fat = $('#nutrition_labels_fat');
-    const saturates = $('#nutrition_labels_saturates');
-    const protein = $('#nutrition_labels_protein');
-    const salt = $('#nutrition_labels_salt');
-    const saltNatural = $('#nutrition_labels_salt_natural');
-    const ingredients = $('#nutrition_labels_ingredients_html');
-    const footnote = $('#nutrition_labels_footnote');
-    const pretable = $('#nutrition_labels_pretable_notice');
-    const suggestionBtn = $('#nutrition_labels_apply_suggestion');
-    const preview = $('#nutrition_labels_url_preview');
-    const importButton = $('#nutrition_labels_confirm_import');
-    const createButton = $('#nutrition_labels_create_label');
-    const deleteImportButton = $('#nutrition_labels_delete_import');
-    const deleteGeneratedButton = $('#nutrition_labels_delete_generated');
-    const manualCreateButton = $('#nutrition_labels_manual_create');
+    const cfg = window.wineELabelAdmin || {};
+    const fileInput = $('#wine_e_label_import_file');
+    const fileName = $('#wine_e_label_import_file_name');
+    const dropzone = $('#wine_e_label_dropzone');
+    const wineNr = $('#wine_e_label_wine_nr');
+    const slug = $('#wine_e_label_slug');
+    const title = $('#wine_e_label_title');
+    const energy = $('#wine_e_label_energy');
+    const carbs = $('#wine_e_label_carbs');
+    const sugar = $('#wine_e_label_sugar');
+    const minor = $('#wine_e_label_minor');
+    const minorMode = $('#wine_e_label_minor_mode');
+    const fat = $('#wine_e_label_fat');
+    const saturates = $('#wine_e_label_saturates');
+    const protein = $('#wine_e_label_protein');
+    const salt = $('#wine_e_label_salt');
+    const saltNatural = $('#wine_e_label_salt_natural');
+    const ingredients = $('#wine_e_label_ingredients_html');
+    const footnote = $('#wine_e_label_footnote');
+    const pretable = $('#wine_e_label_pretable_notice');
+    const suggestionBtn = $('#wine_e_label_apply_suggestion');
+    const preview = $('#wine_e_label_url_preview');
+    const importButton = $('#wine_e_label_confirm_import');
+    const createButton = $('#wine_e_label_create_label');
+    const deleteImportButton = $('#wine_e_label_delete_import');
+    const deleteGeneratedButton = $('#wine_e_label_delete_generated');
+    const manualCreateButton = $('#wine_e_label_manual_create');
     const manualDeleteGeneratedButton = $('#nlm_delete_generated');
     const footerWineNr = $('#nlm_footer_wine_nr');
     const footerSlug = $('#nlm_footer_slug');
@@ -665,21 +665,21 @@ jQuery(function ($) {
         config.nutrition.alkohol_gl = $('#nlm_alkohol_gl').val() || '';
         config.nutrition.restzucker_gl = $('#nlm_restzucker').val() || '';
         config.nutrition.gesamtsaeure_gl = $('#nlm_gesamtsaeure').val() || '';
-        config.nutrition.glycerin_mode = $('input[name="nutrition_manual[nutrition][glycerin_mode]"]:checked').val() || 'standard';
+        config.nutrition.glycerin_mode = $('input[name="wine_e_label_manual[nutrition][glycerin_mode]"]:checked').val() || 'standard';
         config.nutrition.glycerin_manual = $('#nlm_glycerin_manual').val() || '';
-        config.nutrition.restwerte_mode = $('input[name="nutrition_manual[nutrition][restwerte_mode]"]:checked').val() || 'text';
+        config.nutrition.restwerte_mode = $('input[name="wine_e_label_manual[nutrition][restwerte_mode]"]:checked').val() || 'text';
         config.nutrition.fat = $('#nlm_fat').val() || '';
         config.nutrition.saturates = $('#nlm_saturates').val() || '';
         config.nutrition.protein = $('#nlm_protein').val() || '';
         config.nutrition.salt = $('#nlm_salt').val() || '';
-        config.nutrition.salt_natural = $('input[name="nutrition_manual[nutrition][salt_natural]"]').is(':checked') ? '1' : '0';
+        config.nutrition.salt_natural = $('input[name="wine_e_label_manual[nutrition][salt_natural]"]').is(':checked') ? '1' : '0';
 
-        $('[name^="nutrition_manual[groups]"]').filter(':checkbox,:radio').each(function () {
-            const match = this.name.match(/^nutrition_manual\[groups\]\[([^\]]+)\](?:\[(enabled|mode|items)\](?:\[([^\]]+)\])?(?:\[([^\]]+)\])?)?$/);
+        $('[name^="wine_e_label_manual[groups]"]').filter(':checkbox,:radio').each(function () {
+            const match = this.name.match(/^wine_e_label_manual\[groups\]\[([^\]]+)\](?:\[(enabled|mode|items)\](?:\[([^\]]+)\])?(?:\[([^\]]+)\])?)?$/);
             if (!match) return;
         });
 
-        $('[name^="nutrition_manual[groups]"]').each(function () {
+        $('[name^="wine_e_label_manual[groups]"]').each(function () {
             const name = this.name;
             const value = (this.type === 'checkbox') ? ($(this).is(':checked') ? ($(this).val() || '1') : null) : (this.type === 'radio' ? ($(this).is(':checked') ? ($(this).val() || '1') : null) : ($(this).val() || ''));
             if (value === null) return;
@@ -780,7 +780,7 @@ jQuery(function ($) {
     function calculateManualValues() {
         const alcoholGl = parseNum($('#nlm_alkohol_gl').val());
         const restzucker = parseNum($('#nlm_restzucker').val());
-        const mode = $('input[name="nutrition_manual[nutrition][glycerin_mode]"]:checked').val() || 'standard';
+        const mode = $('input[name="wine_e_label_manual[nutrition][glycerin_mode]"]:checked').val() || 'standard';
         const glycerin = mode === 'edelsuess' ? 25 : (mode === 'manual' ? parseNum($('#nlm_glycerin_manual').val()) : alcoholGl * 0.1);
         const alcoholVol = alcoholGl > 0 ? alcoholGl / 7.89 : 0;
         const sugar100 = restzucker / 10;
@@ -803,8 +803,8 @@ jQuery(function ($) {
         saturates.val($('#nlm_saturates').val() || '');
         protein.val($('#nlm_protein').val() || '');
         salt.val($('#nlm_salt').val() || '');
-        saltNatural.val($('input[name="nutrition_manual[nutrition][salt_natural]"]').is(':checked') ? '1' : '0');
-        const restMode = $('input[name="nutrition_manual[nutrition][restwerte_mode]"]:checked').val() || 'text';
+        saltNatural.val($('input[name="wine_e_label_manual[nutrition][salt_natural]"]').is(':checked') ? '1' : '0');
+        const restMode = $('input[name="wine_e_label_manual[nutrition][restwerte_mode]"]:checked').val() || 'text';
         minorMode.val(restMode);
         minor.val(restMode === 'text' ? 'Enthält geringfügige Mengen von: Fett, gesättigten Fettsäuren, Eiweiß und Salz' : '');
 
@@ -864,7 +864,7 @@ jQuery(function ($) {
     }
 
     function ensureOtherCustomItemRow() {
-        const toggle = $('input[name="nutrition_manual[groups][other][enabled]"]');
+        const toggle = $('input[name="wine_e_label_manual[groups][other][enabled]"]');
         const list = $('#nlm_other_custom_items');
         if (!toggle.length || !list.length) return;
         if (!toggle.is(':checked')) {
@@ -882,10 +882,10 @@ jQuery(function ($) {
         const label = $('<div/>').text(getCustomItemDisplay(item)).html();
         return '' +
             '<div class="nlm-custom-item-row" data-index="' + index + '">' +
-                '<input type="hidden" name="nutrition_manual[groups][other][custom_items][' + index + '][selected]" value="1">' +
+                '<input type="hidden" name="wine_e_label_manual[groups][other][custom_items][' + index + '][selected]" value="1">' +
                 '<div class="nlm-field">' +
                     '<label>' + (cfg.i18n.customNameLabel || 'Stoff oder E-Nr.') + '</label>' +
-                    '<input type="text" class="nlm-custom-label" name="nutrition_manual[groups][other][custom_items][' + index + '][label]" value="' + label + '">' +
+                    '<input type="text" class="nlm-custom-label" name="wine_e_label_manual[groups][other][custom_items][' + index + '][label]" value="' + label + '">' +
                 '</div>' +
                 '<div class="nlm-field">' +
                     '<button type="button" class="button-link button-link-delete nlm-remove-custom-item">' + (cfg.i18n.removeLabel || 'Entfernen') + '</button>' +
@@ -899,7 +899,7 @@ jQuery(function ($) {
     }
 
     function updateAdditionalPreviewRows() {
-        const restMode = $('input[name="nutrition_manual[nutrition][restwerte_mode]"]:checked').val() || 'text';
+        const restMode = $('input[name="wine_e_label_manual[nutrition][restwerte_mode]"]:checked').val() || 'text';
         const t = (cfg.previewTexts && cfg.previewTexts[currentPreviewLang]) ? cfg.previewTexts[currentPreviewLang] : cfg.previewTexts.de;
         $('#nlm_preview_label_fat').text(t.fat);
         $('#nlm_preview_label_saturates').text(t.saturates);
@@ -912,7 +912,7 @@ jQuery(function ($) {
             saturates: $.trim($('#nlm_saturates').val() || ''),
             protein: $.trim($('#nlm_protein').val() || ''),
             salt: $.trim($('#nlm_salt').val() || ''),
-            saltNatural: $('input[name="nutrition_manual[nutrition][salt_natural]"]').is(':checked')
+            saltNatural: $('input[name="wine_e_label_manual[nutrition][salt_natural]"]').is(':checked')
         };
 
         $('#nlm_preview_value_fat').text(getPreviewValueWithUnit(values.fat));
@@ -1032,21 +1032,21 @@ jQuery(function ($) {
         $('#nlm_saturates').val(nutrition.saturates || '');
         $('#nlm_protein').val(nutrition.protein || '');
         $('#nlm_salt').val(nutrition.salt || '');
-        $('input[name="nutrition_manual[nutrition][glycerin_mode]"][value="' + (nutrition.glycerin_mode || 'standard') + '"]').prop('checked', true);
-        $('input[name="nutrition_manual[nutrition][restwerte_mode]"][value="' + (nutrition.restwerte_mode || 'text') + '"]').prop('checked', true);
-        $('input[name="nutrition_manual[nutrition][salt_natural]"]').prop('checked', (nutrition.salt_natural || '0') === '1');
+        $('input[name="wine_e_label_manual[nutrition][glycerin_mode]"][value="' + (nutrition.glycerin_mode || 'standard') + '"]').prop('checked', true);
+        $('input[name="wine_e_label_manual[nutrition][restwerte_mode]"][value="' + (nutrition.restwerte_mode || 'text') + '"]').prop('checked', true);
+        $('input[name="wine_e_label_manual[nutrition][salt_natural]"]').prop('checked', (nutrition.salt_natural || '0') === '1');
 
-        $('[name^="nutrition_manual[groups]"]').filter(':checkbox').prop('checked', false);
+        $('[name^="wine_e_label_manual[groups]"]').filter(':checkbox').prop('checked', false);
         $('.nlm-enumber-toggle').prop('checked', false);
         $('#nlm_other_custom_items').empty();
         $.each(config.groups || {}, function (groupKey, group) {
-            $('input[name="nutrition_manual[groups][' + groupKey + '][enabled]"]').prop('checked', (group.enabled || '0') === '1');
-            if (group.mode) $('input[name="nutrition_manual[groups][' + groupKey + '][mode]"][value="' + group.mode + '"]').prop('checked', true);
+            $('input[name="wine_e_label_manual[groups][' + groupKey + '][enabled]"]').prop('checked', (group.enabled || '0') === '1');
+            if (group.mode) $('input[name="wine_e_label_manual[groups][' + groupKey + '][mode]"][value="' + group.mode + '"]').prop('checked', true);
             $.each(group.items || {}, function (itemKey, item) {
                 const isSelected = (item.selected || '0') === '1';
-                $('input[name="nutrition_manual[groups][' + groupKey + '][items][' + itemKey + '][selected]"]').prop('checked', isSelected);
-                $('input[name="nutrition_manual[groups][' + groupKey + '][items][' + itemKey + '][bio]"]').prop('checked', (item.bio || '0') === '1');
-                $('input[name="nutrition_manual[groups][' + groupKey + '][items][' + itemKey + '][enumber]"]').prop('checked', (item.enumber || '0') === '1');
+                $('input[name="wine_e_label_manual[groups][' + groupKey + '][items][' + itemKey + '][selected]"]').prop('checked', isSelected);
+                $('input[name="wine_e_label_manual[groups][' + groupKey + '][items][' + itemKey + '][bio]"]').prop('checked', (item.bio || '0') === '1');
+                $('input[name="wine_e_label_manual[groups][' + groupKey + '][items][' + itemKey + '][enumber]"]').prop('checked', (item.enumber || '0') === '1');
             });
             if (groupKey === 'other') {
                 $.each(group.custom_items || [], function (index, item) {
@@ -1072,7 +1072,7 @@ jQuery(function ($) {
             pretable.val(labelData.pretable_notice || pretable.val() || '');
         }
 
-        $('#nlm_analysis_fields').toggleClass('nlm-hidden', $('input[name="nutrition_manual[nutrition][restwerte_mode]"]:checked').val() !== 'list');
+        $('#nlm_analysis_fields').toggleClass('nlm-hidden', $('input[name="wine_e_label_manual[nutrition][restwerte_mode]"]:checked').val() !== 'list');
         updateGroupBodies();
         syncAll();
     }
@@ -1092,7 +1092,7 @@ jQuery(function ($) {
     }
 
     function appendManualFields(formData) {
-        $('[name^="nutrition_manual["]').each(function () {
+        $('[name^="wine_e_label_manual["]').each(function () {
             if ((this.type === 'checkbox' || this.type === 'radio')) {
                 if (this.checked) formData.append(this.name, $(this).val() || '1');
             } else {
@@ -1103,7 +1103,7 @@ jQuery(function ($) {
     }
 
     function appendDisplayFields(formData) {
-        $('[name^="nutrition_labels_display["]').each(function () {
+        $('[name^="wine_e_label_display["]').each(function () {
             formData.append(this.name, $(this).val() || '');
         });
     }
@@ -1134,7 +1134,7 @@ jQuery(function ($) {
         if (data.url) { const finalUrl = withLangUrl(data.url, currentPreviewLang); setManualLink(finalUrl, finalUrl, true); }
         setLinkNotice(cfg.i18n.inlinePageSuccess || cfg.i18n.createSuccess, 'ok');
         setStatusRow(cfg.i18n.pageTitle, cfg.i18n.createSuccess, 'nl-status-ok', data.url ? '<a href="' + data.url + '" target="_blank">' + (cfg.i18n.openLink || 'Link öffnen') + '</a>' : '');
-        const qrDownloadHtml = '<button type="button" class="button-link nutrition-download-qr" data-product-id="' + cfg.productId + '" data-lang="' + currentPreviewLang + '">' + (cfg.i18n.downloadLabel || 'Download') + '</button>';
+        const qrDownloadHtml = '<button type="button" class="button-link wine-e-label-download-qr" data-product-id="' + cfg.productId + '" data-lang="' + currentPreviewLang + '">' + (cfg.i18n.downloadLabel || 'Download') + '</button>';
         const sidebarQrHtml = qrDownloadHtml + ((data.qr_preview || '') ? '<div class="nl-inline-preview"><img src="' + data.qr_preview + '" alt="QR Code" class="nl-status-qr-image"></div>' : '');
         setStatusRow(cfg.i18n.qrTitle, cfg.i18n.qrSuccess, 'nl-status-ok', qrDownloadHtml);
         setStatusRowInBox('.nl-sidebar-box .nl-status', cfg.i18n.qrTitle, cfg.i18n.qrSuccess, 'nl-status-ok', sidebarQrHtml);
@@ -1180,7 +1180,7 @@ jQuery(function ($) {
     function deleteGeneratedRequest(button) {
         button.prop('disabled', true).text(cfg.i18n.deleteGeneratedBusy || cfg.i18n.deleteGeneratedButton);
         $.post(cfg.ajaxUrl, {
-            action: 'nutrition_delete_generated',
+            action: 'wine_e_label_delete_generated',
             nonce: cfg.deleteGeneratedNonce,
             product_id: cfg.productId
         }).done(function (response) {
@@ -1242,19 +1242,19 @@ jQuery(function ($) {
         $(this).closest('.nlm-group-block').find('.nlm-group-body').toggleClass('nlm-hidden', !this.checked);
         syncAll();
     });
-    $(document).on('change', 'input[name="nutrition_manual[nutrition][restwerte_mode]"]', function () {
+    $(document).on('change', 'input[name="wine_e_label_manual[nutrition][restwerte_mode]"]', function () {
         $('#nlm_analysis_fields').toggleClass('nlm-hidden', $(this).val() !== 'list');
         updateAdditionalPreviewRows();
         syncAll();
     });
     $(document).on('change', '#nlm_kategorie', syncAll);
-    $(document).on('change', '.nlm-item-selected,.nlm-enumber-toggle,input[name="nutrition_manual[nutrition][glycerin_mode]"],input[name="nutrition_manual[nutrition][salt_natural]"],input[name^="nutrition_manual[groups]"]', syncAll);
+    $(document).on('change', '.nlm-item-selected,.nlm-enumber-toggle,input[name="wine_e_label_manual[nutrition][glycerin_mode]"],input[name="wine_e_label_manual[nutrition][salt_natural]"],input[name^="wine_e_label_manual[groups]"]', syncAll);
     $(document).on('input', '#nlm_bezeichnung,#nlm_wein_nr,#nlm_ap_nr,#nlm_alkohol_gl,#nlm_restzucker,#nlm_gesamtsaeure,#nlm_glycerin_manual,#nlm_fat,#nlm_saturates,#nlm_protein,#nlm_salt', debouncedSync);
     $(document).on('input', '.nlm-custom-label', debounce(syncCustomItemInputState, 180));
     $(document).on('change', '.nlm-custom-label', syncAll);
     $(document).on('click', '.nlm-add-custom-item', function (e) {
         e.preventDefault();
-        $('input[name="nutrition_manual[groups][other][enabled]"]').prop('checked', true);
+        $('input[name="wine_e_label_manual[groups][other][enabled]"]').prop('checked', true);
         const index = getNextCustomItemIndex();
         $('#nlm_other_custom_items').append(buildCustomItemRow(index, { label: '' }));
         updateGroupBodies();
@@ -1330,7 +1330,7 @@ jQuery(function ($) {
             return;
         }
         const fd = new FormData();
-        fd.append('action', 'nutrition_import_confirm');
+        fd.append('action', 'wine_e_label_import_confirm');
         fd.append('nonce', cfg.importNonce);
         fd.append('product_id', cfg.productId);
         fd.append('import_file', fileInput[0].files[0]);
@@ -1395,7 +1395,7 @@ jQuery(function ($) {
         if (fileInput.length) fileInput.val('');
         fileName.text(cfg.i18n.noFileChosen);
         const fd = new FormData();
-        fd.append('action', 'nutrition_import_delete');
+        fd.append('action', 'wine_e_label_import_delete');
         fd.append('nonce', cfg.deleteImportNonce);
         fd.append('product_id', cfg.productId);
         deleteImportButton.prop('disabled', true).text(cfg.i18n.deleteImportBusy || cfg.i18n.deleteImportButton);
@@ -1428,7 +1428,7 @@ jQuery(function ($) {
     });
 
     // Download QR
-    $(document).on('click', '.nutrition-download-qr', function (e) {
+    $(document).on('click', '.wine-e-label-download-qr', function (e) {
         e.preventDefault();
         const button = $(this);
         const productId = button.data('product-id');
@@ -1438,7 +1438,7 @@ jQuery(function ($) {
         $.ajax({
             url: cfg.ajaxUrl,
             type: 'POST',
-            data: { action: 'nutrition_qr_download', product_id: productId, nonce: cfg.nonce, lang_code: button.data('lang') || currentPreviewLang },
+            data: { action: 'wine_e_label_qr_download', product_id: productId, nonce: cfg.nonce, lang_code: button.data('lang') || currentPreviewLang },
             success: function (r) {
                 if (r.success) {
                     const link = document.createElement('a');
@@ -1467,7 +1467,7 @@ jQuery(function ($) {
             return;
         }
         const fd = new FormData();
-        fd.append('action', 'nutrition_create_label');
+        fd.append('action', 'wine_e_label_create_label');
         fd.append('nonce', cfg.createNonce);
         fd.append('product_id', cfg.productId);
         fd.append('slug', s);
@@ -1489,7 +1489,7 @@ jQuery(function ($) {
             return;
         }
         const fd = new FormData();
-        fd.append('action', 'nutrition_create_label');
+        fd.append('action', 'wine_e_label_create_label');
         fd.append('nonce', cfg.createNonce);
         fd.append('product_id', cfg.productId);
         fd.append('slug', s);
@@ -1519,7 +1519,7 @@ jQuery(function ($) {
         if (!sourceId) return;
         copySourceButton.prop('disabled', true).text('Lade …');
         $.post(cfg.ajaxUrl, {
-            action: 'nutrition_load_source_product',
+            action: 'wine_e_label_load_source_product',
             nonce: cfg.loadSourceNonce,
             product_id: sourceId
         }).done(function (response) {
@@ -1569,7 +1569,7 @@ jQuery(function ($) {
         e.preventDefault();
         resetAllButton.prop('disabled', true).text(cfg.i18n.resetAll);
         $.post(cfg.ajaxUrl, {
-            action: 'nutrition_reset_all',
+            action: 'wine_e_label_reset_all',
             nonce: cfg.resetAllNonce,
             product_id: cfg.productId
         }).done(function (response) {

@@ -259,7 +259,7 @@ class NutritionLabelIngredientList implements \JsonSerializable
   public static function getLabel(string $group, string $key): string
   {
     $msgid = self::$labels[$group][$key] ?? $key;
-    return __($msgid, 'nutrition-labels');
+    return __($msgid, 'wine-e-label');
   }
 
   /**
@@ -331,7 +331,7 @@ class NutritionLabelIngredientList implements \JsonSerializable
       if (empty($items)) continue;
 
       $headingMsgid = self::$groupHeadings[$group] ?? '';
-      $heading = $headingMsgid !== '' ? __($headingMsgid, 'nutrition-labels') : '';
+      $heading = $headingMsgid !== '' ? __($headingMsgid, 'wine-e-label') : '';
       $segments[] = $heading !== ''
         ? $heading . ': ' . implode(', ', $items)
         : implode(', ', $items);
@@ -381,14 +381,14 @@ class NutritionLabelIngredientList implements \JsonSerializable
       if (empty($items)) continue;
 
       $headingMsgid = self::$groupHeadings[$group] ?? '';
-      $heading      = $headingMsgid !== '' ? esc_html(__($headingMsgid, 'nutrition-labels')) : '';
+      $heading      = $headingMsgid !== '' ? esc_html(__($headingMsgid, 'wine-e-label')) : '';
       $segments[]   = $heading !== ''
         ? $heading . ': ' . implode(', ', $items)
         : implode(', ', $items);
     }
 
     $footnote = $has_organic
-      ? esc_html__('* from organic farming', 'nutrition-labels')
+      ? esc_html__('* from organic farming', 'wine-e-label')
       : '';
 
     return ['html' => implode(', ', $segments), 'footnote' => $footnote];

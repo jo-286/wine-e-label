@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-class NutritionLabels_DB_Extended
+class Wine_E_Label_DB_Extended
 {
 
   public $wpdb;
@@ -32,7 +32,7 @@ class NutritionLabels_DB_Extended
   {
     global $wpdb;
     $this->wpdb = $wpdb;
-    $this->table_name = $wpdb->prefix . 'nutrition_short_urls';
+    $this->table_name = $wpdb->prefix . 'wine_e_label_short_urls';
   }
 
   /* -------------------------------------------------------------------------
@@ -129,7 +129,7 @@ class NutritionLabels_DB_Extended
       $this->table_name,
       array(
         'product_id' => (int) $product_id,
-        'url_prefix' => NUTRITION_LABELS_URL_PREFIX,
+        'url_prefix' => WINE_E_LABEL_URL_PREFIX,
         'short_code' => $shortcode,
         'created_at' => current_time('mysql'),
         'updated_at' => current_time('mysql'),
@@ -142,7 +142,7 @@ class NutritionLabels_DB_Extended
      * NUTRITION DATA
      * ---------------------------------------------------------------------- */
 
-  public function get_nutrition_by_product_id($product_id)
+  public function get_label_data_by_product_id($product_id)
   {
     if (!is_numeric($product_id) || $product_id <= 0) {
       return false;
@@ -156,7 +156,7 @@ class NutritionLabels_DB_Extended
     );
   }
 
-  public function save_nutrition_data($product_id, $data)
+  public function save_label_data($product_id, $data)
   {
     if (!is_numeric($product_id) || $product_id <= 0) {
       return false;
@@ -203,14 +203,14 @@ class NutritionLabels_DB_Extended
     }
 
     if ($result !== false) {
-      do_action('nutrition_labels_saved', $product_id, $data);
+      do_action('wine_e_label_saved', $product_id, $data);
     }
 
     return $result;
   }
 
 
-  public function delete_nutrition_data($product_id)
+  public function delete_label_data($product_id)
   {
     if (!is_numeric($product_id) || $product_id <= 0) {
       return false;
@@ -223,7 +223,7 @@ class NutritionLabels_DB_Extended
     );
 
     if ($result !== false) {
-      do_action('nutrition_labels_deleted', $product_id);
+      do_action('wine_e_label_deleted', $product_id);
     }
 
     return $result;
@@ -237,7 +237,7 @@ class NutritionLabels_DB_Extended
     if (empty($product_id) || !is_numeric($product_id) || $product_id <= 0) {
       return new WP_Error(
         'invalid_product_id',
-        __('Invalid Product Id or product does not exist', 'nutrition-labels')
+        __('Invalid Product Id or product does not exist', 'wine-e-label')
       );
     }
 
@@ -254,8 +254,8 @@ class NutritionLabels_DB_Extended
     // short_code_length
     // character_set
 
-    $length = NUTRITION_LABELS_SHORTCODE_LENGTH;
-    $charset = NUTRITION_LABELS_CHARACTER_SET;
+    $length = WINE_E_LABEL_SHORTCODE_LENGTH;
+    $charset = WINE_E_LABEL_CHARACTER_SET;
 
     $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     if ($charset == 'alphanumeric') {
@@ -272,20 +272,20 @@ class NutritionLabels_DB_Extended
       }
     } while ($this->shortcode_exists($new_code) && $tries < 50);
 
-    $new_code = apply_filters('nutrition_labels_shortcode', $new_code, $product_id);
+    $new_code = apply_filters('wine_e_label_shortcode', $new_code, $product_id);
 
     if ($tries >= 50) {
       // Failed to generate a unique code
       return new WP_Error(
         'shortcode_generation_failed',
-        __('Unable to generate shortcode - exceeded 50 tries', 'nutrition-labels')
+        __('Unable to generate shortcode - exceeded 50 tries', 'wine-e-label')
       );
     }
 
     // Insert the new shortcode into the existing row
     $updated = $this->wpdb->update(
       $this->table_name,
-      ['url_prefix' => NUTRITION_LABELS_URL_PREFIX, 'short_code' => $new_code, 'updated_at' => current_time('mysql')],
+      ['url_prefix' => WINE_E_LABEL_URL_PREFIX, 'short_code' => $new_code, 'updated_at' => current_time('mysql')],
       ['product_id' => $product_id],
       ['%s', '%s', '%s'],
       ['%d']
@@ -294,7 +294,7 @@ class NutritionLabels_DB_Extended
     if ($updated == false) {
       return new WP_Error(
         'shortcode_db_update_failed',
-        __('Shortcode DB Update failed', 'nutrition-labels')
+        __('Shortcode DB Update failed', 'wine-e-label')
       );
     }
 
@@ -379,7 +379,7 @@ class NutritionLabels_DB_Extended
     );
 
     if ($result !== false) {
-      do_action('nutrition_labels_deleted', $product_id);
+      do_action('wine_e_label_deleted', $product_id);
     }
 
     return $result;
@@ -418,9 +418,9 @@ class NutritionLabels_DB_Extended
       return false;
     }
 
-    $exists = $this->get_nutrition_by_product_id($product_id);
+    $exists = $this->get_label_data_by_product_id($product_id);
     if (!$exists) {
-      $this->save_nutrition_data($product_id, [
+      $this->save_label_data($product_id, [
         'ingredients' => new NutritionLabelIngredientList(),
         'calories' => 0,
         'kilojoules' => 0,
@@ -462,14 +462,14 @@ class NutritionLabels_DB_Extended
     );
   }
 
-  public function get_complete_nutrition_data($product_id)
+  public function get_complete_label_data($product_id)
   {
     if (!is_numeric($product_id) || $product_id <= 0) {
       return false;
     }
 
     // Prefer table data
-    $row = $this->get_nutrition_by_product_id($product_id);
+    $row = $this->get_label_data_by_product_id($product_id);
 
     if ($row) {
       $ingredient_list = new NutritionLabelIngredientList();
@@ -507,7 +507,7 @@ class NutritionLabels_DB_Extended
 
   private function is_valid_shortcode($shortcode)
   {
-    $charset = NUTRITION_LABELS_CHARACTER_SET;
+    $charset = WINE_E_LABEL_CHARACTER_SET;
 
     $pattern = '';
 

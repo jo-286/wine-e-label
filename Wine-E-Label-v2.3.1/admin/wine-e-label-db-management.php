@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!current_user_can('manage_options')) {
-  wp_die(__('Du hast keine Berechtigung, auf diese Seite zuzugreifen.', 'nutrition-labels'));
+  wp_die(__('Du hast keine Berechtigung, auf diese Seite zuzugreifen.', 'wine-e-label'));
 }
 
 $search = isset($_GET['search']) ? sanitize_text_field((string) $_GET['search']) : '';
@@ -32,7 +32,7 @@ $per_page = 50;
 $status_filter = isset($_GET['status_filter']) ? sanitize_text_field((string) $_GET['status_filter']) : '';
 $year_filter = isset($_GET['year_filter']) ? sanitize_text_field((string) $_GET['year_filter']) : '';
 
-$db = new NutritionLabels_DB_Extended();
+$db = new Wine_E_Label_DB_Extended();
 $entries_raw = $search !== '' ? $db->search_entries($search, 5000, 1) : $db->get_all_entries(5000, 1);
 $filtered_entries = [];
 $available_years = [];
@@ -56,11 +56,11 @@ $build_filename_stub = static function (string $product_title, array $target): s
 
 foreach ($entries_raw as $entry) {
   $product_id = (int) $entry->product_id;
-  $label_data = NutritionLabels_Importer::get_label_data($product_id);
+  $label_data = Wine_E_Label_Importer::get_label_data($product_id);
   $built = !empty($label_data['built_at']);
   $has_import = !empty($label_data['source_file_name']);
-  $manual = NutritionLabels_Manual_Builder::normalize_config($label_data['manual_config'] ?? []);
-  $has_manual = NutritionLabels_Manual_Builder::has_meaningful_input($manual);
+  $manual = Wine_E_Label_Manual_Builder::normalize_config($label_data['manual_config'] ?? []);
+  $has_manual = Wine_E_Label_Manual_Builder::has_meaningful_input($manual);
   $status_key = $built ? 'built' : ($has_import ? 'import' : ($has_manual ? 'manual' : 'draft'));
   $year_match_source = trim((string) ($label_data['title'] ?: ($manual['product']['bezeichnung'] ?? '') ?: get_the_title($product_id)));
   preg_match('/(19|20)\d{2}/', $year_match_source, $year_match);
@@ -78,9 +78,9 @@ foreach ($entries_raw as $entry) {
     continue;
   }
 
-  $targets = NutritionLabels_URL::get_label_targets($product_id);
+  $targets = Wine_E_Label_URL::get_label_targets($product_id);
   if (empty($targets)) {
-    $fallback_url = NutritionLabels_URL::get_short_url($product_id);
+    $fallback_url = Wine_E_Label_URL::get_short_url($product_id);
     if ($fallback_url) {
       $targets[] = [
         'kind' => 'main',
@@ -114,64 +114,64 @@ $offset = ($page - 1) * $per_page;
 $entries = array_slice($filtered_entries, $offset, $per_page);
 
 $status_labels = [
-  'built' => __('E-Label erstellt', 'nutrition-labels'),
-  'import' => __('Nur Import vorhanden', 'nutrition-labels'),
-  'manual' => __('Nur manuelle Daten', 'nutrition-labels'),
-  'draft' => __('Unvollstaendig', 'nutrition-labels'),
+  'built' => __('E-Label erstellt', 'wine-e-label'),
+  'import' => __('Nur Import vorhanden', 'wine-e-label'),
+  'manual' => __('Nur manuelle Daten', 'wine-e-label'),
+  'draft' => __('Unvollstaendig', 'wine-e-label'),
 ];
 ?>
 
 <div class="wrap">
-  <h1><?php esc_html_e('Wein E-Label - E-Labels', 'nutrition-labels'); ?></h1>
+  <h1><?php esc_html_e('Wein E-Label - E-Labels', 'wine-e-label'); ?></h1>
 
-  <div class="nutrition-labels-toolbar">
+  <div class="wine-e-label-toolbar">
     <form method="get" action="">
       <input type="hidden" name="page" value="<?php echo esc_attr(WINE_E_LABEL_ADMIN_PAGE_DB); ?>">
-      <input type="text" name="search" value="<?php echo esc_attr($search); ?>" placeholder="<?php esc_attr_e('Produktname oder Slug suchen ...', 'nutrition-labels'); ?>">
+      <input type="text" name="search" value="<?php echo esc_attr($search); ?>" placeholder="<?php esc_attr_e('Produktname oder Slug suchen ...', 'wine-e-label'); ?>">
       <select name="status_filter">
-        <option value=""><?php esc_html_e('Alle Status', 'nutrition-labels'); ?></option>
-        <option value="built" <?php selected($status_filter, 'built'); ?>><?php esc_html_e('E-Label erstellt', 'nutrition-labels'); ?></option>
-        <option value="import" <?php selected($status_filter, 'import'); ?>><?php esc_html_e('Nur Import vorhanden', 'nutrition-labels'); ?></option>
-        <option value="manual" <?php selected($status_filter, 'manual'); ?>><?php esc_html_e('Nur manuelle Daten', 'nutrition-labels'); ?></option>
-        <option value="draft" <?php selected($status_filter, 'draft'); ?>><?php esc_html_e('Unvollstaendig', 'nutrition-labels'); ?></option>
+        <option value=""><?php esc_html_e('Alle Status', 'wine-e-label'); ?></option>
+        <option value="built" <?php selected($status_filter, 'built'); ?>><?php esc_html_e('E-Label erstellt', 'wine-e-label'); ?></option>
+        <option value="import" <?php selected($status_filter, 'import'); ?>><?php esc_html_e('Nur Import vorhanden', 'wine-e-label'); ?></option>
+        <option value="manual" <?php selected($status_filter, 'manual'); ?>><?php esc_html_e('Nur manuelle Daten', 'wine-e-label'); ?></option>
+        <option value="draft" <?php selected($status_filter, 'draft'); ?>><?php esc_html_e('Unvollstaendig', 'wine-e-label'); ?></option>
       </select>
       <select name="year_filter">
-        <option value=""><?php esc_html_e('Alle Jahrgaenge', 'nutrition-labels'); ?></option>
+        <option value=""><?php esc_html_e('Alle Jahrgaenge', 'wine-e-label'); ?></option>
         <?php foreach ($available_years as $year_value) : ?>
           <option value="<?php echo esc_attr($year_value); ?>" <?php selected($year_filter, $year_value); ?>><?php echo esc_html($year_value); ?></option>
         <?php endforeach; ?>
       </select>
-      <input type="submit" value="<?php esc_attr_e('Filtern', 'nutrition-labels'); ?>" class="button button-primary">
-      <a href="<?php echo esc_url(admin_url('admin.php?page=' . WINE_E_LABEL_ADMIN_PAGE_DB)); ?>" class="button"><?php esc_html_e('Zurücksetzen', 'nutrition-labels'); ?></a>
+      <input type="submit" value="<?php esc_attr_e('Filtern', 'wine-e-label'); ?>" class="button button-primary">
+      <a href="<?php echo esc_url(admin_url('admin.php?page=' . WINE_E_LABEL_ADMIN_PAGE_DB)); ?>" class="button"><?php esc_html_e('Zurücksetzen', 'wine-e-label'); ?></a>
     </form>
   </div>
 
   <?php if (empty($entries)) : ?>
     <div class="notice notice-warning">
-      <p><?php esc_html_e('Keine E-Label-Eintraege gefunden.', 'nutrition-labels'); ?></p>
+      <p><?php esc_html_e('Keine E-Label-Eintraege gefunden.', 'wine-e-label'); ?></p>
     </div>
   <?php else : ?>
-    <div class="nutrition-labels-table-wrapper">
-      <p><?php printf(esc_html__('Zeige %1$d von %2$d Eintraegen', 'nutrition-labels'), count($entries), $total); ?></p>
+    <div class="wine-e-label-table-wrapper">
+      <p><?php printf(esc_html__('Zeige %1$d von %2$d Eintraegen', 'wine-e-label'), count($entries), $total); ?></p>
 
       <form method="post" action="">
-        <?php wp_nonce_field('nutrition_delete', '_wpnonce'); ?>
+        <?php wp_nonce_field('wine_e_label_delete', '_wpnonce'); ?>
         <table class="wp-list-table widefat striped">
           <thead>
             <tr>
               <td class="manage-column column-cb check-column">
                 <input type="checkbox" id="cb-select-all-1" onclick="toggleAllCheckboxes(this)">
-          <label class="screen-reader-text" for="cb-select-all-1"><?php esc_html_e('Alle auswählen', 'nutrition-labels'); ?></label>
+          <label class="screen-reader-text" for="cb-select-all-1"><?php esc_html_e('Alle auswählen', 'wine-e-label'); ?></label>
               </td>
-              <th class="manage-column column-product"><?php esc_html_e('Produkt', 'nutrition-labels'); ?></th>
-              <th class="column-link"><?php esc_html_e('Direkter Link', 'nutrition-labels'); ?></th>
-              <th class="column-location"><?php esc_html_e('Ort', 'nutrition-labels'); ?></th>
-              <th class="column-slug"><?php esc_html_e('Slug', 'nutrition-labels'); ?></th>
-              <th class="column-year"><?php esc_html_e('Jahrgang', 'nutrition-labels'); ?></th>
-              <th class="column-status"><?php esc_html_e('Status', 'nutrition-labels'); ?></th>
-              <th class="column-created"><?php esc_html_e('Erstellt', 'nutrition-labels'); ?></th>
-              <th class="column-actions"><?php esc_html_e('Aktionen', 'nutrition-labels'); ?></th>
-              <th class="column-export"><?php esc_html_e('QR-Export', 'nutrition-labels'); ?></th>
+              <th class="manage-column column-product"><?php esc_html_e('Produkt', 'wine-e-label'); ?></th>
+              <th class="column-link"><?php esc_html_e('Direkter Link', 'wine-e-label'); ?></th>
+              <th class="column-location"><?php esc_html_e('Ort', 'wine-e-label'); ?></th>
+              <th class="column-slug"><?php esc_html_e('Slug', 'wine-e-label'); ?></th>
+              <th class="column-year"><?php esc_html_e('Jahrgang', 'wine-e-label'); ?></th>
+              <th class="column-status"><?php esc_html_e('Status', 'wine-e-label'); ?></th>
+              <th class="column-created"><?php esc_html_e('Erstellt', 'wine-e-label'); ?></th>
+              <th class="column-actions"><?php esc_html_e('Aktionen', 'wine-e-label'); ?></th>
+              <th class="column-export"><?php esc_html_e('QR-Export', 'wine-e-label'); ?></th>
               <th class="column-delete">&nbsp;</th>
             </tr>
           </thead>
@@ -194,14 +194,14 @@ $status_labels = [
                     data-product-id="<?php echo esc_attr((string) $entry->product_id); ?>"
                     data-target-kind="<?php echo esc_attr($target_kind); ?>"
                     data-filename-stub="<?php echo esc_attr((string) $entry->filename_stub); ?>">
-                  <label class="screen-reader-text" for="cb-select-<?php echo esc_attr($entry->product_id . '-' . $target_kind); ?>"><?php esc_html_e('Auswählen', 'nutrition-labels'); ?></label>
+                  <label class="screen-reader-text" for="cb-select-<?php echo esc_attr($entry->product_id . '-' . $target_kind); ?>"><?php esc_html_e('Auswählen', 'wine-e-label'); ?></label>
                 </td>
                 <td class="column-product">
                   <strong><?php echo esc_html(get_the_title((int) $entry->product_id)); ?></strong>
                   <br>
                   <small>ID: <?php echo esc_html((string) $entry->product_id); ?></small>
                   <?php if (!empty($target['is_primary'])) : ?>
-                    <div class="wel-target-badge"><?php esc_html_e('Primaeres Ziel', 'nutrition-labels'); ?></div>
+                    <div class="wel-target-badge"><?php esc_html_e('Primaeres Ziel', 'wine-e-label'); ?></div>
                   <?php endif; ?>
                 </td>
                 <td class="column-link">
@@ -232,27 +232,27 @@ $status_labels = [
                 <td class="column-actions">
                   <div class="wel-db-actions">
                     <button type="button" class="button button-small" onclick="viewNutritionLabel('<?php echo esc_js($target_url); ?>')">
-                        <?php esc_html_e('E-Label öffnen', 'nutrition-labels'); ?>
+                        <?php esc_html_e('E-Label öffnen', 'wine-e-label'); ?>
                     </button>
                     <button
                       type="button"
                       class="button button-small"
                       onclick="downloadQrCode(<?php echo esc_attr((string) $entry->product_id); ?>, '<?php echo esc_js($target_kind); ?>', this, '', '<?php echo esc_js((string) $entry->filename_stub); ?>')">
-                      <?php esc_html_e('QR herunterladen', 'nutrition-labels'); ?>
+                      <?php esc_html_e('QR herunterladen', 'wine-e-label'); ?>
                     </button>
                   </div>
                 </td>
                 <td class="column-export">
                   <select onchange="exportQrCode(<?php echo esc_attr((string) $entry->product_id); ?>, '<?php echo esc_js($target_kind); ?>', '<?php echo esc_js((string) $entry->filename_stub); ?>', this)">
-                          <option value="">— <?php esc_html_e('Auswählen', 'nutrition-labels'); ?> —</option>
-                    <?php foreach (NutritionLabels_URL::get_lang_names() as $code => $name) : ?>
+                          <option value="">— <?php esc_html_e('Auswählen', 'wine-e-label'); ?> —</option>
+                    <?php foreach (Wine_E_Label_URL::get_lang_names() as $code => $name) : ?>
                       <option value="<?php echo esc_attr($code); ?>"><?php echo esc_html($name); ?></option>
                     <?php endforeach; ?>
                   </select>
                 </td>
                 <td class="column-delete">
                   <button type="button" class="button button-small" onclick="deleteEntry(<?php echo esc_attr((string) $entry->product_id); ?>)">
-                            <?php esc_html_e('Löschen', 'nutrition-labels'); ?>
+                            <?php esc_html_e('Löschen', 'wine-e-label'); ?>
                   </button>
                 </td>
               </tr>
@@ -260,20 +260,20 @@ $status_labels = [
           </tbody>
         </table>
 
-        <div class="nutrition-labels-bulk-actions">
-      <button type="button" id="bulk_delete" class="button button-primary"><?php esc_html_e('Auswahl löschen', 'nutrition-labels'); ?></button>
-          <label for="bulk_qr_lang" class="screen-reader-text"><?php esc_html_e('QR-Export', 'nutrition-labels'); ?></label>
+        <div class="wine-e-label-bulk-actions">
+      <button type="button" id="bulk_delete" class="button button-primary"><?php esc_html_e('Auswahl löschen', 'wine-e-label'); ?></button>
+          <label for="bulk_qr_lang" class="screen-reader-text"><?php esc_html_e('QR-Export', 'wine-e-label'); ?></label>
           <select id="bulk_qr_lang">
-            <option value=""><?php esc_html_e('Standardsprache', 'nutrition-labels'); ?></option>
-            <?php foreach (NutritionLabels_URL::get_lang_names() as $code => $name) : ?>
+            <option value=""><?php esc_html_e('Standardsprache', 'wine-e-label'); ?></option>
+            <?php foreach (Wine_E_Label_URL::get_lang_names() as $code => $name) : ?>
               <option value="<?php echo esc_attr($code); ?>"><?php echo esc_html($name); ?></option>
             <?php endforeach; ?>
           </select>
-      <button type="button" id="bulk_download_qr" class="button"><?php esc_html_e('QR für Auswahl herunterladen', 'nutrition-labels'); ?></button>
+      <button type="button" id="bulk_download_qr" class="button"><?php esc_html_e('QR für Auswahl herunterladen', 'wine-e-label'); ?></button>
           <a
-            href="<?php echo esc_url(wp_nonce_url(admin_url('admin.php?page=' . WINE_E_LABEL_ADMIN_PAGE_DB . '&export=csv'), 'nutrition_labels_export')); ?>"
+            href="<?php echo esc_url(wp_nonce_url(admin_url('admin.php?page=' . WINE_E_LABEL_ADMIN_PAGE_DB . '&export=csv'), 'wine_e_label_export')); ?>"
             class="button">
-            <?php esc_html_e('Als CSV exportieren', 'nutrition-labels'); ?>
+            <?php esc_html_e('Als CSV exportieren', 'wine-e-label'); ?>
           </a>
         </div>
       </form>
@@ -292,8 +292,8 @@ $status_labels = [
         echo paginate_links([
           'base' => add_query_arg('paged', '%#%', $current_url),
           'format' => '',
-      'prev_text' => __('&laquo; Zurück', 'nutrition-labels'),
-          'next_text' => __('Weiter &raquo;', 'nutrition-labels'),
+      'prev_text' => __('&laquo; Zurück', 'wine-e-label'),
+          'next_text' => __('Weiter &raquo;', 'wine-e-label'),
           'total' => max(1, (int) ceil($total / $per_page)),
           'current' => $page,
         ]);
@@ -322,12 +322,12 @@ $status_labels = [
     }
 
     function deleteEntry(productId) {
-        if (confirm('<?php echo esc_js(__('Diesen E-Label-Eintrag löschen?\n\nDas Produkt selbst wird nicht gelöscht - nur die E-Label-Daten werden entfernt.\n\nDieser Vorgang kann nicht rückgängig gemacht werden.', 'nutrition-labels')); ?>')) {
+        if (confirm('<?php echo esc_js(__('Diesen E-Label-Eintrag löschen?\n\nDas Produkt selbst wird nicht gelöscht - nur die E-Label-Daten werden entfernt.\n\nDieser Vorgang kann nicht rückgängig gemacht werden.', 'wine-e-label')); ?>')) {
         jQuery.ajax({
           url: ajaxurl,
           type: 'POST',
           data: {
-            action: 'nutrition_delete',
+            action: 'wine_e_label_delete',
             product_ids: [productId],
             _wpnonce: jQuery('input[name="_wpnonce"]').val()
           },
@@ -340,14 +340,14 @@ $status_labels = [
             }
           },
           error: function() {
-            alert('<?php echo esc_js(__('Fehler: Eintrag konnte nicht gelöscht werden.', 'nutrition-labels')); ?>');
+            alert('<?php echo esc_js(__('Fehler: Eintrag konnte nicht gelöscht werden.', 'wine-e-label')); ?>');
             location.reload();
           }
         });
       }
     }
 
-    var nutritionQrNonce = '<?php echo esc_js(wp_create_nonce('nutrition_qr_download')); ?>';
+    var wineELabelQrNonce = '<?php echo esc_js(wp_create_nonce('wine_e_label_qr_download')); ?>';
 
     function downloadQrCode(productId, targetKind, button, langCode, filenameStub) {
       langCode = langCode || '';
@@ -356,19 +356,19 @@ $status_labels = [
       var originalText = button ? button.textContent : '';
       if (button) {
         button.disabled = true;
-        button.textContent = '<?php echo esc_js(esc_html__('Erzeuge...', 'nutrition-labels')); ?>';
+        button.textContent = '<?php echo esc_js(esc_html__('Erzeuge...', 'wine-e-label')); ?>';
       }
 
       jQuery.ajax({
         url: ajaxurl,
         type: 'POST',
         data: {
-          action: 'nutrition_qr_download',
+          action: 'wine_e_label_qr_download',
           product_id: productId,
           target_kind: targetKind,
           lang_code: langCode,
           filename_stub: filenameStub,
-          nonce: nutritionQrNonce
+          nonce: wineELabelQrNonce
         },
         success: function(response) {
           if (response.success) {
@@ -379,11 +379,11 @@ $status_labels = [
             link.click();
             document.body.removeChild(link);
           } else {
-            alert('<?php echo esc_js(esc_html__('Fehler:', 'nutrition-labels')); ?> ' + (response.data || '<?php echo esc_js(esc_html__('QR-Code konnte nicht erzeugt werden', 'nutrition-labels')); ?>'));
+            alert('<?php echo esc_js(esc_html__('Fehler:', 'wine-e-label')); ?> ' + (response.data || '<?php echo esc_js(esc_html__('QR-Code konnte nicht erzeugt werden', 'wine-e-label')); ?>'));
           }
         },
         error: function() {
-          alert('<?php echo esc_js(esc_html__('Fehler: QR-Code konnte nicht erzeugt werden.', 'nutrition-labels')); ?>');
+          alert('<?php echo esc_js(esc_html__('Fehler: QR-Code konnte nicht erzeugt werden.', 'wine-e-label')); ?>');
         },
         complete: function() {
           if (button) {
@@ -417,16 +417,16 @@ $status_labels = [
         });
 
         if (selectedIds.length === 0) {
-      alert('<?php echo esc_js(__('Bitte mindestens einen Eintrag zum Löschen auswählen', 'nutrition-labels')); ?>');
+      alert('<?php echo esc_js(__('Bitte mindestens einen Eintrag zum Löschen auswählen', 'wine-e-label')); ?>');
           return;
         }
 
-    if (confirm('<?php echo esc_js(__('Lösche ', 'nutrition-labels')); ?>' + selectedIds.length + '<?php echo esc_js(__(' E-Label-Einträge?\n\nDie Produkte selbst werden nicht gelöscht - nur die E-Label-Daten werden entfernt.\n\nDieser Vorgang kann nicht rückgängig gemacht werden.', 'nutrition-labels')); ?>')) {
+    if (confirm('<?php echo esc_js(__('Lösche ', 'wine-e-label')); ?>' + selectedIds.length + '<?php echo esc_js(__(' E-Label-Einträge?\n\nDie Produkte selbst werden nicht gelöscht - nur die E-Label-Daten werden entfernt.\n\nDieser Vorgang kann nicht rückgängig gemacht werden.', 'wine-e-label')); ?>')) {
           $.ajax({
             url: ajaxurl,
             type: 'POST',
             data: {
-              action: 'nutrition_delete',
+              action: 'wine_e_label_delete',
               product_ids: selectedIds,
               _wpnonce: $('input[name="_wpnonce"]').val()
             },
@@ -439,7 +439,7 @@ $status_labels = [
               }
             },
             error: function() {
-          alert('<?php echo esc_js(__('Fehler: Einträge konnten nicht gelöscht werden.', 'nutrition-labels')); ?>');
+          alert('<?php echo esc_js(__('Fehler: Einträge konnten nicht gelöscht werden.', 'wine-e-label')); ?>');
               location.reload();
             }
           });
@@ -467,7 +467,7 @@ $status_labels = [
         });
 
         if (selectedTargets.length === 0) {
-      alert('<?php echo esc_js(__('Bitte mindestens einen Eintrag für den QR-Download auswählen', 'nutrition-labels')); ?>');
+      alert('<?php echo esc_js(__('Bitte mindestens einen Eintrag für den QR-Download auswählen', 'wine-e-label')); ?>');
           return;
         }
 
@@ -485,7 +485,7 @@ $status_labels = [
 </div>
 
 <style>
-  .nutrition-labels-toolbar {
+  .wine-e-label-toolbar {
     margin: 20px 0;
     padding: 15px;
     background: #fff;
@@ -493,21 +493,21 @@ $status_labels = [
     border-radius: 4px;
   }
 
-  .nutrition-labels-toolbar form {
+  .wine-e-label-toolbar form {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
   }
 
-  .nutrition-labels-toolbar input[type="text"] {
+  .wine-e-label-toolbar input[type="text"] {
     padding: 8px 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
     min-width: 220px;
   }
 
-  .nutrition-labels-table-wrapper {
+  .wine-e-label-table-wrapper {
     background: #fff;
     padding: 15px;
     border: 1px solid #ccd;
@@ -515,17 +515,17 @@ $status_labels = [
     margin-top: 20px;
   }
 
-  .nutrition-labels-table-wrapper table code {
+  .wine-e-label-table-wrapper table code {
     background: #f9f9f9;
     padding: 2px 4px;
     border-radius: 3px;
   }
 
-  .nutrition-labels-table-wrapper table.wp-list-table {
+  .wine-e-label-table-wrapper table.wp-list-table {
     table-layout: auto;
   }
 
-  .nutrition-labels-bulk-actions {
+  .wine-e-label-bulk-actions {
     margin-top: 20px;
     padding-top: 15px;
     border-top: 1px solid #ddd;

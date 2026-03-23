@@ -1,3 +1,22 @@
+# Release Notes 2.3.2
+
+## Main plugin
+
+- Generated real language files (`.po` / `.mo`) for `de_DE`, `de_DE_formal`, `en_US`, `fr_FR`, and `it_IT`.
+- Hardened UTF-8 handling across translation export and release-prep scripts.
+- Added focused release-preparation helpers for encoding checks, language builds, and main/receiver packaging.
+- Completed a full PHP lint and smoke-check pass on the current prepared release state.
+
+## Receiver plugin
+
+- Generated the matching receiver language files for `de_DE`, `de_DE_formal`, `en_US`, `fr_FR`, and `it_IT`.
+- Kept the receiver package aligned with the stricter release-preparation and QA workflow.
+
+## Shared improvements
+
+- Release-prep artifacts are now ready for local install testing without a Git release yet.
+- Main and receiver test ZIPs were rebuilt from the current `2.3.2` sources.
+
 # Release Notes 2.3.1
 
 ## Main plugin

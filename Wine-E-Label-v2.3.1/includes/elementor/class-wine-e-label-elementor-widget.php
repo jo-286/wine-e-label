@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
+class Wine_E_Label_Elementor_Widget extends \Elementor\Widget_Base
 {
     public function get_name(): string
     {
@@ -13,7 +13,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return esc_html__('Wein E-Label Nährwerttabelle', 'nutrition-labels');
+        return esc_html__('Wein E-Label Nährwerttabelle', 'wine-e-label');
     }
 
     public function get_icon(): string
@@ -33,7 +33,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends(): array
     {
-        return ['nutrition-labels-frontend-widget'];
+        return ['wine-e-label-frontend-widget'];
     }
 
     protected function register_controls(): void
@@ -41,19 +41,19 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'section_content',
             [
-                'label' => esc_html__('Inhalt', 'nutrition-labels'),
+                'label' => esc_html__('Inhalt', 'wine-e-label'),
             ]
         );
 
         $this->add_control(
             'source_mode',
             [
-                'label' => esc_html__('Datenquelle', 'nutrition-labels'),
+                'label' => esc_html__('Datenquelle', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'current',
                 'options' => [
-                    'current' => esc_html__('Aktuelles Produkt', 'nutrition-labels'),
-                    'manual' => esc_html__('Produkt-ID manuell', 'nutrition-labels'),
+                    'current' => esc_html__('Aktuelles Produkt', 'wine-e-label'),
+                    'manual' => esc_html__('Produkt-ID manuell', 'wine-e-label'),
                 ],
             ]
         );
@@ -61,7 +61,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'product_id',
             [
-                'label' => esc_html__('Produkt-ID', 'nutrition-labels'),
+                'label' => esc_html__('Produkt-ID', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'condition' => [
@@ -73,7 +73,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'show_title',
             [
-                'label' => esc_html__('Titel anzeigen', 'nutrition-labels'),
+                'label' => esc_html__('Titel anzeigen', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default' => 'yes',
@@ -83,7 +83,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'show_minor',
             [
-                'label' => esc_html__('Zusätzliche Nährwertangaben anzeigen', 'nutrition-labels'),
+                'label' => esc_html__('Zusätzliche Nährwertangaben anzeigen', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default' => 'yes',
@@ -93,7 +93,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'show_ingredients',
             [
-                'label' => esc_html__('Zutaten unter der Tabelle anzeigen', 'nutrition-labels'),
+                'label' => esc_html__('Zutaten unter der Tabelle anzeigen', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default' => '',
@@ -103,12 +103,12 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'display_mode',
             [
-                'label' => esc_html__('Darstellung', 'nutrition-labels'),
+                'label' => esc_html__('Darstellung', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'static',
                 'options' => [
-                    'static' => esc_html__('Statisch', 'nutrition-labels'),
-                    'accordion' => esc_html__('Aufklappbar', 'nutrition-labels'),
+                    'static' => esc_html__('Statisch', 'wine-e-label'),
+                    'accordion' => esc_html__('Aufklappbar', 'wine-e-label'),
                 ],
             ]
         );
@@ -116,7 +116,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'accordion_open',
             [
-                'label' => esc_html__('Standardmäßig geöffnet', 'nutrition-labels'),
+                'label' => esc_html__('Standardmäßig geöffnet', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default' => '',
@@ -129,7 +129,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'accordion_heading',
             [
-                'label' => esc_html__('Accordion-Überschrift', 'nutrition-labels'),
+                'label' => esc_html__('Accordion-Überschrift', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'NÄHRWERTANGABEN',
                 'condition' => [
@@ -141,7 +141,7 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'show_link',
             [
-                'label' => esc_html__('Link zum E-Label anzeigen', 'nutrition-labels'),
+                'label' => esc_html__('Link zum E-Label anzeigen', 'wine-e-label'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default' => '',
@@ -155,9 +155,9 @@ class NutritionLabels_Elementor_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $manual_id = ($settings['source_mode'] ?? 'current') === 'manual' ? (int) ($settings['product_id'] ?? 0) : 0;
-        $product_id = NutritionLabels_Frontend::resolve_product_id($manual_id);
+        $product_id = Wine_E_Label_Frontend::resolve_product_id($manual_id);
 
-        echo NutritionLabels_Frontend::render_table($product_id, [
+        echo Wine_E_Label_Frontend::render_table($product_id, [
             'show_title' => ($settings['show_title'] ?? '') === 'yes',
             'show_minor' => ($settings['show_minor'] ?? '') === 'yes',
             'show_ingredients' => ($settings['show_ingredients'] ?? '') === 'yes',

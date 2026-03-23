@@ -1,0 +1,2088 @@
+msgid ""
+msgstr ""
+\"Project-Id-Version: Wein E-Label\n\"
+\"Report-Msgid-Bugs-To: https://github.com/jo-286/wine-e-label/issues\n\"
+\"POT-Creation-Date: 2026-03-23 11:20+0000\n\"
+\"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\"
+\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n\"
+\"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n\"
+\"MIME-Version: 1.0\n\"
+\"Content-Type: text/plain; charset=UTF-8\n\"
+\"Content-Transfer-Encoding: 8bit\n\"
+\"X-Domain: wine-e-label\n\"
+
+#: admin/wine-e-label-db-management.php:424
+msgid " E-Label-Einträge?\n\nDie Produkte selbst werden nicht gelöscht - nur die E-Label-Daten werden entfernt.\n\nDieser Vorgang kann nicht rückgängig gemacht werden."
+msgstr ""
+
+#: admin/working-metabox.php:882
+#: admin/working-metabox.php:883
+#: admin/working-metabox.php:884
+#: admin/working-metabox.php:911
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:752
+msgid "%d nutrition labels active"
+msgstr ""
+
+#: admin/working-metabox.php:878
+#: admin/working-metabox.php:902
+msgid "%s: Modus"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:295
+msgid "&laquo; Zurück"
+msgstr ""
+
+#: includes/class-ingredients.php:391
+msgid "* from organic farming"
+msgstr ""
+
+#: admin/working-metabox.php:224
+msgid "Ablaufstatus"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:154
+msgid "Abstände und Größen"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:132
+msgid "Accordion-Überschrift"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:63
+#: admin/working-metabox.php:185
+#: includes/class-wine-e-label-presentation.php:109
+msgid "Adresse des Weinguts"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:124
+msgid "Adresse du domaine"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:173
+msgid "Aktionen"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:378
+msgid "Aktive Labels"
+msgstr ""
+
+#: admin/working-metabox.php:1366
+#: admin/working-metabox.php:363
+msgid "Aktuell ist ein eigenes Produktbild hinterlegt."
+msgstr ""
+
+#: admin/working-metabox.php:1365
+#: admin/working-metabox.php:363
+msgid "Aktuell wird das WooCommerce-Produktbild verwendet."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:749
+msgid "Aktuelle Konfiguration"
+msgstr ""
+
+#: admin/working-metabox.php:1338
+#: admin/working-metabox.php:732
+msgid "Aktueller Formularstand"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:371
+msgid "Aktueller Modus"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:55
+msgid "Aktuelles Produkt"
+msgstr ""
+
+#: admin/working-metabox.php:680
+msgid "Alkohol (g/l)"
+msgstr ""
+
+#: admin/working-metabox.php:284
+msgid "Alkohol in vol%"
+msgstr ""
+
+#: admin/working-metabox.php:278
+#: admin/working-metabox.php:861
+msgid "Alkohol"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:164
+msgid "Alle auswählen"
+msgstr ""
+
+#: admin/working-metabox.php:1304
+msgid "Alle E-Label-Daten wurden zurückgesetzt."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:139
+msgid "Alle Jahrgaenge"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:132
+msgid "Alle Status"
+msgstr ""
+
+#: admin/working-metabox.php:1303
+msgid "Alles wird zurückgesetzt …"
+msgstr ""
+
+#: admin/working-metabox.php:1356
+#: admin/working-metabox.php:451
+msgid "Alles zurücksetzen"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:394
+msgid "Allgemein"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:276
+msgid "Als CSV exportieren"
+msgstr ""
+
+#: admin/working-metabox.php:498
+msgid "Alternativauswahl zur Angabe von bis zu 3 Stoffen, die wahlweise eingesetzt werden können"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:51
+msgid "Alternativtext Logo"
+msgstr ""
+
+#: admin/working-metabox.php:370
+msgid "Alternativtext Produktbild"
+msgstr ""
+
+#: admin/working-metabox.php:331
+msgid "Analysewerte auflisten"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:61
+#: admin/working-metabox.php:185
+#: includes/class-wine-e-label-presentation.php:107
+msgid "Anbaugebiet"
+msgstr ""
+
+#: admin/working-metabox.php:342
+#: admin/working-metabox.php:599
+#: includes/class-wine-e-label-frontend.php:191
+msgid "Angegebener Salzgehalt ist ausschließlich auf die Anwesenheit natürlich vorkommenden Natriums zurückzuführen."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:606
+#: admin/wine-e-label-settings-page-simple.php:685
+msgid "Anzeigen"
+msgstr ""
+
+#: admin/working-metabox.php:259
+#: admin/working-metabox.php:859
+msgid "AP-Nr."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:608
+msgid "Application Password des WordPress-Benutzers auf der externen Receiver-Seite."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:622
+msgid "Arbeite diese drei Schritte einmal sauber durch. Danach kannst du die Verbindung direkt testen und erst anschliessend QR, Basis-URL und lokale Alternativen feinjustieren."
+msgstr ""
+
+#: includes/class-wine-e-label-design.php:163
+msgid "Arial / Helvetica"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:624
+msgid "Auf der Zielseite das Plugin Reith E-Label Receiver installieren und aktivieren"
+msgstr ""
+
+#: admin/working-metabox.php:367
+msgid "Auf Produktbild zurücksetzen"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:111
+msgid "Aufklappbar"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:49
+msgid "Aussenabstand oben/unten (px)"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:47
+msgid "Aussenbreite (px)"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:264
+msgid "Auswahl löschen"
+msgstr ""
+
+#: admin/working-metabox.php:882
+#: admin/working-metabox.php:907
+#: admin/working-metabox.php:918
+msgid "Auswahl"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:197
+#: admin/wine-e-label-db-management.php:247
+msgid "Auswählen"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:755
+msgid "Authentifizierung erfolgreich geprüft."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:757
+msgid "Authentifizierung fehlgeschlagen (HTTP %d)."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:750
+msgid "Authentifizierung konnte nicht geprüft werden: %s"
+msgstr ""
+
+#: admin/working-metabox.php:286
+msgid "automatisch aus g/l berechnet"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:589
+msgid "Basis-Domain der externen WordPress-Seite mit installiertem Reith E-Label Receiver. Keine /wp-json-Adresse eintragen."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:42
+msgid "Basisschriftgröße (px)"
+msgstr ""
+
+#: admin/working-metabox.php:75
+msgid "Basis-URL"
+msgstr ""
+
+#: admin/working-metabox.php:320
+msgid "Berechnete Werte (pro 100ml)"
+msgstr ""
+
+#: admin/working-metabox.php:248
+#: admin/working-metabox.php:671
+#: admin/working-metabox.php:857
+msgid "Bezeichnung"
+msgstr ""
+
+#: admin/working-metabox.php:499
+#: admin/working-metabox.php:883
+#: admin/working-metabox.php:908
+msgid "Bio"
+msgstr ""
+
+#: admin/working-metabox.php:506
+msgid "biologisch"
+msgstr ""
+
+#: admin/working-metabox.php:1111
+msgid "Bitte einen Slug angeben oder den Vorschlag aus der Wein-Nr. übernehmen."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:395
+#: admin/working-metabox.php:1106
+msgid "Bitte mindestens eine Zutat auswählen."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:221
+msgid "Bitte mindestens einen Eintrag auswählen."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:470
+msgid "Bitte mindestens einen Eintrag für den QR-Download auswählen"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:420
+msgid "Bitte mindestens einen Eintrag zum Löschen auswählen"
+msgstr ""
+
+#: admin/working-metabox.php:1312
+msgid "Bitte zuerst alle Pflichtfelder füllen."
+msgstr ""
+
+#: admin/working-metabox.php:1156
+#: admin/working-metabox.php:1313
+msgid "Bitte zuerst die Basis-URL im Plugin-Admin setzen."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:400
+#: admin/working-metabox.php:1101
+msgid "Bitte zuerst eine Datei importieren oder E-Label-Daten eingeben."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:709
+msgid "Bitte zuerst eine gültige REST API Ziel-URL eingeben."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:277
+#: admin/working-metabox.php:1073
+#: admin/working-metabox.php:1287
+msgid "Bitte zuerst eine ZIP-, JSON- oder HTML-Datei auswählen."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:404
+msgid "Bitte zuerst einen Slug angeben oder aus der Wein-Nr. übernehmen."
+msgstr ""
+
+#: admin/working-metabox.php:76
+msgid "Bitte zuerst im Plugin-Admin setzen"
+msgstr ""
+
+#: admin/working-metabox.php:322
+#: admin/working-metabox.php:592
+#: includes/class-wine-e-label-frontend.php:181
+msgid "Brennwert"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:44
+msgid "Button-Schrift (px)"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:113
+msgid "Country"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:752
+msgid "Current Entries:"
+msgstr ""
+
+#: admin/working-metabox.php:499
+#: includes/elementor/class-wine-e-label-elementor-widget.php:106
+msgid "Darstellung"
+msgstr ""
+
+#: admin/working-metabox.php:403
+msgid "Daten aus bestehendem Produkt übernehmen"
+msgstr ""
+
+#: admin/working-metabox.php:1306
+msgid "Daten konnten nicht übernommen werden."
+msgstr ""
+
+#: admin/working-metabox.php:1345
+#: admin/working-metabox.php:411
+msgid "Daten übernehmen"
+msgstr ""
+
+#: admin/working-metabox.php:1305
+msgid "Daten wurden aus dem ausgewählten Produkt übernommen."
+msgstr ""
+
+#: admin/working-metabox.php:234
+#: includes/elementor/class-wine-e-label-elementor-widget.php:51
+msgid "Datenquelle"
+msgstr ""
+
+#: admin/working-metabox.php:336
+#: admin/working-metabox.php:596
+#: includes/class-wine-e-label-frontend.php:188
+msgid "davon gesättigte Fettsäuren"
+msgstr ""
+
+#: admin/working-metabox.php:325
+#: admin/working-metabox.php:594
+#: includes/class-wine-e-label-frontend.php:183
+msgid "davon Zucker"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:541
+msgid "Dedicated subdomains are handled separately. The main domain keeps its normal WordPress pages untouched, while local labels still remain available on /l/[slug]."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:561
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:94
+#: admin/class-wine-e-label-admin-extended.php:95
+#: admin/wine-e-label-design-page.php:68
+msgid "Design anpassen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:334
+msgid "Design speichern und auf alle Domains aktualisieren"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:72
+msgid "Design-Einstellungen gespeichert."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:363
+msgid "Die allgemeinen Einstellungen steuern nicht nur QR-Dateien, sondern den gesamten Auslieferungsweg deiner E-Label-Seiten: lokal, per Subdomain oder über eine getrennte Receiver-Seite."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:319
+msgid "Die JSON-Daten enthalten keine verwertbaren Produktinformationen."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:304
+msgid "Die JSON-Daten im ZIP konnten nicht verarbeitet werden."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:344
+msgid "Die Vorschau aktualisiert sich direkt beim Ändern und bezieht sich nur auf lokale/Subdomain-E-Labels."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:305
+msgid "Diese Angaben werden global unterhalb der Nährwerttabelle angezeigt. Die Feldlabels werden im E-Label automatisch in DE/EN/IT/FR übersetzt."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:69
+msgid "Diese Einstellungen steuern das E-Label-Design zentral im Hauptplugin. Lokale, Subdomain- und bei aktiver REST-Verbindung auch Receiver-E-Labels werden von hier aus versorgt."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:247
+msgid "Diese Schalter gelten global für alle E-Labels. Die konkreten Inhalte kommen pro Produkt aus dem WooCommerce-Produkt bzw. aus den produktspezifischen E-Label-Feldern."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:325
+msgid "Diesen E-Label-Eintrag löschen?\n\nDas Produkt selbst wird nicht gelöscht - nur die E-Label-Daten werden entfernt.\n\nDieser Vorgang kann nicht rückgängig gemacht werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:408
+#: admin/working-metabox.php:1116
+#: admin/working-metabox.php:1178
+msgid "Dieser Slug ist bereits vergeben."
+msgstr ""
+
+#: admin/working-metabox.php:1364
+msgid "Dieses Bild verwenden"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:428
+msgid "Dieses Logo verwenden"
+msgstr ""
+
+#: admin/working-metabox.php:456
+#: admin/working-metabox.php:626
+msgid "Dieses Plugin ist eine technische Hilfe. Für die inhaltliche Richtigkeit, Vollständigkeit und rechtliche Prüfung aller eingegebenen, importierten, übersetzten oder ausgegebenen Daten ist ausschließlich der Nutzer verantwortlich. Die Nutzung ersetzt keine Rechtsberatung. Trotz sorgfältiger Entwicklung wird keine Gewähr für die rechtliche Zulässigkeit oder Fehlerfreiheit in jedem Einzelfall übernommen, soweit gesetzlich zulässig."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:167
+msgid "Direkter Link"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:549
+msgid "Do not use a root URL here to replace normal WordPress page slugs. The plugin keeps local label routing on /l/[slug] and only uses the dedicated host for explicit e-label requests."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:625
+msgid "Dort einen Benutzer anlegen, z. B. api_elabel"
+msgstr ""
+
+#: admin/working-metabox.php:131
+#: admin/working-metabox.php:1353
+#: admin/working-metabox.php:482
+msgid "Download"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:656
+msgid "Du hast keine Berechtigung für den CSV-Export."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:26
+msgid "Du hast keine Berechtigung, auf diese Seite zuzugreifen."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1350
+#: admin/class-wine-e-label-admin-extended.php:1446
+msgid "Du hast keine Berechtigung, Einstellungen zu ändern."
+msgstr ""
+
+#: admin/working-metabox.php:366
+msgid "Eigenes Produktbild wählen oder hochladen"
+msgstr ""
+
+#: admin/working-metabox.php:361
+msgid "Eigenes Produktbild"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1428
+msgid "Einstellungen gespeichert."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:648
+msgid "Einstellungen speichern"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:86
+msgid "Einstellungen"
+msgstr ""
+
+#: admin/working-metabox.php:339
+#: admin/working-metabox.php:597
+#: admin/working-metabox.php:869
+#: includes/class-wine-e-label-frontend.php:189
+msgid "Eiweiß"
+msgstr ""
+
+#: admin/working-metabox.php:34
+msgid "E-Label Daten"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:117
+#: admin/wine-e-label-db-management.php:133
+msgid "E-Label erstellt"
+msgstr ""
+
+#: admin/working-metabox.php:25
+msgid "E-Label Import & QR"
+msgstr ""
+
+#: includes/class-wine-e-label-url.php:472
+msgid "E-Label not found"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:235
+#: admin/working-metabox.php:150
+#: includes/class-wine-e-label-frontend.php:208
+msgid "E-Label öffnen"
+msgstr ""
+
+#: admin/working-metabox.php:1348
+#: admin/working-metabox.php:177
+#: admin/working-metabox.php:58
+msgid "E-Label und QR-Code aktualisieren"
+msgstr ""
+
+#: admin/working-metabox.php:1347
+#: admin/working-metabox.php:177
+#: admin/working-metabox.php:58
+msgid "E-Label und QR-Code erstellen"
+msgstr ""
+
+#: admin/working-metabox.php:103
+#: admin/working-metabox.php:1357
+#: admin/working-metabox.php:449
+msgid "E-Label und QR-Code löschen"
+msgstr ""
+
+#: admin/working-metabox.php:1293
+msgid "E-Label und QR-Code werden erstellt …"
+msgstr ""
+
+#: admin/working-metabox.php:1299
+msgid "E-Label und QR-Code werden gelöscht …"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:529
+#: admin/wine-e-label-settings-page-simple.php:753
+msgid "E-Label-Basis-URL"
+msgstr ""
+
+#: admin/working-metabox.php:439
+msgid "E-Label-Link"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:103
+#: admin/class-wine-e-label-admin-extended.php:104
+msgid "E-Labels"
+msgstr ""
+
+#: admin/working-metabox.php:120
+#: admin/working-metabox.php:1295
+#: admin/working-metabox.php:1352
+#: admin/working-metabox.php:445
+#: admin/working-metabox.php:472
+msgid "E-Label-Seite erfolgreich erstellt"
+msgstr ""
+
+#: admin/working-metabox.php:1207
+msgid "E-Label-Seite konnte nicht mit Inhalt erzeugt werden."
+msgstr ""
+
+#: admin/working-metabox.php:1301
+msgid "E-Label-Seite und QR-Code konnten nicht gelöscht werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:577
+#: admin/working-metabox.php:1300
+msgid "E-Label-Seite und QR-Code wurden gelöscht."
+msgstr ""
+
+#: admin/working-metabox.php:118
+#: admin/working-metabox.php:1310
+#: admin/working-metabox.php:228
+#: admin/working-metabox.php:470
+msgid "E-Label-Seite"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:367
+msgid "Empfohlener Live-Weg"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:581
+msgid "Empfohlener Weg für produktive Setups: Die Pflichtinformationen werden auf einer getrennten WordPress-Seite veröffentlicht."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:539
+msgid "Enable subdomain e-label URLs"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:548
+msgid "Enter a subdomain (e.g. elabel) or a full hostname (e.g. elabel.example.com). The subdomain must resolve to this WordPress installation."
+msgstr ""
+
+#: admin/working-metabox.php:1359
+#: admin/working-metabox.php:538
+msgid "Entfernen"
+msgstr ""
+
+#: admin/working-metabox.php:330
+#: admin/working-metabox.php:600
+msgid "Enthält geringfügige Mengen von: Fett, gesättigten Fettsäuren, Eiweiß und Salz"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:115
+msgid "Entwürfe oder noch nicht veröffentlichte Receiver-Labels auf %s werden erst bei ihrer nächsten Erstellung bzw. Aktualisierung mit dem zentralen Design versorgt."
+msgstr ""
+
+#: admin/working-metabox.php:884
+#: admin/working-metabox.php:909
+msgid "E-Nummer-Anzeige"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:243
+msgid "Erfolgreich %d E-Label-Eintrag gelöscht"
+msgid_plural "Erfolgreich %d E-Label-Einträge gelöscht"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/wine-e-label-db-management.php:172
+#: admin/working-metabox.php:1321
+#: admin/working-metabox.php:651
+#: admin/working-metabox.php:655
+msgid "Erstellt"
+msgstr ""
+
+#: admin/working-metabox.php:1294
+msgid "Erstellung fehlgeschlagen."
+msgstr ""
+
+#: admin/working-metabox.php:401
+msgid "Erstellung"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:359
+msgid "Erzeuge..."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:301
+msgid "Erzeugerdaten"
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:307
+msgid "Es konnten weder brauchbare JSON- noch HTML-Daten im Import gefunden werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1084
+msgid "Externe E-Label-Seite konnte nicht aufgebaut werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1126
+msgid "Externe E-Label-Seite konnte nicht erstellt werden (HTTP %1$d). %2$s"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1119
+msgid "Externe E-Label-Seite konnte nicht erstellt werden: %s"
+msgstr ""
+
+#: admin/working-metabox.php:1196
+msgid "Externe E-Label-Seite konnte nicht erzeugt werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1185
+msgid "Externe E-Label-Seite konnte nicht gelöscht werden (HTTP %1$d). %2$s"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:580
+msgid "Externe E-Label-Seite per Receiver-Plugin verwenden"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:368
+msgid "Externe Receiver-Seite per REST API mit reduziertem Pflichtseiten-Output."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:573
+msgid "Externe Receiver-Seite per REST API"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:135
+msgid "Farben"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:343
+msgid "Fehler: Eintrag konnte nicht gelöscht werden."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:442
+msgid "Fehler: Einträge konnten nicht gelöscht werden."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:386
+msgid "Fehler: QR-Code konnte nicht erzeugt werden."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:737
+#: admin/wine-e-label-settings-page-simple.php:741
+msgid "Fehler: Rewrite-Regeln konnten nicht aktualisiert werden."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:382
+msgid "Fehler:"
+msgstr ""
+
+#: admin/working-metabox.php:1324
+msgid "Fehler"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:522
+#: admin/wine-e-label-settings-page-simple.php:756
+msgid "Fehlerkorrektur"
+msgstr ""
+
+#: admin/working-metabox.php:1323
+#: admin/working-metabox.php:659
+msgid "fehlt"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:145
+#: admin/wine-e-label-design-page.php:168
+#: admin/wine-e-label-design-page.php:173
+#: admin/wine-e-label-design-page.php:182
+#: admin/wine-e-label-design-page.php:212
+#: admin/wine-e-label-design-page.php:227
+#: admin/wine-e-label-design-page.php:235
+#: admin/wine-e-label-design-page.php:257
+#: admin/wine-e-label-design-page.php:269
+#: admin/wine-e-label-design-page.php:281
+#: admin/wine-e-label-design-page.php:293
+#: admin/wine-e-label-design-page.php:311
+#: admin/wine-e-label-design-page.php:319
+#: admin/wine-e-label-design-page.php:327
+msgid "Feld zurücksetzen"
+msgstr ""
+
+#: admin/working-metabox.php:335
+#: admin/working-metabox.php:595
+#: admin/working-metabox.php:867
+#: includes/class-wine-e-label-frontend.php:187
+msgid "Fett"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:144
+msgid "Filtern"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:39
+msgid "Fliesstext"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:634
+msgid "Für dieses Produkt konnte keine E-Label-URL erzeugt werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:532
+msgid "Für dieses Produkt sind keine verwertbaren E-Label-Daten vorhanden."
+msgstr ""
+
+#: admin/working-metabox.php:1326
+#: admin/working-metabox.php:983
+msgid "Für einen sauberen QR-Code muss ein Slug gesetzt sein."
+msgstr ""
+
+#: admin/working-metabox.php:1332
+#: admin/working-metabox.php:991
+msgid "Für kleine Etiketten besser kürzen, damit der QR-Code ruhiger bleibt."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:362
+msgid "Für produktive Setups sollte zuerst die externe Receiver-Verbindung sauber eingerichtet werden. Danach lassen sich QR-Code, Routing und öffentliche Ziel-URLs für den Live-Betrieb feinjustieren."
+msgstr ""
+
+#: admin/working-metabox.php:1318
+#: admin/working-metabox.php:643
+msgid "geladen"
+msgstr ""
+
+#: includes/class-wine-e-label-design.php:164
+msgid "Georgia"
+msgstr ""
+
+#: admin/working-metabox.php:296
+#: admin/working-metabox.php:863
+msgid "Gesamtsäure"
+msgstr ""
+
+#: admin/working-metabox.php:868
+msgid "gesättigte Fettsäuren"
+msgstr ""
+
+#: admin/working-metabox.php:302
+#: admin/working-metabox.php:865
+msgid "Glycerin"
+msgstr ""
+
+#: admin/working-metabox.php:864
+msgid "Glycerin-Modus"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:112
+msgid "Growing region"
+msgstr ""
+
+#: admin/working-metabox.php:876
+#: admin/working-metabox.php:899
+msgid "Gruppe: %s"
+msgstr ""
+
+#: admin/working-metabox.php:413
+msgid "Gut für Vorjahresprodukte: Formularwerte werden übernommen, Slug und erzeugte Seite bleiben unberührt."
+msgstr ""
+
+#: admin/working-metabox.php:349
+msgid "Hier pflegst du die produktspezifischen Inhalte für Logo-Bereich und Zusatzangaben. Sichtbarkeit und Größen steuerst du global über die Design-Seite."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:750
+msgid "Hier siehst du den aktuellen Live-Stand der wichtigsten Routing- und QR-Einstellungen."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:525
+msgid "Higher correction levels add redundant data so the code can still scan if partially damaged, but produce a denser, more complex pattern. For small clean wine labels (18 mm) Low is recommended — it produces the fewest modules and is easiest to scan."
+msgstr ""
+
+#: admin/working-metabox.php:455
+#: admin/working-metabox.php:625
+msgid "Hinweis zu Verantwortung und Haftung"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:579
+#: admin/class-wine-e-label-admin-extended.php:604
+msgid "Hinweis zur externen Receiver-Seite: %s"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:251
+msgid "Hinweis: Auf der externen Receiver-Seite konnten nicht alle Einträge gelöscht werden."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:199
+msgid "Hinweis: Ein Weingutslogo oberhalb des E-Labels kann rechtlich möglicherweise als Werbung bewertet werden. Bitte vor der Aktivierung selbst prüfen."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:109
+msgid "Hinweis"
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:162
+msgid "Hochgeladene Datei konnte nicht verschoben werden."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:345
+msgid "HTML could not be parsed."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:557
+msgid "http"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:556
+msgid "https (recommended)"
+msgstr ""
+
+#: admin/working-metabox.php:1333
+#: admin/working-metabox.php:696
+msgid "Import + manuelle Änderungen"
+msgstr ""
+
+#: admin/working-metabox.php:100
+#: admin/working-metabox.php:1354
+msgid "Import bestätigen"
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:179
+msgid "Import erfolgreich (Quelle: HTML)."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:177
+msgid "Import erfolgreich (Quelle: JSON)."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:178
+msgid "Import erfolgreich (Quelle: ZIP)."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:321
+#: admin/working-metabox.php:110
+#: admin/working-metabox.php:1289
+#: admin/working-metabox.php:462
+msgid "Import erfolgreich"
+msgstr ""
+
+#: admin/working-metabox.php:1292
+msgid "Import fehlgeschlagen."
+msgstr ""
+
+#: admin/working-metabox.php:112
+#: admin/working-metabox.php:464
+msgid "Import fehlgeschlagen"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:503
+#: admin/working-metabox.php:1297
+msgid "Import gelöscht."
+msgstr ""
+
+#: admin/working-metabox.php:1298
+msgid "Import konnte nicht gelöscht werden."
+msgstr ""
+
+#: admin/working-metabox.php:1288
+msgid "Import läuft …"
+msgstr ""
+
+#: admin/working-metabox.php:453
+msgid "Import löschen entfernt nur die Importquelle. Manuelle Daten leeren setzt nur das Formular zurück. Alles zurücksetzen entfernt beides und die erzeugte E-Label-Seite."
+msgstr ""
+
+#: admin/working-metabox.php:101
+#: admin/working-metabox.php:1346
+msgid "Import löschen"
+msgstr ""
+
+#: admin/working-metabox.php:1355
+msgid "Import wird gelöscht …"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:602
+msgid "Import, manuelle Daten und erzeugtes E-Label wurden zurückgesetzt."
+msgstr ""
+
+#: admin/working-metabox.php:226
+msgid "Import"
+msgstr ""
+
+#: admin/working-metabox.php:206
+msgid "Importierte Daten und manuelle Eingaben bleiben gemeinsam bearbeitbar. Manuelle Änderungen haben beim Erstellen Vorrang."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:155
+msgid "Import-Ordner konnte nicht erstellt werden."
+msgstr ""
+
+#: admin/working-metabox.php:108
+#: admin/working-metabox.php:460
+msgid "Importstatus"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:119
+msgid "Indirizzo della cantina"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:44
+msgid "Inhalt"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:50
+msgid "Innenabstand Karte (px)"
+msgstr ""
+
+#: admin/working-metabox.php:919
+msgid "Interne Anzeigeoption"
+msgstr ""
+
+#: admin/working-metabox.php:917
+msgid "Interner E-Nummer-Wert"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:662
+msgid "Invalid nonce"
+msgstr ""
+
+#: includes/class-wine-e-label-db-extended.php:240
+msgid "Invalid Product Id or product does not exist"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:57
+msgid "Jahrgang im E-Label anzeigen"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:170
+#: admin/working-metabox.php:387
+msgid "Jahrgang"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:58
+msgid "Jahrgang-Schrift (px)"
+msgstr ""
+
+#: includes/class-wine-e-label-frontend.php:173
+msgid "je 100 ml"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:37
+msgid "Kartenhintergrund"
+msgstr ""
+
+#: admin/working-metabox.php:266
+msgid "Kategorie wählen"
+msgstr ""
+
+#: admin/working-metabox.php:264
+#: admin/working-metabox.php:677
+#: admin/working-metabox.php:860
+msgid "Kategorie"
+msgstr ""
+
+#: admin/working-metabox.php:1186
+msgid "Kein gültiger Slug oder keine Basis-URL vorhanden."
+msgstr ""
+
+#: admin/working-metabox.php:1367
+#: admin/working-metabox.php:357
+msgid "Kein Produktbild verfügbar"
+msgstr ""
+
+#: admin/working-metabox.php:1343
+#: admin/working-metabox.php:726
+msgid "Keine Abweichungen zwischen Import und aktueller Eingabe."
+msgstr ""
+
+#: admin/working-metabox.php:1350
+#: admin/working-metabox.php:98
+msgid "Keine Datei ausgewählt"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:151
+msgid "Keine E-Label-Eintraege gefunden."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:43
+msgid "Kleine Schrift (px)"
+msgstr ""
+
+#: admin/working-metabox.php:323
+#: admin/working-metabox.php:593
+#: includes/class-wine-e-label-frontend.php:182
+msgid "Kohlenhydrate"
+msgstr ""
+
+#: admin/working-metabox.php:562
+msgid "Kompakte Vorschau für Handy-Layout und QR-Scanbarkeit."
+msgstr ""
+
+#: admin/working-metabox.php:348
+msgid "Kopfbereich und Zusatzangaben"
+msgstr ""
+
+#: admin/working-metabox.php:1328
+#: admin/working-metabox.php:986
+msgid "Kurzer Slug, gut lesbar und in der Regel sehr gut scanbar."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:48
+msgid "Label-Breite (px)"
+msgstr ""
+
+#: admin/working-metabox.php:1344
+msgid "Lade Daten …"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:62
+#: admin/working-metabox.php:185
+#: includes/class-wine-e-label-presentation.php:108
+msgid "Land"
+msgstr ""
+
+#: admin/working-metabox.php:389
+#: admin/working-metabox.php:395
+msgid "Leer = erkannte Produktdaten verwenden."
+msgstr ""
+
+#: admin/working-metabox.php:384
+msgid "Leer = WooCommerce-Produkttitel verwenden."
+msgstr ""
+
+#: admin/working-metabox.php:379
+msgid "Leer gelassene Felder werden automatisch aus dem Produkt übernommen, sofern dort passende Daten vorhanden sind."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:609
+msgid "Leer lassen, um das bereits gespeicherte Passwort beizubehalten."
+msgstr ""
+
+#: admin/working-metabox.php:1320
+#: admin/working-metabox.php:647
+msgid "leer"
+msgstr ""
+
+#: admin/working-metabox.php:1337
+#: admin/working-metabox.php:732
+msgid "Letzter Import: %s"
+msgstr ""
+
+#: admin/working-metabox.php:1309
+#: admin/working-metabox.php:142
+msgid "Letzter Import"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:448
+msgid "Link konnte nicht erzeugt werden."
+msgstr ""
+
+#: admin/working-metabox.php:442
+msgid "Link kopieren"
+msgstr ""
+
+#: admin/working-metabox.php:1308
+msgid "Link kopiert."
+msgstr ""
+
+#: admin/working-metabox.php:121
+#: admin/working-metabox.php:1351
+#: admin/working-metabox.php:443
+#: admin/working-metabox.php:473
+msgid "Link öffnen"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:144
+msgid "Link zum E-Label anzeigen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:341
+#: admin/working-metabox.php:552
+msgid "Live-Vorschau"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:218
+msgid "Logo entfernen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:196
+msgid "Logo oberhalb des E-Labels anzeigen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:217
+msgid "Logo wählen oder hochladen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:209
+msgid "Logo-Datei"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:52
+msgid "Logo-Hoehe (px)"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:386
+msgid "Lokale Route"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:103
+msgid "Lokale und Subdomain-E-Labels aus diesem Hauptplugin. Die Vorschau unten zeigt genau diesen Ausgabebereich."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:41
+msgid "Lokale WordPress-Seite"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:98
+msgid "Lokale, Subdomain- und bereits veröffentlichte Receiver-E-Labels. Beim Speichern wird das Design auch an %s übertragen."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:424
+msgid "Lösche "
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:255
+msgid "Löschen"
+msgstr ""
+
+#: admin/working-metabox.php:1341
+#: admin/working-metabox.php:717
+msgid "Manuell ergänzt: %d Felder"
+msgstr ""
+
+#: admin/working-metabox.php:1340
+#: admin/working-metabox.php:714
+msgid "Manuell geändert: %d Felder"
+msgstr ""
+
+#: admin/working-metabox.php:1342
+#: admin/working-metabox.php:720
+msgid "Manuell geleert: %d Felder"
+msgstr ""
+
+#: admin/working-metabox.php:450
+msgid "Manuelle Daten leeren"
+msgstr ""
+
+#: admin/working-metabox.php:1302
+msgid "Manuelle Daten wurden geleert."
+msgstr ""
+
+#: admin/working-metabox.php:227
+msgid "Manuelle Daten"
+msgstr ""
+
+#: admin/working-metabox.php:306
+msgid "manueller Analysewert"
+msgstr ""
+
+#: admin/working-metabox.php:590
+msgid "Nährwertangaben je 100ml"
+msgstr ""
+
+#: admin/working-metabox.php:275
+#: includes/class-wine-e-label-frontend.php:173
+msgid "Nährwertangaben"
+msgstr ""
+
+#: admin/working-metabox.php:499
+msgid "Name"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1336
+#: admin/class-wine-e-label-admin-extended.php:195
+#: admin/class-wine-e-label-admin-extended.php:215
+#: admin/class-wine-e-label-admin-extended.php:273
+#: admin/class-wine-e-label-admin-extended.php:339
+#: admin/class-wine-e-label-admin-extended.php:491
+#: admin/class-wine-e-label-admin-extended.php:519
+#: admin/class-wine-e-label-admin-extended.php:572
+#: admin/class-wine-e-label-admin-extended.php:597
+#: admin/class-wine-e-label-admin-extended.php:627
+#: admin/class-wine-e-label-admin-extended.php:698
+msgid "Nicht autorisiert"
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:140
+msgid "No import file uploaded."
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:424
+msgid "No ingredient block could be found in the import."
+msgstr ""
+
+#: admin/working-metabox.php:1329
+#: admin/working-metabox.php:989
+msgid "noch gut"
+msgstr ""
+
+#: admin/working-metabox.php:114
+#: admin/working-metabox.php:466
+msgid "Noch kein Import durchgeführt"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:204
+msgid "Noch kein Logo ausgewählt"
+msgstr ""
+
+#: admin/working-metabox.php:1215
+#: admin/working-metabox.php:1291
+#: admin/working-metabox.php:568
+msgid "Noch kein QR-Code erzeugt."
+msgstr ""
+
+#: admin/working-metabox.php:1336
+#: admin/working-metabox.php:705
+msgid "Noch keine Daten"
+msgstr ""
+
+#: admin/working-metabox.php:1360
+#: admin/working-metabox.php:543
+msgid "Noch keine zusätzlichen Stoffe angelegt."
+msgstr ""
+
+#: admin/working-metabox.php:1182
+#: admin/working-metabox.php:1290
+msgid "Noch nicht erstellt. Erst importieren, dann E-Label und QR-Code erstellen."
+msgstr ""
+
+#: includes/class-wine-e-label-url.php:160
+msgid "Not found"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:118
+#: admin/wine-e-label-db-management.php:134
+msgid "Nur Import vorhanden"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:119
+#: admin/wine-e-label-db-management.php:135
+msgid "Nur manuelle Daten"
+msgstr ""
+
+#: admin/working-metabox.php:1334
+#: admin/working-metabox.php:702
+msgid "Nur manuelle Eingabe"
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:145
+msgid "Nur ZIP-, JSON- oder HTML-Dateien sind erlaubt."
+msgstr ""
+
+#: admin/working-metabox.php:94
+msgid "oder klicken, um eine Datei auszuwählen"
+msgstr ""
+
+#: admin/working-metabox.php:1317
+#: admin/working-metabox.php:643
+#: admin/working-metabox.php:651
+#: admin/working-metabox.php:655
+msgid "offen"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:382
+msgid "Öffentliche Ziel-URL"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:532
+msgid "Optional override for the public e-label target URL. Leave empty to use this WordPress domain automatically. The product slug is appended automatically."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:168
+msgid "Ort"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:118
+msgid "Paese"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:46
+msgid "Panel-Radius (px)"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:123
+msgid "Pays"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:563
+msgid "Permanently delete all nutrition label data when the plugin is uninstalled"
+msgstr ""
+
+#: admin/working-metabox.php:250
+#: admin/working-metabox.php:256
+#: admin/working-metabox.php:269
+#: admin/working-metabox.php:281
+#: admin/working-metabox.php:426
+#: admin/working-metabox.php:431
+msgid "Pflichtfeld"
+msgstr ""
+
+#: admin/working-metabox.php:271
+msgid "Pflichtfelder sind mit * markiert."
+msgstr ""
+
+#: admin/working-metabox.php:230
+msgid "Pflichtfelder"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:511
+msgid "Pixel dimensions of the downloaded QR image. For print use SVG format is recommended — it is resolution-independent and will be crisp at any size regardless of this setting."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:204
+msgid "Primaeres Ziel"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:234
+msgid "Produkt %1$d: %2$s"
+msgstr ""
+
+#: admin/working-metabox.php:406
+msgid "Produkt auswählen …"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:166
+msgid "Produkt"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:53
+msgid "Produktbild im E-Label anzeigen"
+msgstr ""
+
+#: admin/working-metabox.php:1363
+msgid "Produktbild wählen"
+msgstr ""
+
+#: admin/working-metabox.php:352
+msgid "Produktbild"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:54
+msgid "Produktbild-Hoehe (px)"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:56
+msgid "Produkt-ID manuell"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:64
+msgid "Produkt-ID"
+msgstr ""
+
+#: admin/working-metabox.php:246
+msgid "Produktinformationen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:243
+msgid "Produktkopf"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:130
+msgid "Produktname oder Slug suchen ..."
+msgstr ""
+
+#: admin/working-metabox.php:416
+msgid "Prüfung vor dem Erstellen"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:272
+msgid "QR für Auswahl herunterladen"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:241
+msgid "QR herunterladen"
+msgstr ""
+
+#: admin/working-metabox.php:1315
+#: admin/working-metabox.php:571
+msgid "QR-Code ansehen"
+msgstr ""
+
+#: admin/working-metabox.php:129
+#: admin/working-metabox.php:1296
+#: admin/working-metabox.php:481
+msgid "QR-Code erfolgreich erstellt"
+msgstr ""
+
+#: admin/working-metabox.php:572
+msgid "QR-Code herunterladen"
+msgstr ""
+
+#: admin/working-metabox.php:1219
+msgid "QR-Code kann ohne gültigen Link nicht erzeugt werden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:453
+#: admin/class-wine-e-label-admin-extended.php:640
+#: admin/working-metabox.php:1224
+msgid "QR-Code konnte nicht erzeugt werden."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:382
+msgid "QR-Code konnte nicht erzeugt werden"
+msgstr ""
+
+#: admin/working-metabox.php:1316
+msgid "QR-Code verbergen"
+msgstr ""
+
+#: admin/working-metabox.php:1349
+msgid "QR-Code wird erzeugt …"
+msgstr ""
+
+#: admin/working-metabox.php:127
+#: admin/working-metabox.php:1311
+#: admin/working-metabox.php:229
+#: admin/working-metabox.php:479
+msgid "QR-Code"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:515
+#: admin/wine-e-label-settings-page-simple.php:755
+msgid "QR-Code-Format"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:508
+#: admin/wine-e-label-settings-page-simple.php:754
+msgid "QR-Code-Größe"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:174
+#: admin/wine-e-label-db-management.php:265
+msgid "QR-Export"
+msgstr ""
+
+#: admin/working-metabox.php:1327
+#: admin/working-metabox.php:986
+msgid "QR-kompakt"
+msgstr ""
+
+#: admin/working-metabox.php:153
+msgid "Quelldatei herunterladen"
+msgstr ""
+
+#: admin/working-metabox.php:1339
+#: admin/working-metabox.php:711
+msgid "Quelldatei: %s"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:41
+msgid "Rahmen"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:40
+msgid "Receiver / REST API"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:585
+msgid "Receiver Basis-URL"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:360
+msgid "Receiver First"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:572
+msgid "Receiver zuerst"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1089
+msgid "Receiver-API konnte nicht erkannt werden: %s"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1094
+msgid "Receiver-API liefert keinen gültigen Erstell-Endpunkt."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1163
+msgid "Receiver-API liefert keinen gültigen Lösch-Endpunkt."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:767
+msgid "Receiver-Endpunkt antwortet, aber der API-Benutzer hat keine ausreichenden Rechte. Gib dem Benutzer auf der Zielseite mindestens Editor-Rechte."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:777
+msgid "Receiver-Endpunkt gefunden (API-Discovery)."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:779
+msgid "Receiver-Endpunkt gefunden (REST-Index erkannt)."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:781
+msgid "Receiver-Endpunkt gefunden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:770
+msgid "Receiver-Endpunkt konnte nicht geprüft werden: %s"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:772
+msgid "Receiver-Endpunkt nicht gefunden. Ist das Plugin Reith E-Label Receiver auf der Zielseite aktiv?"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:932
+#: admin/class-wine-e-label-admin-extended.php:964
+msgid "Receiver-Endpunkt nicht gefunden."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:910
+#: admin/class-wine-e-label-admin-extended.php:961
+msgid "Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:768
+msgid "Receiver-Endpunkt vorhanden, aber ohne gültige Authentifizierung nicht nutzbar."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:81
+msgid "Receiver-Synchronisierung: %1$d aktualisiert, %2$d fehlgeschlagen."
+msgstr ""
+
+#: admin/working-metabox.php:1331
+#: admin/working-metabox.php:991
+msgid "recht lang"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:122
+msgid "Region viticole"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:731
+msgid "REST API antwortet nicht wie erwartet (HTTP %d)."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:601
+msgid "REST API Application Password"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:593
+msgid "REST API Benutzername"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:735
+msgid "REST API erreichbar."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:577
+msgid "REST API Verbindung aktivieren"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:884
+msgid "REST API Ziel-URL fehlt."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1079
+msgid "REST-API-Verbindung ist aktiviert, aber Ziel-URL, Benutzername oder Application Password fehlen."
+msgstr ""
+
+#: admin/working-metabox.php:291
+#: admin/working-metabox.php:862
+msgid "Restzucker"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:659
+msgid "Rewrite-Regeln aktualisieren"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1343
+msgid "Rewrite-Regeln wurden erfolgreich aktualisiert!"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:654
+msgid "Routing und Rewrite"
+msgstr ""
+
+#: admin/working-metabox.php:340
+#: admin/working-metabox.php:598
+#: admin/working-metabox.php:870
+#: includes/class-wine-e-label-frontend.php:190
+msgid "Salz"
+msgstr ""
+
+#: admin/working-metabox.php:871
+msgid "Salz-Hinweis"
+msgstr ""
+
+#: admin/working-metabox.php:1330
+#: admin/working-metabox.php:989
+msgid "Scannbar, aber ein kürzerer Slug wäre auf Etiketten sauberer."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:45
+msgid "Schriftart"
+msgstr ""
+
+#: admin/working-metabox.php:562
+msgid "Seite geprüft"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:36
+msgid "Seitenhintergrund"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:40
+msgid "Sekundaertext"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:540
+msgid "Serve e-labels from a dedicated subdomain as recommended by EU e-labelling regulations."
+msgstr ""
+
+#: includes/class-wine-e-label-db-extended.php:297
+msgid "Shortcode DB Update failed"
+msgstr ""
+
+#: admin/working-metabox.php:429
+#: admin/working-metabox.php:683
+#: admin/working-metabox.php:80
+msgid "Slug / URL-Teil"
+msgstr ""
+
+#: admin/working-metabox.php:1325
+#: admin/working-metabox.php:983
+msgid "Slug fehlt"
+msgstr ""
+
+#: admin/working-metabox.php:435
+msgid "Slug kopieren"
+msgstr ""
+
+#: admin/working-metabox.php:1307
+msgid "Slug kopiert."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:169
+msgid "Slug"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:621
+msgid "So richtest du die Verbindung ein"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:120
+msgid "Sobald eine externe Receiver-/Zweitdomain konfiguriert ist, werden auch diese E-Labels zentral aus dem Hauptplugin heraus mit dem Design versorgt."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:395
+msgid "Sprache"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:136
+#: admin/wine-e-label-design-page.php:155
+#: admin/wine-e-label-design-page.php:191
+#: admin/wine-e-label-design-page.php:244
+#: admin/wine-e-label-design-page.php:302
+#: admin/wine-e-label-design-page.php:342
+msgid "Standard laden"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:119
+msgid "Standardmäßig geöffnet"
+msgstr ""
+
+#: admin/working-metabox.php:353
+msgid "Standardmäßig wird das WooCommerce-Produktbild verwendet. Optional kannst du hier ein eigenes Bild für dieses E-Label hinterlegen."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:267
+msgid "Standardsprache"
+msgstr ""
+
+#: admin/working-metabox.php:305
+msgid "Standardwert edelsüß"
+msgstr ""
+
+#: admin/working-metabox.php:304
+msgid "Standardwert"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:620
+msgid "Start here"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:110
+msgid "Statisch"
+msgstr ""
+
+#: admin/working-metabox.php:509
+msgid "statt Name %s anzeigen"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:171
+msgid "Status"
+msgstr ""
+
+#: admin/working-metabox.php:1361
+#: admin/working-metabox.php:534
+#: admin/working-metabox.php:916
+msgid "Stoff oder E-Nr."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:537
+msgid "Subdomain E-Label URLs"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:41
+#: admin/wine-e-label-settings-page-simple.php:545
+msgid "Subdomain"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:518
+msgid "SVG is a vector format — edges stay perfectly sharp at any print size and is recommended for wine labels. PNG is a pixel-based image; choose a large size if using PNG for print."
+msgstr ""
+
+#: includes/class-wine-e-label-design.php:162
+msgid "System Sans"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:38
+msgid "Tabellenkopf"
+msgstr ""
+
+#: includes/class-wine-e-label-design.php:167
+msgid "Tahoma"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:533
+msgid "The local WordPress route always stays on /l/[slug] for this installation. This field only changes the public target URL and does not rewrite normal WordPress pages."
+msgstr ""
+
+#: includes/class-wine-e-label-design.php:165
+msgid "Times New Roman"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:76
+msgid "Titel anzeigen"
+msgstr ""
+
+#: includes/class-wine-e-label-db-extended.php:281
+msgid "Unable to generate shortcode - exceeded 50 tries"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:269
+#: admin/class-wine-e-label-admin-extended.php:335
+#: admin/class-wine-e-label-admin-extended.php:487
+#: admin/class-wine-e-label-admin-extended.php:515
+#: admin/class-wine-e-label-admin-extended.php:568
+#: admin/class-wine-e-label-admin-extended.php:593
+msgid "Ungültige Produkt-ID."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:623
+msgid "Ungültige Produkt-ID"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:626
+msgid "Unter Benutzer > Profil ein Application Password erzeugen und hier Basis-URL, Benutzername und Passwort eintragen"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:120
+#: admin/wine-e-label-db-management.php:136
+msgid "Unvollstaendig"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:553
+msgid "URL Scheme"
+msgstr ""
+
+#: admin/working-metabox.php:86
+msgid "URL-Vorschau"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:564
+msgid "Use with caution — this removes database records, generated URLs and QR references when uninstalling the plugin."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:685
+msgid "Verbergen"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:785
+#: admin/wine-e-label-settings-page-simple.php:710
+msgid "Verbindung erfolgreich geprüft."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:726
+msgid "Verbindung fehlgeschlagen: %s"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:713
+#: admin/wine-e-label-settings-page-simple.php:716
+msgid "Verbindung konnte nicht geprüft werden."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:614
+msgid "Verbindung testen"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:689
+msgid "Verbindung wird geprüft …"
+msgstr ""
+
+#: includes/class-wine-e-label-design.php:166
+msgid "Verdana"
+msgstr ""
+
+#: admin/working-metabox.php:1322
+#: admin/working-metabox.php:659
+msgid "vollständig"
+msgstr ""
+
+#: admin/working-metabox.php:1319
+#: admin/working-metabox.php:647
+msgid "vorhanden"
+msgstr ""
+
+#: admin/working-metabox.php:562
+msgid "Vorschau lokal"
+msgstr ""
+
+#: admin/working-metabox.php:436
+#: admin/working-metabox.php:82
+msgid "Vorschlag aus Wein-Nr. übernehmen"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:641
+msgid "Wähle die Sprache für die Plugin-Oberfläche im WordPress-Adminbereich."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:125
+msgid "Wein E-Label - E-Labels"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:74
+#: admin/class-wine-e-label-admin-extended.php:85
+#: admin/wine-e-label-settings-page-simple.php:361
+msgid "Wein E-Label Einstellungen"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:16
+msgid "Wein E-Label Nährwerttabelle"
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:75
+msgid "Wein E-Label"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:427
+msgid "Weingutslogo wählen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:190
+#: admin/wine-e-label-design-page.php:203
+#: admin/working-metabox.php:189
+#: includes/class-wine-e-label-design.php:269
+msgid "Weingutslogo"
+msgstr ""
+
+#: admin/working-metabox.php:378
+msgid "Weinname, Jahrgang und Weinstil"
+msgstr ""
+
+#: admin/working-metabox.php:382
+msgid "Weinname"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:55
+msgid "Weinnamen im E-Label anzeigen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:56
+msgid "Weinnamen-Schrift (px)"
+msgstr ""
+
+#: admin/working-metabox.php:70
+msgid "Wein-Nr. (optional)"
+msgstr ""
+
+#: admin/working-metabox.php:424
+msgid "Wein-Nr. für Link"
+msgstr ""
+
+#: admin/working-metabox.php:254
+#: admin/working-metabox.php:674
+#: admin/working-metabox.php:858
+msgid "Wein-Nr."
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:59
+msgid "Weinstil / Untertitel im E-Label anzeigen"
+msgstr ""
+
+#: admin/working-metabox.php:393
+msgid "Weinstil / Untertitel"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:60
+msgid "Weinstil-Schrift (px)"
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:296
+msgid "Weiter &raquo;"
+msgstr ""
+
+#: admin/working-metabox.php:328
+msgid "Weitere Nährwertangaben"
+msgstr ""
+
+#: admin/working-metabox.php:866
+msgid "Weitere Nährwerte"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:574
+msgid "Wenn du das Plugin produktiv nutzt, richte hier zuerst die externe Zielseite ein. Diese Variante trennt Pflichtinformationen sauber von Shop, Marketing und Tracking und ist deshalb die wichtigste Einstellung auf dieser Seite."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:655
+msgid "Wenn Short-URLs oder Label-Routen nicht sauber reagieren, kannst du hier die WordPress-Rewrite-Regeln neu aufbauen."
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:634
+msgid "Werkzeugsprache"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:114
+msgid "Winery address"
+msgstr ""
+
+#: admin/working-metabox.php:66
+msgid "WIPZN-Import importieren, E-Label-Link prüfen und QR-Code direkt erzeugen."
+msgstr ""
+
+#: admin/working-metabox.php:1335
+#: admin/working-metabox.php:699
+#: admin/working-metabox.php:91
+msgid "WIPZN-Import"
+msgstr ""
+
+#: admin/working-metabox.php:315
+msgid "wirksamer Wert"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:92
+msgid "Wirkt auf"
+msgstr ""
+
+#: admin/wine-e-label-settings-page-simple.php:597
+msgid "WordPress-Benutzername der externen Receiver-Seite."
+msgstr ""
+
+#: admin/class-wine-e-label-admin-extended.php:1322
+#: admin/wine-e-label-settings-page-simple.php:15
+msgid "WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:155
+msgid "Zeige %1$d von %2$d Eintraegen"
+msgstr ""
+
+#: includes/class-wine-e-label-importer.php:240
+msgid "ZIP file could not be opened."
+msgstr ""
+
+#: admin/working-metabox.php:93
+msgid "ZIP, JSON oder HTML hier ablegen"
+msgstr ""
+
+#: includes/class-wine-e-label-presentation.php:117
+msgid "Zona di produzione"
+msgstr ""
+
+#: admin/working-metabox.php:67
+msgid "Zum Aktualisieren der Nährwerte einfach neue Datei einfügen."
+msgstr ""
+
+#: admin/wine-e-label-db-management.php:145
+msgid "Zurücksetzen"
+msgstr ""
+
+#: admin/wine-e-label-design-page.php:64
+msgid "Zusaetzliches CSS"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:86
+msgid "Zusätzliche Nährwertangaben anzeigen"
+msgstr ""
+
+#: admin/working-metabox.php:524
+msgid "Zusätzliche Stoffe"
+msgstr ""
+
+#: admin/working-metabox.php:1358
+#: admin/working-metabox.php:525
+msgid "Zusätzlichen Stoff hinzufügen"
+msgstr ""
+
+#: admin/working-metabox.php:921
+msgid "Zusätzlicher Stoff %1$d: %2$s"
+msgstr ""
+
+#: admin/working-metabox.php:498
+msgid "Zutaten aufzählen"
+msgstr ""
+
+#: includes/elementor/class-wine-e-label-elementor-widget.php:96
+msgid "Zutaten unter der Tabelle anzeigen"
+msgstr ""
+
+#: admin/working-metabox.php:493
+#: admin/working-metabox.php:603
+#: includes/class-wine-e-label-frontend.php:200
+msgid "Zutaten"
+msgstr ""
+

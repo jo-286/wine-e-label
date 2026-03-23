@@ -27,6 +27,21 @@ Important:
 - Do not use GitHub's default `Download ZIP` button for WordPress installation.
 - `Testdata for Zip Import.zip` is not a plugin. It is sample data for testing imports and setup.
 
+## Productization Baseline
+
+The main plugin and receiver plugin now ship with a lightweight productization baseline:
+
+- translation template export via `scripts/export-i18n-templates.ps1`
+- smoke checks via `scripts/run-smoke-checks.ps1`
+- GitHub Actions quality checks for both maintained plugins
+- setup and QA docs in the `docs/` folder
+
+Helpful documentation:
+
+- [Main and Receiver setup](./docs/MAIN-AND-RECEIVER-SETUP.md)
+- [Quality assurance](./docs/QUALITY-ASSURANCE.md)
+- [Translations](./docs/TRANSLATIONS.md)
+
 ## Main Capabilities
 
 Wine E-Label supports a much broader workflow than just generating a QR code.
@@ -271,8 +286,8 @@ This keeps day-to-day label work separate from higher-risk configuration tasks.
 The project also keeps room for theme-level and developer-level customization.
 
 - the rendered label template can be overridden from the active theme at `wine-e-label/wine-e-label-secure.php`
-- the plugin exposes WordPress hooks such as `nutrition_labels_saved` and `nutrition_labels_deleted`
-- shortcode generation can be influenced through the `nutrition_labels_shortcode` filter
+- the plugin exposes WordPress hooks such as `wine_e_label_saved` and `wine_e_label_deleted`
+- shortcode generation can be influenced through the `wine_e_label_shortcode` filter
 - Elementor support is loaded only when Elementor itself is available
 
 This means the plugin can still be adapted for custom WordPress stacks without forcing all changes into the core plugin files.

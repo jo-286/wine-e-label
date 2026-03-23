@@ -1,41 +1,58 @@
 {
     "manifest_version":  1,
     "repository":  "https://github.com/jo-286/wine-e-label",
-    "generated_at":  "2026-03-20T11:12:35Z",
+    "generated_at":  "2026-03-23T11:32:00Z",
     "plugins":  {
                     "wine-e-label":  {
                                          "name":  "Wein E-Label",
                                          "slug":  "wine-e-label",
-                                         "version":  "2.3.1",
+                                         "version":  "2.3.2",
                                          "homepage":  "https://github.com/jo-286/wine-e-label",
-                                         "package":  "https://raw.githubusercontent.com/jo-286/wine-e-label/main/Plugin%20Installation%20Files/wine-e-label.zip?ver=2.3.1",
+                                         "package":  "https://raw.githubusercontent.com/jo-286/wine-e-label/main/Plugin%20Installation%20Files/wine-e-label.zip?ver=2.3.2",
                                          "requires":  "5.0",
                                          "requires_php":  "8.4",
-                                         "last_updated":  "2026-03-20 12:12:35",
+                                         "last_updated":  "2026-03-23 12:32:00",
                                          "author":  "Johannes Reith, Markus Hammer",
                                          "author_profile":  "https://github.com/jo-286",
                                          "sections":  {
                                                           "description":  "Wein E-Label is the main WordPress and WooCommerce plugin for wine e-label workflows, including manual data entry, imports, QR code generation, multilingual label pages, and optional receiver delivery.",
                                                           "installation":  "Install or update with the packaged wine-e-label.zip file. Future versions can then be updated directly from the shared GitHub repository through the WordPress plugin updater.",
-                                                          "changelog":  "Current packaged version: 2.3.1\nShared repository: https://github.com/jo-286/wine-e-label\nStable package: Plugin Installation Files/wine-e-label.zip"
+                                                          "changelog":  "Current packaged version: 2.3.2\nShared repository: https://github.com/jo-286/wine-e-label\nStable package: Plugin Installation Files/wine-e-label.zip"
                                                       }
                                      },
                     "wine-e-label-receiver":  {
                                                   "name":  "Wein E-Label Receiver",
                                                   "slug":  "wine-e-label-receiver",
-                                                  "version":  "2.3.1",
+                                                  "version":  "2.3.2",
                                                   "homepage":  "https://github.com/jo-286/wine-e-label",
-                                                  "package":  "https://raw.githubusercontent.com/jo-286/wine-e-label/main/Plugin%20Installation%20Files/wine-e-label-receiver.zip?ver=2.3.1",
+                                                  "package":  "https://raw.githubusercontent.com/jo-286/wine-e-label/main/Plugin%20Installation%20Files/wine-e-label-receiver.zip?ver=2.3.2",
                                                   "requires":  "6.0",
                                                   "requires_php":  "7.4",
-                                                  "last_updated":  "2026-03-20 12:12:35",
+                                                  "last_updated":  "2026-03-23 12:32:00",
                                                   "author":  "Johannes Reith",
                                                   "author_profile":  "https://github.com/jo-286",
                                                   "sections":  {
                                                                    "description":  "Wein E-Label Receiver is the companion plugin for a separate WordPress site that receives and serves wine e-label pages over REST without theme layout.",
                                                                    "installation":  "Install or update with the packaged wine-e-label-receiver.zip file. Future versions can then be updated directly from the shared GitHub repository through the WordPress plugin updater.",
-                                                                   "changelog":  "Current packaged version: 2.3.1\nShared repository: https://github.com/jo-286/wine-e-label\nStable package: Plugin Installation Files/wine-e-label-receiver.zip"
+                                                                   "changelog":  "Current packaged version: 2.3.2\nShared repository: https://github.com/jo-286/wine-e-label\nStable package: Plugin Installation Files/wine-e-label-receiver.zip"
                                                                }
-                                              }
+                                              },
+                    "wine-viewer":  {
+                                        "name":  "Wine Viewer",
+                                        "slug":  "wine-viewer",
+                                        "version":  "1.0.2",
+                                        "homepage":  "https://github.com/jo-286/wine-e-label",
+                                        "package":  "https://raw.githubusercontent.com/jo-286/wine-e-label/main/Plugin%20Installation%20Files/wine-viewer.zip?ver=1.0.2",
+                                        "requires":  "6.0",
+                                        "requires_php":  "8.1",
+                                        "last_updated":  "2026-03-22 22:14:31",
+                                        "author":  "Johannes Reith",
+                                        "author_profile":  "https://github.com/jo-286",
+                                        "sections":  {
+                                                         "description":  "Wine Viewer adds an OBJ-based 3D bottle viewer with fallback image support to WooCommerce product pages.",
+                                                         "installation":  "Install or update with the packaged wine-viewer.zip file.",
+                                                         "changelog":  "Current packaged version: 1.0.2\nShared repository: https://github.com/jo-286/wine-e-label\nStable package: Plugin Installation Files/wine-viewer.zip"
+                                                     }
+                                    }
                 }
 }

@@ -4,9 +4,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class NutritionLabels_URL
+class Wine_E_Label_URL
 {
-    private static ?NutritionLabels_DB_Extended $db = null;
+    private static ?Wine_E_Label_DB_Extended $db = null;
 
     public static function init(): void
     {
@@ -14,29 +14,29 @@ class NutritionLabels_URL
             return;
         }
 
-        self::$db = new NutritionLabels_DB_Extended();
+        self::$db = new Wine_E_Label_DB_Extended();
         self::add_rewrite_rules();
         add_filter('query_vars', [__CLASS__, 'add_query_vars']);
         add_action('template_redirect', [__CLASS__, 'enforce_subdomain_restriction'], 1);
         add_action('template_redirect', [__CLASS__, 'handle_short_url']);
     }
 
-    public static function get_db(): NutritionLabels_DB_Extended
+    public static function get_db(): Wine_E_Label_DB_Extended
     {
         if (!self::$db) {
-            self::$db = new NutritionLabels_DB_Extended();
+            self::$db = new Wine_E_Label_DB_Extended();
         }
         return self::$db;
     }
 
     public static function get_local_base_url(): string
     {
-        return self::normalize_base_url(home_url('/' . NUTRITION_LABELS_URL_PREFIX));
+        return self::normalize_base_url(home_url('/' . WINE_E_LABEL_URL_PREFIX));
     }
 
     public static function get_manual_public_base_url(): string
     {
-        $configured = trim((string) get_option('nutrition_labels_base_url', ''));
+        $configured = trim((string) get_option('wine_e_label_base_url', ''));
         return $configured !== '' ? self::normalize_base_url($configured) : '';
     }
 
@@ -105,12 +105,12 @@ class NutritionLabels_URL
 
     public static function use_external_rest_domain(): bool
     {
-        return get_option('nutrition_labels_rest_enabled', 'no') === 'yes' && trim((string) get_option('nutrition_labels_rest_base_url', '')) !== '';
+        return get_option('wine_e_label_rest_enabled', 'no') === 'yes' && trim((string) get_option('wine_e_label_rest_base_url', '')) !== '';
     }
 
     public static function get_external_rest_base_url(): string
     {
-        $configured = trim((string) get_option('nutrition_labels_rest_base_url', ''));
+        $configured = trim((string) get_option('wine_e_label_rest_base_url', ''));
         return $configured !== '' ? self::normalize_base_url($configured) : '';
     }
 
@@ -126,7 +126,7 @@ class NutritionLabels_URL
 
     public static function get_local_route_base_path(): string
     {
-        $prefix = trim((string) NUTRITION_LABELS_URL_PREFIX, '/');
+        $prefix = trim((string) WINE_E_LABEL_URL_PREFIX, '/');
         $prefix = strtolower(sanitize_title_with_dashes($prefix));
         return $prefix !== '' ? $prefix : 'l';
     }
@@ -140,12 +140,12 @@ class NutritionLabels_URL
     {
         $basePath = self::get_local_route_base_path();
         $pattern = '^' . preg_quote($basePath, '#') . '/([a-z0-9-]{1,120})/?$';
-        add_rewrite_rule($pattern, 'index.php?nutrition_shortcode=$matches[1]', 'top');
+        add_rewrite_rule($pattern, 'index.php?wine_e_label_shortcode=$matches[1]', 'top');
     }
 
     public static function add_query_vars($query_vars)
     {
-        $query_vars[] = 'nutrition_shortcode';
+        $query_vars[] = 'wine_e_label_shortcode';
         return $query_vars;
     }
 
@@ -157,7 +157,7 @@ class NutritionLabels_URL
 
         $shortcode = self::get_requested_shortcode();
         if ($shortcode === '') {
-            wp_die(esc_html__('Not found', 'nutrition-labels'), esc_html__('Not found', 'nutrition-labels'), ['response' => 404]);
+            wp_die(esc_html__('Not found', 'wine-e-label'), esc_html__('Not found', 'wine-e-label'), ['response' => 404]);
         }
     }
 
@@ -180,7 +180,7 @@ class NutritionLabels_URL
 
     private static function get_requested_shortcode(): string
     {
-        $shortcode = (string) get_query_var('nutrition_shortcode');
+        $shortcode = (string) get_query_var('wine_e_label_shortcode');
         if ($shortcode !== '' && preg_match('/^[a-z0-9-]{1,120}$/', $shortcode)) {
             return $shortcode;
         }
@@ -210,7 +210,7 @@ class NutritionLabels_URL
 
     private static function should_handle_dedicated_host_request(): bool
     {
-        if (get_option('nutrition_labels_use_subdomain', 'no') !== 'yes') {
+        if (get_option('wine_e_label_use_subdomain', 'no') !== 'yes') {
             return false;
         }
 
@@ -262,7 +262,7 @@ class NutritionLabels_URL
 
     public static function get_short_url(int $product_id, string $lang_code = ""): string|false
     {
-        $label_data = NutritionLabels_Importer::get_label_data($product_id);
+        $label_data = Wine_E_Label_Importer::get_label_data($product_id);
         $lang_code = strtolower(sanitize_key($lang_code));
 
         if (self::use_external_rest_domain() && !empty($label_data['remote_page_url'])) {
@@ -273,7 +273,7 @@ class NutritionLabels_URL
             return $url;
         }
 
-        $slug = (string) get_post_meta($product_id, NutritionLabels_Importer::META_SLUG, true);
+        $slug = (string) get_post_meta($product_id, Wine_E_Label_Importer::META_SLUG, true);
         if ($slug === '') {
             $slug = (string) self::get_db()->get_shortcode_by_product_id($product_id);
         }
@@ -302,9 +302,9 @@ class NutritionLabels_URL
 
     public static function get_label_targets(int $product_id, string $lang_code = ''): array
     {
-        $label_data = NutritionLabels_Importer::get_label_data($product_id);
+        $label_data = Wine_E_Label_Importer::get_label_data($product_id);
         $lang_code = strtolower(sanitize_key($lang_code));
-        $slug = (string) get_post_meta($product_id, NutritionLabels_Importer::META_SLUG, true);
+        $slug = (string) get_post_meta($product_id, Wine_E_Label_Importer::META_SLUG, true);
         if ($slug === '') {
             $slug = (string) self::get_db()->get_shortcode_by_product_id($product_id);
         }
@@ -324,7 +324,7 @@ class NutritionLabels_URL
             );
 
             $manual_base = self::get_manual_public_base_url();
-            if (get_option('nutrition_labels_use_subdomain', 'no') === 'yes' && $manual_base !== '' && self::normalize_base_url($manual_base) !== self::normalize_base_url(self::get_local_base_url())) {
+            if (get_option('wine_e_label_use_subdomain', 'no') === 'yes' && $manual_base !== '' && self::normalize_base_url($manual_base) !== self::normalize_base_url(self::get_local_base_url())) {
                 $manual_url = self::compose_target_url($manual_base, $slug, $lang_code);
                 self::append_target(
                     $targets,
@@ -430,14 +430,14 @@ class NutritionLabels_URL
 
     public static function render_label_html(int $product_id): string
     {
-        $label = NutritionLabels_Importer::get_label_data($product_id);
+        $label = Wine_E_Label_Importer::get_label_data($product_id);
         if (trim($label['energy']) === '' && trim($label['ingredients_html']) === '') {
             return '';
         }
 
         $nutrition_data = [
             'product_id' => $product_id,
-            'product_title' => $label['title'] ?: NutritionLabels_Importer::format_label_title(get_the_title($product_id)),
+            'product_title' => $label['title'] ?: Wine_E_Label_Importer::format_label_title(get_the_title($product_id)),
             'ingredient_list' => $label['ingredients_html'],
             'ingredient_footnote' => $label['footnote'],
             'energy' => $label['energy'],
@@ -457,7 +457,7 @@ class NutritionLabels_URL
 
         $template = locate_template('wine-e-label/wine-e-label-secure.php');
         if (empty($template)) {
-            $template = NUTRITION_LABELS_PLUGIN_DIR . 'templates/wine-e-label-secure.php';
+            $template = WINE_E_LABEL_PLUGIN_DIR . 'templates/wine-e-label-secure.php';
         }
 
         ob_start();
@@ -469,7 +469,7 @@ class NutritionLabels_URL
     {
         $html = self::render_label_html($product_id);
         if ($html === '') {
-            wp_die(__('E-Label not found', 'nutrition-labels'));
+            wp_die(__('E-Label not found', 'wine-e-label'));
         }
         echo $html;
         exit;

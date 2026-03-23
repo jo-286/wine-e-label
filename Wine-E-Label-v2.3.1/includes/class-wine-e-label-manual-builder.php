@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class NutritionLabels_Manual_Builder
+class Wine_E_Label_Manual_Builder
 {
     public static function get_category_options(): array
     {
@@ -517,9 +517,9 @@ class NutritionLabels_Manual_Builder
 
         return [
             'manual_config' => $config,
-            'slug' => NutritionLabels_Importer::suggest_slug((string) $config['product']['wein_nr'], ''),
+            'slug' => Wine_E_Label_Importer::suggest_slug((string) $config['product']['wein_nr'], ''),
             'wine_nr' => (string) $config['product']['wein_nr'],
-            'title' => NutritionLabels_Importer::format_label_title($title),
+            'title' => Wine_E_Label_Importer::format_label_title($title),
             'energy' => $derived['energy'],
             'carbs' => $derived['carbs'] . ' g',
             'sugar' => $derived['sugar'] . ' g',

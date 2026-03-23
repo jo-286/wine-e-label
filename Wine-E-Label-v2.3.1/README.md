@@ -168,6 +168,19 @@ QR generation uses the [endroid/qr-code](https://github.com/endroid/qr-code) lib
 3. Open **Wein E-Label > Einstellungen**.
 4. Start with the **Einrichtung / Setup** tab.
 
+## Translations And QA
+
+This repository now includes a product-quality baseline for the main plugin:
+
+- translation template export via `scripts/export-i18n-templates.ps1`
+- smoke checks via `scripts/run-smoke-checks.ps1`
+- setup and QA docs in the repository `docs/` folder
+
+The current translation templates for the main plugin are:
+
+- `languages/wine-e-label.pot`
+- `languages/wine-e-label.pot`
+
 ## Recommended Workflow
 
 - open a wine product

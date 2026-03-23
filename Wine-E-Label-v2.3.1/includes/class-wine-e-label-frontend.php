@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class NutritionLabels_Frontend
+class Wine_E_Label_Frontend
 {
     public static function init(): void
     {
@@ -15,10 +15,10 @@ class NutritionLabels_Frontend
     public static function register_assets(): void
     {
         wp_register_style(
-            'nutrition-labels-frontend-widget',
-            NUTRITION_LABELS_PLUGIN_URL . 'assets/css/frontend-widget.css',
+            'wine-e-label-frontend-widget',
+            WINE_E_LABEL_PLUGIN_URL . 'assets/css/frontend-widget.css',
             [],
-            NUTRITION_LABELS_VERSION
+            WINE_E_LABEL_VERSION
         );
     }
 
@@ -89,7 +89,7 @@ class NutritionLabels_Frontend
             return [];
         }
 
-        $label = NutritionLabels_Importer::get_label_data($product_id);
+        $label = Wine_E_Label_Importer::get_label_data($product_id);
         if (!is_array($label)) {
             return [];
         }
@@ -106,7 +106,7 @@ class NutritionLabels_Frontend
 
         return [
             'product_id' => $product_id,
-            'product_title' => $label['title'] ?: NutritionLabels_Importer::format_label_title(get_the_title($product_id)),
+            'product_title' => $label['title'] ?: Wine_E_Label_Importer::format_label_title(get_the_title($product_id)),
             'energy' => (string) ($label['energy'] ?? ''),
             'carbohydrates' => (string) ($label['carbs'] ?? ''),
             'sugar' => (string) ($label['sugar'] ?? ''),
@@ -120,7 +120,7 @@ class NutritionLabels_Frontend
             'ingredients_html' => (string) ($label['ingredients_html'] ?? ''),
             'footnote' => (string) ($label['footnote'] ?? ''),
             'pretable_notice' => (string) ($label['pretable_notice'] ?? ''),
-            'public_url' => NutritionLabels_URL::get_short_url($product_id),
+            'public_url' => Wine_E_Label_URL::get_short_url($product_id),
         ];
     }
 
@@ -146,7 +146,7 @@ class NutritionLabels_Frontend
             return '';
         }
 
-        wp_enqueue_style('nutrition-labels-frontend-widget');
+        wp_enqueue_style('wine-e-label-frontend-widget');
 
         ob_start();
         $content_open = (bool) ($args['accordion_open'] ?? false);
@@ -170,7 +170,7 @@ class NutritionLabels_Frontend
                 <thead>
                     <tr>
                         <th>
-                            <div class="nlw-head-row"><span><?php echo esc_html__('Nährwertangaben', 'nutrition-labels'); ?></span><span><?php echo esc_html__('je 100 ml', 'nutrition-labels'); ?></span></div>
+                            <div class="nlw-head-row"><span><?php echo esc_html__('Nährwertangaben', 'wine-e-label'); ?></span><span><?php echo esc_html__('je 100 ml', 'wine-e-label'); ?></span></div>
                         </th>
                     </tr>
                 </thead>
@@ -178,17 +178,17 @@ class NutritionLabels_Frontend
                     <?php if ($data['pretable_notice'] !== '') : ?>
                         <tr><td><div class="nlw-row"><span><?php echo esc_html($data['pretable_notice']); ?></span><span></span></div></td></tr>
                     <?php endif; ?>
-                    <tr><td><div class="nlw-row"><span><?php echo esc_html__('Brennwert', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['energy']); ?></span></div></td></tr>
-                    <tr><td><div class="nlw-row"><span><?php echo esc_html__('Kohlenhydrate', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['carbohydrates']); ?></span></div></td></tr>
-                    <tr><td><div class="nlw-row nlw-indent"><span><?php echo esc_html__('davon Zucker', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['sugar']); ?></span></div></td></tr>
+                    <tr><td><div class="nlw-row"><span><?php echo esc_html__('Brennwert', 'wine-e-label'); ?></span><span><?php echo esc_html($data['energy']); ?></span></div></td></tr>
+                    <tr><td><div class="nlw-row"><span><?php echo esc_html__('Kohlenhydrate', 'wine-e-label'); ?></span><span><?php echo esc_html($data['carbohydrates']); ?></span></div></td></tr>
+                    <tr><td><div class="nlw-row nlw-indent"><span><?php echo esc_html__('davon Zucker', 'wine-e-label'); ?></span><span><?php echo esc_html($data['sugar']); ?></span></div></td></tr>
 
                     <?php if (!empty($args['show_minor'])) : ?>
                         <?php if (($data['minor_mode'] ?? '') === 'list') : ?>
-                            <?php if ($data['fat'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('Fett', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['fat']); ?> g</span></div></td></tr><?php endif; ?>
-                            <?php if ($data['saturates'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('davon gesättigte Fettsäuren', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['saturates']); ?> g</span></div></td></tr><?php endif; ?>
-                            <?php if ($data['protein'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('Eiweiß', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['protein']); ?> g</span></div></td></tr><?php endif; ?>
-                            <?php if ($data['salt'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('Salz', 'nutrition-labels'); ?></span><span><?php echo esc_html($data['salt']); ?> g</span></div></td></tr><?php endif; ?>
-                            <?php if (!empty($data['salt_natural'])) : ?><tr><td class="nlw-smalltext"><?php echo esc_html__('Angegebener Salzgehalt ist ausschließlich auf die Anwesenheit natürlich vorkommenden Natriums zurückzuführen.', 'nutrition-labels'); ?></td></tr><?php endif; ?>
+                            <?php if ($data['fat'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('Fett', 'wine-e-label'); ?></span><span><?php echo esc_html($data['fat']); ?> g</span></div></td></tr><?php endif; ?>
+                            <?php if ($data['saturates'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('davon gesättigte Fettsäuren', 'wine-e-label'); ?></span><span><?php echo esc_html($data['saturates']); ?> g</span></div></td></tr><?php endif; ?>
+                            <?php if ($data['protein'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('Eiweiß', 'wine-e-label'); ?></span><span><?php echo esc_html($data['protein']); ?> g</span></div></td></tr><?php endif; ?>
+                            <?php if ($data['salt'] !== '') : ?><tr><td><div class="nlw-row"><span><?php echo esc_html__('Salz', 'wine-e-label'); ?></span><span><?php echo esc_html($data['salt']); ?> g</span></div></td></tr><?php endif; ?>
+                            <?php if (!empty($data['salt_natural'])) : ?><tr><td class="nlw-smalltext"><?php echo esc_html__('Angegebener Salzgehalt ist ausschließlich auf die Anwesenheit natürlich vorkommenden Natriums zurückzuführen.', 'wine-e-label'); ?></td></tr><?php endif; ?>
                         <?php elseif ($data['minor_text'] !== '') : ?>
                             <tr><td class="nlw-smalltext"><?php echo esc_html($data['minor_text']); ?></td></tr>
                         <?php endif; ?>
@@ -197,7 +197,7 @@ class NutritionLabels_Frontend
             </table>
 
             <?php if (!empty($args['show_ingredients']) && $data['ingredients_html'] !== '') : ?>
-                <div class="nlw-ingredients"><span class="nlw-ingredients-label"><?php echo esc_html__('Zutaten', 'nutrition-labels'); ?>:</span> <?php echo wp_kses_post($data['ingredients_html']); ?></div>
+                <div class="nlw-ingredients"><span class="nlw-ingredients-label"><?php echo esc_html__('Zutaten', 'wine-e-label'); ?>:</span> <?php echo wp_kses_post($data['ingredients_html']); ?></div>
                 <?php if ($data['footnote'] !== '') : ?>
                     <div class="nlw-footnote"><?php echo esc_html($data['footnote']); ?></div>
                 <?php endif; ?>
@@ -205,7 +205,7 @@ class NutritionLabels_Frontend
 
             <?php if (!empty($args['show_link']) && !empty($data['public_url'])) : ?>
                 <div class="nlw-link-wrap">
-                    <a class="nlw-link" href="<?php echo esc_url($data['public_url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('E-Label öffnen', 'nutrition-labels'); ?></a>
+                    <a class="nlw-link" href="<?php echo esc_url($data['public_url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('E-Label öffnen', 'wine-e-label'); ?></a>
                 </div>
             <?php endif; ?>
 

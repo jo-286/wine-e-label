@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class NutritionLabels_Elementor
+class Wine_E_Label_Elementor
 {
     public static function init(): void
     {
@@ -17,7 +17,7 @@ class NutritionLabels_Elementor
             return;
         }
 
-        require_once NUTRITION_LABELS_PLUGIN_DIR . 'includes/elementor/class-wine-e-label-elementor-widget.php';
-        $widgets_manager->register(new NutritionLabels_Elementor_Widget());
+        require_once WINE_E_LABEL_PLUGIN_DIR . 'includes/elementor/class-wine-e-label-elementor-widget.php';
+        $widgets_manager->register(new Wine_E_Label_Elementor_Widget());
     }
 }

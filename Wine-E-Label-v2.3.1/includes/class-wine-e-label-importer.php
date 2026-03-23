@@ -4,36 +4,36 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class NutritionLabels_Importer
+class Wine_E_Label_Importer
 {
-    public const META_SLUG = '_nutrition_labels_slug';
-    public const META_WINE_NR = '_nutrition_labels_wine_nr';
-    public const META_TITLE = '_nutrition_labels_label_title';
-    public const META_ENERGY = '_nutrition_labels_energy';
-    public const META_CARBS = '_nutrition_labels_carbs';
-    public const META_SUGAR = '_nutrition_labels_sugar';
-    public const META_MINOR = '_nutrition_labels_minor';
-    public const META_MINOR_MODE = '_nutrition_labels_minor_mode';
-    public const META_FAT = '_nutrition_labels_fat';
-    public const META_SATURATES = '_nutrition_labels_saturates';
-    public const META_PROTEIN = '_nutrition_labels_protein';
-    public const META_SALT = '_nutrition_labels_salt';
-    public const META_SALT_NATURAL = '_nutrition_labels_salt_natural';
-    public const META_INGREDIENTS_HTML = '_nutrition_labels_ingredients_html';
-    public const META_FOOTNOTE = '_nutrition_labels_footnote';
-    public const META_PRETABLE = '_nutrition_labels_pretable_notice';
-    public const META_SOURCE_URL = '_nutrition_labels_source_file_url';
-    public const META_SOURCE_PATH = '_nutrition_labels_source_file_path';
-    public const META_SOURCE_NAME = '_nutrition_labels_source_file_name';
-    public const META_LAST_IMPORT = '_nutrition_labels_last_import';
-    public const META_IMPORT_STATUS = '_nutrition_labels_import_status';
-    public const META_IMPORT_MESSAGE = '_nutrition_labels_import_message';
-    public const META_BUILT_AT = '_nutrition_labels_built_at';
-    public const META_MANUAL_CONFIG = '_nutrition_labels_manual_config';
-    public const META_IMPORT_SNAPSHOT = '_nutrition_labels_import_snapshot';
-    public const META_REMOTE_PAGE_ID = '_nutrition_labels_remote_page_id';
-    public const META_REMOTE_PAGE_URL = '_nutrition_labels_remote_page_url';
-    public const META_DISPLAY_CONFIG = '_nutrition_labels_display_config';
+    public const META_SLUG = '_wine_e_label_slug';
+    public const META_WINE_NR = '_wine_e_label_wine_nr';
+    public const META_TITLE = '_wine_e_label_label_title';
+    public const META_ENERGY = '_wine_e_label_energy';
+    public const META_CARBS = '_wine_e_label_carbs';
+    public const META_SUGAR = '_wine_e_label_sugar';
+    public const META_MINOR = '_wine_e_label_minor';
+    public const META_MINOR_MODE = '_wine_e_label_minor_mode';
+    public const META_FAT = '_wine_e_label_fat';
+    public const META_SATURATES = '_wine_e_label_saturates';
+    public const META_PROTEIN = '_wine_e_label_protein';
+    public const META_SALT = '_wine_e_label_salt';
+    public const META_SALT_NATURAL = '_wine_e_label_salt_natural';
+    public const META_INGREDIENTS_HTML = '_wine_e_label_ingredients_html';
+    public const META_FOOTNOTE = '_wine_e_label_footnote';
+    public const META_PRETABLE = '_wine_e_label_pretable_notice';
+    public const META_SOURCE_URL = '_wine_e_label_source_file_url';
+    public const META_SOURCE_PATH = '_wine_e_label_source_file_path';
+    public const META_SOURCE_NAME = '_wine_e_label_source_file_name';
+    public const META_LAST_IMPORT = '_wine_e_label_last_import';
+    public const META_IMPORT_STATUS = '_wine_e_label_import_status';
+    public const META_IMPORT_MESSAGE = '_wine_e_label_import_message';
+    public const META_BUILT_AT = '_wine_e_label_built_at';
+    public const META_MANUAL_CONFIG = '_wine_e_label_manual_config';
+    public const META_IMPORT_SNAPSHOT = '_wine_e_label_import_snapshot';
+    public const META_REMOTE_PAGE_ID = '_wine_e_label_remote_page_id';
+    public const META_REMOTE_PAGE_URL = '_wine_e_label_remote_page_url';
+    public const META_DISPLAY_CONFIG = '_wine_e_label_display_config';
 
     public static function normalize_slug(string $value): string
     {
@@ -88,11 +88,11 @@ class NutritionLabels_Importer
             'import_status' => (string) get_post_meta($product_id, self::META_IMPORT_STATUS, true),
             'import_message' => (string) get_post_meta($product_id, self::META_IMPORT_MESSAGE, true),
             'built_at' => (string) get_post_meta($product_id, self::META_BUILT_AT, true),
-            'manual_config' => NutritionLabels_Manual_Builder::normalize_config((string) get_post_meta($product_id, self::META_MANUAL_CONFIG, true)),
-            'import_snapshot' => NutritionLabels_Manual_Builder::normalize_config((string) get_post_meta($product_id, self::META_IMPORT_SNAPSHOT, true)),
+            'manual_config' => Wine_E_Label_Manual_Builder::normalize_config((string) get_post_meta($product_id, self::META_MANUAL_CONFIG, true)),
+            'import_snapshot' => Wine_E_Label_Manual_Builder::normalize_config((string) get_post_meta($product_id, self::META_IMPORT_SNAPSHOT, true)),
             'remote_page_id' => (string) get_post_meta($product_id, self::META_REMOTE_PAGE_ID, true),
             'remote_page_url' => (string) get_post_meta($product_id, self::META_REMOTE_PAGE_URL, true),
-            'display_config' => class_exists('NutritionLabels_Presentation') ? NutritionLabels_Presentation::normalize_config((string) get_post_meta($product_id, self::META_DISPLAY_CONFIG, true)) : [],
+            'display_config' => class_exists('Wine_E_Label_Presentation') ? Wine_E_Label_Presentation::normalize_config((string) get_post_meta($product_id, self::META_DISPLAY_CONFIG, true)) : [],
         ];
     }
 
@@ -122,11 +122,11 @@ class NutritionLabels_Importer
             self::META_IMPORT_STATUS => $data['import_status'] ?? '',
             self::META_IMPORT_MESSAGE => $data['import_message'] ?? '',
             self::META_BUILT_AT => $data['built_at'] ?? '',
-            self::META_MANUAL_CONFIG => wp_json_encode(NutritionLabels_Manual_Builder::sanitize_config($data['manual_config'] ?? []), JSON_UNESCAPED_UNICODE),
-            self::META_IMPORT_SNAPSHOT => wp_json_encode(NutritionLabels_Manual_Builder::sanitize_config($data['import_snapshot'] ?? []), JSON_UNESCAPED_UNICODE),
+            self::META_MANUAL_CONFIG => wp_json_encode(Wine_E_Label_Manual_Builder::sanitize_config($data['manual_config'] ?? []), JSON_UNESCAPED_UNICODE),
+            self::META_IMPORT_SNAPSHOT => wp_json_encode(Wine_E_Label_Manual_Builder::sanitize_config($data['import_snapshot'] ?? []), JSON_UNESCAPED_UNICODE),
             self::META_REMOTE_PAGE_ID => $data['remote_page_id'] ?? '',
             self::META_REMOTE_PAGE_URL => $data['remote_page_url'] ?? '',
-            self::META_DISPLAY_CONFIG => wp_json_encode(class_exists('NutritionLabels_Presentation') ? NutritionLabels_Presentation::sanitize_config($data['display_config'] ?? []) : [], JSON_UNESCAPED_UNICODE),
+            self::META_DISPLAY_CONFIG => wp_json_encode(class_exists('Wine_E_Label_Presentation') ? Wine_E_Label_Presentation::sanitize_config($data['display_config'] ?? []) : [], JSON_UNESCAPED_UNICODE),
         ];
 
         foreach ($map as $key => $value) {
@@ -137,12 +137,12 @@ class NutritionLabels_Importer
     public static function import_uploaded_file(array $file, int $product_id): array|WP_Error
     {
         if (empty($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
-            return new WP_Error('upload_missing', __('No import file uploaded.', 'nutrition-labels'));
+            return new WP_Error('upload_missing', __('No import file uploaded.', 'wine-e-label'));
         }
 
         $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         if (!in_array($extension, ['html', 'htm', 'json', 'zip'], true)) {
-            return new WP_Error('upload_type', __('Nur ZIP-, JSON- oder HTML-Dateien sind erlaubt.', 'nutrition-labels'));
+            return new WP_Error('upload_type', __('Nur ZIP-, JSON- oder HTML-Dateien sind erlaubt.', 'wine-e-label'));
         }
 
         $upload_dir = wp_upload_dir();
@@ -150,16 +150,16 @@ class NutritionLabels_Importer
             return new WP_Error('upload_dir', $upload_dir['error']);
         }
 
-        $target_dir = trailingslashit($upload_dir['basedir']) . 'nutrition-labels-imports';
+        $target_dir = trailingslashit($upload_dir['basedir']) . 'wine-e-label-imports';
         if (!wp_mkdir_p($target_dir)) {
-            return new WP_Error('upload_dir_create', __('Import-Ordner konnte nicht erstellt werden.', 'nutrition-labels'));
+            return new WP_Error('upload_dir_create', __('Import-Ordner konnte nicht erstellt werden.', 'wine-e-label'));
         }
 
         $filename = wp_unique_filename($target_dir, sanitize_file_name($file['name']));
         $target_path = trailingslashit($target_dir) . $filename;
 
         if (!@move_uploaded_file($file['tmp_name'], $target_path)) {
-            return new WP_Error('upload_move', __('Hochgeladene Datei konnte nicht verschoben werden.', 'nutrition-labels'));
+            return new WP_Error('upload_move', __('Hochgeladene Datei konnte nicht verschoben werden.', 'wine-e-label'));
         }
 
         $parse = self::parse_import_file($target_path, $filename);
@@ -168,15 +168,15 @@ class NutritionLabels_Importer
         }
 
         $parse['source_file_path'] = $target_path;
-        $parse['source_file_url'] = trailingslashit($upload_dir['baseurl']) . 'nutrition-labels-imports/' . rawurlencode($filename);
+        $parse['source_file_url'] = trailingslashit($upload_dir['baseurl']) . 'wine-e-label-imports/' . rawurlencode($filename);
         $parse['source_file_name'] = $filename;
         $parse['last_import'] = current_time('mysql');
         $parse['import_status'] = 'success';
         $source = (string) ($parse['import_source'] ?? 'html');
         $parse['import_message'] = match ($source) {
-            'json' => __('Import erfolgreich (Quelle: JSON).', 'nutrition-labels'),
-            'zip' => __('Import erfolgreich (Quelle: ZIP).', 'nutrition-labels'),
-            default => __('Import erfolgreich (Quelle: HTML).', 'nutrition-labels'),
+            'json' => __('Import erfolgreich (Quelle: JSON).', 'wine-e-label'),
+            'zip' => __('Import erfolgreich (Quelle: ZIP).', 'wine-e-label'),
+            default => __('Import erfolgreich (Quelle: HTML).', 'wine-e-label'),
         };
 
         if (!empty($parse['title'])) {
@@ -194,7 +194,7 @@ class NutritionLabels_Importer
         $parse['protein'] = (string) ($parse['protein'] ?? '');
         $parse['salt'] = (string) ($parse['salt'] ?? '');
         $parse['salt_natural'] = (string) ($parse['salt_natural'] ?? '0');
-        $parse['import_snapshot'] = NutritionLabels_Manual_Builder::sanitize_config($parse['manual_config'] ?? []);
+        $parse['import_snapshot'] = Wine_E_Label_Manual_Builder::sanitize_config($parse['manual_config'] ?? []);
 
         return $parse;
     }
@@ -209,7 +209,7 @@ class NutritionLabels_Importer
         $data['last_import'] = '';
         $data['import_status'] = '';
         $data['import_message'] = '';
-        $data['import_snapshot'] = NutritionLabels_Manual_Builder::default_config();
+        $data['import_snapshot'] = Wine_E_Label_Manual_Builder::default_config();
         self::save_label_data($product_id, $data);
     }
 
@@ -237,7 +237,7 @@ class NutritionLabels_Importer
         if ($extension === 'zip') {
             $zip = new ZipArchive();
             if ($zip->open($path) !== true) {
-                return new WP_Error('zip_open', __('ZIP file could not be opened.', 'nutrition-labels'));
+                return new WP_Error('zip_open', __('ZIP file could not be opened.', 'wine-e-label'));
             }
 
             for ($i = 0; $i < $zip->numFiles; $i++) {
@@ -301,10 +301,10 @@ class NutritionLabels_Importer
         }
 
         if ($json !== '') {
-            return new WP_Error('import_json_invalid', __('Die JSON-Daten im ZIP konnten nicht verarbeitet werden.', 'nutrition-labels'));
+            return new WP_Error('import_json_invalid', __('Die JSON-Daten im ZIP konnten nicht verarbeitet werden.', 'wine-e-label'));
         }
 
-        return new WP_Error('import_content_missing', __('Es konnten weder brauchbare JSON- noch HTML-Daten im Import gefunden werden.', 'nutrition-labels'));
+        return new WP_Error('import_content_missing', __('Es konnten weder brauchbare JSON- noch HTML-Daten im Import gefunden werden.', 'wine-e-label'));
     }
 
     private static function is_plausible_wip_json(array $jsonData): bool
@@ -314,12 +314,12 @@ class NutritionLabels_Importer
 
     private static function parse_wip_json(array $jsonData): array|WP_Error
     {
-        $manualConfig = NutritionLabels_Manual_Builder::build_config_from_wip_json($jsonData);
-        if (!NutritionLabels_Manual_Builder::has_meaningful_input($manualConfig)) {
-            return new WP_Error('import_json_empty', __('Die JSON-Daten enthalten keine verwertbaren Produktinformationen.', 'nutrition-labels'));
+        $manualConfig = Wine_E_Label_Manual_Builder::build_config_from_wip_json($jsonData);
+        if (!Wine_E_Label_Manual_Builder::has_meaningful_input($manualConfig)) {
+            return new WP_Error('import_json_empty', __('Die JSON-Daten enthalten keine verwertbaren Produktinformationen.', 'wine-e-label'));
         }
 
-        $parsed = NutritionLabels_Manual_Builder::build_label_data($manualConfig);
+        $parsed = Wine_E_Label_Manual_Builder::build_label_data($manualConfig);
         $parsed['manual_config'] = $manualConfig;
 
         if (!empty($jsonData['bezeichnung'])) {
@@ -342,7 +342,7 @@ class NutritionLabels_Importer
         libxml_clear_errors();
 
         if (!$loaded) {
-            return new WP_Error('import_parse', __('HTML could not be parsed.', 'nutrition-labels'));
+            return new WP_Error('import_parse', __('HTML could not be parsed.', 'wine-e-label'));
         }
 
         $xpath = new DOMXPath($dom);
@@ -421,7 +421,7 @@ class NutritionLabels_Importer
         }
 
         if (!$ingredientsWrap) {
-            return new WP_Error('import_content', __('No ingredient block could be found in the import.', 'nutrition-labels'));
+            return new WP_Error('import_content', __('No ingredient block could be found in the import.', 'wine-e-label'));
         }
 
         $ingredientsHtml = '';
@@ -470,7 +470,7 @@ class NutritionLabels_Importer
             }
         }
 
-        $manualConfig = NutritionLabels_Manual_Builder::build_config_from_ingredients_html(
+        $manualConfig = Wine_E_Label_Manual_Builder::build_config_from_ingredients_html(
             $ingredientsHtml,
             $footnote,
             ['product' => ['bezeichnung' => sanitize_text_field($htmlTitle)]]

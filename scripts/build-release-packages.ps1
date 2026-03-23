@@ -11,6 +11,8 @@ $mainSourceDir = Join-Path $repoRoot 'Wine-E-Label-v2.3.1'
 $mainEntryFile = Join-Path $mainSourceDir 'wine-e-label.php'
 $receiverSourceDir = Join-Path $repoRoot 'Wine-E-Label-Receiver-v2.3.1\wine-e-label-receiver'
 $receiverEntryFile = Join-Path $receiverSourceDir 'wine-e-label-receiver.php'
+$viewerSourceDir = Join-Path $repoRoot 'Wine-Viewer-v1.0.0'
+$viewerEntryFile = Join-Path $viewerSourceDir 'wine-viewer.php'
 
 function Get-PluginVersion {
     param(
@@ -118,30 +120,41 @@ New-Item -ItemType Directory -Path $updatesDir -Force | Out-Null
 
 $mainPackageRoot = Join-Path $tempDir 'main-package'
 $receiverPackageRoot = Join-Path $tempDir 'receiver-package'
+$viewerPackageRoot = Join-Path $tempDir 'viewer-package'
 $mainStageRoot = Join-Path $mainPackageRoot 'wine-e-label'
 $receiverStageRoot = Join-Path $receiverPackageRoot 'wine-e-label-receiver'
+$viewerStageRoot = Join-Path $viewerPackageRoot 'wine-viewer'
 
 New-Item -ItemType Directory -Path $mainPackageRoot | Out-Null
 New-Item -ItemType Directory -Path $receiverPackageRoot | Out-Null
+New-Item -ItemType Directory -Path $viewerPackageRoot | Out-Null
 New-Item -ItemType Directory -Path $mainStageRoot | Out-Null
 New-Item -ItemType Directory -Path $receiverStageRoot | Out-Null
+New-Item -ItemType Directory -Path $viewerStageRoot | Out-Null
 
 Copy-Item -Path (Join-Path $mainSourceDir '*') -Destination $mainStageRoot -Recurse -Force
 Copy-Item -Path (Join-Path $receiverSourceDir '*') -Destination $receiverStageRoot -Recurse -Force
+Copy-Item -Path (Join-Path $viewerSourceDir '*') -Destination $viewerStageRoot -Recurse -Force
 
 $mainVersion = Get-PluginVersion -PluginFile $mainEntryFile
 $receiverVersion = Get-PluginVersion -PluginFile $receiverEntryFile
+$viewerVersion = Get-PluginVersion -PluginFile $viewerEntryFile
 $mainName = Get-PluginHeaderValue -PluginFile $mainEntryFile -HeaderName 'Plugin Name'
 $receiverName = Get-PluginHeaderValue -PluginFile $receiverEntryFile -HeaderName 'Plugin Name'
+$viewerName = Get-PluginHeaderValue -PluginFile $viewerEntryFile -HeaderName 'Plugin Name'
 $mainRequires = Get-PluginHeaderValue -PluginFile $mainEntryFile -HeaderName 'Requires at least'
 $receiverRequires = Get-PluginHeaderValue -PluginFile $receiverEntryFile -HeaderName 'Requires at least'
+$viewerRequires = Get-PluginHeaderValue -PluginFile $viewerEntryFile -HeaderName 'Requires at least'
 $mainRequiresPhp = Get-PluginHeaderValue -PluginFile $mainEntryFile -HeaderName 'Requires PHP'
 $receiverRequiresPhp = Get-PluginHeaderValue -PluginFile $receiverEntryFile -HeaderName 'Requires PHP'
+$viewerRequiresPhp = Get-PluginHeaderValue -PluginFile $viewerEntryFile -HeaderName 'Requires PHP'
 
 $mainZip = Join-Path $distDir ("wine-e-label-$mainVersion.zip")
 $receiverZip = Join-Path $distDir ("wine-e-label-receiver-$receiverVersion.zip")
+$viewerZip = Join-Path $distDir ("wine-viewer-$viewerVersion.zip")
 $mainStableZip = Join-Path $installDir 'wine-e-label.zip'
 $receiverStableZip = Join-Path $installDir 'wine-e-label-receiver.zip'
+$viewerStableZip = Join-Path $installDir 'wine-viewer.zip'
 $manifestFile = Join-Path $updatesDir 'plugin-updates.json'
 
 # Keep the manual-install folder clean so it only contains the current
@@ -149,16 +162,19 @@ $manifestFile = Join-Path $updatesDir 'plugin-updates.json'
 Get-ChildItem -LiteralPath $installDir -File |
     Where-Object {
         $_.Name -like 'wine-e-label*.zip*' -or
+        $_.Name -like 'wine-viewer*.zip*' -or
         $_.Name -like 'reith-naehrwert-html-importer*.zip*'
     } |
     Remove-Item -Force
 
 New-ZipFromDirectory -SourceDir $mainPackageRoot -ZipPath $mainZip
 New-ZipFromDirectory -SourceDir $receiverPackageRoot -ZipPath $receiverZip
+New-ZipFromDirectory -SourceDir $viewerPackageRoot -ZipPath $viewerZip
 # The install packages are built flat so WordPress can install them without
 # creating an extra wrapper directory like wine-e-label-1/wine-e-label/.
 New-ZipFromDirectory -SourceDir $mainStageRoot -ZipPath $mainStableZip
 New-ZipFromDirectory -SourceDir $receiverStageRoot -ZipPath $receiverStableZip
+New-ZipFromDirectory -SourceDir $viewerStageRoot -ZipPath $viewerStableZip
 
 $generatedAtUtc = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
 $lastUpdated = [DateTime]::Now.ToString('yyyy-MM-dd HH:mm:ss')
@@ -205,6 +221,23 @@ $manifest = [ordered]@{
                 changelog = "Current packaged version: $receiverVersion`nShared repository: $repoUrl`nStable package: Plugin Installation Files/wine-e-label-receiver.zip"
             }
         }
+        'wine-viewer' = [ordered]@{
+            name = $viewerName
+            slug = 'wine-viewer'
+            version = $viewerVersion
+            homepage = $repoUrl
+            package = "$rawBase/$installWebPath/wine-viewer.zip?ver=$viewerVersion"
+            requires = $viewerRequires
+            requires_php = $viewerRequiresPhp
+            last_updated = $lastUpdated
+            author = 'Johannes Reith'
+            author_profile = 'https://github.com/jo-286'
+            sections = [ordered]@{
+                description = 'Wine Viewer adds an OBJ-based 3D bottle viewer with fallback image support to WooCommerce product pages.'
+                installation = 'Install or update with the packaged wine-viewer.zip file.'
+                changelog = "Current packaged version: $viewerVersion`nShared repository: $repoUrl`nStable package: Plugin Installation Files/wine-viewer.zip"
+            }
+        }
     }
 }
 
@@ -214,6 +247,8 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 Write-Host "Created package: $mainZip"
 Write-Host "Created package: $receiverZip"
+Write-Host "Created package: $viewerZip"
 Write-Host "Created package: $mainStableZip"
 Write-Host "Created package: $receiverStableZip"
+Write-Host "Created package: $viewerStableZip"
 Write-Host "Created update manifest: $manifestFile"

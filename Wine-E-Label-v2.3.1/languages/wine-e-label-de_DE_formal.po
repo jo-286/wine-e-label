@@ -1,0 +1,1171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wine-e-label\n"
+"POT-Creation-Date: 2026-03-23 11:16+0000\n"
+"PO-Revision-Date: 2026-03-23 11:16+0000\n"
+"Last-Translator: Wine E-Label\n"
+"Language-Team: Wine E-Label\n"
+"Language: de_DE_formal\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+msgid "%d nutrition labels active"
+msgstr "%d nutrition labels active"
+
+msgid "%s: Modus"
+msgstr "%s: Modus"
+
+msgid "* from organic farming"
+msgstr "* aus ökologischer Landwirtschaft"
+
+msgid "Ablaufstatus"
+msgstr "Ablaufstatus"
+
+msgid "Accordion-Überschrift"
+msgstr "Accordion-Überschrift"
+
+msgid "Aktionen"
+msgstr "Aktionen"
+
+msgid "Aktueller Formularstand"
+msgstr "Aktueller Formularstand"
+
+msgid "Aktuelles Produkt"
+msgstr "Aktuelles Produkt"
+
+msgid "Alkohol"
+msgstr "Alkohol"
+
+msgid "Alkohol (g/l)"
+msgstr "Alkohol (g/l)"
+
+msgid "Alkohol in vol%"
+msgstr "Alkohol in vol%"
+
+msgid "Alle auswählen"
+msgstr "Alle auswählen"
+
+msgid "Alle E-Label-Daten wurden zurückgesetzt."
+msgstr "Alle E-Label-Daten wurden zurückgesetzt."
+
+msgid "Alle Jahrgänge"
+msgstr "Alle Jahrgänge"
+
+msgid "Alle Status"
+msgstr "Alle Status"
+
+msgid "Alles wird zurückgesetzt …"
+msgstr "Alles wird zurückgesetzt …"
+
+msgid "Alles zurücksetzen"
+msgstr "Alles zurücksetzen"
+
+msgid "Allgemein"
+msgstr "Allgemein"
+
+msgid "Als CSV exportieren"
+msgstr "Als CSV exportieren"
+
+msgid "Alternativauswahl zur Angabe von bis zu 3 Stoffen, die wahlweise eingesetzt werden können"
+msgstr "Alternativauswahl zur Angabe von bis zu 3 Stoffen, die wahlweise eingesetzt werden können"
+
+msgid "Analysewerte auflisten"
+msgstr "Analysewerte auflisten"
+
+msgid "Angegebener Salzgehalt ist ausschließlich auf die Anwesenheit natürlich vorkommenden Natriums zurückzuführen."
+msgstr "Angegebener Salzgehalt ist ausschließlich auf die Anwesenheit natürlich vorkommenden Natriums zurückzuführen."
+
+msgid "Anzeigen"
+msgstr "Anzeigen"
+
+msgid "AP-Nr."
+msgstr "AP-Nr."
+
+msgid "Application Password des WordPress-Benutzers auf der externen E-Label-Seite."
+msgstr "Application Password des WordPress-Benutzers auf der externen E-Label-Seite."
+
+msgid "Application Password des WordPress-Benutzers auf der externen Receiver-Seite."
+msgstr "Application Password des WordPress-Benutzers auf der externen Receiver-Seite."
+
+msgid "Auf der Zielseite das Plugin Reith E-Label Receiver installieren und aktivieren"
+msgstr "Auf der Zielseite das Plugin Reith E-Label Receiver installieren und aktivieren"
+
+msgid "Auf example.com einen Benutzer anlegen, z. B. api_elabel"
+msgstr "Auf example.com einen Benutzer anlegen, z. B. api_elabel"
+
+msgid "Aufklappbar"
+msgstr "Aufklappbar"
+
+msgid "Auswahl"
+msgstr "Auswahl"
+
+msgid "Auswählen"
+msgstr "Auswählen"
+
+msgid "Authentifizierung erfolgreich geprüft."
+msgstr "Authentifizierung erfolgreich geprüft."
+
+msgid "Authentifizierung fehlgeschlagen (HTTP %d)."
+msgstr "Authentifizierung fehlgeschlagen (HTTP %d)."
+
+msgid "Authentifizierung konnte nicht geprüft werden: %s"
+msgstr "Authentifizierung konnte nicht geprüft werden: %s"
+
+msgid "automatisch aus g/l berechnet"
+msgstr "automatisch aus g/l berechnet"
+
+msgid "Basis-Domain der externen WordPress-Seite mit installiertem Reith E-Label Receiver. Keine /wp-json-Adresse eintragen."
+msgstr "Basis-Domain der externen WordPress-Seite mit installiertem Reith E-Label Receiver. Keine /wp-json-Adresse eintragen."
+
+msgid "Basis-URL"
+msgstr "Basis-URL"
+
+msgid "Berechnete Werte (pro 100ml)"
+msgstr "Berechnete Werte (pro 100ml)"
+
+msgid "Bezeichnung"
+msgstr "Bezeichnung"
+
+msgid "Binde optional eine separate WordPress-Domain an, auf der E-Label-Seiten per REST API getrennt von der Hauptseite veröffentlicht werden können."
+msgstr "Binde optional eine separate WordPress-Domain an, auf der E-Label-Seiten per REST API getrennt von der Hauptseite veröffentlicht werden können."
+
+msgid "Bio"
+msgstr "Bio"
+
+msgid "biologisch"
+msgstr "biologisch"
+
+msgid "Bitte einen Slug angeben oder den Vorschlag aus der Wein-Nr. übernehmen."
+msgstr "Bitte einen Slug angeben oder den Vorschlag aus der Wein-Nr. übernehmen."
+
+msgid "Bitte mindestens einen Eintrag auswählen."
+msgstr "Bitte mindestens einen Eintrag auswählen."
+
+msgid "Bitte mindestens einen Eintrag für den QR-Download auswählen"
+msgstr "Bitte mindestens einen Eintrag für den QR-Download auswählen"
+
+msgid "Bitte mindestens einen Eintrag zum Löschen auswählen"
+msgstr "Bitte mindestens einen Eintrag zum Löschen auswählen"
+
+msgid "Bitte mindestens eine Zutat auswählen."
+msgstr "Bitte mindestens eine Zutat auswählen."
+
+msgid "Bitte zuerst alle Pflichtfelder füllen."
+msgstr "Bitte zuerst alle Pflichtfelder füllen."
+
+msgid "Bitte zuerst die Basis-URL im Plugin-Admin setzen."
+msgstr "Bitte zuerst die Basis-URL im Plugin-Admin setzen."
+
+msgid "Bitte zuerst eine Datei importieren oder E-Label-Daten eingeben."
+msgstr "Bitte zuerst eine Datei importieren oder E-Label-Daten eingeben."
+
+msgid "Bitte zuerst eine gültige REST API Ziel-URL eingeben."
+msgstr "Bitte zuerst eine gültige REST API Ziel-URL eingeben."
+
+msgid "Bitte zuerst einen Slug angeben oder aus der Wein-Nr. übernehmen."
+msgstr "Bitte zuerst einen Slug angeben oder aus der Wein-Nr. übernehmen."
+
+msgid "Bitte zuerst eine ZIP-, JSON- oder HTML-Datei auswählen."
+msgstr "Bitte zuerst eine ZIP-, JSON- oder HTML-Datei auswählen."
+
+msgid "Bitte zuerst im Plugin-Admin setzen"
+msgstr "Bitte zuerst im Plugin-Admin setzen"
+
+msgid "Brennwert"
+msgstr "Brennwert"
+
+msgid "Could not create import directory."
+msgstr "Import-Ordner konnte nicht erstellt werden."
+
+msgid "Could not move uploaded file."
+msgstr "Hochgeladene Datei konnte nicht verschoben werden."
+
+msgid "Current Entries:"
+msgstr "Current Entries:"
+
+msgid "Darstellung"
+msgstr "Darstellung"
+
+msgid "Daten aus bestehendem Produkt übernehmen"
+msgstr "Daten aus bestehendem Produkt übernehmen"
+
+msgid "Datenbankverwaltung"
+msgstr "Datenbankverwaltung"
+
+msgid "Daten konnten nicht übernommen werden."
+msgstr "Daten konnten nicht übernommen werden."
+
+msgid "Datenquelle"
+msgstr "Datenquelle"
+
+msgid "Daten wurden aus dem ausgewählten Produkt übernommen."
+msgstr "Daten wurden aus dem ausgewählten Produkt übernommen."
+
+msgid "Daten übernehmen"
+msgstr "Daten übernehmen"
+
+msgid "davon gesättigte Fettsäuren"
+msgstr "davon gesättigte Fettsäuren"
+
+msgid "davon Zucker"
+msgstr "davon Zucker"
+
+msgid "Dedicated subdomains are handled separately. The main domain keeps its normal WordPress pages untouched, while local labels still remain available on /l/[slug]."
+msgstr "Dedizierte Subdomains werden separat behandelt. Die Hauptdomain behält ihre normalen WordPress-Seiten unverändert, während lokale Labels weiterhin unter /l/[slug] verfügbar bleiben."
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Delete Data on Uninstall"
+msgstr "Delete Data on Uninstall"
+
+msgid "Die JSON-Daten enthalten keine verwertbaren Produktinformationen."
+msgstr "Die JSON-Daten enthalten keine verwertbaren Produktinformationen."
+
+msgid "Die JSON-Daten im ZIP konnten nicht verarbeitet werden."
+msgstr "Die JSON-Daten im ZIP konnten nicht verarbeitet werden."
+
+msgid "Diesen E-Label-Eintrag löschen?\\n\\nDas Produkt selbst wird nicht gelöscht – nur die E-Label-Daten werden entfernt.\\n\\nDieser Vorgang kann nicht rückgängig gemacht werden."
+msgstr "Diesen E-Label-Eintrag löschen?\\n\\nDas Produkt selbst wird nicht gelöscht – nur die E-Label-Daten werden entfernt.\\n\\nDieser Vorgang kann nicht rückgängig gemacht werden."
+
+msgid "Dieser Slug ist bereits vergeben."
+msgstr "Dieser Slug ist bereits vergeben."
+
+msgid "Dieses Plugin ist eine technische Hilfe. Für die inhaltliche Richtigkeit, Vollständigkeit und rechtliche Prüfung aller eingegebenen, importierten, übersetzten oder ausgegebenen Daten ist ausschließlich der Nutzer verantwortlich. Die Nutzung ersetzt keine Rechtsberatung. Trotz sorgfältiger Entwicklung wird keine Gewähr für die rechtliche Zulässigkeit oder Fehlerfreiheit in jedem Einzelfall übernommen, soweit gesetzlich zulässig."
+msgstr "Dieses Plugin ist eine technische Hilfe. Für die inhaltliche Richtigkeit, Vollständigkeit und rechtliche Prüfung aller eingegebenen, importierten, übersetzten oder ausgegebenen Daten ist ausschließlich der Nutzer verantwortlich. Die Nutzung ersetzt keine Rechtsberatung. Trotz sorgfältiger Entwicklung wird keine Gewähr für die rechtliche Zulässigkeit oder Fehlerfreiheit in jedem Einzelfall übernommen, soweit gesetzlich zulässig."
+
+msgid "Do not use a root URL here to replace normal WordPress page slugs. The plugin keeps local label routing on /l/[slug] and only uses the dedicated host for explicit e-label requests."
+msgstr "Verwende hier keine Root-URL, um normale WordPress-Seiten-Slugs zu ersetzen. Das Plugin belässt das lokale Label-Routing auf /l/[slug] und nutzt den dedizierten Host nur für explizite E-Label-Anfragen."
+
+msgid "Dort einen Benutzer anlegen, z. B. api_elabel"
+msgstr "Dort einen Benutzer anlegen, z. B. api_elabel"
+
+msgid "Download"
+msgstr "Download"
+
+msgid "Du hast keine Berechtigung, auf diese Seite zuzugreifen."
+msgstr "Du hast keine Berechtigung, auf diese Seite zuzugreifen."
+
+msgid "Du hast keine Berechtigung, Einstellungen zu ändern."
+msgstr "Du hast keine Berechtigung, Einstellungen zu ändern."
+
+msgid "Du hast keine Berechtigung für den CSV-Export."
+msgstr "Du hast keine Berechtigung für den CSV-Export."
+
+msgid "E-Label-Basis-URL"
+msgstr "E-Label-Basis-URL"
+
+msgid " E-Label-Einträge?\\n\\nDie Produkte selbst werden nicht gelöscht – nur die E-Label-Daten werden entfernt.\\n\\nDieser Vorgang kann nicht rückgängig gemacht werden."
+msgstr " E-Label-Einträge?\\n\\nDie Produkte selbst werden nicht gelöscht – nur die E-Label-Daten werden entfernt.\\n\\nDieser Vorgang kann nicht rückgängig gemacht werden."
+
+msgid "E-Label-Link"
+msgstr "E-Label-Link"
+
+msgid "E-Label-Seite"
+msgstr "E-Label-Seite"
+
+msgid "E-Label-Seite erfolgreich erstellt"
+msgstr "E-Label-Seite erfolgreich erstellt"
+
+msgid "E-Label-Seite konnte nicht mit Inhalt erzeugt werden."
+msgstr "E-Label-Seite konnte nicht mit Inhalt erzeugt werden."
+
+msgid "E-Label-Seite und QR-Code konnten nicht gelöscht werden."
+msgstr "E-Label-Seite und QR-Code konnten nicht gelöscht werden."
+
+msgid "E-Label-Seite und QR-Code wurden gelöscht."
+msgstr "E-Label-Seite und QR-Code wurden gelöscht."
+
+msgid "E-Label ansehen"
+msgstr "E-Label ansehen"
+
+msgid "E-Label Daten"
+msgstr "E-Label Daten"
+
+msgid "E-Label erstellt"
+msgstr "E-Label erstellt"
+
+msgid "E-Label Import & QR"
+msgstr "E-Label Import & QR"
+
+msgid "E-Label not found"
+msgstr "E-Label nicht gefunden"
+
+msgid "E-Label und QR-Code aktualisieren"
+msgstr "E-Label und QR-Code aktualisieren"
+
+msgid "E-Label und QR-Code erstellen"
+msgstr "E-Label und QR-Code erstellen"
+
+msgid "E-Label und QR-Code löschen"
+msgstr "E-Label und QR-Code löschen"
+
+msgid "E-Label und QR-Code werden erstellt …"
+msgstr "E-Label und QR-Code werden erstellt …"
+
+msgid "E-Label und QR-Code werden gelöscht …"
+msgstr "E-Label und QR-Code werden gelöscht …"
+
+msgid "E-Label öffnen"
+msgstr "E-Label öffnen"
+
+msgid "E-Nummer-Anzeige"
+msgstr "E-Nummer-Anzeige"
+
+msgid "Einrichtung"
+msgstr "Einrichtung"
+
+msgid "Einstellungen"
+msgstr "Einstellungen"
+
+msgid "Einstellungen gespeichert."
+msgstr "Einstellungen gespeichert."
+
+msgid "Einstellungen speichern"
+msgstr "Einstellungen speichern"
+
+msgid "Eiweiß"
+msgstr "Eiweiß"
+
+msgid "Empfohlener Weg für produktive Setups: Die Pflichtinformationen werden auf einer getrennten WordPress-Seite veröffentlicht."
+msgstr "Empfohlener Weg für produktive Setups: Die Pflichtinformationen werden auf einer getrennten WordPress-Seite veröffentlicht."
+
+msgid "Enable subdomain e-label URLs"
+msgstr "Enable subdomain e-label URLs"
+
+msgid "Enter a subdomain (e.g. elabel) or a full hostname (e.g. elabel.example.com). The subdomain must resolve to this WordPress installation."
+msgstr "Gib eine Subdomain (z. B. elabel) oder einen vollständigen Hostnamen (z. B. elabel.example.com) ein. Die Subdomain muss auf diese WordPress-Installation zeigen."
+
+msgid "Entfernen"
+msgstr "Entfernen"
+
+msgid "Enthält geringfügige Mengen von: Fett, gesättigten Fettsäuren, Eiweiß und Salz"
+msgstr "Enthält geringfügige Mengen von: Fett, gesättigten Fettsäuren, Eiweiß und Salz"
+
+msgid "Erfolgreich %d E-Label-Eintrag gelöscht"
+msgstr "Erfolgreich %d E-Label-Eintrag gelöscht"
+
+msgid "Erfolgreich %d E-Label-Einträge gelöscht"
+msgstr "Erfolgreich %d E-Label-Einträge gelöscht"
+
+msgid "Erstellt"
+msgstr "Erstellt"
+
+msgid "erstellt"
+msgstr "erstellt"
+
+msgid "Erstellung"
+msgstr "Erstellung"
+
+msgid "Erstellung fehlgeschlagen."
+msgstr "Erstellung fehlgeschlagen."
+
+msgid "Erzeuge…"
+msgstr "Erzeuge…"
+
+msgid "Es konnten weder brauchbare JSON- noch HTML-Daten im Import gefunden werden."
+msgstr "Es konnten weder brauchbare JSON- noch HTML-Daten im Import gefunden werden."
+
+msgid "Es wird nur die Basisdomain gespeichert, ohne /wp-json/wp/v2/pages am Ende."
+msgstr "Es wird nur die Basisdomain gespeichert, ohne /wp-json/wp/v2/pages am Ende."
+
+msgid "Externe E-Label-Domain (REST API)"
+msgstr "Externe E-Label-Domain (REST API)"
+
+msgid "Externe E-Label-Domain per REST API verwenden"
+msgstr "Externe E-Label-Domain per REST API verwenden"
+
+msgid "Externe E-Label-Seite konnte nicht aufgebaut werden."
+msgstr "Externe E-Label-Seite konnte nicht aufgebaut werden."
+
+msgid "Externe E-Label-Seite konnte nicht erstellt werden (HTTP %1$d). %2$s"
+msgstr "Externe E-Label-Seite konnte nicht erstellt werden (HTTP %1$d). %2$s"
+
+msgid "Externe E-Label-Seite konnte nicht erstellt werden (HTTP %d)."
+msgstr "Externe E-Label-Seite konnte nicht erstellt werden (HTTP %d)."
+
+msgid "Externe E-Label-Seite konnte nicht erstellt werden: %s"
+msgstr "Externe E-Label-Seite konnte nicht erstellt werden: %s"
+
+msgid "Externe E-Label-Seite konnte nicht erzeugt werden."
+msgstr "Externe E-Label-Seite konnte nicht erzeugt werden."
+
+msgid "Externe E-Label-Seite konnte nicht gelöscht werden (HTTP %1$d). %2$s"
+msgstr "Externe E-Label-Seite konnte nicht gelöscht werden (HTTP %1$d). %2$s"
+
+msgid "Externe E-Label-Seite per Receiver-Plugin verwenden"
+msgstr "Externe E-Label-Seite per Receiver-Plugin verwenden"
+
+msgid "Externe Receiver-Seite per REST API"
+msgstr "Externe Receiver-Seite per REST API"
+
+msgid "Fehler"
+msgstr "Fehler"
+
+msgid "Fehler:"
+msgstr "Fehler:"
+
+msgid "Fehler: Could not delete entries"
+msgstr "Fehler: Einträge konnten nicht gelöscht werden."
+
+msgid "Fehler: Could not delete entry"
+msgstr "Fehler: Eintrag konnte nicht gelöscht werden."
+
+msgid "Fehler: Could not generate QR code"
+msgstr "Fehler: QR-Code konnte nicht erzeugt werden."
+
+msgid "Fehler: Eintrag konnte nicht gelöscht werden."
+msgstr "Fehler: Eintrag konnte nicht gelöscht werden."
+
+msgid "Fehler: Einträge konnten nicht gelöscht werden."
+msgstr "Fehler: Einträge konnten nicht gelöscht werden."
+
+msgid "Fehler: QR-Code konnte nicht erzeugt werden."
+msgstr "Fehler: QR-Code konnte nicht erzeugt werden."
+
+msgid "Fehler: Rewrite-Regeln konnten nicht aktualisiert werden."
+msgstr "Fehler: Rewrite-Regeln konnten nicht aktualisiert werden."
+
+msgid "Fehlerkorrektur"
+msgstr "Fehlerkorrektur"
+
+msgid "fehlt"
+msgstr "fehlt"
+
+msgid "Fett"
+msgstr "Fett"
+
+msgid "Filtern"
+msgstr "Filtern"
+
+msgid "Für dieses Produkt konnte keine E-Label-URL erzeugt werden."
+msgstr "Für dieses Produkt konnte keine E-Label-URL erzeugt werden."
+
+msgid "Für dieses Produkt sind keine verwertbaren E-Label-Daten vorhanden."
+msgstr "Für dieses Produkt sind keine verwertbaren E-Label-Daten vorhanden."
+
+msgid "Für einen sauberen QR-Code muss ein Slug gesetzt sein."
+msgstr "Für einen sauberen QR-Code muss ein Slug gesetzt sein."
+
+msgid "Für kleine Etiketten besser kürzen, damit der QR-Code ruhiger bleibt."
+msgstr "Für kleine Etiketten besser kürzen, damit der QR-Code ruhiger bleibt."
+
+msgid "geladen"
+msgstr "geladen"
+
+msgid "Gesamtsäure"
+msgstr "Gesamtsäure"
+
+msgid "gesättigte Fettsäuren"
+msgstr "gesättigte Fettsäuren"
+
+msgid "Glycerin"
+msgstr "Glycerin"
+
+msgid "Glycerin-Modus"
+msgstr "Glycerin-Modus"
+
+msgid "Gruppe: %s"
+msgstr "Gruppe: %s"
+
+msgid "Gut für Vorjahresprodukte: Formularwerte werden übernommen, Slug und erzeugte Seite bleiben unberührt."
+msgstr "Gut für Vorjahresprodukte: Formularwerte werden übernommen, Slug und erzeugte Seite bleiben unberührt."
+
+msgid "Higher correction levels add redundant data so the code can still scan if partially damaged, but produce a denser, more complex pattern. For small clean wine labels (18 mm) Low is recommended — it produces the fewest modules and is easiest to scan."
+msgstr "Höhere Fehlerkorrekturstufen fügen Redundanz hinzu, damit der Code auch bei teilweiser Beschädigung lesbar bleibt, erzeugen aber ein dichteres, komplexeres Muster. Für kleine saubere Weinlabels (18 mm) wird Low empfohlen — es erzeugt die wenigsten Module und ist am leichtesten zu scannen."
+
+msgid "Hinweis: Auf der externen Receiver-Seite konnten nicht alle Einträge gelöscht werden."
+msgstr "Hinweis: Auf der externen Receiver-Seite konnten nicht alle Einträge gelöscht werden."
+
+msgid "Hinweis zur externen Receiver-Seite: %s"
+msgstr "Hinweis zur externen Receiver-Seite: %s"
+
+msgid "Hinweis zu Verantwortung und Haftung"
+msgstr "Hinweis zu Verantwortung und Haftung"
+
+msgid "Hochgeladene Datei konnte nicht verschoben werden."
+msgstr "Hochgeladene Datei konnte nicht verschoben werden."
+
+msgid "HTML could not be parsed."
+msgstr "HTML could not be parsed."
+
+msgid "http"
+msgstr "http"
+
+msgid "https (recommended)"
+msgstr "https (recommended)"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "Import + manuelle Änderungen"
+msgstr "Import + manuelle Änderungen"
+
+msgid "Import, manuelle Daten und erzeugtes E-Label wurden zurückgesetzt."
+msgstr "Import, manuelle Daten und erzeugtes E-Label wurden zurückgesetzt."
+
+msgid "Import-Ordner konnte nicht erstellt werden."
+msgstr "Import-Ordner konnte nicht erstellt werden."
+
+msgid "Import bestätigen"
+msgstr "Import bestätigen"
+
+msgid "Import erfolgreich"
+msgstr "Import erfolgreich"
+
+msgid "Import erfolgreich (Quelle: HTML)."
+msgstr "Import erfolgreich (Quelle: HTML)."
+
+msgid "Import erfolgreich (Quelle: JSON)."
+msgstr "Import erfolgreich (Quelle: JSON)."
+
+msgid "Import erfolgreich (Quelle: ZIP)."
+msgstr "Import erfolgreich (Quelle: ZIP)."
+
+msgid "Import fehlgeschlagen"
+msgstr "Import fehlgeschlagen"
+
+msgid "Import fehlgeschlagen."
+msgstr "Import fehlgeschlagen."
+
+msgid "Import gelöscht."
+msgstr "Import gelöscht."
+
+msgid "Importierte Daten und manuelle Eingaben bleiben gemeinsam bearbeitbar. Manuelle Änderungen haben beim Erstellen Vorrang."
+msgstr "Importierte Daten und manuelle Eingaben bleiben gemeinsam bearbeitbar. Manuelle Änderungen haben beim Erstellen Vorrang."
+
+msgid "Import konnte nicht gelöscht werden."
+msgstr "Import konnte nicht gelöscht werden."
+
+msgid "Import läuft …"
+msgstr "Import läuft …"
+
+msgid "Import löschen"
+msgstr "Import löschen"
+
+msgid "Import löschen entfernt nur die Importquelle. Manuelle Daten leeren setzt nur das Formular zurück. Alles zurücksetzen entfernt beides und die erzeugte E-Label-Seite."
+msgstr "Import löschen entfernt nur die Importquelle. Manuelle Daten leeren setzt nur das Formular zurück. Alles zurücksetzen entfernt beides und die erzeugte E-Label-Seite."
+
+msgid "Importstatus"
+msgstr "Importstatus"
+
+msgid "Import wird gelöscht …"
+msgstr "Import wird gelöscht …"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Inhalt"
+msgstr "Inhalt"
+
+msgid "Interne Anzeigeoption"
+msgstr "Interne Anzeigeoption"
+
+msgid "Interner E-Nummer-Wert"
+msgstr "Interner E-Nummer-Wert"
+
+msgid "Invalid nonce"
+msgstr "Invalid nonce"
+
+msgid "Invalid Product Id or product does not exist"
+msgstr "Ungültige Produkt-ID oder Produkt existiert nicht"
+
+msgid "Jahrgang"
+msgstr "Jahrgang"
+
+msgid "je 100 ml"
+msgstr "je 100 ml"
+
+msgid "Kategorie"
+msgstr "Kategorie"
+
+msgid "Kategorie wählen"
+msgstr "Kategorie wählen"
+
+msgid "Keine Abweichungen zwischen Import und aktueller Eingabe."
+msgstr "Keine Abweichungen zwischen Import und aktueller Eingabe."
+
+msgid "Keine Datei ausgewählt"
+msgstr "Keine Datei ausgewählt"
+
+msgid "Keine E-Label-Einträge gefunden."
+msgstr "Keine E-Label-Einträge gefunden."
+
+msgid "Kein gültiger Slug oder keine Basis-URL vorhanden."
+msgstr "Kein gültiger Slug oder keine Basis-URL vorhanden."
+
+msgid "Kohlenhydrate"
+msgstr "Kohlenhydrate"
+
+msgid "Kompakte Vorschau für Handy-Layout und QR-Scanbarkeit."
+msgstr "Kompakte Vorschau für Handy-Layout und QR-Scanbarkeit."
+
+msgid "Kurzer Slug, gut lesbar und in der Regel sehr gut scanbar."
+msgstr "Kurzer Slug, gut lesbar und in der Regel sehr gut scanbar."
+
+msgid "Lade Daten …"
+msgstr "Lade Daten …"
+
+msgid "leer"
+msgstr "leer"
+
+msgid "Leer lassen, um das bereits gespeicherte Passwort beizubehalten."
+msgstr "Leer lassen, um das bereits gespeicherte Passwort beizubehalten."
+
+msgid "Letzter Import"
+msgstr "Letzter Import"
+
+msgid "Letzter Import: %s"
+msgstr "Letzter Import: %s"
+
+msgid "Link konnte nicht erzeugt werden."
+msgstr "Link konnte nicht erzeugt werden."
+
+msgid "Link kopieren"
+msgstr "Link kopieren"
+
+msgid "Link kopiert."
+msgstr "Link kopiert."
+
+msgid "Link zum E-Label anzeigen"
+msgstr "Link zum E-Label anzeigen"
+
+msgid "Link öffnen"
+msgstr "Link öffnen"
+
+msgid "Live-Vorschau"
+msgstr "Live-Vorschau"
+
+msgid "Lösche "
+msgstr "Lösche "
+
+msgid "Lösche Ausgewählte"
+msgstr "Lösche Ausgewählte"
+
+msgid "Lösche Auswählened"
+msgstr "Lösche Ausgewählte"
+
+msgid "Löschen"
+msgstr "Löschen"
+
+msgid "Lösche nutrition label entry?\n\nProdukt will NOT be deleted - only the nutrition label data will be removed.\n\nThis cannot be undone."
+msgstr "Lösche nutrition label entry?\n\nProdukt will NOT be deleted - only the nutrition label data will be removed.\n\nThis cannot be undone."
+
+msgid "Manuelle Daten"
+msgstr "Manuelle Daten"
+
+msgid "Manuelle Daten leeren"
+msgstr "Manuelle Daten leeren"
+
+msgid "Manuelle Daten wurden geleert."
+msgstr "Manuelle Daten wurden geleert."
+
+msgid "manueller Analysewert"
+msgstr "manueller Analysewert"
+
+msgid "Manuell ergänzt: %d Felder"
+msgstr "Manuell ergänzt: %d Felder"
+
+msgid "Manuell geleert: %d Felder"
+msgstr "Manuell geleert: %d Felder"
+
+msgid "Manuell geändert: %d Felder"
+msgstr "Manuell geändert: %d Felder"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Nicht autorisiert"
+msgstr "Nicht autorisiert"
+
+msgid "noch gut"
+msgstr "noch gut"
+
+msgid "Noch keine Daten"
+msgstr "Noch keine Daten"
+
+msgid "Noch keine zusätzlichen Stoffe angelegt."
+msgstr "Noch keine zusätzlichen Stoffe angelegt."
+
+msgid "Noch kein Import durchgeführt"
+msgstr "Noch kein Import durchgeführt"
+
+msgid "Noch kein QR-Code erzeugt."
+msgstr "Noch kein QR-Code erzeugt."
+
+msgid "Noch nicht erstellt. Erst importieren, dann E-Label und QR-Code erstellen."
+msgstr "Noch nicht erstellt. Erst importieren, dann E-Label und QR-Code erstellen."
+
+msgid "No import file uploaded."
+msgstr "Keine Importdatei hochgeladen."
+
+msgid "No ingredient block could be found in the import."
+msgstr "No ingredient block could be found in the import."
+
+msgid "Not found"
+msgstr "Nicht gefunden"
+
+msgid "Nur Import vorhanden"
+msgstr "Nur Import vorhanden"
+
+msgid "Nur manuelle Daten"
+msgstr "Nur manuelle Daten"
+
+msgid "Nur manuelle Eingabe"
+msgstr "Nur manuelle Eingabe"
+
+msgid "Nur ZIP-, JSON- oder HTML-Dateien sind erlaubt."
+msgstr "Nur ZIP-, JSON- oder HTML-Dateien sind erlaubt."
+
+msgid " nutrition label entries?\n\nProdukts will NOT be deleted - only the nutrition label data will be removed.\n\nThis cannot be undone."
+msgstr " nutrition label entries?\n\nProdukts will NOT be deleted - only the nutrition label data will be removed.\n\nThis cannot be undone."
+
+msgid "Nährwertangaben"
+msgstr "Nährwertangaben"
+
+msgid "Nährwertangaben je 100 ml"
+msgstr "Nährwertangaben je 100 ml"
+
+msgid "Nährwertangaben je 100ml"
+msgstr "Nährwertangaben je 100ml"
+
+msgid "oder klicken, um eine Datei auszuwählen"
+msgstr "oder klicken, um eine Datei auszuwählen"
+
+msgid "offen"
+msgstr "offen"
+
+msgid "Optional override for the public e-label target URL. Leave empty to use this WordPress domain automatically. The product slug is appended automatically."
+msgstr "Optionale Überschreibung für die öffentliche E-Label-Ziel-URL. Leer lassen, um automatisch diese WordPress-Domain zu verwenden. Der Produkt-Slug wird automatisch angehängt."
+
+msgid "Permanently delete all nutrition label data when the plugin is uninstalled"
+msgstr "Permanently delete all nutrition label data when the plugin is uninstalled"
+
+msgid "Pflichtfeld"
+msgstr "Pflichtfeld"
+
+msgid "Pflichtfelder"
+msgstr "Pflichtfelder"
+
+msgid "Pflichtfelder sind mit * markiert."
+msgstr "Pflichtfelder sind mit * markiert."
+
+msgid "Pixel dimensions of the downloaded QR image. For print use SVG format is recommended — it is resolution-independent and will be crisp at any size regardless of this setting."
+msgstr "Pixelabmessungen des heruntergeladenen QR-Bilds. Für den Druck wird SVG empfohlen — es ist auflösungsunabhängig und bleibt in jeder Größe scharf, unabhängig von dieser Einstellung."
+
+msgid "Plug-in-Oberfläche"
+msgstr "Plug-in-Oberfläche"
+
+msgid "Plugin-Einstellungen konfigurieren und QR-Code-Erzeugung verwalten."
+msgstr "Plugin-Einstellungen konfigurieren und QR-Code-Erzeugung verwalten."
+
+msgid "Produkt"
+msgstr "Produkt"
+
+msgid "Produkt %1$d: %2$s"
+msgstr "Produkt %1$d: %2$s"
+
+msgid "Produkt-ID"
+msgstr "Produkt-ID"
+
+msgid "Produkt-ID manuell"
+msgstr "Produkt-ID manuell"
+
+msgid "Produkt auswählen …"
+msgstr "Produkt auswählen …"
+
+msgid "Produktinformationen"
+msgstr "Produktinformationen"
+
+msgid "Produktname oder Slug suchen …"
+msgstr "Produktname oder Slug suchen …"
+
+msgid "Prüfung vor dem Erstellen"
+msgstr "Prüfung vor dem Erstellen"
+
+msgid "QR-Code"
+msgstr "QR-Code"
+
+msgid "QR-Code-Format"
+msgstr "QR-Code-Format"
+
+msgid "QR-Code-Größe"
+msgstr "QR-Code-Größe"
+
+msgid "QR-Code ansehen"
+msgstr "QR-Code ansehen"
+
+msgid "QR-Code erfolgreich erstellt"
+msgstr "QR-Code erfolgreich erstellt"
+
+msgid "QR-Code herunterladen"
+msgstr "QR-Code herunterladen"
+
+msgid "QR-Code kann ohne gültigen Link nicht erzeugt werden."
+msgstr "QR-Code kann ohne gültigen Link nicht erzeugt werden."
+
+msgid "QR-Code konnte nicht erzeugt werden"
+msgstr "QR-Code konnte nicht erzeugt werden"
+
+msgid "QR-Code konnte nicht erzeugt werden."
+msgstr "QR-Code konnte nicht erzeugt werden."
+
+msgid "QR-Code verbergen"
+msgstr "QR-Code verbergen"
+
+msgid "QR-Code Vorschau"
+msgstr "QR-Code Vorschau"
+
+msgid "QR-Code wird erzeugt …"
+msgstr "QR-Code wird erzeugt …"
+
+msgid "QR-Export"
+msgstr "QR-Export"
+
+msgid "QR-kompakt"
+msgstr "QR-kompakt"
+
+msgid "QR für Auswahl herunterladen"
+msgstr "QR für Auswahl herunterladen"
+
+msgid "QR herunterladen"
+msgstr "QR herunterladen"
+
+msgid "Quelldatei: %s"
+msgstr "Quelldatei: %s"
+
+msgid "Quelldatei herunterladen"
+msgstr "Quelldatei herunterladen"
+
+msgid "Receiver-API konnte nicht erkannt werden: %s"
+msgstr "Receiver-API konnte nicht erkannt werden: %s"
+
+msgid "Receiver-API liefert keinen gültigen Erstell-Endpunkt."
+msgstr "Receiver-API liefert keinen gültigen Erstell-Endpunkt."
+
+msgid "Receiver-API liefert keinen gültigen Lösch-Endpunkt."
+msgstr "Receiver-API liefert keinen gültigen Lösch-Endpunkt."
+
+msgid "Receiver-Endpunkt antwortet, aber der API-Benutzer hat keine ausreichenden Rechte. Gib dem Benutzer auf der Zielseite mindestens Editor-Rechte."
+msgstr "Receiver-Endpunkt antwortet, aber der API-Benutzer hat keine ausreichenden Rechte. Gib dem Benutzer auf der Zielseite mindestens Editor-Rechte."
+
+msgid "Receiver-Endpunkt gefunden (API-Discovery)."
+msgstr "Receiver-Endpunkt gefunden (API-Discovery)."
+
+msgid "Receiver-Endpunkt gefunden (REST-Index erkannt)."
+msgstr "Receiver-Endpunkt gefunden (REST-Index erkannt)."
+
+msgid "Receiver-Endpunkt gefunden."
+msgstr "Receiver-Endpunkt gefunden."
+
+msgid "Receiver-Endpunkt konnte nicht geprüft werden: %s"
+msgstr "Receiver-Endpunkt konnte nicht geprüft werden: %s"
+
+msgid "Receiver-Endpunkt nicht gefunden."
+msgstr "Receiver-Endpunkt nicht gefunden."
+
+msgid "Receiver-Endpunkt nicht gefunden. Ist das Plugin Reith E-Label Receiver auf der Zielseite aktiv?"
+msgstr "Receiver-Endpunkt nicht gefunden. Ist das Plugin Reith E-Label Receiver auf der Zielseite aktiv?"
+
+msgid "Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus."
+msgstr "Receiver-Endpunkt vorhanden, aber die Authentifizierung oder Berechtigung reicht nicht aus."
+
+msgid "Receiver-Endpunkt vorhanden, aber ohne gültige Authentifizierung nicht nutzbar."
+msgstr "Receiver-Endpunkt vorhanden, aber ohne gültige Authentifizierung nicht nutzbar."
+
+msgid "Receiver Basis-URL"
+msgstr "Receiver Basis-URL"
+
+msgid "recht lang"
+msgstr "recht lang"
+
+msgid "REST-API-Verbindung ist aktiviert, aber Ziel-URL, Benutzername oder Application Password fehlen."
+msgstr "REST-API-Verbindung ist aktiviert, aber Ziel-URL, Benutzername oder Application Password fehlen."
+
+msgid "REST API aktivieren"
+msgstr "REST API aktivieren"
+
+msgid "REST API antwortet nicht wie erwartet (HTTP %d)."
+msgstr "REST API antwortet nicht wie erwartet (HTTP %d)."
+
+msgid "REST API Application Password"
+msgstr "REST API Application Password"
+
+msgid "REST API Benutzername"
+msgstr "REST API Benutzername"
+
+msgid "REST API erreichbar, aber Authentifizierung fehlgeschlagen (HTTP %d)."
+msgstr "REST API erreichbar, aber Authentifizierung fehlgeschlagen (HTTP %d)."
+
+msgid "REST API erreichbar."
+msgstr "REST API erreichbar."
+
+msgid "REST API Verbindung aktivieren"
+msgstr "REST API Verbindung aktivieren"
+
+msgid "REST API Ziel-URL"
+msgstr "REST API Ziel-URL"
+
+msgid "REST API Ziel-URL fehlt."
+msgstr "REST API Ziel-URL fehlt."
+
+msgid "Restzucker"
+msgstr "Restzucker"
+
+msgid "Rewrite-Regeln aktualisieren"
+msgstr "Rewrite-Regeln aktualisieren"
+
+msgid "Rewrite-Regeln wurden erfolgreich aktualisiert!"
+msgstr "Rewrite-Regeln wurden erfolgreich aktualisiert!"
+
+msgid "Salz"
+msgstr "Salz"
+
+msgid "Salz-Hinweis"
+msgstr "Salz-Hinweis"
+
+msgid "Scannbar, aber ein kürzerer Slug wäre auf Etiketten sauberer."
+msgstr "Scannbar, aber ein kürzerer Slug wäre auf Etiketten sauberer."
+
+msgid "Seite geprüft"
+msgstr "Seite geprüft"
+
+msgid "Serve e-labels from a dedicated subdomain as recommended by EU e-labelling regulations."
+msgstr "Serve e-labels from a dedicated subdomain as recommended by EU e-labelling regulations."
+
+msgid "Settings saved successfully!"
+msgstr "Einstellungen gespeichert."
+
+msgid "Short Code"
+msgstr "Short Code"
+
+msgid "Shortcode DB Update failed"
+msgstr "Shortcode-Datenbankupdate fehlgeschlagen"
+
+msgid "Slug / URL-Teil"
+msgstr "Slug / URL-Teil"
+
+msgid "Slug fehlt"
+msgstr "Slug fehlt"
+
+msgid "Slug kopieren"
+msgstr "Slug kopieren"
+
+msgid "Slug kopiert."
+msgstr "Slug kopiert."
+
+msgid "So richtest du die Verbindung ein"
+msgstr "So richtest du die Verbindung ein"
+
+msgid "Sprache"
+msgstr "Sprache"
+
+msgid "Standardmäßig geöffnet"
+msgstr "Standardmäßig geöffnet"
+
+msgid "Standardsprache"
+msgstr "Standardsprache"
+
+msgid "Standardwert"
+msgstr "Standardwert"
+
+msgid "Standardwert edelsüß"
+msgstr "Standardwert edelsüß"
+
+msgid "Statisch"
+msgstr "Statisch"
+
+msgid "statt Name %s anzeigen"
+msgstr "statt Name %s anzeigen"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Stoff oder E-Nr."
+msgstr "Stoff oder E-Nr."
+
+msgid "Subdomain"
+msgstr "Subdomain"
+
+msgid "Subdomain E-Label URLs"
+msgstr "Subdomain E-Label URLs"
+
+msgid "SVG is a vector format — edges stay perfectly sharp at any print size and is recommended for wine labels. PNG is a pixel-based image; choose a large size if using PNG for print."
+msgstr "SVG ist ein Vektorformat — Kanten bleiben in jeder Druckgröße perfekt scharf und es wird für Weinlabels empfohlen. PNG ist pixelbasiert; wähle eine große Größe, wenn du PNG für den Druck verwendest."
+
+msgid "The local WordPress route always stays on /l/[slug] for this installation. This field only changes the public target URL and does not rewrite normal WordPress pages."
+msgstr "Die lokale WordPress-Route bleibt in dieser Installation immer auf /l/[slug]. Dieses Feld ändert nur die öffentliche Ziel-URL und schreibt normale WordPress-Seiten nicht um."
+
+msgid "Titel anzeigen"
+msgstr "Titel anzeigen"
+
+msgid "Unable to generate shortcode - exceeded 50 tries"
+msgstr "Shortcode konnte nicht erzeugt werden – 50 Versuche überschritten"
+
+msgid "Ungültige Produkt-ID"
+msgstr "Ungültige Produkt-ID"
+
+msgid "Ungültige Produkt-ID."
+msgstr "Ungültige Produkt-ID."
+
+msgid "Unter Benutzer > Profil ein Application Password erzeugen"
+msgstr "Unter Benutzer > Profil ein Application Password erzeugen"
+
+msgid "Unter Benutzer > Profil ein Application Password erzeugen und hier Basis-URL, Benutzername und Passwort eintragen"
+msgstr "Unter Benutzer > Profil ein Application Password erzeugen und hier Basis-URL, Benutzername und Passwort eintragen"
+
+msgid "Unvollständig"
+msgstr "Unvollständig"
+
+msgid "URL-Vorschau"
+msgstr "URL-Vorschau"
+
+msgid "URL Scheme"
+msgstr "URL Scheme"
+
+msgid "Use with caution — this removes database records, generated URLs and QR references when uninstalling the plugin."
+msgstr "Mit Vorsicht verwenden — beim Deinstallieren des Plugins werden Datenbankeinträge, erzeugte URLs und QR-Verweise entfernt."
+
+msgid "Verbergen"
+msgstr "Verbergen"
+
+msgid "Verbindung erfolgreich geprüft."
+msgstr "Verbindung erfolgreich geprüft."
+
+msgid "Verbindung fehlgeschlagen: %s"
+msgstr "Verbindung fehlgeschlagen: %s"
+
+msgid "Verbindung konnte nicht geprüft werden."
+msgstr "Verbindung konnte nicht geprüft werden."
+
+msgid "Verbindung teilweise geprüft."
+msgstr "Verbindung teilweise geprüft."
+
+msgid "Verbindung testen"
+msgstr "Verbindung testen"
+
+msgid "Verbindung wird geprüft …"
+msgstr "Verbindung wird geprüft …"
+
+msgid "vollständig"
+msgstr "vollständig"
+
+msgid "Vollständige Basis-URL der externen WordPress-Seite, z. B. https://reith-label.de"
+msgstr "Vollständige Basis-URL der externen WordPress-Seite, z. B. https://reith-label.de"
+
+msgid "Von example.com Benutzername und Application Password hier eingeben"
+msgstr "Von example.com Benutzername und Application Password hier eingeben"
+
+msgid "vorhanden"
+msgstr "vorhanden"
+
+msgid "Vorschau lokal"
+msgstr "Vorschau lokal"
+
+msgid "Vorschlag aus Wein-Nr. übernehmen"
+msgstr "Vorschlag aus Wein-Nr. übernehmen"
+
+msgid "Warning: enabling this will drop the database table and all nutrition label records when the plugin is deleted. This cannot be undone."
+msgstr "Warnung: Wenn diese Option aktiv ist, werden beim Löschen des Plugins auch die Datenbanktabelle und alle E-Label-Einträge entfernt. Das kann nicht rückgängig gemacht werden."
+
+msgid "Wein-Nr."
+msgstr "Wein-Nr."
+
+msgid "Wein-Nr. (optional)"
+msgstr "Wein-Nr. (optional)"
+
+msgid "Wein-Nr. für Link"
+msgstr "Wein-Nr. für Link"
+
+msgid "Wein E-Label"
+msgstr "Wein E-Label"
+
+msgid "Wein E-Label Einstellungen"
+msgstr "Wein E-Label Einstellungen"
+
+msgid "Wein E-Label Nährwerttabelle"
+msgstr "Wein E-Label Nährwerttabelle"
+
+msgid "Wein E-Label – Datenbankverwaltung"
+msgstr "Wein E-Label – Datenbankverwaltung"
+
+msgid "Weitere Nährwertangaben"
+msgstr "Weitere Nährwertangaben"
+
+msgid "Weitere Nährwerte"
+msgstr "Weitere Nährwerte"
+
+msgid "Wenn Short-URLs nicht funktionieren (404-Fehler), kannst du hier die WordPress-Rewrite-Regeln neu aufbauen."
+msgstr "Wenn Short-URLs nicht funktionieren (404-Fehler), kannst du hier die WordPress-Rewrite-Regeln neu aufbauen."
+
+msgid "Werkzeugsprache"
+msgstr "Werkzeugsprache"
+
+msgid "WIPZN-Import"
+msgstr "WIPZN-Import"
+
+msgid "WIPZN-Importe sowie ZIP-, JSON- und HTML-Dateien, erzeugt E-Label-Seiten und QR-Codes für WooCommerce-Produkte."
+msgstr "WIPZN-Importe sowie ZIP-, JSON- und HTML-Dateien, erzeugt E-Label-Seiten und QR-Codes für WooCommerce-Produkte."
+
+msgid "WIPZN-Import importieren, E-Label-Link prüfen und QR-Code direkt erzeugen."
+msgstr "WIPZN-Import importieren, E-Label-Link prüfen und QR-Code direkt erzeugen."
+
+msgid "wirksamer Wert"
+msgstr "wirksamer Wert"
+
+msgid "WordPress-Benutzername der externen E-Label-Seite."
+msgstr "WordPress-Benutzername der externen E-Label-Seite."
+
+msgid "WordPress-Benutzername der externen Receiver-Seite."
+msgstr "WordPress-Benutzername der externen Receiver-Seite."
+
+msgid "WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren."
+msgstr "WordPress-Funktionen sind nicht verfügbar. Bitte Administrator kontaktieren."
+
+msgid "Wähle die Sprache für die Plugin-Oberfläche im WordPress-Adminbereich."
+msgstr "Wähle die Sprache für die Plugin-Oberfläche im WordPress-Adminbereich."
+
+msgid "You do not have permission to change settings."
+msgstr "You do not have permission to change settings."
+
+msgid "Zeige %1$d von %2$d Einträgen"
+msgstr "Zeige %1$d von %2$d Einträgen"
+
+msgid "ZIP, JSON oder HTML hier ablegen"
+msgstr "ZIP, JSON oder HTML hier ablegen"
+
+msgid "ZIP file could not be opened."
+msgstr "ZIP file could not be opened."
+
+msgid "Zum Aktualisieren der Nährwerte einfach neue Datei einfügen."
+msgstr "Zum Aktualisieren der Nährwerte einfach neue Datei einfügen."
+
+msgid "Zurücksetzen"
+msgstr "Zurücksetzen"
+
+msgid "Zusätzlichen Stoff hinzufügen"
+msgstr "Zusätzlichen Stoff hinzufügen"
+
+msgid "Zusätzliche Nährwertangaben anzeigen"
+msgstr "Zusätzliche Nährwertangaben anzeigen"
+
+msgid "Zusätzlicher Stoff %1$d: %2$s"
+msgstr "Zusätzlicher Stoff %1$d: %2$s"
+
+msgid "Zusätzliche Stoffe"
+msgstr "Zusätzliche Stoffe"
+
+msgid "Zutaten"
+msgstr "Zutaten"
+
+msgid "Zutaten aufzählen"
+msgstr "Zutaten aufzählen"
+
+msgid "Zutaten unter der Tabelle anzeigen"
+msgstr "Zutaten unter der Tabelle anzeigen"
+

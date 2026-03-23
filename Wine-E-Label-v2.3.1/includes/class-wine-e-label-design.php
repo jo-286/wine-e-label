@@ -4,9 +4,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class NutritionLabels_Design
+final class Wine_E_Label_Design
 {
-    public const OPTION_NAME = 'nutrition_labels_design_settings';
+    public const OPTION_NAME = 'wine_e_label_design_settings';
 
     private static array $defaults = [
         'page_bg' => '#f3f4f6',
@@ -159,12 +159,12 @@ final class NutritionLabels_Design
     public static function font_options(): array
     {
         return [
-            'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif' => __('System Sans', 'nutrition-labels'),
-            'Arial,Helvetica,sans-serif' => __('Arial / Helvetica', 'nutrition-labels'),
-            'Georgia,"Times New Roman",serif' => __('Georgia', 'nutrition-labels'),
-            '"Times New Roman",Times,serif' => __('Times New Roman', 'nutrition-labels'),
-            'Verdana,Geneva,sans-serif' => __('Verdana', 'nutrition-labels'),
-            'Tahoma,Geneva,sans-serif' => __('Tahoma', 'nutrition-labels'),
+            'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif' => __('System Sans', 'wine-e-label'),
+            'Arial,Helvetica,sans-serif' => __('Arial / Helvetica', 'wine-e-label'),
+            'Georgia,"Times New Roman",serif' => __('Georgia', 'wine-e-label'),
+            '"Times New Roman",Times,serif' => __('Times New Roman', 'wine-e-label'),
+            'Verdana,Geneva,sans-serif' => __('Verdana', 'wine-e-label'),
+            'Tahoma,Geneva,sans-serif' => __('Tahoma', 'wine-e-label'),
         ];
     }
 
@@ -266,7 +266,7 @@ final class NutritionLabels_Design
 
         $alt = trim((string) ($s['logo_alt'] ?? ''));
         if ($alt === '') {
-            $alt = __('Weingutslogo', 'nutrition-labels');
+            $alt = __('Weingutslogo', 'wine-e-label');
         }
 
         return '<div class="' . esc_attr($wrap_class) . '"><img class="' . esc_attr($image_class) . '" src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '" loading="eager" decoding="async"></div>';
@@ -435,7 +435,7 @@ final class NutritionLabels_Design
 
     public static function producer_label_map(?string $lang = null): array
     {
-        $labels = class_exists('NutritionLabels_Presentation') ? NutritionLabels_Presentation::producer_labels() : [
+        $labels = class_exists('Wine_E_Label_Presentation') ? Wine_E_Label_Presentation::producer_labels() : [
             'de' => ['region' => 'Anbaugebiet', 'country' => 'Land', 'address' => 'Adresse des Weinguts'],
             'en' => ['region' => 'Growing region', 'country' => 'Country', 'address' => 'Winery address'],
             'it' => ['region' => 'Zona di produzione', 'country' => 'Paese', 'address' => 'Indirizzo della cantina'],

@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-class NutritionLabels_Admin_I18n
+class Wine_E_Label_Admin_I18n
 {
     public static function init(): void
     {
@@ -22,7 +22,7 @@ class NutritionLabels_Admin_I18n
 
     public static function get_current_language(): string
     {
-        $lang = (string) get_option('nutrition_labels_admin_language', 'auto');
+        $lang = (string) get_option('wine_e_label_admin_language', 'auto');
         if (in_array($lang, ['de', 'en', 'fr', 'it'], true)) {
             return $lang;
         }
@@ -71,7 +71,7 @@ class NutritionLabels_Admin_I18n
 
     private static function supports_text_domain(string $domain): bool
     {
-        return in_array($domain, [WINE_E_LABEL_TEXT_DOMAIN, WINE_E_LABEL_LEGACY_TEXT_DOMAIN], true);
+        return $domain === WINE_E_LABEL_TEXT_DOMAIN;
     }
 
     public static function translate(string $text, ?string $lang = null): string

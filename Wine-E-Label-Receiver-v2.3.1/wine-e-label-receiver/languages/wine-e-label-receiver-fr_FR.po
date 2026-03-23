@@ -1,0 +1,388 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wine-e-label-receiver\n"
+"POT-Creation-Date: 2026-03-23 11:16+0000\n"
+"PO-Revision-Date: 2026-03-23 11:16+0000\n"
+"Last-Translator: Wine E-Label\n"
+"Language-Team: Wine E-Label\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "actions"
+msgstr "Actions"
+
+msgid "add_new"
+msgstr "Ajouter"
+
+msgid "add_noindex"
+msgstr "Envoyer l’en-tête noindex"
+
+msgid "all_languages"
+msgstr "Toutes les langues"
+
+msgid "all_statuses"
+msgstr "Tous les statuts"
+
+msgid "base_font_size"
+msgstr "Taille de police de base (px)"
+
+msgid "border_color"
+msgstr "Bordure"
+
+msgid "bulk_actions"
+msgstr "Actions groupées"
+
+msgid "bulk_apply"
+msgstr "Appliquer"
+
+msgid "bulk_done"
+msgstr "Action groupée exécutée."
+
+msgid "bulk_draft"
+msgstr "Mettre en brouillon"
+
+msgid "bulk_publish"
+msgstr "Publier"
+
+msgid "bulk_trash"
+msgstr "Mettre à la corbeille"
+
+msgid "button_font_size"
+msgstr "Police du bouton (px)"
+
+msgid "card_bg"
+msgstr "Arrière-plan de carte"
+
+msgid "card_padding"
+msgstr "Marge intérieure carte (px)"
+
+msgid "central_design_setup"
+msgstr "Effectuez les modifications de design dans le plugin principal sous « Adapter le design ». Lors de l’enregistrement, les e-labels récepteurs publiés sont resynchronisés automatiquement."
+
+msgid "central_design_text"
+msgstr "La mise en page, les couleurs, les espacements et les autres valeurs de design ne sont plus gérés sur le site récepteur, mais de manière centralisée dans le plugin principal."
+
+msgid "central_design_title"
+msgstr "Gestion du design"
+
+msgid "close_comments"
+msgstr "Fermer les commentaires et les pings"
+
+msgid "colors"
+msgstr "Couleurs"
+
+msgid "created"
+msgstr "Créé"
+
+msgid "current_url"
+msgstr "URL actuelle du récepteur"
+
+msgid "custom_css"
+msgstr "CSS supplémentaire"
+
+msgid "dashboard_intro"
+msgstr "Ce plugin reçoit des e-labels via REST, les gère sur le site récepteur et les affiche sans mise en page du thème. Le design visuel est désormais géré de manière centralisée dans le plugin principal."
+
+msgid "design"
+msgstr "Adapter le design"
+
+msgid "design_intro"
+msgstr "Ici, vous contrôlez la mise en page de base des pages e-label reçues pour toute l’instance réceptrice."
+
+msgid "design_page_removed_notice"
+msgstr "L’ancienne page de design du récepteur a été supprimée. Le design des e-labels est désormais géré de manière centralisée dans le plugin principal."
+
+msgid "disable_canonical"
+msgstr "Désactiver la redirection canonique"
+
+msgid "download"
+msgstr "Télécharger"
+
+msgid "download_html"
+msgstr "HTML"
+
+msgid "download_json"
+msgstr "JSON"
+
+msgid "drafts"
+msgstr "Brouillons"
+
+msgid "edit"
+msgstr "Modifier"
+
+msgid "export_csv"
+msgstr "Exporter CSV"
+
+msgid "filter"
+msgstr "Filtrer"
+
+msgid "font_arial"
+msgstr "Arial / Helvetica"
+
+msgid "font_family"
+msgstr "Police"
+
+msgid "font_georgia"
+msgstr "Georgia"
+
+msgid "font_system"
+msgstr "System Sans"
+
+msgid "font_tahoma"
+msgstr "Tahoma"
+
+msgid "font_times"
+msgstr "Times New Roman"
+
+msgid "font_verdana"
+msgstr "Verdana"
+
+msgid "force_blank_layout"
+msgstr "Forcer une mise en page vide du plugin"
+
+msgid "inject_viewport"
+msgstr "Garantir la balise viewport"
+
+msgid "labels"
+msgstr "E-labels"
+
+msgid "labels_intro"
+msgstr "Gestion centrale de tous les e-labels reçus sur cette instance réceptrice."
+
+msgid "label_delete_hint"
+msgstr "Remarque : les e-labels devraient de préférence être supprimés sur le site principal afin que le plugin principal et le récepteur restent correctement synchronisés."
+
+msgid "label_width"
+msgstr "Largeur du label (px)"
+
+msgid "language"
+msgstr "Langue"
+
+msgid "language_setting"
+msgstr "Langue du plugin"
+
+msgid "live_preview"
+msgstr "Aperçu en direct"
+
+msgid "load_defaults"
+msgstr "Charger les valeurs par défaut"
+
+msgid "location"
+msgstr "Emplacement"
+
+msgid "main_domain"
+msgstr "Domaine principal"
+
+msgid "metabox_html"
+msgstr "HTML E-label"
+
+msgid "metabox_lang"
+msgstr "Langue du label"
+
+msgid "metabox_note"
+msgstr "Les documents HTML complets sont affichés tels quels. Les fragments sont automatiquement intégrés dans un document HTML minimal."
+
+msgid "muted_color"
+msgstr "Texte secondaire"
+
+msgid "normalize_body"
+msgstr "Neutraliser l’arrière-plan body/html"
+
+msgid "notes"
+msgstr "Remarques"
+
+msgid "no_labels"
+msgstr "Aucun e-label trouvé."
+
+msgid "open"
+msgstr "Ouvrir"
+
+msgid "orphaned_badge"
+msgstr "Orphelin / verifier la source"
+
+msgid "orphaned_hint"
+msgstr "Aucun lien actuel avec le plugin principal n a ete detecte. Ce label du recepteur peut ne plus etre mis a jour par les changements centraux."
+
+msgid "outer_padding_y"
+msgstr "Espacement extérieur haut/bas (px)"
+
+msgid "outer_width"
+msgstr "Largeur extérieure (px)"
+
+msgid "overview"
+msgstr "Aperçu"
+
+msgid "page_bg"
+msgstr "Arrière-plan de page"
+
+msgid "panel_radius"
+msgstr "Rayon des panneaux (px)"
+
+msgid "plugin_description"
+msgstr "Reçoit les pages d’e-label vin via REST, les gère de manière centralisée et les affiche sans mise en page du thème."
+
+msgid "plugin_name"
+msgstr "Récepteur d’e-label vin"
+
+msgid "preview_button"
+msgstr "Vue multilingue"
+
+msgid "preview_carbs"
+msgstr "Glucides"
+
+msgid "preview_energy"
+msgstr "Énergie"
+
+msgid "preview_fat"
+msgstr "Matières grasses"
+
+msgid "preview_hint"
+msgstr "L’aperçu se met à jour immédiatement pendant l’édition."
+
+msgid "preview_ingredients"
+msgstr "Raisins, saccharose, moût de raisin concentré, régulateur d’acidité : acide tartrique, antioxydant : sulfites"
+
+msgid "preview_protein"
+msgstr "Protéines"
+
+msgid "preview_salt"
+msgstr "Sel"
+
+msgid "preview_saturated"
+msgstr "dont acides gras saturés"
+
+msgid "preview_subtitle"
+msgstr "Ingrédients et déclaration nutritionnelle pour 100 ml"
+
+msgid "preview_sugars"
+msgstr "dont sucres"
+
+msgid "preview_title"
+msgstr "Rivaner sec 2024 Bio"
+
+msgid "public_url"
+msgstr "URL publique"
+
+msgid "published_labels"
+msgstr "Publiés"
+
+msgid "raw_html"
+msgstr "HTML brut"
+
+msgid "recommended"
+msgstr "recommandé"
+
+msgid "reset"
+msgstr "Réinitialiser"
+
+msgid "reset_field"
+msgstr "Réinitialiser le champ"
+
+msgid "rest_base"
+msgstr "Base REST"
+
+msgid "robustness"
+msgstr "Robustesse"
+
+msgid "save_design"
+msgstr "Enregistrer le design"
+
+msgid "save_language"
+msgstr "Enregistrer la langue"
+
+msgid "search"
+msgstr "Rechercher"
+
+msgid "second_domain"
+msgstr "Receiver Domain"
+
+msgid "settings_saved"
+msgstr "Paramètres enregistrés."
+
+msgid "setup"
+msgstr "Configuration"
+
+msgid "setup_box_title"
+msgstr "Voici comment connecter le site récepteur au plugin principal"
+
+msgid "setup_hint"
+msgstr "Dans le plugin principal, saisissez uniquement l’URL de domaine du récepteur, pas l’adresse complète /wp-json/... ."
+
+msgid "setup_info_url"
+msgstr "Tester la découverte de l’API"
+
+msgid "setup_intro"
+msgstr "Configurer la connexion entre le site récepteur et le plugin principal. Le design des e-labels est désormais hérité de façon centralisée depuis le plugin principal."
+
+msgid "setup_legacy_url"
+msgstr "Point de compatibilité ancien"
+
+msgid "setup_receiver_url"
+msgstr "URL du récepteur pour le plugin principal"
+
+msgid "sizes"
+msgstr "Espacements et tailles"
+
+msgid "slug"
+msgstr "Slug"
+
+msgid "small_font_size"
+msgstr "Petite police (px)"
+
+msgid "source_prefix"
+msgstr "Source :"
+
+msgid "status"
+msgstr "Statut"
+
+msgid "step_1"
+msgstr "Sur le domaine récepteur, créez dans le tableau de bord WordPress sous « Utilisateurs » un utilisateur avec des droits d’administrateur, par exemple « api_elabel », ou utilisez un administrateur existant."
+
+msgid "step_2"
+msgstr "Sous « Modifier l’utilisateur », créez un mot de passe d’application dans le profil utilisateur. Le nom du mot de passe d’application peut être choisi librement, par exemple « api_elabel ». Ensuite, générez le mot de passe, copiez-le et enregistrez-le en lieu sûr."
+
+msgid "step_3"
+msgstr "Dans le plugin principal, saisissez l’URL du récepteur, le nom d’utilisateur et le mot de passe d’application."
+
+msgid "step_4"
+msgstr "Dans le plugin principal, vérifiez que la connexion à l’instance réceptrice fonctionne. Vérifiez également que l’API REST est accessible et qu’aucun pare-feu, plugin de sécurité ou redirection d’authentification ne bloque la requête."
+
+msgid "step_5"
+msgstr "Le plugin principal enverra alors les e-labels à cette instance réceptrice et y créera une page e-label."
+
+msgid "step_6"
+msgstr "Testez le transfert avec un produit de test et vérifiez que la page e-label a bien été créée sur le site récepteur et qu’elle est accessible."
+
+msgid "subdomain"
+msgstr "Sous-domaine"
+
+msgid "table_head_bg"
+msgstr "En-tête de tableau"
+
+msgid "text_color"
+msgstr "Texte"
+
+msgid "title"
+msgstr "Titre"
+
+msgid "total_labels"
+msgstr "E-labels total"
+
+msgid "trash"
+msgstr "Corbeille"
+
+msgid "unknown"
+msgstr "—"
+
+msgid "updated"
+msgstr "Modifié"
+
+msgid "view"
+msgstr "Voir"
+
+msgid "year"
+msgstr "Millésime"
+

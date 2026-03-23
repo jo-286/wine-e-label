@@ -1,0 +1,388 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wine-e-label-receiver\n"
+"POT-Creation-Date: 2026-03-23 11:16+0000\n"
+"PO-Revision-Date: 2026-03-23 11:16+0000\n"
+"Last-Translator: Wine E-Label\n"
+"Language-Team: Wine E-Label\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "actions"
+msgstr "Actions"
+
+msgid "add_new"
+msgstr "Add new"
+
+msgid "add_noindex"
+msgstr "Send noindex header"
+
+msgid "all_languages"
+msgstr "All languages"
+
+msgid "all_statuses"
+msgstr "All statuses"
+
+msgid "base_font_size"
+msgstr "Base font size (px)"
+
+msgid "border_color"
+msgstr "Border"
+
+msgid "bulk_actions"
+msgstr "Bulk actions"
+
+msgid "bulk_apply"
+msgstr "Apply"
+
+msgid "bulk_done"
+msgstr "Bulk action completed."
+
+msgid "bulk_draft"
+msgstr "Set draft"
+
+msgid "bulk_publish"
+msgstr "Publish"
+
+msgid "bulk_trash"
+msgstr "Move to trash"
+
+msgid "button_font_size"
+msgstr "Button font size (px)"
+
+msgid "card_bg"
+msgstr "Card background"
+
+msgid "card_padding"
+msgstr "Card padding (px)"
+
+msgid "central_design_setup"
+msgstr "Make design changes in the main plugin under “Adjust design”. When saved, published receiver labels are synchronized automatically."
+
+msgid "central_design_text"
+msgstr "Layout, colors, spacing, and other design values are no longer maintained on the receiver site but centrally in the main plugin."
+
+msgid "central_design_title"
+msgstr "Design management"
+
+msgid "close_comments"
+msgstr "Close comments and pings"
+
+msgid "colors"
+msgstr "Colors"
+
+msgid "created"
+msgstr "Created"
+
+msgid "current_url"
+msgstr "Current receiver URL"
+
+msgid "custom_css"
+msgstr "Additional CSS"
+
+msgid "dashboard_intro"
+msgstr "This plugin receives E-labels via REST, manages them on the receiver site and outputs them without theme layout. The visual design is now maintained centrally in the main plugin."
+
+msgid "design"
+msgstr "Adjust design"
+
+msgid "design_intro"
+msgstr "Configure the base layout of received E-label pages centrally for this receiver instance."
+
+msgid "design_page_removed_notice"
+msgstr "The former receiver design page has been removed. E-label design is now maintained centrally in the main plugin."
+
+msgid "disable_canonical"
+msgstr "Disable canonical redirect"
+
+msgid "download"
+msgstr "Download"
+
+msgid "download_html"
+msgstr "HTML"
+
+msgid "download_json"
+msgstr "JSON"
+
+msgid "drafts"
+msgstr "Drafts"
+
+msgid "edit"
+msgstr "Edit"
+
+msgid "export_csv"
+msgstr "Export CSV"
+
+msgid "filter"
+msgstr "Filter"
+
+msgid "font_arial"
+msgstr "Arial / Helvetica"
+
+msgid "font_family"
+msgstr "Font family"
+
+msgid "font_georgia"
+msgstr "Georgia"
+
+msgid "font_system"
+msgstr "System Sans"
+
+msgid "font_tahoma"
+msgstr "Tahoma"
+
+msgid "font_times"
+msgstr "Times New Roman"
+
+msgid "font_verdana"
+msgstr "Verdana"
+
+msgid "force_blank_layout"
+msgstr "Force blank plugin layout"
+
+msgid "inject_viewport"
+msgstr "Ensure viewport meta"
+
+msgid "labels"
+msgstr "E-Labels"
+
+msgid "labels_intro"
+msgstr "Central management of all received E-labels on this receiver instance."
+
+msgid "label_delete_hint"
+msgstr "Note: E-labels should preferably be deleted on the main site so that the main plugin and receiver stay cleanly synchronized."
+
+msgid "label_width"
+msgstr "Label width (px)"
+
+msgid "language"
+msgstr "Language"
+
+msgid "language_setting"
+msgstr "Plugin language"
+
+msgid "live_preview"
+msgstr "Live preview"
+
+msgid "load_defaults"
+msgstr "Load defaults"
+
+msgid "location"
+msgstr "Location"
+
+msgid "main_domain"
+msgstr "Main Domain"
+
+msgid "metabox_html"
+msgstr "E-label HTML"
+
+msgid "metabox_lang"
+msgstr "Label language"
+
+msgid "metabox_note"
+msgstr "Full HTML documents are rendered as-is. Fragments are automatically wrapped in a minimal HTML document."
+
+msgid "muted_color"
+msgstr "Muted text"
+
+msgid "normalize_body"
+msgstr "Neutralize body/html background"
+
+msgid "notes"
+msgstr "Notes"
+
+msgid "no_labels"
+msgstr "No E-labels found."
+
+msgid "open"
+msgstr "Open"
+
+msgid "orphaned_badge"
+msgstr "Orphaned / check source"
+
+msgid "orphaned_hint"
+msgstr "No current link to the main plugin was detected. This receiver label may no longer be updated by central changes."
+
+msgid "outer_padding_y"
+msgstr "Outer top/bottom spacing (px)"
+
+msgid "outer_width"
+msgstr "Outer width (px)"
+
+msgid "overview"
+msgstr "Overview"
+
+msgid "page_bg"
+msgstr "Page background"
+
+msgid "panel_radius"
+msgstr "Panel radius (px)"
+
+msgid "plugin_description"
+msgstr "Receives wine e-label pages via REST, manages them centrally, and serves them without theme layout."
+
+msgid "plugin_name"
+msgstr "Wine E-Label Receiver"
+
+msgid "preview_button"
+msgstr "Multilingual view"
+
+msgid "preview_carbs"
+msgstr "Carbohydrate"
+
+msgid "preview_energy"
+msgstr "Energy"
+
+msgid "preview_fat"
+msgstr "Fat"
+
+msgid "preview_hint"
+msgstr "The preview updates instantly while editing."
+
+msgid "preview_ingredients"
+msgstr "Grapes, sucrose, concentrated grape must, acidity regulator: tartaric acid, antioxidant: sulfites"
+
+msgid "preview_protein"
+msgstr "Protein"
+
+msgid "preview_salt"
+msgstr "Salt"
+
+msgid "preview_saturated"
+msgstr "of which saturates"
+
+msgid "preview_subtitle"
+msgstr "Ingredients and nutrition declaration per 100 ml"
+
+msgid "preview_sugars"
+msgstr "of which sugars"
+
+msgid "preview_title"
+msgstr "Rivaner dry 2024 Organic"
+
+msgid "public_url"
+msgstr "Public URL"
+
+msgid "published_labels"
+msgstr "Published"
+
+msgid "raw_html"
+msgstr "Raw HTML"
+
+msgid "recommended"
+msgstr "recommended"
+
+msgid "reset"
+msgstr "Reset"
+
+msgid "reset_field"
+msgstr "Reset field"
+
+msgid "rest_base"
+msgstr "REST base"
+
+msgid "robustness"
+msgstr "Robustness"
+
+msgid "save_design"
+msgstr "Save design"
+
+msgid "save_language"
+msgstr "Save language"
+
+msgid "search"
+msgstr "Search"
+
+msgid "second_domain"
+msgstr "Receiver Domain"
+
+msgid "settings_saved"
+msgstr "Settings saved."
+
+msgid "setup"
+msgstr "Setup"
+
+msgid "setup_box_title"
+msgstr "How to connect the receiver site to the main plugin"
+
+msgid "setup_hint"
+msgstr "In the main plugin, enter only the receiver domain URL, not the full /wp-json/... address."
+
+msgid "setup_info_url"
+msgstr "Test API discovery"
+
+msgid "setup_intro"
+msgstr "Set up the receiver connection to the main plugin. The E-label design is inherited centrally from the main plugin."
+
+msgid "setup_legacy_url"
+msgstr "Legacy fallback"
+
+msgid "setup_receiver_url"
+msgstr "Receiver URL for the main plugin"
+
+msgid "sizes"
+msgstr "Spacing and sizing"
+
+msgid "slug"
+msgstr "Slug"
+
+msgid "small_font_size"
+msgstr "Small font size (px)"
+
+msgid "source_prefix"
+msgstr "Source:"
+
+msgid "status"
+msgstr "Status"
+
+msgid "step_1"
+msgstr "On the receiver domain, create a user with administrator rights in the WordPress dashboard under “Users”, for example “api_elabel”, or use an existing administrator."
+
+msgid "step_2"
+msgstr "Open “Edit User” and create an application password in the user profile. The name of the application password can be chosen freely, for example “api_elabel”. Then generate it, copy it and store it safely."
+
+msgid "step_3"
+msgstr "Enter the receiver URL, the username and the application password in the main plugin."
+
+msgid "step_4"
+msgstr "In the main plugin, test whether the connection to the receiver instance works. Also verify that the REST API is reachable and not blocked by a firewall, a security plugin or an auth redirect."
+
+msgid "step_5"
+msgstr "The main plugin will then send the E-labels to this receiver instance and create an E-label page there."
+
+msgid "step_6"
+msgstr "Test the transfer with a sample product and verify that the E-label page was created correctly on the receiver site and can be opened."
+
+msgid "subdomain"
+msgstr "Subdomain"
+
+msgid "table_head_bg"
+msgstr "Table header"
+
+msgid "text_color"
+msgstr "Body text"
+
+msgid "title"
+msgstr "Title"
+
+msgid "total_labels"
+msgstr "Total E-labels"
+
+msgid "trash"
+msgstr "Trash"
+
+msgid "unknown"
+msgstr "—"
+
+msgid "updated"
+msgstr "Updated"
+
+msgid "view"
+msgstr "View"
+
+msgid "year"
+msgstr "Vintage"
+

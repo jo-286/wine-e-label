@@ -1,0 +1,388 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wine-e-label-receiver\n"
+"POT-Creation-Date: 2026-03-23 11:16+0000\n"
+"PO-Revision-Date: 2026-03-23 11:16+0000\n"
+"Last-Translator: Wine E-Label\n"
+"Language-Team: Wine E-Label\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "actions"
+msgstr "Aktionen"
+
+msgid "add_new"
+msgstr "Neu hinzufügen"
+
+msgid "add_noindex"
+msgstr "noindex Header setzen"
+
+msgid "all_languages"
+msgstr "Alle Sprachen"
+
+msgid "all_statuses"
+msgstr "Alle Status"
+
+msgid "base_font_size"
+msgstr "Basisschriftgröße (px)"
+
+msgid "border_color"
+msgstr "Rahmen"
+
+msgid "bulk_actions"
+msgstr "Sammelaktionen"
+
+msgid "bulk_apply"
+msgstr "Anwenden"
+
+msgid "bulk_done"
+msgstr "Sammelaktion ausgeführt."
+
+msgid "bulk_draft"
+msgstr "Als Entwurf"
+
+msgid "bulk_publish"
+msgstr "Veröffentlichen"
+
+msgid "bulk_trash"
+msgstr "In Papierkorb"
+
+msgid "button_font_size"
+msgstr "Button-Schrift (px)"
+
+msgid "card_bg"
+msgstr "Kartenhintergrund"
+
+msgid "card_padding"
+msgstr "Innenabstand Karte (px)"
+
+msgid "central_design_setup"
+msgstr "Designänderungen nimmst du im Hauptplugin unter „Design anpassen“ vor. Beim Speichern werden veröffentlichte Receiver-E-Labels automatisch neu synchronisiert."
+
+msgid "central_design_text"
+msgstr "Layout, Farben, Abstände und weitere Designwerte werden nicht mehr auf der Receiver-Seite gepflegt, sondern zentral im Hauptplugin."
+
+msgid "central_design_title"
+msgstr "Design-Verwaltung"
+
+msgid "close_comments"
+msgstr "Kommentare und Pings schließen"
+
+msgid "colors"
+msgstr "Farben"
+
+msgid "created"
+msgstr "Erstellt"
+
+msgid "current_url"
+msgstr "Aktuelle Receiver-URL"
+
+msgid "custom_css"
+msgstr "Zusätzliches CSS"
+
+msgid "dashboard_intro"
+msgstr "Dieses Plugin empfängt E-Labels per REST, verwaltet sie auf der Receiver-Seite und liefert sie ohne Theme-Layout aus. Das visuelle Design wird jetzt zentral im Hauptplugin gepflegt."
+
+msgid "design"
+msgstr "Design anpassen"
+
+msgid "design_intro"
+msgstr "Hier steuerst du das Grundlayout der empfangenen E-Label-Seiten zentral für die gesamte Receiver-Instanz."
+
+msgid "design_page_removed_notice"
+msgstr "Die frühere Receiver-Designseite wurde entfernt. Das E-Label-Design wird jetzt zentral im Hauptplugin gepflegt."
+
+msgid "disable_canonical"
+msgstr "Canonical Redirect deaktivieren"
+
+msgid "download"
+msgstr "Download"
+
+msgid "download_html"
+msgstr "HTML"
+
+msgid "download_json"
+msgstr "JSON"
+
+msgid "drafts"
+msgstr "Entwürfe"
+
+msgid "edit"
+msgstr "Bearbeiten"
+
+msgid "export_csv"
+msgstr "CSV exportieren"
+
+msgid "filter"
+msgstr "Filtern"
+
+msgid "font_arial"
+msgstr "Arial / Helvetica"
+
+msgid "font_family"
+msgstr "Schriftart"
+
+msgid "font_georgia"
+msgstr "Georgia"
+
+msgid "font_system"
+msgstr "System Sans"
+
+msgid "font_tahoma"
+msgstr "Tahoma"
+
+msgid "font_times"
+msgstr "Times New Roman"
+
+msgid "font_verdana"
+msgstr "Verdana"
+
+msgid "force_blank_layout"
+msgstr "Leeres Plugin-Layout erzwingen"
+
+msgid "inject_viewport"
+msgstr "Viewport-Meta sicherstellen"
+
+msgid "labels"
+msgstr "E-Labels"
+
+msgid "labels_intro"
+msgstr "Zentrale Verwaltung aller empfangenen E-Labels dieser Receiver-Instanz."
+
+msgid "label_delete_hint"
+msgstr "Hinweis: E-Labels sollten möglichst auf der Hauptseite gelöscht werden, damit Hauptplugin und Receiver sauber synchron bleiben."
+
+msgid "label_width"
+msgstr "Label-Breite (px)"
+
+msgid "language"
+msgstr "Sprache"
+
+msgid "language_setting"
+msgstr "Plugin-Sprache"
+
+msgid "live_preview"
+msgstr "Live-Vorschau"
+
+msgid "load_defaults"
+msgstr "Standard laden"
+
+msgid "location"
+msgstr "Ort"
+
+msgid "main_domain"
+msgstr "Main Domain"
+
+msgid "metabox_html"
+msgstr "E-Label HTML"
+
+msgid "metabox_lang"
+msgstr "Label-Sprache"
+
+msgid "metabox_note"
+msgstr "Vollständige HTML-Dokumente werden 1:1 ausgegeben. Fragmente werden automatisch in ein minimales HTML-Dokument eingebettet."
+
+msgid "muted_color"
+msgstr "Sekundärtext"
+
+msgid "normalize_body"
+msgstr "Body/HTML Hintergrund neutralisieren"
+
+msgid "notes"
+msgstr "Hinweise"
+
+msgid "no_labels"
+msgstr "Keine E-Labels gefunden."
+
+msgid "open"
+msgstr "Öffnen"
+
+msgid "orphaned_badge"
+msgstr "Verwaist / Quelle prüfen"
+
+msgid "orphaned_hint"
+msgstr "Keine aktuelle Verknüpfung zum Hauptplugin erkannt. Dieses Receiver-Label wird bei zentralen Updates möglicherweise nicht mehr mit aktualisiert."
+
+msgid "outer_padding_y"
+msgstr "Außenabstand oben/unten (px)"
+
+msgid "outer_width"
+msgstr "Außenbreite (px)"
+
+msgid "overview"
+msgstr "Übersicht"
+
+msgid "page_bg"
+msgstr "Seitenhintergrund"
+
+msgid "panel_radius"
+msgstr "Panel-Radius (px)"
+
+msgid "plugin_description"
+msgstr "Empfängt Wein-E-Label-Seiten per REST, verwaltet sie zentral und liefert sie ohne Theme-Layout aus."
+
+msgid "plugin_name"
+msgstr "Wein E-Label Receiver"
+
+msgid "preview_button"
+msgstr "Mehrsprachige Ansicht"
+
+msgid "preview_carbs"
+msgstr "Kohlenhydrate"
+
+msgid "preview_energy"
+msgstr "Energie"
+
+msgid "preview_fat"
+msgstr "Fett"
+
+msgid "preview_hint"
+msgstr "Die Vorschau aktualisiert sich direkt beim Ändern."
+
+msgid "preview_ingredients"
+msgstr "Trauben, Saccharose, konzentrierter Traubenmost, Säureregulator: Weinsäure, Antioxidationsmittel: Sulfite"
+
+msgid "preview_protein"
+msgstr "Eiweiß"
+
+msgid "preview_salt"
+msgstr "Salz"
+
+msgid "preview_saturated"
+msgstr "davon gesättigte Fettsäuren"
+
+msgid "preview_subtitle"
+msgstr "Zutaten und Nährwerte je 100 ml"
+
+msgid "preview_sugars"
+msgstr "davon Zucker"
+
+msgid "preview_title"
+msgstr "Rivaner trocken 2024 Bio"
+
+msgid "public_url"
+msgstr "Öffentliche URL"
+
+msgid "published_labels"
+msgstr "Veröffentlicht"
+
+msgid "raw_html"
+msgstr "Rohes HTML"
+
+msgid "recommended"
+msgstr "empfohlen"
+
+msgid "reset"
+msgstr "Zurücksetzen"
+
+msgid "reset_field"
+msgstr "Feld zurücksetzen"
+
+msgid "rest_base"
+msgstr "REST-Basis"
+
+msgid "robustness"
+msgstr "Robustheit"
+
+msgid "save_design"
+msgstr "Design speichern"
+
+msgid "save_language"
+msgstr "Sprache speichern"
+
+msgid "search"
+msgstr "Suchen"
+
+msgid "second_domain"
+msgstr "Receiver Domain"
+
+msgid "settings_saved"
+msgstr "Einstellungen gespeichert."
+
+msgid "setup"
+msgstr "Einrichtung"
+
+msgid "setup_box_title"
+msgstr "So verbindest du die Receiver-Seite mit dem Hauptplugin"
+
+msgid "setup_hint"
+msgstr "Im Hauptplugin nur die Receiver-URL der Domain eintragen, nicht die komplette /wp-json/...-Adresse."
+
+msgid "setup_info_url"
+msgstr "API-Erkennung testen"
+
+msgid "setup_intro"
+msgstr "Receiver-Verbindung zum Hauptplugin einrichten. Das E-Label-Design wird zentral vom Hauptplugin übernommen."
+
+msgid "setup_legacy_url"
+msgstr "Legacy-Fallback"
+
+msgid "setup_receiver_url"
+msgstr "Receiver-URL für das Hauptplugin"
+
+msgid "sizes"
+msgstr "Abstände und Größen"
+
+msgid "slug"
+msgstr "Slug"
+
+msgid "small_font_size"
+msgstr "Kleine Schrift (px)"
+
+msgid "source_prefix"
+msgstr "Quelle:"
+
+msgid "status"
+msgstr "Status"
+
+msgid "step_1"
+msgstr "Auf der Receiver-Domain im WordPress-Dashboard unter „Benutzer“ einen Benutzer mit Administratorrechten anlegen, zum Beispiel „api_elabel“, oder einen bestehenden Administrator verwenden."
+
+msgid "step_2"
+msgstr "Unter „Benutzer bearbeiten“ im Benutzerprofil ein Anwendungspasswort erstellen. Der Name des Anwendungspassworts kann frei gewählt werden, zum Beispiel „api_elabel“. Danach das Passwort generieren, kopieren und sicher speichern."
+
+msgid "step_3"
+msgstr "Im Hauptplugin die Receiver-URL, den Benutzernamen und das Anwendungspasswort eintragen."
+
+msgid "step_4"
+msgstr "Im Hauptplugin testen, ob die Verbindung zur Receiver-Instanz funktioniert. Außerdem prüfen, dass die REST-API erreichbar ist und keine Firewall, kein Security-Plugin und keine Auth-Weiterleitung die Anfrage blockiert."
+
+msgid "step_5"
+msgstr "Das Hauptplugin sendet die E-Labels dann an diese Receiver-Instanz und erzeugt dort eine E-Label-Seite."
+
+msgid "step_6"
+msgstr "Die Übertragung mit einem Testprodukt prüfen und kontrollieren, ob auf der Receiver-Seite die E-Label-Seite korrekt angelegt wurde und aufrufbar ist."
+
+msgid "subdomain"
+msgstr "Subdomain"
+
+msgid "table_head_bg"
+msgstr "Tabellenkopf"
+
+msgid "text_color"
+msgstr "Fließtext"
+
+msgid "title"
+msgstr "Titel"
+
+msgid "total_labels"
+msgstr "E-Labels gesamt"
+
+msgid "trash"
+msgstr "Papierkorb"
+
+msgid "unknown"
+msgstr "—"
+
+msgid "updated"
+msgstr "Geändert"
+
+msgid "view"
+msgstr "Ansehen"
+
+msgid "year"
+msgstr "Jahrgang"
+
